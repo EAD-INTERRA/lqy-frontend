@@ -9,9 +9,7 @@ export default defineNuxtConfig({
     ['@nuxtjs/google-fonts', {
       families: {
         Sen: true,
-        'DM+Sans': true,
-        Rubik: true,
-        'Space+Grotesk':true
+        Oxygen: true,
       },
       display: 'swap', // Recommended for performance
       prefetch: true, // Optional, improves initial loading speed
