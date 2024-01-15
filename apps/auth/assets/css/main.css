@@ -1,5 +1,5 @@
-.bg-primary {
-  background-color: #131319;
+.bg {
+  background: url('../../public/assets/images/auth-bg.svg');
 }
 
 .btn-primary {
@@ -23,41 +23,6 @@
 .mega-menu {
   opacity:0;
   visibility:hidden;
-  z-index: -900;
-  left: 0;
-  position: absolute;
-  text-align: left;
-  width: 100%;
-  transition: all 0.15s linear 0s;
-}
-
-
-
-.solutions-menu {
-  opacity: 0;
-  visibility: hidden;
-  z-index: -900;
-  left: 0;
-  position: absolute;
-  text-align: left;
-  width: 100%;
-  transition: all 0.15s linear 0s;
-}
-
-.integrations-menu {
-  opacity: 0;
-  visibility: hidden;
-  z-index: -900;
-  left: 0;
-  position: absolute;
-  text-align: left;
-  width: 100%;
-  transition: all 0.15s linear 0s;
-}
-
-.resources-menu {
-  opacity: 0;
-  visibility: hidden;
   z-index: -900;
   left: 0;
   position: absolute;
@@ -103,63 +68,6 @@
     background-size: contain;
     width: fit-content;
     display: inline-block;
-}
-
-.join-us-heading-bg{
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: contain;
-  width: fit-content;
-  display: inline-block;
-}
-
-.custom-container {
-    padding-left: 120px;
-    padding-right: 120px;
-  }
-
-@media screen and (max-width: 765px){
-    .custom-container {
-        padding-left: 20px;
-        padding-right: 15px;
-      }
-}
-
-.wws-banner-bg{
-  background-image: url(../images/wws-pattern.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.join-us-bg{
-  background-color: #FDF5F5;
-}
-
-.guides-bg{
-  background-image: url(../images/Spiral-Dots.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.tax-guide-amber{
-  background-color: #FEF4EB;
-}
-
-.tax-guide-pink{
-  background-color: #FDF5F5;
-}
-
-.tax-guide-blue{
-  background-color: #E5F9FF;
-}
-
-.tax-guide-info{
-  background-color: rgba(47, 128, 237, 0.10);
-}
-
-.about-bg{
-  background-image: url(../images/about-pattern.svg);
 }
 
 .text-stroke {
