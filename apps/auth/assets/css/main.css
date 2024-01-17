@@ -1,5 +1,8 @@
 .bg {
-  background: url('../../public/assets/images/auth-bg.svg');
+  background: url("../../public/assets/images/auth-bg.svg");
+}
+.logo {
+  background: url("../../public/assets/images/lqyLogo.svg");
 }
 
 .btn-primary {
@@ -14,15 +17,15 @@
   box-shadow: 0px 4px 4px 0px rgba(216, 46, 46, 0.1);
 }
 
-.input-primary{
-    border-radius: 6px;
-    border: 1px solid var(--Gray-20, #CBD5E1);
-    background: var(--color-neutral-white, #FFF);
+.input-primary {
+  border-radius: 6px;
+  border: 1px solid var(--Gray-20, #cbd5e1);
+  background: var(--color-neutral-white, #fff);
 }
 
 .mega-menu {
-  opacity:0;
-  visibility:hidden;
+  opacity: 0;
+  visibility: hidden;
   z-index: -900;
   left: 0;
   position: absolute;
@@ -31,8 +34,8 @@
   transition: all 0.15s linear 0s;
 }
 
- /* #hoverable Class Styles */
- .hoverable {
+/* #hoverable Class Styles */
+.hoverable {
   position: static;
 }
 
@@ -45,32 +48,101 @@
 }
 
 .hoverable:hover .solutions-menu {
-  opacity:1;
-  visibility:visible;
+  opacity: 1;
+  visibility: visible;
   z-index: 900;
 }
 
 .hoverable:hover .integrations-menu {
-  opacity:1;
-  visibility:visible;
+  opacity: 1;
+  visibility: visible;
   z-index: 900;
 }
 
 .hoverable:hover .resources-menu {
-  opacity:1;
-  visibility:visible;
+  opacity: 1;
+  visibility: visible;
   z-index: 900;
 }
 
-.heading-bg{
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: fit-content;
-    display: inline-block;
+.heading-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: fit-content;
+  display: inline-block;
 }
 
 .text-stroke {
-  -webkit-text-stroke: 1px #D82E2E; /* Adjust the width and color of the stroke */
+  -webkit-text-stroke: 1px #d82e2e; /* Adjust the width and color of the stroke */
   color: transparent; /* Make the text transparent to show only the stroke */
 }
+
+/* Auth styling start */
+
+.l-color {
+  color: #f00;
+}
+.customWhite {
+  color: #fff;
+}
+.y-color {
+  color: #558ed5;
+}
+
+.form-input {
+  margin-top: 2px;
+  padding: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-submit {
+  margin-top: 2px;
+  padding: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0.75px 0.75px 1.5px 0.75px rgba(0, 0, 0, 0.25);
+}
+
+.form-select {
+  color: rgb(184 178 178 / 56%);
+  padding: 8px;
+}
+
+.upload {
+  padding: 10px;
+  opacity: 0.75;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.customBorder {
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 1.493px 1.493px 80px 24px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(17.5px);
+}
+
+.customOrange {
+  color: #ed6930;
+}
+.bg-white {
+  background-color: #fff;
+}
+.ok-btn {
+  display: flex;
+  width: 115px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #10356d;
+}
+
+.custom-container {
+  padding-top: 160px !important;
+}
+
+/* Auth styling end */

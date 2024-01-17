@@ -12,6 +12,7 @@ module.exports = {
        fontFamily: {
         sen: ['"Sen"', 'sans'],
         ox: ['"Oxygen"', 'sans'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
       },
       fontSize:{
         'sen-sm': '16px',
@@ -37,7 +38,8 @@ module.exports = {
           "as":'#39D3EC',
           "secondary":"#F34444",
           "bcs":"#EE2E2E",
-          "bcs":"#EE2E2E"
+          "bcs":"#EE2E2E",
+          "customWhite": "#FFFFFF"
         },
       },
       boxShadow: {
