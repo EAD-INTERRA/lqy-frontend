@@ -168,14 +168,11 @@
 /* Sidebar Start */
 .sidebar {
   display: flex;
-  width: 240px;
-  height: auto;
   padding: 19px 8px;
   flex-direction: column;
   align-items: center;
   gap: 40px;
   background: #10356d;
-  /* margin-top: -72px; */
   position: fixed;
 }
 
