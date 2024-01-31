@@ -1,6 +1,5 @@
 <template>
 <div class="flex hide">
-    <!-- <sidebarComponent class=" hide " /> -->
     <div class="header flex gap-4 ">
         <div class="relative ">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none border-r-1">

@@ -1,9 +1,12 @@
 <template>
-  <div >
-    <NuxtLayout>
-      <headerComponent />
-      <!-- <sidebarComponent /> -->
-      <NuxtPage />
-    </NuxtLayout>
+  <div>
+      <NuxtLayout class="flex">
+          <sidebarComponent />
+          <div>
+              <headerComponent />
+              <NuxtPage />
+          </div>
+      </NuxtLayout>
   </div>
-</template>
+  </template>
+  
