@@ -37,7 +37,8 @@ module.exports = {
           "as":'#39D3EC',
           "secondary":"#F34444",
           "bcs":"#EE2E2E",
-          "bcs":"#EE2E2E"
+          "bcs":"#EE2E2E",
+          "cg": "#E1E5EB"
         },
       },
       boxShadow: {
