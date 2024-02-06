@@ -61,7 +61,7 @@
                         <!-- <dd>{Stakeholder.name}</dd> -->
                         <dd>25/12/2023</dd>
                       </dl>
-                      <p class="rounded-lg bg-theme-tb  w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0">Accepted</p>
+                      <p class="rounded-lg bg-orange-500 text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Pending</p>
                       
                     </td>
                     <td class="text-center hidden lg:table-cell pt-2 pb-2">
@@ -100,7 +100,7 @@
                         <!-- <dd>{Stakeholder.name}</dd> -->
                         <dd>25/12/2023</dd>
                       </dl>
-                      <p class="rounded-lg bg-theme-tb  w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0">Accepted</p>
+                      <p class="rounded-lg bg-blue-500  text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Approved</p>
                       
                     </td>
                     <td class="text-center hidden lg:table-cell pt-2 pb-2">
@@ -139,7 +139,7 @@
                         <!-- <dd>{Stakeholder.name}</dd> -->
                         <dd>25/12/2023</dd>
                       </dl>
-                      <p class="rounded-lg bg-theme-tb  w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0">Accepted</p>
+                      <p class="rounded-lg bg-red-500 text-white  w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Reject</p>
                       
                     </td>
                     <td class="text-center hidden lg:table-cell pt-2 pb-2">

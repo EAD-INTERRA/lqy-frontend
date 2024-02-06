@@ -65,7 +65,7 @@
               >3</span
             ></NuxtLink
           >
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
+          <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox"
             ><img src="~/assets/images/setting.svg" />Settings
           </NuxtLink>
           <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
@@ -114,7 +114,7 @@
       title: 'CSCS'
     },
     {
-      to: '',
+      to: '/interestRate',
       src: 'assets/images/dashboard-icon.svg',
       src2: 'assets/images/dashboard-icon.svg',
       title: 'Interest Rate'
