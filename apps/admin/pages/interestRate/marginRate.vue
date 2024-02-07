@@ -1,14 +1,15 @@
 <template>
   <div class="p-4 mt-[50px] lg:mt-[100px] mx-auto lg:ml-64">
-    <p class="font-ox text-sm ml-2  mb-3">
-      <b class="text-red-500 underline underline-offset-4 mr-2">Proposed Security Lending  Rate </b>Margin RatesTB 90-Days Financial
-      Institutionn spread LQY Admin fee
+    <p class="font-ox text-sm ml-2 mb-3">
+      Proposed Security Lending Rate
+      <b class="text-red-500 underline underline-offset-4 mr-2">Margin Rate</b
+      >TB 90-Days Financial Institutionn spread LQY Admin fee
     </p>
     <div class="flex">
       <section class="w-[70%] rounded-md bg-theme-cg">
         <div class="bg-theme-dg p-[20px] lg:p-[40px] rounded-[10px] w-[100%]">
           <div class="flex justify-between pr-9 mb-6">
-            <p class="w-fit text-lg px-3 py-1">current security lending rate</p>
+            <p class="w-fit text-lg px-3 py-1">Margin interest rate</p>
           </div>
           <hr />
           <div class="">
@@ -161,48 +162,81 @@
           </div>
         </div>
         <div class="p-[20px] rounded-[10px]">
-          <p class="text-black mt-[20px] mb-[10px] font-ox font-bold">
-            Current security lending rate in nigeria: -23%
+          <p class="text-black mt-[20px] mb-[10px] font-ox font-semibold">
+            Current margin rates
           </p>
-          <p class="text-sm">
-            As of the latest available information, the current securities
-            lending rate in Nigeria is 4.5%. This rate signifies the annual fee
-            investors must pay for borrowing securities in the Nigerian
-            securities lending market. The lending rate is subject to market
-            dynamics, influenced by factors such as the demand for specific
-            securities, prevailing economic conditions, and risk considerations.
-            Investors and market participants use this real-time rate as a
-            crucial benchmark, guiding their decisions in navigating the
-            securities lending landscape in Nigeria. For the most accurate and
-            current details, it is recommended to check reputable financial news
-            sources, market data providers, or consult with relevant financial
-            institutions.
+          <p class="text-black mt-[10px] text-sm mb-[10px] font-ox font-semibold">
+            Schwab’s current base rate is 11.75% and is subject to change
+            without notice. Last changed on 01/01//2024.
           </p>
+          <table class="border-collapse border border-slate-500 ...">
+            <thead>
+              <tr class="bg-theme-tb text-xs font-ox ">
+                <th class="border border-slate-600 ... pl-[10px] pr-[150px] py-[15px] ">Debit Balance</th>
+                <th class="border border-slate-600 ... pl-[10px] pr-[150px] py-[15px]">Margin Rate</th>
+                <th class="border border-slate-600 ... pl-[10px] pr-[150px] py-[15px]">Effective Rate</th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr>
+                <td class="border border-slate-700 px-[10px] ">$0-$20,859.64</td>
+                <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
+                <td class="border border-slate-700 px-[10px]">17.564%</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
+                <td class="border border-slate-700 px-[10px]">17.564%</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
+                <td class="border border-slate-700 px-[10px]">17.564%</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
+                <td class="border border-slate-700 px-[10px]">17.564%</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
+                <td class="border border-slate-700 px-[10px]">17.564%</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <section class="w-[28%] flex flex-col items-center">
-        <div class="bg-theme-dg p-[20px] mx-6 gap-3 flex flex-col rounded-[10px]">
-          <p class="text-black font-ox font-bold ">
-            Proposed Security Lending Rate
+        <div
+          class="bg-theme-dg p-[20px] gap-3 mx-6 flex flex-col rounded-[10px]">
+          <p class="text-black font-ox font-bold">
+            Proposed Margin Rate
           </p>
           <div class="flex flex-col gap-2">
-            <div class="m-auto flex justify-between text-base align-middle font-normal text-white px-[10px] w-full py-[5px] bg-white border border-gray border-solid  rounded-[10px] ">
-              <p class="text-sm text-black my-auto ">758.43</p>
-              <div class="bg-gray-300 flex gap-1 px-2 my-auto rounded-[3px] text-red-500 text-lg font-bold">
-                <buttom >-</buttom>
-                <buttom  >+</buttom>
+            <div
+              class="m-auto flex justify-between text-base align-middle font-normal text-white px-[10px] w-full py-[5px] bg-white border border-gray border-solid rounded-[10px]">
+              <p class="text-sm text-black my-auto">758.43</p>
+              <div
+                class="bg-gray-300 flex gap-1 px-2 my-auto rounded-[3px] text-red-500 text-lg font-bold">
+                <buttom>-</buttom>
+                <buttom>+</buttom>
               </div>
             </div>
-            <div class="flex text-[14px] justify-start ml-2 ">=$758.43</div>
+            <div class="flex text-[14px] justify-start ml-2">=$758.43</div>
             <div class="m-auto">
-              <buttom class="text-base font-normal text-white px-[80px] py-[5px] bg-blue-400 border border-gray border-solid  rounded-[10px] ">Update</buttom>
+              <buttom
+                class="text-base font-normal text-white px-[80px] py-[5px] bg-blue-400 border border-gray border-solid rounded-[10px]"
+                >Update</buttom
+              >
             </div>
-            <div class="flex text-[10px] justify-end mr-2 ">Last updated 01/05/2024 08:06 (UTC)</div>
+            <div class="flex text-[10px] justify-end mr-2">
+              Last updated 01/05/2024 08:06 (UTC)
+            </div>
+          </div>
         </div>
-        </div>
-        <div class="p-[20px] mx-6 rounded-[10px]">
-          <p class="text-black font-ox font-bold">Financial Blog</p>
+        <div class="bg-theme-dg p-[20px] mt-3 mx-6 rounded-[10px]">
           <div>
             <div
               class="flex gap-1 text-sm font-semibold mt-5 mb-1 justify-start">
