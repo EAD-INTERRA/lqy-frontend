@@ -6,38 +6,6 @@
     <div class="sidebarDiv">
       <div class="overview">
         <p class="overviewText text-ox text-left">Overview</p>
-        <!-- <div class="dashboardDiv">
-          <NuxtLink to="/" class="flex flex-row sidebarLink text-ox"
-            ><img src="~/assets/images/dashboard-icon.svg" />Dashboard</NuxtLink
-          >
-          <NuxtLink to="/stakeholders" class="flex flex-row sidebarLink text-ox"
-            ><img
-              src="~/assets/images/stakeholder-icon.svg" />Stakeholders</NuxtLink
-          >
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
-            ><img src="~/assets/images/simple-icons_webmoney.svg" />Financial
-            Institution</NuxtLink
-          >
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
-            ><img
-              src="~/assets/images/simple-icons_iobroker.svg" />Broker</NuxtLink
-          >
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
-            ><img src="~/assets/images/css-icon.svg" />CSCS</NuxtLink
-          >
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
-            ><img src="~/assets/images/interest-icon.svg" />Interest
-            Rate</NuxtLink
-          >
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
-            ><img src="~/assets/images/margin-icon.svg" />Margin list</NuxtLink
-          >
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
-            ><img src="~/assets/images/margin-icon.svg" />Create
-            Stakeholders</NuxtLink
-          >
-        </div> -->
-     
         <div class="dashboardDiv">
             <div v-for="(option, index) in options" :key="option.to">
               <NuxtLink
@@ -97,38 +65,38 @@
     },
     {
       to: '/financialFlow',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/simple-icons_webmoney.svg',
+      src2: 'assets/images/simple-icons_webmoney.svg',
       title: 'Financial Institution'
     },
     {
       to: '/brokerFlow',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/simple-icons_iobroker.svg',
+      src2: 'assets/images/simple-icons_iobroker.svg',
       title: 'Broker'
     },
     {
       to: '/cscsFlow',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/css-icon.svg',
+      src2: 'assets/images/css-icon.svg',
       title: 'CSCS'
     },
     {
       to: '/interestRate',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/interest-icon.svg',
+      src2: 'assets/images/interest-icon.svg',
       title: 'Interest Rate'
     },
     {
       to: '/marginList',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/margin-icon.svg',
+      src2: 'assets/images/margin-icon.svg',
       title: 'Margin list'
     },
     {
       to: '',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/margin-icon.svg',
+      src2: 'assets/images/margin-icon.svg',
       title: 'Create Stakeholders'
     }
   ];

@@ -1,166 +1,28 @@
 <template>
   <div class="p-4 mt-[50px] lg:mt-[100px] mx-auto lg:ml-64">
-    <p class="font-ox text-sm ml-2  mb-3">
-      <b class="text-red-500 underline underline-offset-4 mr-2">Proposed Security Lending  Rate </b>Margin RatesTB 90-Days Financial
+    <p class="hidden md:block font-ox text-sm ml-2  mb-3">
+      <b class="  text-red-500 underline underline-offset-4 mr-2">Proposed Security Lending  Rate </b>Margin RatesTB 90-Days Financial
       Institutionn spread LQY Admin fee
     </p>
-    <div class="flex">
-      <section class="w-[70%] rounded-md bg-theme-cg">
+    <div class="flex flex-col lg:flex-row">
+      <section class="w-fit lg:w-[70%] rounded-md bg-theme-cg">
         <div class="bg-theme-dg p-[20px] lg:p-[40px] rounded-[10px] w-[100%]">
           <div class="flex justify-between pr-9 mb-6">
             <p class="w-fit text-lg px-3 py-1">current security lending rate</p>
           </div>
           <hr />
           <div class="">
-            <table class="table-fixed w-full lg:w-auto">
-              <thead>
-                <tr
-                  class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                  <th class="w-56 pt-2 pb-2 hidden lg:table-cell">Name</th>
-                  <th class="w-56 pt-2 pb-2 hidden lg:table-cell">
-                    CHN Number
-                  </th>
-                  <th class="w-56 pt-2 pb-2 hidden lg:table-cell">
-                    Interest Accrued
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  class="bg-theme-tb rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                  <td
-                    class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">Organization</dt>
-                      <!-- <dd>{Organization.name}</dd> -->
-                      <dd
-                        class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                        Wells fargo
-                      </dd>
-                    </dl>
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">name</dt>
-                      <!-- <dd>{Stakeholder.name}</dd> -->
-                      <dd>David Superman</dd>
-                    </dl>
-                    <p>David Superman</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p>********</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p class="text-green-500">$200,000</p>
-                  </td>
-                </tr>
-                <tr
-                  class="rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                  <td
-                    class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">Organization</dt>
-                      <!-- <dd>{Organization.name}</dd> -->
-                      <dd
-                        class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                        Wells fargo
-                      </dd>
-                    </dl>
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">name</dt>
-                      <!-- <dd>{Stakeholder.name}</dd> -->
-                      <dd>David Superman</dd>
-                    </dl>
-                    <p>David Superman</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p>********</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p class="text-green-500">$200,000</p>
-                  </td>
-                </tr>
-                <tr
-                  class="bg-theme-tb rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                  <td
-                    class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">Organization</dt>
-                      <!-- <dd>{Organization.name}</dd> -->
-                      <dd
-                        class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                        Wells fargo
-                      </dd>
-                    </dl>
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">name</dt>
-                      <!-- <dd>{Stakeholder.name}</dd> -->
-                      <dd>David Superman</dd>
-                    </dl>
-                    <p>David Superman</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p>********</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p class="text-green-500">$200,000</p>
-                  </td>
-                </tr>
-                <tr
-                  class="rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                  <td
-                    class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">Organization</dt>
-                      <!-- <dd>{Organization.name}</dd> -->
-                      <dd
-                        class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                        Wells fargo
-                      </dd>
-                    </dl>
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">name</dt>
-                      <!-- <dd>{Stakeholder.name}</dd> -->
-                      <dd>David Superman</dd>
-                    </dl>
-                    <p>David Superman</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p>********</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p class="text-green-500">$200,000</p>
-                  </td>
-                </tr>
-                <tr
-                  class="bg-theme-tb rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                  <td
-                    class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">Organization</dt>
-                      <!-- <dd>{Organization.name}</dd> -->
-                      <dd
-                        class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                        Wells fargo
-                      </dd>
-                    </dl>
-                    <dl class="lg:hidden">
-                      <dt class="sr-only">name</dt>
-                      <!-- <dd>{Stakeholder.name}</dd> -->
-                      <dd>David Superman</dd>
-                    </dl>
-                    <p>David Superman</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p>********</p>
-                  </td>
-                  <td class="hidden lg:table-cell text-center">
-                    <p class="text-green-500">$200,000</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="w-full rounded-md bg-theme-cg p-[25px]">
+             <LineChart :labels="chartLabels" :datasets="chartDatasets" />
+            </div>
+        <!-- <div class="w-[25%] flex flex-col items-center space-y-8">
+            <span class="font-ox text-ox-md text-center">Asset Allocation</span>
+            <DoughnutChart :data="chartData" :colors="chartColors"/>
+        </div> -->
+
           </div>
         </div>
-        <div class="p-[20px] rounded-[10px]">
+        <div class="p-[10px] lg:p-[20px] rounded-[10px]">
           <p class="text-black mt-[20px] mb-[10px] font-ox font-bold">
             Current security lending rate in nigeria: -23%
           </p>
@@ -181,8 +43,8 @@
         </div>
       </section>
 
-      <section class="w-[28%] flex flex-col items-center">
-        <div class="bg-theme-dg p-[20px] mx-6 gap-3 flex flex-col rounded-[10px]">
+      <section class="w-[100%] lg:w-[28%] flex flex-col items-center">
+        <div class="bg-theme-dg p-[20px] lg:mx-6 my-3 lg:my-0 gap-3 flex flex-col rounded-[10px]">
           <p class="text-black font-ox font-bold ">
             Proposed Security Lending Rate
           </p>
@@ -201,8 +63,9 @@
             <div class="flex text-[10px] justify-end mr-2 ">Last updated 01/05/2024 08:06 (UTC)</div>
         </div>
         </div>
-        <div class="p-[20px] mx-6 rounded-[10px]">
-          <p class="text-black font-ox font-bold">Financial Blog</p>
+        <div class="p-[5px] lg:p-[20px] mx-0 lg:mx-6 block rounded-[10px]">
+          <p class="text-black font-ox font-bold mt-2 lg:mt-0">Financial Blog</p>
+          <div class=" md:grid block lg:block md:grid-cols-2 gap-0 lg:gap-0 md:gap-3">
           <div>
             <div
               class="flex gap-1 text-sm font-semibold mt-5 mb-1 justify-start">
@@ -229,23 +92,40 @@
               fee investors must pay for borrowing securities in the Nigerian
             </p>
           </div>
-          <div>
-            <div
-              class="flex gap-1 text-sm font-semibold mt-5 mb-1 justify-start">
-              Stratton Craig
-              <img class="w-[6%]" src="~/assets/images/tick.svg" />
-              <p class="">2 hours ago</p>
-            </div>
-            <p class="text-sm text-left">
-              As of the latest available information, the current securities
-              lending rate in Nigeria is 4.5%. This rate signifies the annual
-              fee investors must pay for borrowing securities in the Nigerian
-            </p>
-          </div>
+         
+        </div>
         </div>
       </section>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const chartData = ref([
+  { name: 'Equities', count: 12 },
+  { name: 'Bonds', count: 50 },
+  { name: 'Derivatives', count: 20 },
+  { name: 'Other Assets', count: 18 },
+]);
+
+const chartColors = ['#E0903F', '#65C569', '#AC65C5', '#6373F8']; // External colors array
+
+const chartLabels = ref(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
+const chartDatasets = ref([
+  {
+    label: 'Series A',
+    data: [65, 59, 80, 81, 56, 55, 100],
+    borderColor: 'rgba(16, 53, 109, 1)',
+    backgroundColor: 'rgba(16, 53, 109, 0.2)',
+    fill: false,
+  },
+  {
+    label: 'Series B',
+    data: [28, 48, 40, 19, 86, 27, 90],
+    borderColor: 'rgba(238, 46, 46, 1)',
+    backgroundColor: 'rgba(238, 46, 46, 0.2)',
+    fill: false,
+  },
+]);
+</script>
+
