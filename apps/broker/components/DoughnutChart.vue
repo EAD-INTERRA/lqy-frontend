@@ -1,8 +1,6 @@
 <!-- ChartComponent.vue -->
 <template>
-    <div class="card p-2">
-      <canvas ref="chartCanvasRef"></canvas>
-    </div>
+      <canvas ref="chartCanvasRef" style="height: 70%; width: 70%;"></canvas>
   </template>
   
   <script setup lang="ts">
@@ -30,9 +28,7 @@
       console.error('Canvas context not available');
       return;
     }
-  
-    console.log('Initializing chart...');
-  
+    
     new Chart(ctx, {
       type: 'doughnut',
       data: {
@@ -48,7 +44,7 @@
       options: {
         responsive: false,
         maintainAspectRatio: false,
-        cutout: 60, // Adjust the cutout percentage to make the doughnut chart slimmer
+        cutout: 90, // Adjust the cutout percentage to make the doughnut chart slimmer
         plugins: {
           legend: {
             position: 'bottom',

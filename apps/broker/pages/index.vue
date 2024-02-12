@@ -26,12 +26,11 @@
       
     </section>
     
-    <section class="flex ">
+    <section class="flex">
         <div class="w-[75%] rounded-md bg-theme-cg p-[25px]">
-            lorem ipsum
-
+            <LineChart :labels="chartLabels" :datasets="chartDatasets" />
         </div>
-        <div class="w-[25%] flex flex-col items-center">
+        <div class="w-[25%] flex flex-col items-center space-y-8">
             <span class="font-ox text-ox-md text-center">Asset Allocation</span>
             <DoughnutChart :data="chartData" :colors="chartColors"/>
         </div>
@@ -53,4 +52,22 @@ const chartData = ref([
 ]);
 
 const chartColors = ['#E0903F', '#65C569', '#AC65C5', '#6373F8']; // External colors array
+
+const chartLabels = ref(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
+const chartDatasets = ref([
+  {
+    label: 'Series A',
+    data: [65, 59, 80, 81, 56, 55, 100],
+    borderColor: 'rgba(16, 53, 109, 1)',
+    backgroundColor: 'rgba(16, 53, 109, 0.2)',
+    fill: false,
+  },
+  {
+    label: 'Series B',
+    data: [28, 48, 40, 19, 86, 27, 90],
+    borderColor: 'rgba(238, 46, 46, 1)',
+    backgroundColor: 'rgba(238, 46, 46, 0.2)',
+    fill: false,
+  },
+]);
 </script>
