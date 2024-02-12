@@ -44,7 +44,7 @@
       options: {
         responsive: false,
         maintainAspectRatio: false,
-        cutout: 90, // Adjust the cutout percentage to make the doughnut chart slimmer
+        cutout: 80, // Adjust the cutout percentage to make the doughnut chart slimmer
         plugins: {
           legend: {
             position: 'bottom',
