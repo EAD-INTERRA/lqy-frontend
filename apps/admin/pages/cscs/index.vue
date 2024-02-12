@@ -8,10 +8,10 @@
               <table class="table-fixed w-full lg:w-auto">
                 <thead>
                   <tr class=" text-black text-opacity-45 font-ox text-sm font-normal leading-normal">
-                      <th class="w-[44%] md:w-48 pt-2 pb-2  table-cell">Profile ID</th>
+                      <th class="w-[44%] md:w-56 pt-2 pb-2 text-left pl-[2%] table-cell">Profile ID</th>
                       <th class="w-[44%] md:w-48 pt-2 pb-2  table-cell">Date Created</th>
                       <th class="w-96 pt-2 pb-2 hidden lg:table-cell"></th>
-                      <th class="w-48 pt-2 pb-2 hidden lg:table-cell "></th>
+                      <th class="w-40 pt-2 pb-2 hidden lg:table-cell "></th>
                       <th class="w-32 pt-2 pb-2 hidden lg:table-cell"></th>
                   </tr>
 
@@ -19,7 +19,7 @@
                 <tbody>
                  
                     <tr class="bg-theme-tb p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">
@@ -45,7 +45,7 @@
                    
                   </tr>
                   <tr class=" p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">
@@ -71,7 +71,7 @@
                    
                   </tr>
                   <tr class="bg-theme-tb p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">
@@ -97,7 +97,7 @@
                    
                   </tr>
                   <tr class=" p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">
@@ -123,7 +123,7 @@
                    
                   </tr>
                   <tr class="bg-theme-tb p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">
@@ -149,7 +149,7 @@
                    
                   </tr>
                   <tr class=" p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">
@@ -175,7 +175,7 @@
                    
                   </tr>
                   <tr class="bg-theme-tb p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">
@@ -201,7 +201,7 @@
                    
                   </tr>
                   <tr class=" p-2 border border-solid border-theme-dg rounded-[10px]  bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class=" table-cell text-center">
+                    <td class=" table-cell text-left pl-[2%]">
                       <p>#244njw839jen</p>
                     </td>
                     <td class="table-cell text-center">

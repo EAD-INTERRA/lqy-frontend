@@ -44,6 +44,7 @@
 
 
 <script lang="ts" setup>
+
 const chartData = ref([
   { name: 'Equities', count: 12 },
   { name: 'Bonds', count: 50 },

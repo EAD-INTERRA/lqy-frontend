@@ -64,31 +64,31 @@
       title: 'Stakeholders'
     },
     {
-      to: '/financialFlow',
+      to: '/financial',
       src: 'assets/images/simple-icons_webmoney.svg',
       src2: 'assets/images/simple-icons_webmoney.svg',
       title: 'Financial Institution'
     },
     {
-      to: '/brokerFlow',
+      to: '/broker',
       src: 'assets/images/simple-icons_iobroker.svg',
       src2: 'assets/images/simple-icons_iobroker.svg',
       title: 'Broker'
     },
     {
-      to: '/cscsFlow',
+      to: '/cscs',
       src: 'assets/images/css-icon.svg',
       src2: 'assets/images/css-icon.svg',
       title: 'CSCS'
     },
     {
-      to: '/interestRate',
+      to: '/interest-rate',
       src: 'assets/images/interest-icon.svg',
       src2: 'assets/images/interest-icon.svg',
       title: 'Interest Rate'
     },
     {
-      to: '/marginList',
+      to: '/margin-list',
       src: 'assets/images/margin-icon.svg',
       src2: 'assets/images/margin-icon.svg',
       title: 'Margin list'
