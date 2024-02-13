@@ -34,7 +34,7 @@
             ></NuxtLink
           >
           <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox"
-            ><img src="~/assets/images/setting.svg" />Settings
+            ><img src="assets/images/setting.svg" />Settings
           </NuxtLink>
           <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
             ><img src="~/assets/images/logout.svg" />Log Out</NuxtLink

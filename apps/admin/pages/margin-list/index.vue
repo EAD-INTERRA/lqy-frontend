@@ -1,9 +1,9 @@
 <template>
     <div class="">
-      <div class="bg-theme-dg p-[20px] lg:p-[40px] rounded-[8px] lg:rounded-[16px] mt-[50px] lg:mt-[100px] w-[90%]  lg:w-9/12 mx-auto lg:ml-64">
+      <div class="bg-theme-dg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mt-[50px] lg:mt-[100px] w-[90%]  lg:w-9/12 mx-auto lg:ml-64">
         <div class="flex justify-between pr-9 mb-6">
           <p class=" bg-theme-tb bolder w-fit  text-lg px-3 py-1 rounded-[5px] ">Margin List</p>
-          <button class="border border-solid border-blue-500 text-ox text-base text-blue-500 px-6 rounded-[5px]">Upload</button>
+          <NuxtLink to="marginList/margin-upload" class="border border-solid border-blue-500 text-ox text-base text-blue-500 px-6 py-1 rounded-[5px] text-center">Upload</NuxtLink>
         </div>
             <hr />
             <div class="">

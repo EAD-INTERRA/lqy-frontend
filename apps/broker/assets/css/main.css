@@ -1,3 +1,7 @@
+body{
+  overflow: hidden !important;
+}
+
 .bg-primary {
   background-color: #131319;
 }
@@ -318,7 +322,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  opacity: 0.65;
+  opacity: 0.85;
 }
 @media (max-width: 768px) {
   .rowText {

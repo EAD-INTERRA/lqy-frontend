@@ -16,7 +16,7 @@
 </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 function toggleMenu(): void {
     const sidebar = document.getElementById("sidebar");
     if (sidebar) {

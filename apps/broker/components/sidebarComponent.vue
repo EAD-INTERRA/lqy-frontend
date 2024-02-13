@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar h-[100vh]">
+    <div class="sidebar  h-[100%]">
       <div>
         <img src="~/assets/images/lqyLogo.svg">
       </div>
