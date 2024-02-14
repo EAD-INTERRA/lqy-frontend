@@ -1,5 +1,5 @@
 {
-  "name": "broker",
+  "name": "financial-institution",
   "private": true,
   "scripts": {
     "build": "nuxt build",
