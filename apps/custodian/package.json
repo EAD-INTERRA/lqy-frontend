@@ -1,5 +1,5 @@
 {
-  "name": "broker",
+  "name": "custodian",
   "private": true,
   "scripts": {
     "build": "nuxt build",
