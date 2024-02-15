@@ -37,9 +37,18 @@ module.exports = {
           "as":'#39D3EC',
           "secondary":"#F34444",
           "bcs":"#EE2E2E",
+          "vt": "#1f263e",
+           "dg": "rgba(225, 229, 235, 0.55)",
+          "tb": "#10356D1A",
           "cg": "#E1E5EB"
         },
       },
+      backgroundImage: {
+        'custom-blue': "url('/assets/images/custom-blue.svg')",
+        'custom-orange': "url('/assets/images/custom-orange.svg')",
+        'custom-red': "url('/assets/images/custom-red.svg')",
+        'custom-purple': "url('/assets/images/custom-purple.svg')",
+     },
       boxShadow: {
         'pricing': '0px 4px 8px 0px rgba(3, 47, 60, 0.05), 1px -4px 8px 0px rgba(3, 47, 60, 0.05);',
       },

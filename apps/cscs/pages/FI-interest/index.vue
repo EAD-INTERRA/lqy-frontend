@@ -1,56 +1,20 @@
 <template>
 <div class="p-4 space-y-6 ">
-    <section class="grid grid-cols-4 w-fit gap-6">
-        <div class="bg-custom-orange flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/icon-park-solid.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Pending Request </p>
-                <p class="font-ox font-bold text-center text-ox-lg">43,543</p>
-            </div>
-        </div>
-        <div class=" bg-custom-blue flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/doc-success.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Total Request </p>
-                <p class="font-ox font-bold text-center text-ox-lg">43</p>
-            </div>
-        </div>
-        <div class="bg-custom-red flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/doc-fail.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Total Request  </p>
-                <p class="font-ox font-bold text-center text-ox-lg">545</p>
-            </div>
-        </div>
-        <div class="bg-custom-purple flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/doc-fail.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Total Request  </p>
-                <p class="font-ox font-bold text-center text-ox-lg">545</p>
-            </div>
-        </div>
-
-    </section>
-
     <section class="mb-4">
 
         <div class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
             <div class="flex justify-between">
-                <p class=" bg-theme-tb font-semibold w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Investors Security</p>
-                <p class=" bg-blue-400 text-white font-ox border border-black w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Margin Check</p>
+                <p class=" bg-theme-tb font-semibold w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Interest List</p>
+                <!-- <p class=" bg-blue-400 text-white font-ox border border-black w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Margin Check</p> -->
             </div>
             
             <table class="table-fixed w-[80%]">
                 <thead>
                     <tr class=" text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
-                        <th class="w-44 pt-2 pb-2 hidden lg:table-cell text-left">Investors</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Ticker Symbol</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Security Name</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left ">Quantity</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">Market Value ($)</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Asset Class</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">DIvidend Yield (%)</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Liquidity Rate</th>
+                        <th class="w-72 pt-2 pb-2 hidden lg:table-cell text-left">Financial Institution</th>
+                        <th class="w-64 pt-2 pb-2 hidden lg:table-cell text-left">Cash Disbursed ($)</th>
+                        <th class="w-64 pt-2 pb-2 hidden lg:table-cell text-left">Proportion of funds (%)</th>
+                        <th class="w-64 pt-2 pb-2 hidden lg:table-cell text-left">Interest Accrued</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,35 +38,23 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                            <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                                500
+                                250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
@@ -124,35 +76,24 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                           <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
+
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                               500
+                               250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
@@ -174,35 +115,24 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                            <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
+
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                                500
+                                250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
@@ -224,35 +154,24 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                           <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
+
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                               500
+                               250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
@@ -274,35 +193,24 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                            <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
+
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                                500
+                                250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
@@ -324,35 +232,24 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                           <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
+
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                               500
+                               250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
@@ -374,35 +271,24 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                            <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
+
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                                500
+                                250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
@@ -424,35 +310,24 @@
                                     </div>
                                 </dd>
                             </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                           <div class="flex">
+                                <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">ABC Bank</NuxtLink>
                             </div>
+
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
+                            <p class="text-left">2,000,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
+                            <p class="text-left"> 45</p>
                         </td>
                         <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                             <p class="text-left">
-                               500
+                               250,000
                             </p>
                         </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                       
                     </tr>
                     
                 </tbody>

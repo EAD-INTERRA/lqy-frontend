@@ -3,10 +3,10 @@
       <div>
         <img src="~/assets/images/lqyLogo.svg">
       </div>
-      <div class="sidebarDiv">
+      <div class="sidebarDiv ">
         <div class="overview">
           <p class="overviewText text-ox text-left">Overview</p>
-          <div class="dashboardDiv space-y-4">
+          <div class="dashboardDiv space-y-4 pr-12">
             <div v-for="(option, index) in options" :key="option.to">
               <NuxtLink
                 :to="option.to"
@@ -29,9 +29,9 @@
           <div class="dashboardDiv">
             <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
               <img src="~/assets/images/notification-icon.svg">Notification
-              <span class="rounded-full bg-red-900 px-2 h-fit items-center">3</span>
+              <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-3">3</span>
             </NuxtLink>
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox">
+            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox">
               <img src="~/assets/images/setting.svg">Settings
             </NuxtLink>
             <NuxtLink to="" class="flex flex-row sidebarLink text-ox">
@@ -56,28 +56,10 @@
       title: 'Dashboard'
     },
     {
-      to: '/trade-view',
+      to: '',
       src: 'assets/images/stakeholder-icon.svg',
       src2: 'assets/images/stakeholder-icon.svg',
-      title: 'Trading View'
-    },
-    {
-      to: '/history',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
-      title: 'History'
-    },
-    {
-      to: '/report',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
-      title: 'Report'
-    },
-    {
-      to: '/investor-request',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
-      title: 'Investors Request'
+      title: 'SRRA'
     }
   ];
   

@@ -2,7 +2,7 @@
     <div class="">
       <div class="bg-theme-dg p-[20px] lg:p-[40px] rounded-[8px] lg:rounded-[16px] mt-[50px] lg:mt-[100px] w-[90%]  lg:w-9/12 mx-auto lg:ml-64">
               
-            <p class=" bg-theme-tb bolder w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">CSCS</p>
+            <p class=" bg-theme-tb font-semibold font-ox w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">CSCS</p>
             <hr />
             <div class="">
               <table class="table-fixed w-full lg:w-auto">
