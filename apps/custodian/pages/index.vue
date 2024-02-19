@@ -261,7 +261,7 @@
 </div>
 </template>
 
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
 const chartData = ref([{
         name: 'Equities',
         count: 12
@@ -298,4 +298,4 @@ const chartDatasets = ref([{
         fill: false,
     },
 ]);
-</script>
+</script> -->

@@ -39,6 +39,7 @@ module.exports = {
           "secondary":"#F34444",
           "bcs":"#EE2E2E",
           "bcs":"#EE2E2E",
+          "lb":"rgba(255, 255, 255, 0.1)",
           "customWhite": "#FFFFFF"
         },
       },
