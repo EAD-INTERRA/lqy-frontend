@@ -51,7 +51,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -60,13 +60,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
@@ -101,7 +101,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -110,13 +110,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
@@ -151,7 +151,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -160,13 +160,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
@@ -201,7 +201,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -210,13 +210,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
@@ -251,7 +251,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -260,13 +260,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
@@ -301,7 +301,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -310,13 +310,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
@@ -351,7 +351,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -360,13 +360,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
@@ -401,7 +401,7 @@
                                     <dd class="text-black font-ox text-base font-normal leading-normal">
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
@@ -410,13 +410,13 @@
                                     <dd>
                                         <div class="flex">
                                             <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                            <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                         </div>
                                     </dd>
                                 </dl>
                                 <div class="flex pl-2">
                                     <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                    <NuxtLink to="bulk-payments/transactions" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
                                 </div>
     
                             </td>
