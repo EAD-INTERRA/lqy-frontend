@@ -73,7 +73,7 @@
                         class="rounded-full"
                         alt="icon" />
                       <NuxtLink
-                        to="bulk-payments/transactions"
+                        to="/"
                         class="font-ox text-ox-md font-bold ml-2 leading-6"
                         >Agilents Technologies</NuxtLink
                       >
@@ -89,7 +89,7 @@
                         class="rounded-full"
                         alt="icon" />
                       <NuxtLink
-                        to="bulk-payments/transactions"
+                        to="/"
                         class="font-ox text-ox-sm font-bold ml-2 leading-6"
                         >Agilents Technologies</NuxtLink
                       >
@@ -102,7 +102,7 @@
                     class="rounded-full"
                     alt="icon" />
                   <NuxtLink
-                    to="bulk-payments/transactions"
+                    to="/"
                     class="font-ox text-ox-sm font-bold ml-2 leading-6"
                     >Agilents Technologies</NuxtLink
                   >
@@ -138,7 +138,7 @@
                         class="rounded-full"
                         alt="icon" />
                       <NuxtLink
-                        to="bulk-payments/transactions"
+                        to="/"
                         class="font-ox text-ox-md font-bold ml-2 leading-6"
                         >Agilents Technologies</NuxtLink
                       >
@@ -154,7 +154,7 @@
                         class="rounded-full"
                         alt="icon" />
                       <NuxtLink
-                        to="bulk-payments/transactions"
+                        to="/"
                         class="font-ox text-ox-sm font-bold ml-2 leading-6"
                         >Agilents Technologies</NuxtLink
                       >
@@ -167,7 +167,7 @@
                     class="rounded-full"
                     alt="icon" />
                   <NuxtLink
-                    to="bulk-payments/transactions"
+                    to="/"
                     class="font-ox text-ox-sm font-bold ml-2 leading-6"
                     >Agilents Technologies</NuxtLink
                   >
