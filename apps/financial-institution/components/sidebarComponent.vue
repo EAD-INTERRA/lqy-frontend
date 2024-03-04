@@ -27,14 +27,14 @@
         <div class="overview">
           <p class="overviewText text-ox text-left">Account</p>
           <div class="dashboardDiv">
-            
-            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox">
-              <img src="~/assets/images/setting.svg">More Info
-            </NuxtLink>
-            <!-- <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
+            <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
               <img src="~/assets/images/notification-icon.svg">Notification
               <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-4">3</span>
-            </NuxtLink> -->
+            </NuxtLink>
+            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox">
+              <img src="~/assets/images/setting.svg" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]">More Info
+            </NuxtLink>
+           
           </div>
         </div>
       </div>

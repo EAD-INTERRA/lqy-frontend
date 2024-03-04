@@ -37,12 +37,15 @@
                 >3</span
               ></NuxtLink
             >
-            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox"
-              ><img src="assets/images/setting.svg" />Settings
+            <NuxtLink
+              to="/settings"
+              class="flex flex-row sidebarLink text-ox"
+              exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]"
+              ><img src="assets/images/setting.svg" />Settings   
             </NuxtLink>
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
+            <!-- <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
               ><img src="~/assets/images/logout.svg" />Log Out</NuxtLink
-            >
+            > -->
           </div>
         </div>
       </div>
@@ -98,12 +101,12 @@ const options = [
     src2: "assets/images/margin-icon.svg",
     title: "Margin list",
   },
-  {
+  /*{
     to: "",
     src: "assets/images/margin-icon.svg",
     src2: "assets/images/margin-icon.svg",
     title: "Create Stakeholders",
-  },
+  },*/
 ];
 
 const step = ref(true);
