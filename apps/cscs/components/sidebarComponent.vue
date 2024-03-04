@@ -31,10 +31,10 @@
             <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox">
               <img src="~/assets/images/setting.svg">More Info
             </NuxtLink>
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
+            <!-- <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
               <img src="~/assets/images/notification-icon.svg">Notification
               <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-4">3</span>
-            </NuxtLink>
+            </NuxtLink> -->
           </div>
         </div>
       </div>
@@ -53,19 +53,19 @@
       src2: 'assets/images/dashboard-icon-active.svg',
       title: 'Dashboard'
     },
-    {
-      to: '/FI-profile',
-      src: 'assets/images/FI-profile.svg',
-      src2: 'assets/images/FI-profile.svg',
-      title: 'FI profile'
-    },
+   // {
+    //  to: '/FI-profile',
+    //  src: 'assets/images/FI-profile.svg',
+    //  src2: 'assets/images/FI-profile.svg',
+    //  title: 'FI profile'
+   // },
     {
       to: '/FI-interest',
       src: 'assets/images/notification-icon.svg',
       src2: 'assets/images/notification-icon.svg',
       title: 'FI interest'
     },
-    {
+    /*{
       to: '/FI-fee',
       src: 'assets/images/setting.svg',
       src2: 'assets/images/setting.svg',
@@ -76,7 +76,7 @@
       src: 'assets/images/FI-profile.svg',
       src2: 'assets/images/FI-profile.svg',
       title: 'Broker revenue'
-    },
+    },*/
     {
       to: '/Maintenance',
       src: 'assets/images/FI-profile.svg',

@@ -27,16 +27,16 @@
         <div class="overview">
           <p class="overviewText text-ox text-left">Account</p>
           <div class="dashboardDiv">
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
+            <!-- <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
               <img src="~/assets/images/notification-icon.svg">Notification
               <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-3">3</span>
-            </NuxtLink>
-            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox">
+            </NuxtLink> -->
+            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox  " exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px] rounded-t-[15px]">
               <img src="~/assets/images/setting.svg">Settings
             </NuxtLink>
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox">
+            <!-- <NuxtLink to="" class="flex flex-row sidebarLink text-ox">
               <img src="~/assets/images/logout.svg">Log Out
-            </NuxtLink>
+            </NuxtLink> -->
           </div>
         </div>
       </div>
@@ -54,13 +54,14 @@
       src: 'assets/images/dashboard-icon.svg',
       src2: 'assets/images/dashboard-icon-active.svg',
       title: 'Dashboard'
-    },
+    }
+    /*,
     {
       to: '',
       src: 'assets/images/stakeholder-icon.svg',
       src2: 'assets/images/stakeholder-icon.svg',
       title: 'SRRA'
-    }
+    } */
   ];
   
   const isActive = (index: number): boolean => {

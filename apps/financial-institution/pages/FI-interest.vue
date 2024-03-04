@@ -338,6 +338,8 @@
 </template>
 
 <script lang="ts" setup>
+
+
 const chartData = ref([{
         name: 'Equities',
         count: 12
