@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:flex z-50 bg-white hidden">
+  <div class="flex justify-between  h-fit bg-white shadow-sm p-2 gap-4 w-[100%]">
     <div class="header flex gap-4">
       <div class="relative">
         <div

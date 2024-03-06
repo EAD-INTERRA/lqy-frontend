@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 space-y-6 mt-[50px] lg:mt-[100px] mx-auto lg:ml-64">
+  <div class="p-4 space-y-6 mt-[50px] lg:mt-[80px] mx-auto lg:ml-64">
     <section class="grid grid-cols-2 lg:grid-cols-4 w-fit lg:mr-6 gap-3 lg:gap-0">
       
       <div class="bg-theme-dg rounded-[12px]  px-[10px] py-[20px] md:p-[15px] w-[100%]  lg:w-[90%]">

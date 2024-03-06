@@ -197,7 +197,7 @@
 </template>
 
 <script lang="ts" setup>
-/*const chartData = ref([
+const chartData = ref([
   {
     name: "Equities",
     count: 12,
@@ -242,5 +242,5 @@ const chartDatasets = ref([
     backgroundColor: "rgba(238, 46, 46, 0.2)",
     fill: false,
   },
-]);*/
+]);
 </script>
