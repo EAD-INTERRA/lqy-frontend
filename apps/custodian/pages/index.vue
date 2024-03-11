@@ -39,7 +39,7 @@
     <section class="mb-4">
         <div class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
             <div class=" mb-6">
-                <p class=" bg-theme-bc bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] ">Assets</p>
+                <p class=" bg-theme-bc bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] ">Brokers Account</p>
             </div>
             <table class="table-fixed w-[100%]">
                 <thead>

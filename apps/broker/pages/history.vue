@@ -1,111 +1,178 @@
 <template>
 <div class="p-4">
-    <div class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px]">
-        <div class=" mb-6">
-            <p class=" bg-theme-bc bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] ">Assets</p>
+    <div class="bg-theme-dg p-[20px] mt-5 lg:p-[40px] rounded-[8px] lg:rounded-[16px]  w-[100%]">
+        <div class=" mb-3">
+            <p
+                class="bg-theme-tb font-semibold w-fit text-sm md:text-lg px-2 md:px-3 py-1 rounded-[5px]">
+                Trade History
+              </p>
         </div>
-        <table class="table-fixed w-[100%]">
-            <thead>
-                <tr class=" text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
-                    <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Name</th>
-                    <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Price</th>
-                    <th class="w-32 pt-2 pb-2 hidden lg:table-cell">Change(%)</th>
-                    <th class="w-32 pt-2 pb-2 hidden lg:table-cell ">Volume</th>
-                    <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Market Cap</th>
-                    <th class="w-48 pt-2 pb-2 hidden lg:table-cell text-left">Sector</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
+        <div class="">
+              <table class="table-fixed w-full lg:w-auto">
+                <thead>
+                  <tr class=" text-black text-opacity-45 font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
+                      <th class="w-52 pt-2 pb-2 hidden lg:table-cell">Transaction Id</th>
+                      <th class="w-52 pt-2 pb-2 hidden lg:table-cell">Asset</th>
+                      <th class="w-52 pt-2 pb-2 hidden lg:table-cell">Date</th>
+                      <th class="w-52 pt-2 pb-2 hidden lg:table-cell ">Amount</th>
+                      <th class="w-52 pt-2 pb-2 hidden lg:table-cell">Status</th>
+                  </tr>
+
+                </thead>
+                <tbody class="mt-3">
+                    <tr class=" rowText bg-opacity-10  text-black text-opacity-85 font-ox text-base font-normal leading-normal">
                     <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                        <dl class="lg:hidden ">
-                            <dt class="sr-only">Name</dt>
-                            <dd class="text-black font-ox text-base font-normal leading-normal">
-                                <div class="flex">
-                                    <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" />
-                                    <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Agilents Technologies</NuxtLink>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl class="lg:hidden">
-                            <dt class="sr-only">Name</dt>
-                            <dd>
-                                <div class="flex">
-                                    <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" />
-                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Agilents Technologies</NuxtLink>
-                                </div>
-                            </dd>
-                        </dl>
-                        <div class="flex">
-                            <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" />
-                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Agilents Technologies</NuxtLink>
-                        </div>
-    
+                      <dl class="lg:hidden ">
+                        <dt class="sr-only">Organization</dt>
+                        <!-- <dd>{Organization.name}</dd> -->
+                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">27/12/2023</dd>
+                      </dl>
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Stakeholder name</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>Equities</dd>
+                      </dl>
+                      <p>#7263g7b380h82v</p>
+                      
                     </td>
-                    <td class=" hidden lg:table-cell text-center font-bold">
-                        <p>230.32 USD</p>
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>Equities</p>
                     </td>
-                    <td class=" hidden lg:table-cell text-center font-bold">
-                        <p class="text-green-500">+1.3%</p>
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>27/12/2023</p>
+                     
                     </td>
-                    <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                        <p>
-                            2.324M
-                        </p>
+                    <td class="text-center hidden lg:table-cell pt-2 pb-2">
+                      <p>$120,039.43</p>
+                     
                     </td>
-                    <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                        <p>234.9B USD</p>
+                    <td class=" lg:table-cell mt-5 flex flex-col gap-1 lg:gap-2   text-center  lg:pt-2 pb-2">
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Amount</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>$120,039.43</dd>
+                      </dl>
+                      <p class="rounded-lg bg-blue-500  text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Completed</p>
+                      
                     </td>
-                    <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                        <p>Health Technology</p>
+                   
+                  </tr>
+                  <tr class="bg-theme-tb  rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
+                    <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                      <dl class="lg:hidden ">
+                        <dt class="sr-only">Organization</dt>
+                        <!-- <dd>{Organization.name}</dd> -->
+                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">27/12/2023</dd>
+                      </dl>
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Stakeholder name</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>Equities</dd>
+                      </dl>
+                      <p>#7263g7b380h82v</p>
+                      
                     </td>
-                </tr>
-                <tr class="rowText text-black-900 font-bold font-ox text-base font-normal leading-normal">
-                    <td class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                        <dl class="lg:hidden ">
-                            <dt class="sr-only">Name</dt>
-                            <dd class="text-black font-ox text-base font-normal leading-normal">
-                                <div class="flex">
-                                    <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" />
-                                    <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Agilents Technologies</NuxtLink>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl class="lg:hidden">
-                            <dt class="sr-only">Name</dt>
-                            <dd>
-                                <div class="flex">
-                                    <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" />
-                                    <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Agilents Technologies</NuxtLink>
-                                </div>
-                            </dd>
-                        </dl>
-                        <div class="flex">
-                            <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" />
-                            <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Agilents Technologies</NuxtLink>
-                        </div>
-    
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>Equities</p>
                     </td>
-                    <td class="hidden lg:table-cell text-center font-bold">
-                        <p>230.32 USD</p>
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>27/12/2023</p>
+                     
                     </td>
-                    <td class="hidden lg:table-cell text-center font-bold">
-                        <p class="text-green-500">+1.3%</p>
+                    <td class="text-center hidden lg:table-cell pt-2 pb-2">
+                      <p>$120,039.43</p>
+                     
                     </td>
-                    <td class="lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                        <p>
-                            2.324M
-                        </p>
+                    <td class=" lg:table-cell mt-5 flex flex-col gap-1 lg:gap-2   text-center  lg:pt-2 pb-2">
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Amount</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>$120,039.43</dd>
+                      </dl>
+                      <p class="rounded-lg bg-orange-500 text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Pending</p>
+                      
                     </td>
-                    <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                        <p>234.9B USD</p>
+                   
+                  </tr>
+                  <tr class=" rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
+                    <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                      <dl class="lg:hidden ">
+                        <dt class="sr-only">Organization</dt>
+                        <!-- <dd>{Organization.name}</dd> -->
+                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">27/12/2023</dd>
+                      </dl>
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Stakeholder name</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>Equities</dd>
+                      </dl>
+                      <p>#7263g7b380h82v</p>
+                      
                     </td>
-                    <td class=" hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                        <p>Health Technology</p>
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>Equities</p>
                     </td>
-                </tr>
-            </tbody>
-        </table>
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>27/12/2023</p>
+                     
+                    </td>
+                    <td class="text-center hidden lg:table-cell pt-2 pb-2">
+                      <p>$120,039.43</p>
+                     
+                    </td>
+                    <td class=" lg:table-cell mt-5 flex flex-col gap-1 lg:gap-2   text-center  lg:pt-2 pb-2">
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Amount</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>$120,039.43</dd>
+                      </dl>
+                      <p class="rounded-lg bg-blue-500  text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Completed</p>
+                      
+                    </td>
+                   
+                  </tr>
+                  <tr class="bg-theme-tb  rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
+                    <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                      <dl class="lg:hidden ">
+                        <dt class="sr-only">Organization</dt>
+                        <!-- <dd>{Organization.name}</dd> -->
+                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">27/12/2023</dd>
+                      </dl>
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Stakeholder name</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>Equities</dd>
+                      </dl>
+                      <p>#7263g7b380h82v</p>
+                      
+                    </td>
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>Equities</p>
+                    </td>
+                    <td class=" hidden lg:table-cell text-center">
+                      <p>27/12/2023</p>
+                     
+                    </td>
+                    <td class="text-center hidden lg:table-cell pt-2 pb-2">
+                      <p>$120,039.43</p>
+                     
+                    </td>
+                    <td class=" lg:table-cell mt-5 flex flex-col gap-1 lg:gap-2   text-center  lg:pt-2 pb-2">
+                      <dl class="lg:hidden">
+                        <dt class="sr-only">Amount</dt>
+                        <!-- <dd>{Stakeholder.name}</dd> -->
+                        <dd>$120,039.43</dd>
+                      </dl>
+                      <p class="rounded-lg bg-red-500 text-white  w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">failed</p>
+                      
+                    </td>
+                   
+                  </tr>
+
+                
+                </tbody>
+              </table> 
+                 </div>
     </div>
 </div>
 </template>

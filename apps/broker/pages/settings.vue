@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col md:flex-row gap-[5%] p-4  mt-[50px] lg:mt-[10px] mx-auto lg:ml-6">
+    class="flex flex-col md:flex-row gap-[5%] p-4  mt-[50px] lg:mt-[10px] mx-auto lg:ml-2 mb-2 lg:mb-5">
     <section class="w-full  md:w-[35%]">
       <div class="flex ">
         <div class="text-black font-ox font-bold py-2.5 pr-2">

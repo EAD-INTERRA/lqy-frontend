@@ -33,10 +33,10 @@
               >3</span
             >
           </NuxtLink>
-          <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox">
+          <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]">
             <img
               src="~/assets/images/setting.svg"
-              exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]" />More
+               />More
             Info
           </NuxtLink>
         </div>
