@@ -19,12 +19,12 @@
             <div class="flex flex-col">
               <label
                 class="font-ubuntu text-white text-xs md:text-sm font-normal leading-normal my-[5px] mx-[5px]"
-                >User Name/Email</label
+                >Email</label
               >
               <input
                 type="text"
                 class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto"
-                placeholder="enter username"
+                placeholder="Enter Email"
                 required />
             </div>
             <div class="flex flex-col">
@@ -45,8 +45,9 @@
             <div class="flex flex-col justify-center text-center mt-3">
               <button
                 class="font-ubuntu form-submit w-full h-[55px] md:p-2.5 dark text-sm md:text-lg font-normal leading-normal">
-                Submit Details
+                Login
               </button>
+              <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">Don't have an account? <NuxtLink to="/signUp" class="customOrange">SignUp</NuxtLink></p>
             </div>
           </div>
         </form>
@@ -55,4 +56,6 @@
   </section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  
+</script>
