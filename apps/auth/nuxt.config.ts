@@ -27,4 +27,14 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  runtimeConfig:{
+    public: {
+      admin: process.env.admin,
+      Broker: process.env.Broker,
+      CSCS: process.env.CSCS,
+      Custodian: process.env.Custodian,
+      Investor: process.env.Investor,
+      Financial_Institutions: process.env.Financial_Institutions
+    }
+  }
 })

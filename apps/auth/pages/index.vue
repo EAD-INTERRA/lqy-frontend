@@ -14,7 +14,7 @@
           Login
         </h3>
         <!-- <hr class="pb-6" /> -->
-        <form>
+        <form action="" @submit="submitForm">
           <div class="grid grid-cols-1 gap-2 md:gap-5 mt-5 md:px-[80px] w-full">
             <div class="flex flex-col">
               <label
@@ -25,6 +25,7 @@
                 type="text"
                 class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto"
                 placeholder="Enter Email"
+                v-model="email"
                 required />
             </div>
             <div class="flex flex-col">
@@ -36,6 +37,7 @@
                 type="text"
                 class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto"
                 placeholder="********"
+                v-model="password"
                 required />
             </div>
             <div class="flex gap-1 md:gap-3 px-2 text-white  text-xs md:text-sm">
@@ -57,5 +59,65 @@
 </template>
 
 <script lang="ts" setup>
-  
+  import {
+    StatusCode
+} from '~/helpers/statusCodes';
+import {
+    useToast
+} from 'vue-toastification'
+
+const toast = useToast();
+
+const {
+    $services
+} = useNuxtApp()
+
+const router = useRouter()
+const loading = ref(false);
+const email = ref('');
+const password = ref('');
+
+let countries: Ref < Country[] > = ref([]);
+let roles: Ref < Roles[] > = ref([]);
+
+const submitForm = async (event: Event) => {
+    event.preventDefault();
+    loading.value = true;
+
+    const loginData = {
+        username: email.value,
+        password: password.value,
+    }
+    
+    try {
+        const result = await $services.login.login(loginData)
+
+        if (result.code === StatusCode.SUCCESS) {
+          localStorage.setItem("creditials", JSON.stringify(result.body));
+          // toast.success("SUCCESS");
+          const config = useRuntimeConfig()
+          const redirectionUrls = {
+            LQY_Admin: config.public.admin,
+            Broker: config.public.Broker, 
+            CSCS: config.public.CSCS,
+            Custodian: config.public.Custodian,
+            Investor: config.public.Investor,
+            Financial_Institutions: config.public.Financial_Institutions
+          };
+
+          const role = result.body.role
+          // Redirect user based on their role
+          if (redirectionUrls[role]) {
+            window.location.href = redirectionUrls[role];
+            localStorage.setItem("creditials", JSON.stringify(result.body));
+          }
+        }
+       else toast.error(result.body);
+    } catch (error) {
+        const err = error.response.data.body
+        toast.error(err);
+    } finally {
+        loading.value = false
+    }
+}
 </script>

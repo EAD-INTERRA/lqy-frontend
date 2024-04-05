@@ -32,8 +32,8 @@ export interface BaseServiceInterface {
 export class BaseService implements BaseServiceInterface {
     client: AxiosInstance;
 
-    constructor(client: AxiosInstance) {
-        this.client = client;
+    constructor(base: AxiosInstance) {
+        this.client = base;
     }
 
     async getCountries(): Promise<GetCountriesResponse> {

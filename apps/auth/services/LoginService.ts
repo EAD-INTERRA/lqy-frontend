@@ -1,7 +1,7 @@
 import type { AxiosInstance } from "axios";
 
 export interface LoginInput {
-    email: string;
+    username: string;
     password: string;
 }
 interface LoginResponse {
@@ -17,8 +17,8 @@ export interface LoginServiceInterface {
 export class LoginService implements LoginServiceInterface {
     client: AxiosInstance;
 
-    constructor(client: AxiosInstance) {
-        this.client = client;
+    constructor(auth: AxiosInstance) {
+        this.client = auth;
     }
 
     async login(input: LoginInput): Promise<LoginResponse> {
