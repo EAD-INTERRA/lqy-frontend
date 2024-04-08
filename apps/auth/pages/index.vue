@@ -62,11 +62,12 @@
   import {
     StatusCode
 } from '~/helpers/statusCodes';
-import { useToast } from 'vue-toastification';
+import pkg from 'vue-toastification';
 
 let toast = null;
 
 if (process.client) {
+  const { useToast } = pkg;
   toast = useToast();
 }
 
