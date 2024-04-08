@@ -40,7 +40,7 @@
                     </div>
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">Country</label>
-                        <select class="form-control font-ubuntu text-black form-select bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" v-model="country_code">
+                        <select class="form-control font-ubuntu text-black form-select bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" v-model="country_code" @change="getState" >
                             <option value="" selected disabled>Select a Country</option>
                             <option
                             v-for="country in countries"
@@ -54,10 +54,14 @@
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">State</label>
                         <select class="form-control  font-ubuntu form-select bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" v-model="state_id">
-                            <option>Select State</option>
-                            <option>Select Language</option>
-                            <option>Select Language</option>
-                            <option>Select Language</option>
+                            <option value="" selected disabled>Select State</option>
+                            <option
+                            v-for="state in states"
+                            :key="state"
+                            :value="state.code"
+                            >
+                            {{ state.name }}
+                            </option>
                         </select>
                     </div>
                     <div class="flex flex-col">
@@ -67,7 +71,7 @@
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">CAC Document</label>
                         <div class=" flex">
-                            <p class="upload font-unbutu customWhite text-xs rounded-l-[8px]">Upload</p>
+                            <!-- <p class="upload font-unbutu customWhite text-xs rounded-l-[8px]">Upload</p> -->
                             <input type="file" class="form-control bg-theme-lb rounded-r-[8px] h-[40px] px-[10px] py-auto w-full" placeholder="" required />
                         </div>
 
@@ -102,6 +106,7 @@ import {
 } from '~/helpers/statusCodes';
 import {
     type Country,
+    type State,
     type Roles
 } from '~/services/BaseService'
 import {
@@ -116,8 +121,14 @@ const {
 
 const router = useRouter()
 const loading = ref(false);
+const firstname = ref('');
+const lastname = ref('');
+const phone_number = ref('');
+const country_code = ref('');
+const state_id = ref('');
 
 let countries: Ref < Country[] > = ref([]);
+let states: Ref < State[] > = ref([]);
 let roles: Ref < Roles[] > = ref([]);
 
 onMounted(async () => {
@@ -129,4 +140,9 @@ onMounted(async () => {
     return !exemptRoles.includes(role.name);
 });
 })
+
+const getState = async (e: Event) => {
+    states.value = (await $services.base.getStatesByCountry({ country_code: e.target.value })).body
+}
+
 </script>
