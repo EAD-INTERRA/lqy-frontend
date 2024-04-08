@@ -109,11 +109,14 @@ import {
     type State,
     type Roles
 } from '~/services/BaseService'
-import {
-    useToast
-} from 'vue-toastification'
+import pkg from 'vue-toastification';
 
-const toast = useToast();
+let toast = null;
+
+if (process.client) {
+  const { useToast } = pkg;
+  toast = useToast();
+}
 
 const {
     $services
