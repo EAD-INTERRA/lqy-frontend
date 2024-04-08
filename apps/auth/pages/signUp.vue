@@ -109,13 +109,13 @@ import {
     type State,
     type Roles
 } from '~/services/BaseService'
-import pkg from 'vue-toastification';
-
 let toast = null;
 
 if (process.client) {
-  const { useToast } = pkg;
-  toast = useToast();
+  import('vue-toastification').then(pkg => {
+    const useToast = pkg.useToast;
+    toast = useToast();
+  });
 }
 
 const {
