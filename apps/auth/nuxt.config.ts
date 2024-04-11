@@ -34,7 +34,8 @@ export default defineNuxtConfig({
       CSCS: process.env.CSCS,
       Custodian: process.env.Custodian,
       Investor: process.env.Investor,
-      Financial_Institutions: process.env.Financial_Institutions
+      Financial_Institutions: process.env.Financial_Institutions,
+      auth: process.env.auth
     }
   }
 })

@@ -12,15 +12,15 @@
                 SignUp
             </h3>
             <!-- <hr class="pb-6" /> -->
-            <form>
+            <form action="" @submit="submitForm">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-2 lg:gap-x-[48px] md:gap-x-[48px] xl:gap-x-[48px] ">
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">Company Name</label>
-                        <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" placeholder="Enter Company name" required v-model="name" />
+                        <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" placeholder="Enter Company name" required v-model="company_name" />
                     </div>
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">Business Type</label>
-                        <select class="form-control  font-ubuntu form-select bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" v-model="role">
+                        <select class="form-control  font-ubuntu form-select bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" v-model="type">
                             <option value="" selected disabled>Select your business type</option>
                             <option
                             v-for="role in roles"
@@ -58,7 +58,7 @@
                             <option
                             v-for="state in states"
                             :key="state"
-                            :value="state.code"
+                            :value="state.id"
                             >
                             {{ state.name }}
                             </option>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">Town/City</label>
-                        <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" placeholder="Enter Your City" required v-model="town"/>
+                        <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" placeholder="Enter Your City" required v-model="city"/>
                     </div>
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">CAC Document</label>
@@ -83,13 +83,13 @@
 
                     <div class="flex flex-col">
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">Password</label>
-                        <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" placeholder="enter  your password" required v-model="password"/>
+                        <input type="password" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto" placeholder="enter  your password" required v-model="password"/>
                     </div>
 
                 </div>
                 <div class=" justify-center text-center  mt-6">
                     <button class="font-ubuntu form-submit w-full h-[55px] md:p-2.5 dark text-sm md:text-lg font-normal leading-normal">
-                        Submit Details
+                        Submit
                     </button>
                     <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">Already have an account? <NuxtLink to="/" class="customOrange">Login</NuxtLink>
                     </p>
@@ -124,11 +124,15 @@ const {
 
 const router = useRouter()
 const loading = ref(false);
+const company_name = ref('');
+const email = ref('');
 const firstname = ref('');
 const lastname = ref('');
-const phone_number = ref('');
 const country_code = ref('');
 const state_id = ref('');
+const type = ref('');
+const password = ref('');
+const city = ref('');
 
 let countries: Ref < Country[] > = ref([]);
 let states: Ref < State[] > = ref([]);
@@ -146,6 +150,40 @@ onMounted(async () => {
 
 const getState = async (e: Event) => {
     states.value = (await $services.base.getStatesByCountry({ country_code: e.target.value })).body
+}
+
+const submitForm = async (event: Event) => {
+    event.preventDefault();
+    loading.value = true;
+
+    const signupData = {
+        company_name: company_name.value, 
+        email: email.value, 
+        firstname: firstname.value, 
+        lastname: lastname.value, 
+        country_code: country_code.value, 
+        state_id: state_id.value, 
+        type: type.value, 
+        password: password.value,
+        city: city.value
+    }
+    
+    try {
+        const result = await $services.auth.signup(signupData)
+
+        if (result.code === StatusCode.SUCCESS) {
+            toast.success("Account Created Successfully!");
+            setTimeout(function () {    
+                router.replace("/pending");
+              }, 5000);
+        }
+       else toast.error(result.body);
+    } catch (error) {
+        const err = error.response.data.body
+        toast.error(err);
+    } finally {
+        loading.value = false
+    }
 }
 
 </script>

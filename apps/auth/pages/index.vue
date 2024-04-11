@@ -34,7 +34,7 @@
                 >Password</label
               >
               <input
-                type="text"
+                type="password"
                 class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto"
                 placeholder="********"
                 v-model="password"
@@ -92,7 +92,7 @@ const submitForm = async (event: Event) => {
     }
     
     try {
-        const result = await $services.login.login(loginData)
+        const result = await $services.auth.login(loginData)
 
         if (result.code === StatusCode.SUCCESS) {
           localStorage.setItem("creditials", JSON.stringify(result.body));
