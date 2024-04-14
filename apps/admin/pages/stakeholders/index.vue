@@ -161,4 +161,32 @@
 </template>
 
 <script lang="ts" setup>
+
+import { onMounted } from 'vue';
+import { StatusCode } from '~/helpers/statusCodes';
+
+let toast = null;
+let $services = null;
+
+onMounted(async () => {
+  if (process.client) {
+    const pkg = await import('vue-toastification');
+    const useToast = pkg.useToast;
+    toast = useToast();
+  }
+  const { $services: nuxtServices } = useNuxtApp();
+  $services = nuxtServices;
+
+  await getStakeHolders();
+});
+
+const getStakeHolders = async () => {
+  try {
+    const result = await $services.shareholder.getShareholders()
+    console.log(result)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 </script>
