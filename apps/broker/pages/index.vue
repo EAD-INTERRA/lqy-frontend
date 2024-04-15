@@ -197,6 +197,15 @@
 </template>
 
 <script lang="ts" setup>
+const route = useRoute();
+console.log(route);
+
+const token = route.query.token;
+console.log(token)
+if (process.client) {
+  localStorage.setItem("token", token);
+}
+
 const chartData = ref([
   {
     name: "Equities",

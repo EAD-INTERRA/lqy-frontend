@@ -96,6 +96,7 @@ const submitForm = async (event: Event) => {
 
         if (result.code === StatusCode.SUCCESS) {
           localStorage.setItem("creditials", JSON.stringify(result.body));
+          const authToken = result.body.access_token;
           // toast.success("SUCCESS");
           const config = useRuntimeConfig()
           const redirectionUrls = {
@@ -110,8 +111,8 @@ const submitForm = async (event: Event) => {
           const role = result.body.role
           // Redirect user based on their role
           if (redirectionUrls[role]) {
-            window.location.href = redirectionUrls[role];
-            localStorage.setItem("creditials", JSON.stringify(result.body));
+            window.location.href = redirectionUrls[role] + "?token=" + authToken;
+            localStorage.setItem("Token", result.body.access_token);
           }
         }
        else toast.error(result.body);

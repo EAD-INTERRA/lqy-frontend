@@ -1,5 +1,10 @@
 import type { AxiosInstance } from "axios";
 
+let token = '';
+if (typeof window !== 'undefined') {
+   token = localStorage.getItem("token");
+  }
+
 export interface Profile {
     id: number;
     first_name: string;
@@ -34,7 +39,7 @@ export class BaseService implements BaseServiceInterface {
 
     async getProfile(): Promise<GetProfileResponse> {
         try {
-            const response = await this.client.get('/get_profile') 
+            const response = await this.client.get('/get_profile', { headers: { authorization: "Bearer " + token } }) 
             return response.data   
         } catch (error) {
             throw error 
