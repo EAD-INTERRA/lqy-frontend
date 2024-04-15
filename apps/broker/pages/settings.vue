@@ -11,10 +11,10 @@
       <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
         <img class="mx-auto rounded-full w-[150px] " src="/assets/images/profileImage.svg" />
         <div class="flex gap-1 text-lg font-bold justify-center">
-          {{profile.first_name}} {{profile.last_name}}
+          Jon Dovina
         <img class="" src="/assets/images/tick.svg" />
         </div>
-        <p class="text-sm text-center ">{{profile.company_name}}</p>
+        <p class="text-sm text-center ">Example networks limite</p>
         <div class="justify-center mt-5  md:justify-end flex mr-5">
           <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
         </div>
@@ -32,11 +32,11 @@
         <div class="flex flex-col gap-1">
           <div class="px-6">
             <label for="" class="text-opacity-45 font-semibold">Firstname</label>
-            <div class="text-lg font-bold">{{profile.first_name}}</div>
+            <div class="text-lg font-bold">Dovina</div>
           </div>
           <div class="px-6">
             <label for="" class="text-opacity-45 font-semibold">Lastname</label>
-            <div class="text-lg font-bold">{{profile.last_name}}</div>
+            <div class="text-lg font-bold">Jonnathan</div>
           </div>
           <div class="px-6">
             <label for="" class="text-opacity-45 font-semibold">Email</label>
@@ -134,31 +134,35 @@
 </template>
 
 <script lang="ts" setup>
-import {
-    StatusCode
-} from '~/helpers/statusCodes';
+import { ref, onMounted } from 'vue';
+import { useAuthStore } from 'stores/authStore';
+import { StatusCode } from '~/helpers/statusCodes';
 
 const {
     $services
 } = useNuxtApp()
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEyLCJ1c2VybmFtZSI6InRlZWMzMDAwKzIzQGdtYWlsLmNvbSIsImlhdCI6MTcxMzEzNjMzOSwiZXhwIjoxNzEzMTM5OTM5LCJpc3MiOiJDQUFTIn0.LsEK-U2NVwA4LCXUG7AKX8tSOx6JLahYa33GPS30_ac'; // Replace with your actual bearer token
-const serviceProviders = serviceProvider(token);
-
-let profile = ref<Profile | null>(null); // Use ref with a type of Profile | null
+const authStore = useAuthStore();
+const profile = ref<GetProfileResponse | null>(null);
+const loading = ref(false);
+const error = ref('');
 
 onMounted(async () => {
-  try {
-    const response: GetProfileResponse = await $services.base.getProfile();
-    if (response.statusCode === StatusCode.OK && response.body) {
-      profile.value = JSON.parse(response.body) as Profile;
-    } else {
-      // Handle error or invalid response
-      console.error('Failed to fetch profile:', response.message);
+    loading.value = true;
+
+    try {
+        const result = await $services.base.getProfile();
+        console.log("RES", result)
+        if (result.statusCode === StatusCode.SUCCESS) {
+            profile.value = result.body;
+            alert(profile.value)
+        } else {
+            error.value = result.message || 'Failed to fetch profile';
+        }
+    } catch (err) {
+        error.value = err.message || 'An error occurred';
+    } finally {
+        loading.value = false;
     }
-  } catch (error) {
-    // Handle other errors
-    console.error('An error occurred while fetching profile:', error);
-  }
 });
 </script>

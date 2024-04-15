@@ -1,0 +1,7 @@
+{
+  "name": "stores",
+  "version": "1.0.0",
+  "description": "Pinia Stores",
+  "main": "authStore.ts",
+  "types": "authStore.d.ts"
+}

@@ -37,5 +37,13 @@ export default defineNuxtConfig({
       Financial_Institutions: process.env.Financial_Institutions,
       auth: process.env.auth
     }
-  }
+  },
+  plugins: [
+    '~/plugins/piniaPlugin.ts',
+  ],
+  app: {
+    setup(app) {
+      app.use(createPinia());
+    },
+  },
 })

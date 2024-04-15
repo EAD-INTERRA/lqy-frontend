@@ -5,11 +5,11 @@ export interface ServiceProviderInterface {
     base: BaseServiceInterface;
 }
 
-export const serviceProvider = (): ServiceProviderInterface => {
+export const serviceProvider = (token: string | null): ServiceProviderInterface => {
     const client = axios.create({
         // baseURL: 'http://localhost:3333/api/v1/account/', //Local
         baseURL: 'http://localhost:7878/api/v1/broker', //Test
-        headers: {
+         headers: {
             Authorization: `Bearer ${token}`,
         },
     })
