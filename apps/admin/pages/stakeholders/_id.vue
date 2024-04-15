@@ -32,7 +32,7 @@
               <img src="~/assets/images/Arrow.svg"  class="w-4 h-4 mt-1"/>
             </div>
             <div class="flex gap-5 mt-5">
-              <button class=" w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500 ">Approve</button>
+              <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500 ">Approve</button>
               <button class="w-24 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500 ">Reject</button>
             </div>
           </div>

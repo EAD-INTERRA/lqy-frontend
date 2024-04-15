@@ -1,5 +1,10 @@
 import type { AxiosInstance } from "axios";
 
+let token = '';
+if (typeof window !== 'undefined') {
+   token = localStorage.getItem("token");
+  }
+
 export interface Shareholder {
     name: string;
     code: string;
@@ -46,7 +51,7 @@ export class ShareholderService implements ShareholderServiceInterface {
 
     async getShareholders(): Promise<GetShareholdersResponse> {
         try {
-            const response = await this.client.get('stakeholder?page=1&size=5&type=') 
+            const response = await this.client.get('stakeholder?page=1&size=5&type=', { headers: { authorization: "Bearer " + token } }) 
             return response.data   
         } catch (error) {
             throw error 

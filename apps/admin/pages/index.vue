@@ -208,7 +208,17 @@ import { onMounted } from 'vue';
 import { StatusCode } from '~/helpers/statusCodes';
 
 let toast = null;
-let $services = null;
+const {
+    $services
+} = useNuxtApp()
+const route = useRoute();
+console.log(route);
+
+const token = route.query.token;
+console.log(token)
+if (process.client) {
+  localStorage.setItem("token", token);
+}
 
 onMounted(async () => {
   if (process.client) {
@@ -216,8 +226,7 @@ onMounted(async () => {
     const useToast = pkg.useToast;
     toast = useToast();
   }
-  const { $services: nuxtServices } = useNuxtApp();
-  $services = nuxtServices;
+
   
   await getStakeHolders();
 });
