@@ -8,10 +8,16 @@ export interface ServiceProviderInterface {
 }
 
 export const serviceProvider = (): ServiceProviderInterface => {
+    const base = axios.create({
+        // baseURL: 'http://localhost:3333/api/v1/account/', //Local
+        baseURL: 'http://131.226.242.233:5500/api/v1/', //Test
+    })
     const client = axios.create({
-        baseURL: 'http://localhost:3333/api/v1/'
+        // baseURL: 'http://localhost:3333/api/v1/'
+        baseURL: 'http://131.226.242.233:5600/api/v1/'
     })
     return {
         shareholder: new ShareholderService(client),
+        base: new BaseService(base),
     }
 }
