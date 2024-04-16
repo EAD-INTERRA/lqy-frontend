@@ -7,8 +7,8 @@ export interface ServiceProviderInterface {
 
 export const serviceProvider = (token): ServiceProviderInterface => {
     const client = axios.create({
-        // baseURL: 'http://localhost:3333/api/v1/account/', //Local
-        baseURL: 'http://localhost:7878/api/v1/broker', //Test    
+        // baseURL: 'http://localhost:7878/api/v1/broker/', //Local
+        baseURL: 'http://192.168.200.233:5555/api/v1/broker', //Test    
     })
     return {
         base: new BaseService(client),
