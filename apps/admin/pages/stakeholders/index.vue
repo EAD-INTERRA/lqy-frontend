@@ -32,8 +32,8 @@
 
                 </thead>
                 <tbody>            
-                  <tr class="bg-theme-tb  rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal" v-for="stakeholder in stakeholders.records">
-                    <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                  <tr class="bg-theme-tb cursor-pointer rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal" v-for="stakeholder in stakeholders.records">
+                    <td class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
                       <dl class="lg:hidden ">
                         <dt class="sr-only">Organization</dt>
                         <!-- <dd>{Organization.name}</dd> -->
@@ -44,11 +44,13 @@
                         <!-- <dd>{Stakeholder.name}</dd> -->
                         <dd>Jon Doe</dd>
                       </dl>
-                      <p>{{stakeholder.role}}</p>
+                      <p v-if="stakeholder.role">{{stakeholder.role}}</p>
+                      <p v-else>Unknown</p>
                       
                     </td>
                     <td class=" hidden lg:table-cell text-center">
-                      <p>{{stakeholder.first_name}} {{stakeholder.last_name}}</p>
+                      <p v-if="stakeholder.first_name && stakeholder.last_name">{{stakeholder.first_name}} {{stakeholder.last_name}}</p>
+                      <p v-else>{{ stakeholder.user.username }}</p>
                     </td>
                     <td class=" hidden lg:table-cell text-center">
                       <p>{{stakeholder.company_name}}</p>
@@ -69,8 +71,11 @@
                     </td>
                     <td class=" hidden lg:table-cell text-center pt-2 pb-2">
                       <div class="flex gap-5 mt-5">
-                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500" @click="approve()">Approve</button>
-                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500 " >Reject</button>
+                        <NuxtLink :to="`/stakeholders/${stakeholder.id}`"> 
+                          <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-green-500">View</button>
+                        </NuxtLink>
+                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500" @click="approve(stakeholder.user.id, true)">Approve</button>
+                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500 " @click="approve(stakeholder.user.id, false)">Reject</button>
                       </div>
                     </td>
                   </tr>
@@ -109,7 +114,6 @@ onMounted(async () => {
     toast = useToast();
   }
 
-  
   await getStakeHolders();
 });
 
@@ -121,8 +125,22 @@ const getStakeHolders = async () => {
   }
 }
 
-const approve = () => {
-  toast.success("SUCCESS")
+const approve = async (shareholderId, status) => {
+
+  const approveData = {
+        status: status,
+    }
+
+  try {
+    const response = (await $services.shareholder.approveShareholder(shareholderId, approveData));
+    if (response.code === StatusCode.SUCCESS) {
+      console.log(response)
+      toast.success("SUCCESS")
+      await getStakeHolders();
+    }
+  } catch (err) {
+    console.log(err)
+  }
 };
 
 
