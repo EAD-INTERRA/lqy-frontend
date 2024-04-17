@@ -203,6 +203,36 @@
 </template>
 
 <script lang="ts" setup>
+
+import { onMounted } from 'vue';
+import { StatusCode } from '~/helpers/statusCodes';
+
+let toast = null;
+const {
+    $services
+} = useNuxtApp()
+const route = useRoute();
+
+onMounted(async () => {
+  if (process.client) {
+    const pkg = await import('vue-toastification');
+    const useToast = pkg.useToast;
+    toast = useToast();
+  }
+
+  
+  await getStakeHolders();
+});
+
+const getStakeHolders = async () => {
+  try {
+    const result = await $services.shareholder.getShareholders()
+    console.log(result)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 const chartData = ref([
   { name: "Equities", count: 12 },
   { name: "Bonds", count: 50 },
@@ -211,4 +241,5 @@ const chartData = ref([
 ]);
 
 const chartColors = ["#E0903F", "#65C569", "#AC65C5", "#6373F8"]; // External colors array
+
 </script>

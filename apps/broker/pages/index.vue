@@ -197,17 +197,18 @@
 </template>
 
 <script lang="ts" setup>
-import { pinia } from 'plugins/provider';
 import { useAuthStore } from 'stores/authStore';
+import { createPinia } from 'pinia';
 
+const pinia = createPinia();
+pinia.use(useAuthStore);
 const route = useRoute();
-const authToken = route.query.token
-
 const authStore = useAuthStore(pinia);
 
-authStore.setToken(authToken);
-console.log(authStore.getToken())
-
+if (process.client) {
+  authStore.login();
+  authStore.checkAuth();
+}
 
 const chartData = ref([
   {

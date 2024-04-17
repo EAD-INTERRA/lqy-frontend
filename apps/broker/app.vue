@@ -1,6 +1,7 @@
 <template>
 <div>
     <NuxtLayout >
+        <NuxtLoadingIndicator />
         <div class="flex">
             <div class="">
                 <sidebarComponent />

@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import {resolve} from "path";
 
-const pinia = createPinia();
 
 export default defineNuxtConfig({
   alias: {
@@ -30,12 +29,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  plugins: [
-    '~/plugins/piniaPlugin.ts',
-  ],
   app: {
     setup(app) {
-      app.use(pinia);
+      // app.use(createPinia());
+      app.provide('pinia', pinia);
     },
   },
 })

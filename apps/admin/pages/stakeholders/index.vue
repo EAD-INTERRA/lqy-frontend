@@ -31,28 +31,29 @@
                   </tr>
 
                 </thead>
-                <tbody>
-                  
-                  <tr class="bg-theme-tb  rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                <tbody>            
+                  <tr class="bg-theme-tb cursor-pointer rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal" v-for="stakeholder in stakeholders.records">
+                    <td class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
                       <dl class="lg:hidden ">
                         <dt class="sr-only">Organization</dt>
                         <!-- <dd>{Organization.name}</dd> -->
-                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">Wells  fargo</dd>
+                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">{{stakeholder.company_name}}</dd>
                       </dl>
                       <dl class="lg:hidden">
                         <dt class="sr-only">Stakeholder name</dt>
                         <!-- <dd>{Stakeholder.name}</dd> -->
                         <dd>Jon Doe</dd>
                       </dl>
-                      <p>Broker</p>
+                      <p v-if="stakeholder.role">{{stakeholder.role}}</p>
+                      <p v-else>Unknown</p>
                       
                     </td>
                     <td class=" hidden lg:table-cell text-center">
-                      <p>Jon Doe</p>
+                      <p v-if="stakeholder.first_name && stakeholder.last_name">{{stakeholder.first_name}} {{stakeholder.last_name}}</p>
+                      <p v-else>{{ stakeholder.user.username }}</p>
                     </td>
                     <td class=" hidden lg:table-cell text-center">
-                      <p>Wells  fargo</p>
+                      <p>{{stakeholder.company_name}}</p>
                      
                     </td>
                     <td class=" lg:table-cell mt-5 flex flex-col gap-1 lg:gap-2   text-center  lg:pt-2 pb-2">
@@ -61,97 +62,23 @@
                         <!-- <dd>{Stakeholder.name}</dd> -->
                         <dd>25/12/2023</dd>
                       </dl>
-                      <p class="rounded-lg bg-orange-500 text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Pending</p>
+                      <p :class="stakeholder.user.status ? 'rounded-lg bg-green-500 text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ' : 'rounded-lg bg-orange-500 text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 '">{{stakeholder.user.status}}</p>
                       
                     </td>
                     <td class="text-center hidden lg:table-cell pt-2 pb-2">
-                      <p>25/12/2023</p>
+                      <p>{{stakeholder.created_at}}</p>
                      
                     </td>
                     <td class=" hidden lg:table-cell text-center pt-2 pb-2">
-                      <p>on</p>
+                      <div class="flex gap-5 mt-5">
+                        <NuxtLink :to="`/stakeholders/${stakeholder.id}`"> 
+                          <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-green-500">View</button>
+                        </NuxtLink>
+                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500" @click="approve(stakeholder.user.id, true)">Approve</button>
+                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500 " @click="approve(stakeholder.user.id, false)">Reject</button>
+                      </div>
                     </td>
                   </tr>
-                  <tr class=" rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                      <dl class="lg:hidden ">
-                        <dt class="sr-only">Organization</dt>
-                        <!-- <dd>{Organization.name}</dd> -->
-                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">Wells  fargo</dd>
-                      </dl>
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Stakeholder name</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>Jon Doe</dd>
-                      </dl>
-                      <p>Broker</p>
-                      
-                    </td>
-                    <td class=" hidden lg:table-cell text-center">
-                      <p>Jon Doe</p>
-                    </td>
-                    <td class=" hidden lg:table-cell text-center">
-                      <p>Wells  fargo</p>
-                     
-                    </td>
-                    <td class=" lg:table-cell mt-5 flex flex-col gap-1 lg:gap-2   text-center  lg:pt-2 pb-2">
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Date registered</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>25/12/2023</dd>
-                      </dl>
-                      <p class="rounded-lg bg-blue-500  text-white w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Approved</p>
-                      
-                    </td>
-                    <td class="text-center hidden lg:table-cell pt-2 pb-2">
-                      <p>25/12/2023</p>
-                     
-                    </td>
-                    <td class=" hidden lg:table-cell text-center pt-2 pb-2">
-                      <p>on</p>
-                    </td>
-                  </tr>
-                  <tr class="bg-theme-tb  rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                      <dl class="lg:hidden ">
-                        <dt class="sr-only">Organization</dt>
-                        <!-- <dd>{Organization.name}</dd> -->
-                        <dd class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">Wells  fargo</dd>
-                      </dl>
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Stakeholder name</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>Jon Doe</dd>
-                      </dl>
-                      <p>Broker</p>
-                      
-                    </td>
-                    <td class=" hidden lg:table-cell text-center">
-                      <p>Jon Doe</p>
-                    </td>
-                    <td class=" hidden lg:table-cell text-center">
-                      <p>Wells  fargo</p>
-                     
-                    </td>
-                    <td class=" lg:table-cell mt-5 flex flex-col gap-1 lg:gap-2   text-center  lg:pt-2 pb-2">
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Date registered</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>25/12/2023</dd>
-                      </dl>
-                      <p class="rounded-lg bg-red-500 text-white  w-100 p-1 mx-6 flex items-center justify-center gap-2 flex-shrink-0 ">Reject</p>
-                      
-                    </td>
-                    <td class="text-center hidden lg:table-cell pt-2 pb-2">
-                      <p>25/12/2023</p>
-                     
-                    </td>
-                    <td class=" hidden lg:table-cell text-center pt-2 pb-2">
-                      <p>on</p>
-                    </td>
-                  </tr>
-
-                
                 </tbody>
               </table> 
                  </div>
@@ -161,4 +88,60 @@
 </template>
 
 <script lang="ts" setup>
+import { StatusCode } from '~/helpers/statusCodes';
+import {
+    type Shareholder
+} from '~/services/ShareholderService'
+let toast = null;
+const {
+    $services
+} = useNuxtApp()
+const route = useRoute();
+console.log(route);
+
+function formatDate(value) {
+      if (value) {
+        return moment(String(value)).format("YYYY-MM-DD");
+      }
+    }
+
+let stakeholders: Ref < Shareholder[] > = ref([]);
+
+onMounted(async () => {
+  if (process.client) {
+    const pkg = await import('vue-toastification');
+    const useToast = pkg.useToast;
+    toast = useToast();
+  }
+
+  await getStakeHolders();
+});
+
+const getStakeHolders = async () => {
+  try {
+    stakeholders.value = (await $services.shareholder.getShareholders()).body
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const approve = async (shareholderId, status) => {
+
+  const approveData = {
+        status: status,
+    }
+
+  try {
+    const response = (await $services.shareholder.approveShareholder(shareholderId, approveData));
+    if (response.code === StatusCode.SUCCESS) {
+      console.log(response)
+      toast.success("SUCCESS")
+      await getStakeHolders();
+    }
+  } catch (err) {
+    console.log(err)
+  }
+};
+
+
 </script>

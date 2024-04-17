@@ -8,16 +8,19 @@
         </div>
         <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
       </div>
-      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
+      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " v-if="profile">
         <img class="mx-auto rounded-full w-[150px] " src="/assets/images/profileImage.svg" />
         <div class="flex gap-1 text-lg font-bold justify-center">
-          Jon Dovina
+          {{profile.first_name}} {{profile.last_name}}
         <img class="" src="/assets/images/tick.svg" />
         </div>
-        <p class="text-sm text-center ">Example networks limite</p>
+        <p class="text-sm text-center ">{{profile.company_name}}</p>
         <div class="justify-center mt-5  md:justify-end flex mr-5">
           <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
         </div>
+      </div>
+      <div v-else>
+        <p>Loading...</p>
       </div>
 
 
@@ -32,19 +35,19 @@
         <div class="flex flex-col gap-1">
           <div class="px-6">
             <label for="" class="text-opacity-45 font-semibold">Firstname</label>
-            <div class="text-lg font-bold">Dovina</div>
+            <div class="text-lg font-bold">{{profile.first_name}}</div>
           </div>
           <div class="px-6">
             <label for="" class="text-opacity-45 font-semibold">Lastname</label>
-            <div class="text-lg font-bold">Jonnathan</div>
+            <div class="text-lg font-bold">{{profile.last_name}}</div>
           </div>
           <div class="px-6">
             <label for="" class="text-opacity-45 font-semibold">Email</label>
-            <div class="text-lg font-bold text-blue-500">example@mail.com</div>
+            <div class="text-lg font-bold text-blue-500">{{profile.email}}</div>
           </div>
           <div class="px-6">
             <label for="" class="text-opacity-45 font-semibold">Phone</label>
-            <div class="text-lg font-bold text-blue-500">(+234) 814 1225 566</div>
+            <div class="text-lg font-bold text-blue-500">{{profile.phone_number}}</div>
           </div>
         </div>
         <div class="justify-center mt-5 md:justify-end flex mr-5">
@@ -52,7 +55,7 @@
         </div>
       </div>
     </section>
-
+    
     <section class="w-full md:w-[60%] h-fit mr-3">
       <div class="flex ">
         <div class="text-black font-ox font-bold py-2.5 pr-2">
@@ -69,11 +72,11 @@
           </div>
           <div class="px-[30px] grid grid-cols-2 text-left">
             <label for="" class="text-opacity-45 font-semibold">State</label>
-            <div class="text-lg font-bold">Federal Capital Teritory</div>
+            <div class="text-lg font-bold">{{profile.city}}</div>
           </div>
           <div class="px-[30px] grid grid-cols-2 text-left">
             <label for="" class="text-opacity-45 font-semibold">Town/City</label>
-            <div class="text-lg font-bold">Abuja</div>
+            <div class="text-lg font-bold">{{profile.city}}</div>
           </div>
 
         </div>
@@ -134,35 +137,28 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useAuthStore } from 'stores/authStore';
-import { StatusCode } from '~/helpers/statusCodes';
+import {
+    StatusCode
+} from '~/helpers/statusCodes';
 
 const {
     $services
 } = useNuxtApp()
 
-const authStore = useAuthStore();
-const profile = ref<GetProfileResponse | null>(null);
-const loading = ref(false);
-const error = ref('');
+let profile = ref('');
 
 onMounted(async () => {
-    loading.value = true;
-
-    try {
-        const result = await $services.base.getProfile();
-        console.log("RES", result)
-        if (result.statusCode === StatusCode.SUCCESS) {
-            profile.value = result.body;
-            alert(profile.value)
-        } else {
-            error.value = result.message || 'Failed to fetch profile';
-        }
-    } catch (err) {
-        error.value = err.message || 'An error occurred';
-    } finally {
-        loading.value = false;
+  try {
+    const response = await $services.base.getProfile();
+    console.log(response)
+    if (response.code === 200) {
+      profile.value = typeof response.body === 'object' ? response.body : JSON.parse(response.body); // Assuming body is a JSON string   
+    } else {
+      console.error('Failed to fetch profile:', response.message);
     }
+  } catch (error) {
+    console.error('Error fetching profile:', error);
+  }
+  return {profile};
 });
 </script>

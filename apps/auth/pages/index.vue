@@ -62,13 +62,6 @@
   import {
     StatusCode
 } from '~/helpers/statusCodes';
-import { createPinia } from 'pinia';
-
-import { useAuthStore } from 'stores/authStore';
-
-
-const pinia = createPinia();
-
 let toast = null;
 
 if (process.client) {
@@ -100,17 +93,15 @@ const submitForm = async (event: Event) => {
     
     try {
         const result = await $services.auth.login(loginData)
-        console.log("RES: ", result)
 
         if (result.code === StatusCode.SUCCESS) {
-          const authStore = useAuthStore(pinia);
-          authStore.setToken(result.body.access_token);
-          console.log(authStore.getToken())
-
+          localStorage.setItem("creditials", JSON.stringify(result.body));
+          const authToken = result.body.access_token;
+          // toast.success("SUCCESS");
           const config = useRuntimeConfig()
           const redirectionUrls = {
             LQY_Admin: config.public.admin,
-            Broker: config.public.Broker + "?token=" + authStore.getToken(), 
+            Broker: config.public.Broker, 
             CSCS: config.public.CSCS,
             Custodian: config.public.Custodian,
             Investor: config.public.Investor,
@@ -118,14 +109,16 @@ const submitForm = async (event: Event) => {
           };
 
           const role = result.body.role
+          // Redirect user based on their role
           if (redirectionUrls[role]) {
-            window.location.href = redirectionUrls[role];
+            window.location.href = redirectionUrls[role] + "?token=" + authToken;
+            localStorage.setItem("Token", result.body.access_token);
           }
         }
        else toast.error(result.body);
     } catch (error) {
-        // const err = error.response.data.body
-        console.log(error);
+        const err = error.response.data.body
+        toast.error(err);
     } finally {
         loading.value = false
     }

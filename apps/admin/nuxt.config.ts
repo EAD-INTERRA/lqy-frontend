@@ -27,4 +27,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  app: {
+    setup(app) {
+      // app.use(createPinia());
+      app.provide('pinia', pinia);
+    },
+  },
 })

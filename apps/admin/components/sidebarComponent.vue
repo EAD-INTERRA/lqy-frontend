@@ -43,9 +43,9 @@
               exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]"
               ><img src="assets/images/setting.svg" />Settings   
             </NuxtLink>
-            <!-- <NuxtLink to="" class="flex flex-row sidebarLink text-ox"
+            <NuxtLink to="" class="flex flex-row sidebarLink text-ox" @click="logout"
               ><img src="~/assets/images/logout.svg" />Log Out</NuxtLink
-            > -->
+            >
           </div>
         </div>
       </div>
@@ -54,7 +54,16 @@
 </template>
 
 <script lang="ts" setup>
+import {
+    useAuthStore
+} from 'stores/authStore';
+import {
+    createPinia
+} from 'pinia';
 import { useRoute } from "vue-router";
+const pinia = createPinia();
+pinia.use(useAuthStore);
+
 
 const route = useRoute();
 
@@ -114,4 +123,17 @@ const step = ref(true);
 const isActive = (index: number): boolean => {
   return options[index] && route.path === options[index].to;
 };
+
+// const logout = async () => {
+//   event.preventDefault();
+
+// }
+
+const authStore = useAuthStore(pinia);
+
+const logout = () => {
+    authStore.logout();
+
+}
+
 </script>

@@ -82,12 +82,6 @@ const options = [
       title: 'Broker revenue'
     },*/
   {
-    to: "/Maintenance",
-    src: "assets/images/FI-profile.svg",
-    src2: "assets/images/FI-profile.svg",
-    title: "Maintenance call",
-  },
-  {
     to: "/Security-Lending",
     src: "assets/images/notification-icon.svg",
     src2: "assets/images/notification-icon.svg",
