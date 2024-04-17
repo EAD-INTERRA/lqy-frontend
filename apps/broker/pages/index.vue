@@ -197,14 +197,34 @@
 </template>
 
 <script lang="ts" setup>
-const route = useRoute();
-console.log(route);
+import {useStore} from 'vuex';
+import { setWithExpiry, getWithExpiry } from '/packages/shared-lib';
 
+const route = useRoute();
+const store = useStore();
 const token = route.query.token;
-console.log(token)
-if (process.client) {
-  localStorage.setItem("token", token);
-}
+const expiresIn = 3600;
+
+
+onMounted(() => {
+  if (process.client) {
+    console.log('Token:', token);
+    console.log('Expires In:', expiresIn);
+
+    // Login
+    store.dispatch('login', { token, expiresIn });
+
+    // Logout
+    store.dispatch('logout');
+
+    // Check Auth
+    store.dispatch('checkAuth');
+  }
+});
+
+            
+
+      
 
 const chartData = ref([
   {

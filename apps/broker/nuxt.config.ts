@@ -2,7 +2,8 @@
 import {resolve} from "path";
 export default defineNuxtConfig({
   alias: {
-    "@": resolve(__dirname, "/")
+    "@": resolve(__dirname, "/"),
+    "@packages": resolve(__dirname, "../packages")
   },
   devtools: { enabled: true },
    modules: [
