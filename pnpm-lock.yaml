@@ -152,9 +152,15 @@ importers:
       chartjs-plugin-datalabels:
         specifier: ^2.2.0
         version: 2.2.0(chart.js@3.9.1)
+      pinia:
+        specifier: ^2.1.7
+        version: 2.1.7(vue@3.4.10)
       postcss:
         specifier: ^8.4.29
         version: 8.4.33
+      stores:
+        specifier: ^1.0.0
+        version: link:../../packages/stores
       tailwindcss:
         specifier: ^3.3.3
         version: 3.4.1
@@ -183,9 +189,15 @@ importers:
       chartjs-plugin-datalabels:
         specifier: ^2.2.0
         version: 2.2.0(chart.js@3.9.1)
+      pinia:
+        specifier: ^2.1.7
+        version: 2.1.7(vue@3.4.10)
       postcss:
         specifier: ^8.4.29
         version: 8.4.33
+      stores:
+        specifier: ^1.0.0
+        version: link:../../packages/stores
       tailwindcss:
         specifier: ^3.3.3
         version: 3.4.1
@@ -214,9 +226,15 @@ importers:
       chartjs-plugin-datalabels:
         specifier: ^2.2.0
         version: 2.2.0(chart.js@3.9.1)
+      pinia:
+        specifier: ^2.1.7
+        version: 2.1.7(vue@3.4.10)
       postcss:
         specifier: ^8.4.29
         version: 8.4.33
+      stores:
+        specifier: ^1.0.0
+        version: link:../../packages/stores
       tailwindcss:
         specifier: ^3.3.3
         version: 3.4.1

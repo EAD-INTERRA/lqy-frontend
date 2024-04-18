@@ -45,6 +45,21 @@
   
   <script lang="ts" setup>
   import { useRoute } from 'vue-router';
+  import {
+    useAuthStore
+} from 'stores/authStore';
+import {
+    createPinia
+} from 'pinia';
+import { useRoute } from "vue-router";
+const pinia = createPinia();
+pinia.use(useAuthStore);
+const authStore = useAuthStore(pinia);
+
+const logout = () => {
+    authStore.logout();
+
+}
   
   const route = useRoute();
   
