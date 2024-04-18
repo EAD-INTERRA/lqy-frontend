@@ -9,8 +9,8 @@ export interface ServiceProviderInterface {
 
 export const serviceProvider = (): ServiceProviderInterface => {
     const auth = axios.create({
-        // baseURL: 'http://131.226.242.233:5500/api/v1/account/' //TEST
-        baseURL: 'http://localhost:3333/api/v1/account', //LOCAL
+        baseURL: 'http://131.226.242.233:5500/api/v1/account/' //TEST
+        // baseURL: 'http://localhost:3333/api/v1/account', //LOCAL
     })
     const base = axios.create({
         // baseURL: 'http://localhost:3333/api/v1/'
