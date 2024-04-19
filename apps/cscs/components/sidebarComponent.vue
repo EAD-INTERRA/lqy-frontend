@@ -53,7 +53,6 @@ import {
 import {
     createPinia
 } from 'pinia';
-import { useRoute } from "vue-router";
 const pinia = createPinia();
 pinia.use(useAuthStore);
 
