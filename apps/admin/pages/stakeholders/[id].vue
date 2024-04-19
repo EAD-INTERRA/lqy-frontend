@@ -14,11 +14,13 @@
           <div class="text-base">Nigeria</div>
           <div class="text-xs">Town/City:</div>
           <div class="text-base">{{ stakeholder.city }}</div>
-          <div class="text-xs">Status:</div>
+          <div class="text-xs">Approval Status:</div>
           <div class="text-base">
-            <div :class="stakeholder.user.status ? 'rounded-lg bg-green-700 text-white items-start p-2 w-16' : 'w-16 p-2  text-white items-start rounded-lg bg-orange-700'">
-              {{ stakeholder.user.status }}
-
+            <div v-if="stakeholder.user.status" class="rounded-lg bg-green-700 text-white items-start p-2 w-24">
+              Approved
+            </div>
+            <div v-else class="w-24 p-2 text-white items-start rounded-lg bg-orange-700">
+              Declined
             </div>
           </div>
         </div>
