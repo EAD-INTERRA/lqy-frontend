@@ -6,23 +6,33 @@
       <div class="grid grid-row lg:gap-4 lg:grid-cols-2">
         <div class="grid gird-row gap-y-3">
           <div class="text-xs">Company Name:</div>
-          <div class="text-base">Example Networks Limited</div>
+          <div class="text-base">{{ stakeholder.company_name }}</div>
           <div class="text-xs">First Name:</div>
-          <div class="text-base">Doe</div>
+          <div class="text-base" v-if="stakeholder.first_name">{{ stakeholder.first_name }}</div>
+          <div class="text-base" v-else>Unknown</div>
           <div class="text-xs">Country:</div>
           <div class="text-base">Nigeria</div>
           <div class="text-xs">Town/City:</div>
-          <div class="text-base">Abuja</div>
+          <div class="text-base">{{ stakeholder.city }}</div>
+          <div class="text-xs">Status:</div>
+          <div class="text-base">
+            <div :class="stakeholder.user.status ? 'rounded-lg bg-green-700 text-white items-start p-2 w-16' : 'w-16 p-2  text-white items-start rounded-lg bg-orange-700'">
+              {{ stakeholder.user.status }}
+
+            </div>
+          </div>
         </div>
         <div class="grid gird-row gap-y-3">
           <div class="text-xs">Business Type:</div>
           <div class="text-base">Investment Banking</div>
           <div class="text-xs">Last Name:</div>
-          <div class="text-base">Jon</div>
+          <div class="text-base" v-if="stakeholder.last_name">{{ stakeholder.first_name }}</div>
+          <div class="text-base" v-else>Unknown</div>
           <div class="text-xs">State:</div>
-          <div class="text-base">Federal Capital Teritory</div>
+          <div class="text-base" v-if="stakeholder.state">{{ stakeholder.state }}</div>
+          <div class="text-base" v-else>Unknown</div>
           <div class="text-xs">Email:</div>
-          <div class="text-base">example@mail.com</div>
+          <div class="text-base">{{ stakeholder.email }}</div>
         </div>
       </div>
       <div
@@ -35,11 +45,13 @@
       <div class="flex gap-5 mt-5">
         <button
           class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500"
+          @click="approve(stakeholder.user.id, true)"
         >
           Approve
         </button>
         <button
           class="w-24 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500"
+          @click="approve(stakeholder.user.id, false)"
         >
           Reject
         </button>
@@ -78,9 +90,9 @@ onMounted(async () => {
 
 const getStakeHolder = async () => {
   try {
-    // stakeholder.value = (await $services.shareholder.getShareholderById(stakeId)).body
-    const res = (await $services.shareholder.getShareholderById(stakeId));
-    console.log("RES: ", res)
+    stakeholder.value = (await $services.shareholder.getShareholderById(stakeId)).body;
+    console.log(stakeholder.value)
+    // const res = (await $services.shareholder.getShareholderById(stakeId));
   } catch (err) {
     console.log(err)
   }
@@ -97,7 +109,7 @@ const approve = async (shareholderId, status) => {
     if (response.code === StatusCode.SUCCESS) {
       console.log(response)
       toast.success("SUCCESS")
-      await getStakeHolders();
+      await getStakeHolder();
     }
   } catch (err) {
     console.log(err)

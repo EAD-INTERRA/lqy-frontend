@@ -71,11 +71,11 @@
                     </td>
                     <td class=" hidden lg:table-cell text-center pt-2 pb-2">
                       <div class="flex gap-5 mt-5">
-                        <NuxtLink :to="`/stakeholders/${stakeholder.id}`"> 
-                          <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-green-500">View</button>
+                        <NuxtLink :to="`/stakeholders/${stakeholder.user.id}`"> 
+                          <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500">View</button>
                         </NuxtLink>
-                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500" @click="approve(stakeholder.user.id, true)">Approve</button>
-                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500 " @click="approve(stakeholder.user.id, false)">Reject</button>
+                        <!-- <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500" @click="approve(stakeholder.user.id, true)">Approve</button>
+                        <button class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500 " @click="approve(stakeholder.user.id, false)">Reject</button> -->
                       </div>
                     </td>
                   </tr>

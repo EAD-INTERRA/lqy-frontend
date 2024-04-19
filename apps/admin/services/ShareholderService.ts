@@ -1,9 +1,11 @@
 import type { AxiosInstance } from "axios";
 
+let t = '';
 let token = '';
 if (typeof window !== 'undefined') {
-   token = localStorage.getItem("token");
-  }
+    t = localStorage.getItem("authToken");
+    token = JSON.parse(t).value;
+}
 
 export interface Shareholder {
     name: string;
