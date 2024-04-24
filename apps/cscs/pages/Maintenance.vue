@@ -4,7 +4,7 @@
 
         <div class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
             <div class="flex justify-between">
-                <p class=" bg-theme-tb font-semibold w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Maintenance</p>
+                <p class=" bg-theme-tb font-semibold w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Maintenance Call</p>
             </div>
             
             <table class="table-fixed w-[80%]">

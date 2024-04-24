@@ -4,7 +4,7 @@
         <div class=" mb-3">
             <p
                 class="bg-theme-tb font-semibold w-fit text-sm md:text-lg px-2 md:px-3 py-1 rounded-[5px]">
-                Trade History
+                Transfer History
               </p>
         </div>
         <div class="">

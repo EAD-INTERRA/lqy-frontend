@@ -11,7 +11,7 @@
               <NuxtLink
                 :to="option.to"
                 :class="{
-                  'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2': true,
+                  'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2 cursor-pointer': true,
                   'rounded-t-[15px]': isActive(index) && index === 0,
                   'border-theme-as': isActive(index),
                   'rounded-b-[15px]': isActive(index) && index === options.length - 1
@@ -27,7 +27,7 @@
         <div class="overview">
           <p class="overviewText text-ox text-left">Account</p>
           <div class="dashboardDiv">
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-t-[15px]">
+            <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit cursor-pointer" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-t-[15px] ">
               <img src="~/assets/images/notification-icon.svg">Notification
               <span class="rounded-full bg-red-900 px-2 mr-5 h-fit items-center">3</span>
             </NuxtLink>
@@ -56,27 +56,28 @@
       title: 'Dashboard'
     },
     {
-      to: '/trade-view',
+      // to: '/trade-view',
+      to: '',
       src: 'assets/images/stakeholder-icon.svg',
       src2: 'assets/images/stakeholder-icon.svg',
       title: 'Trading View'
     },
     {
       to: '/history',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/stakeholder-icon.svg',
+      src2: 'assets/images/stakeholder-icon.svg',
       title: 'History'
     },
-    /*{
+    {
       to: '/report',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/stakeholder-icon.svg',
+      src2: 'assets/images/stakeholder-icon.svg',
       title: 'Report'
-    },*/
+    },
     {
       to: '/investor-request',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon.svg',
+      src: 'assets/images/stakeholder-icon.svg',
+      src2: 'assets/images/stakeholder-icon.svg',
       title: 'Investors Request'
     }
   ];

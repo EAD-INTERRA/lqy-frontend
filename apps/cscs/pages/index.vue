@@ -33,34 +33,30 @@
     </section>
 
     <section class="mb-4">
-
         <div class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
-            <div class="flex justify-between">
-                <p class=" bg-theme-tb font-semibold w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Investors Security</p>
-                <p class=" bg-blue-400 text-white font-ox border border-black w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Margin Check</p>
+            <div class=" mb-6">
+                <p class=" bg-theme-bc bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">Verification Request</p>
             </div>
-            
-            <table class="table-fixed w-[80%]">
+            <table class="table-fixed w-[100%]">
                 <thead>
                     <tr class=" text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
-                        <th class="w-44 pt-2 pb-2 hidden lg:table-cell text-left">Investors</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Ticker Symbol</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Security Name</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left ">Quantity</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">Market Value ($)</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Asset Class</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">DIvidend Yield (%)</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Liquidity Rate</th>
+                        <th class="w-48 pt-2 pb-2 hidden lg:table-cell text-left pl-2">User Type</th>
+                        <th class="w-48 pt-2 pb-2 hidden lg:table-cell text-left pl-2">User Name</th>
+                       <th class="w-48 pt-2 pb-2 hidden lg:table-cell text-left">Company Name</th>
+                        <th class="w-48 pt-2 pb-2 hidden lg:table-cell text-left">Contact</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
+                        <td class=" hidden lg:table-cell text-center font-bold">
+                            <p class="text-left pl-2">Financial Institution</p>
+                        </td>
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
                             <dl class="lg:hidden ">
                                 <dt class="sr-only">Name</dt>
                                 <dd class="text-black font-ox text-base font-normal leading-normal">
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
@@ -68,49 +64,37 @@
                             <dl class="lg:hidden">
                                 <dt class="sr-only">Name</dt>
                                 <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                    <div class="flex ">
+                                        <!-- <img src="/assets/images/tick.svg" class="rounded-full" alt="icon" /> -->
+                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
                             </dl>
                             <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                                <!-- <img src="/assets/images/profileImage.svg" class="rounded-full w-6" alt="icon" /> -->
+                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
                             </div>
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
+                            <p class="text-left">Jondoe incorporated</p>
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
+                        <td class=" hidden lg:table-cell text-center font-normal py-2">
+                            <p class="text-left font-semibold">+234 34547639</p>
+                            <p class="text-left text-blue-500">jondoe@mail.com</p>
                         </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                        
                     </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                    <tr class="rowText bg-theme-tb text-black-900  font-ox text-base font-normal leading-normal">
+                        <td class=" hidden lg:table-cell text-center font-bold">
+                            <p class="text-left pl-2">Financial Institution</p>
+                        </td>
+                        <td class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
                             <dl class="lg:hidden ">
                                 <dt class="sr-only">Name</dt>
                                 <dd class="text-black font-ox text-base font-normal leading-normal">
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
@@ -119,48 +103,36 @@
                                 <dt class="sr-only">Name</dt>
                                 <dd>
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
                             </dl>
                             <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                                <!-- <img src="/assets/images/profileImage.svg" class="rounded-full w-6" alt="icon" /> -->
+                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
                             </div>
 
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
+                        <td class="hidden lg:table-cell text-center font-bold">
+                            <p class="text-left">Jondoe incorporated</p>
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
+                        <td class="hidden lg:table-cell text-center font-normal py-2">
+                            <p class="text-left font-semibold">+234 34547639</p>
+                            <p class="text-left text-blue-500">jondoe@mail.com</p>
                         </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                        
                     </tr>
                     <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
+                        <td class=" hidden lg:table-cell text-center font-bold">
+                            <p class="text-left pl-2">Financial Institution</p>
+                        </td>
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
                             <dl class="lg:hidden ">
                                 <dt class="sr-only">Name</dt>
                                 <dd class="text-black font-ox text-base font-normal leading-normal">
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
@@ -168,49 +140,37 @@
                             <dl class="lg:hidden">
                                 <dt class="sr-only">Name</dt>
                                 <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                    <div class="flex ">
+                                        <!-- <img src="/assets/images/tick.svg" class="rounded-full" alt="icon" /> -->
+                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
                             </dl>
                             <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                                <!-- <img src="/assets/images/profileImage.svg" class="rounded-full w-6" alt="icon" /> -->
+                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
                             </div>
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
+                            <p class="text-left">Jondoe incorporated</p>
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
+                        <td class=" hidden lg:table-cell text-center font-normal py-2">
+                            <p class="text-left font-semibold">+234 34547639</p>
+                            <p class="text-left text-blue-500">jondoe@mail.com</p>
                         </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                        
                     </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                    <tr class="rowText bg-theme-tb text-black-900  font-ox text-base font-normal leading-normal">
+                        <td class=" hidden lg:table-cell text-center font-bold">
+                            <p class="text-left pl-2">Financial Institution</p>
+                        </td>
+                        <td class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
                             <dl class="lg:hidden ">
                                 <dt class="sr-only">Name</dt>
                                 <dd class="text-black font-ox text-base font-normal leading-normal">
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
@@ -219,48 +179,74 @@
                                 <dt class="sr-only">Name</dt>
                                 <dd>
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
                             </dl>
                             <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
+                                <!-- <img src="/assets/images/profileImage.svg" class="rounded-full w-6" alt="icon" /> -->
+                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
                             </div>
 
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
+                        <td class="hidden lg:table-cell text-center font-bold">
+                            <p class="text-left">Jondoe incorporated</p>
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
+                        <td class="hidden lg:table-cell text-center font-normal py-2">
+                            <p class="text-left font-semibold">+234 34547639</p>
+                            <p class="text-left text-blue-500">jondoe@mail.com</p>
                         </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                        
                     </tr>
                     <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
+                        <td class=" hidden lg:table-cell text-center font-bold">
+                            <p class="text-left pl-2">Financial Institution</p>
+                        </td>
                         <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
                             <dl class="lg:hidden ">
                                 <dt class="sr-only">Name</dt>
                                 <dd class="text-black font-ox text-base font-normal leading-normal">
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
+                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="lg:hidden">
+                                <dt class="sr-only">Name</dt>
+                                <dd>
+                                    <div class="flex ">
+                                        <!-- <img src="/assets/images/tick.svg" class="rounded-full" alt="icon" /> -->
+                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <div class="flex pl-2">
+                                <!-- <img src="/assets/images/profileImage.svg" class="rounded-full w-6" alt="icon" /> -->
+                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
+                            </div>
+
+                        </td>
+                        <td class=" hidden lg:table-cell text-center font-bold">
+                            <p class="text-left">Jondoe incorporated</p>
+                        </td>
+                        <td class=" hidden lg:table-cell text-center font-normal py-2">
+                            <p class="text-left font-semibold">+234 34547639</p>
+                            <p class="text-left text-blue-500">jondoe@mail.com</p>
+                        </td>
+                        
+                    </tr>
+                    <tr class="rowText bg-theme-tb text-black-900  font-ox text-base font-normal leading-normal">
+                        <td class=" hidden lg:table-cell text-center font-bold">
+                            <p class="text-left pl-2">Financial Institution</p>
+                        </td>
+                        <td class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
+                            <dl class="lg:hidden ">
+                                <dt class="sr-only">Name</dt>
+                                <dd class="text-black font-ox text-base font-normal leading-normal">
+                                    <div class="flex">
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
@@ -269,192 +255,26 @@
                                 <dt class="sr-only">Name</dt>
                                 <dd>
                                     <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
+                                        <!-- <img src="/assets/images/agilents-tech.svg" class="rounded-full" alt="icon" /> -->
                                         <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
                                     </div>
                                 </dd>
                             </dl>
                             <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
+                                <!-- <img src="/assets/images/profileImage.svg" class="rounded-full w-6" alt="icon" /> -->
+                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 text-left leading-6">Jon Doe</NuxtLink>
                             </div>
 
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
+                        <td class="hidden lg:table-cell text-center font-bold">
+                            <p class="text-left">Jondoe incorporated</p>
                         </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
+                        <td class="hidden lg:table-cell text-center font-normal py-2">
+                            <p class="text-left font-semibold">+234 34547639</p>
+                            <p class="text-left text-blue-500">jondoe@mail.com</p>
                         </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
+                        
                     </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
-                            </div>
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
-                            </div>
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    
                 </tbody>
             </table>
         </div>
