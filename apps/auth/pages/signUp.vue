@@ -149,7 +149,7 @@ onMounted(async () => {
 })
 
 const getState = async (e: Event) => {
-    states.value = (await $services.base.getStatesByCountry({ country_code: e.target.value })).body
+    states.value = (await $services.base.getStatesByCountry({ country_code: e.target.value })).body;
 }
 
 const submitForm = async (event: Event) => {

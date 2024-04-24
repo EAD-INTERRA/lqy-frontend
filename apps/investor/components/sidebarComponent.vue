@@ -5,13 +5,13 @@
     </div>
     <div class="sidebarDiv">
       <div class="overview">
-        <p class="overviewText text-ox text-left">Overview</p>
-        <div class="dashboardDiv space-y-4 pr-12">
+        <p class="overviewText text-ox text-left">Quick Access</p>
+        <div class="dashboardDiv space-y-[-5%] pr-12">
           <div v-for="(option, index) in options" :key="option.to">
             <NuxtLink
               :to="option.to"
               :class="{
-                'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2 cursor-pointer': true,
+                'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2 cursor-pointer mr-5': true,
                 'rounded-t-[15px]': isActive(index) && index === 0,
                 'border-theme-as': isActive(index),
                 'rounded-b-[15px]':
@@ -25,6 +25,27 @@
         </div>
       </div>
       <div class="overview">
+        <p class="overviewText text-ox text-left">Business Types</p>
+        <div class="dashboardDiv">
+          <NuxtLink
+            to=""
+            class="flex flex-row sidebarLink text-ox"
+            exact-active-class="text-theme-as border-l-[5px] border-theme-as ">
+            <img src="~/assets/images/simple-icons_webmoney.svg" />Financial Institution View
+          </NuxtLink>
+          <NuxtLink to="" class="flex flex-row sidebarLink text-ox ">
+            <img src="~/assets/images/css-icon.svg" />CSCS View
+          </NuxtLink>
+          <NuxtLink to="" class="flex flex-row sidebarLink text-ox ">
+            <img src="~/assets/images/simple-icons_iobroker.svg" />Broker View
+          </NuxtLink>
+          <NuxtLink to="" class="flex flex-row sidebarLink text-ox ">
+            <img src="~/assets/images/interest-icon.svg" />Interest Rate
+          </NuxtLink>
+        </div>
+      </div>
+
+      <div class="overview">
         <p class="overviewText text-ox text-left">Account</p>
         <div class="dashboardDiv">
           <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
@@ -34,12 +55,12 @@
             >
           </NuxtLink>
           <NuxtLink
-            to="/settings"
+            to="/"
             class="flex flex-row sidebarLink text-ox"
             exact-active-class="text-theme-as border-l-[5px] border-theme-as ">
             <img src="~/assets/images/setting.svg" />Settings
           </NuxtLink>
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox "  @click="logout">
+          <NuxtLink to="" class="flex flex-row sidebarLink text-ox ">
             <img src="~/assets/images/logout.svg" />Log Out
           </NuxtLink>
         </div>
@@ -50,22 +71,8 @@
 
 <script lang="ts" setup>
 import { useRoute } from "vue-router";
-import {
-    useAuthStore
-} from 'stores/authStore';
 
-import {
-    createPinia
-} from 'pinia';
-
-const pinia = createPinia();
-pinia.use(useAuthStore);
-const authStore = useAuthStore(pinia);
 const route = useRoute();
-
-const logout = () => {
-    authStore.logout();
-}
 
 const options = [
   {
@@ -79,12 +86,11 @@ const options = [
       to: '',
       src: 'assets/images/stakeholder-icon.svg',
       src2: 'assets/images/stakeholder-icon.svg',
-      title: 'SRRA'
+      title: 'Margin List'
     } 
 ];
 
 const isActive = (index: number): boolean => {
   return options[index] && route.path === options[index].to;
 };
-
 </script>

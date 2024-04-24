@@ -172,10 +172,10 @@ body{
 /* Sidebar Start */
 .sidebar {
   display: flex;
-  padding: 5px 8px;
+  padding: 19px 8px;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 40px;
   background: #10356d;
 }
 
@@ -183,7 +183,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 48px;
   align-self: stretch;
 }
 .overview {

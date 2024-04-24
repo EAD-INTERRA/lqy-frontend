@@ -49,7 +49,7 @@
 import {
     createPinia
 } from 'pinia';
-import { useRoute } from "vue-router";
+
 const pinia = createPinia();
 pinia.use(useAuthStore);
 const authStore = useAuthStore(pinia);
@@ -62,49 +62,25 @@ const logout = () => {
   const route = useRoute();
   
   const options = [
-    {
-      to: '/',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon-active.svg',
-      title: 'Dashboard'
-    },
-    {
-      to: '/FI-profile',
-      src: 'assets/images/FI-profile.svg',
-      src2: 'assets/images/FI-profile.svg',
-      title: 'FI profile'
-    },
-    {
-      to: '/FI-interest',
-      src: 'assets/images/notification-icon.svg',
-      src2: 'assets/images/notification-icon.svg',
-      title: 'FI interest'
-    },
-    // {
-    //   to: '/FI-fee',
-    //   src: 'assets/images/setting.svg',
-    //   src2: 'assets/images/setting.svg',
-    //   title: 'FI revenue'
-    // },
-    // {
-    //   to: '/Broker-fee',
-    //   src: 'assets/images/FI-profile.svg',
-    //   src2: 'assets/images/FI-profile.svg',
-    //   title: 'Broker revenue'
-    // },
-    {
-      to: '/Maintenance',
-      src: 'assets/images/FI-profile.svg',
-      src2: 'assets/images/FI-profile.svg',
-      title: 'Maintenance call'
-    },
-    {
-      to: '/Security-Lending',
-      src: 'assets/images/notification-icon.svg',
-      src2: 'assets/images/notification-icon.svg',
-      title: 'Sec Lending'
-    }
-  ];
+  {
+    to: "FI-profile",
+    src: "assets/images/FI-profile.svg",
+    src2: "assets/images/FI-profile.svg",
+    title: "FI profile",
+  },
+  {
+    to: "/FI-interest",
+    src: "assets/images/notification-icon.svg",
+    src2: "assets/images/notification-icon.svg",
+    title: "FI interest accrued",
+  },
+  {
+    to: "",
+    src: "assets/images/setting.svg",
+    src2: "assets/images/setting.svg",
+    title: "FI fee revenue",
+  }
+];
   
   const isActive = (index: number): boolean => {
     return options[index] && route.path === options[index].to;
