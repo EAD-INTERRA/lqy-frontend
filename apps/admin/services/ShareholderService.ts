@@ -9,14 +9,15 @@ const MAX_RETRY_COUNT = 10; // Maximum number of retry attempts
 const pinia = createPinia();
 pinia.use(useAuthStore);
 const authStore = useAuthStore(pinia);
+let token = "";
+
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const retryAuthStoreBearerToken = async (): Promise<string> => {
     const isLoggedIn = authStore.isLoggedIn;
     const isAuthenticated = authStore.isAuthenticated;
-    console.log("Chaii",isAuthenticated);
     
     let retryCount = 0;
-    let token = '';
+    // let token = '';
 
     while (!token && retryCount < MAX_RETRY_COUNT) {
         token = await authStore.BearerToken();
@@ -39,7 +40,7 @@ const retryAuthStoreBearerToken = async (): Promise<string> => {
 
 
 (async () => {
-    let token = "";
+    
     {
         token = await retryAuthStoreBearerToken();
         console.log("SER", token);
