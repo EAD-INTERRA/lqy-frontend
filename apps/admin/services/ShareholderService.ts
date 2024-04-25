@@ -106,7 +106,7 @@ export class ShareholderService implements ShareholderServiceInterface {
 
     async getShareholders(): Promise<GetShareholdersResponse> {
         try {
-            const response = await this.client.get('stakeholder?page=1&size=5&type=') 
+            const response = await this.client.get('stakeholder?page=1&size=5&type=', { headers: { authorization: "Bearer " + token } }) 
             return response.data   
         } catch (error) {
             throw error 
@@ -115,7 +115,7 @@ export class ShareholderService implements ShareholderServiceInterface {
     
     async getShareholderById(shareholderId: number): Promise<GetShareholderResponse> {
         try {
-            const response = await this.client.get(`stakeholder/${shareholderId}`) 
+            const response = await this.client.get(`stakeholder/${shareholderId}`, { headers: { authorization: "Bearer " + token } }) 
             return response.data   
         } catch (error) {
             throw error 
@@ -124,7 +124,9 @@ export class ShareholderService implements ShareholderServiceInterface {
 
     async approveShareholder(shareholderId: number, input: ApproveShareholderInput): Promise<ApproveShareholderResponse> {
         try {
-            const response = await this.client.put(`stakeholder/${shareholderId}/status`, input);
+            const response = await this.client.put(`stakeholder/${shareholderId}/status`, input, {
+                 headers: { authorization: "Bearer " + token }
+             });
             return response.data   
         } catch (error) {
             throw error 
