@@ -38,11 +38,13 @@ const retryAuthStoreBearerToken = async (): Promise<string> => {
 };
 
 
-    let token = '';
-    if (process.client) {
+(async () => {
+    let token = "";
+    {
         token = await retryAuthStoreBearerToken();
         console.log("SER", token);
     }
+})();
 
 
 export interface Shareholder {

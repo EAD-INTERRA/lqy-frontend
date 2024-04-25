@@ -38,12 +38,13 @@ const retryAuthStoreBearerToken = async (): Promise<string> => {
     return token;
 };
 
-
-    let token = '';
-    if (process.client) {
+(async () => {
+    let token = "";
+    {
         token = await retryAuthStoreBearerToken();
         console.log("SER", token);
     }
+})();
 
 export interface Profile {
     id: number;
