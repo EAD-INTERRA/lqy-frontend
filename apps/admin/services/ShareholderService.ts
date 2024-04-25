@@ -20,7 +20,8 @@ const retryAuthStoreBearerToken = async (): Promise<string> => {
     // let token = '';
 
     while (!token && retryCount < MAX_RETRY_COUNT) {
-        token = await authStore.BearerToken();
+       
+        if (process.client) { token = await authStore.BearerToken();}
         if (!token) {
             console.log(`Retrying to fetch token... Retry count: ${retryCount + 1}`);
             await delay(RETRY_INTERVAL);
