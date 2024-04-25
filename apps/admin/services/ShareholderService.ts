@@ -19,17 +19,20 @@ const retryAuthStoreBearerToken = async (): Promise<string> => {
     let retryCount = 0;
     // let token = '';
 
-    while (!token && retryCount < MAX_RETRY_COUNT) {
-       
-        if (process.client) { token = await authStore.BearerToken();}
-        if (!token) {
-            console.log(`Retrying to fetch token... Retry count: ${retryCount + 1}`);
-            await delay(RETRY_INTERVAL);
-            retryCount++;
-        } else {
-            console.log("Token retrieval successful. Stopping retries.");
-            break; // Break out of the retry loop if token retrieval is successful
+    if (process.client) {
+        while (!token && retryCount < MAX_RETRY_COUNT) {
+            token = await authStore.BearerToken();
+            if (!token) {
+                console.log(`Retrying to fetch token... Retry count: ${retryCount + 1}`);
+                await delay(RETRY_INTERVAL);
+                retryCount++;
+            } else {
+                console.log("Token retrieval successful. Stopping retries.");
+                break; // Break out of the retry loop if token retrieval is successful
+            }
         }
+    } else {
+        console.log("Skipping token retrieval as the code is running on the server-side.");
     }
 
     if (!token) {
