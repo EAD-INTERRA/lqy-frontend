@@ -9,7 +9,6 @@
     </NuxtLayout>
 </div>
 </template>
-
   
 <script lang="ts" setup>
 import {
@@ -31,8 +30,7 @@ if (process.client) {
         path: route.path,
         query: {},
       });
-      console.log("HEYYY");
-      
+    //   window.location.reload();
     }
     else{
     authStore.checkAuth();}

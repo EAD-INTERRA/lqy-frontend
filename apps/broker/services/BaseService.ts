@@ -1,12 +1,49 @@
 import type { AxiosInstance } from "axios";
 
-let t = '';
-let token = '';
-if (typeof window !== 'undefined') {
-    t = localStorage.getItem("authToken");
-    token = JSON.parse(t).value;
-}
 
+import { useAuthStore } from 'stores/authStore';
+import { createPinia } from 'pinia';
+
+const RETRY_INTERVAL = 1000; // Retry interval in milliseconds
+const MAX_RETRY_COUNT = 10; // Maximum number of retry attempts
+
+const pinia = createPinia();
+pinia.use(useAuthStore);
+const authStore = useAuthStore(pinia);
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const retryAuthStoreBearerToken = async (): Promise<string> => {
+    const isLoggedIn = authStore.isLoggedIn;
+    const isAuthenticated = authStore.isAuthenticated;
+    console.log("Chaii",isAuthenticated);
+    
+    let retryCount = 0;
+    let token = '';
+
+    while (!token && retryCount < MAX_RETRY_COUNT) {
+        token = await authStore.BearerToken();
+        if (!token) {
+            console.log(`Retrying to fetch token... Retry count: ${retryCount + 1}`);
+            await delay(RETRY_INTERVAL);
+            retryCount++;
+        } else {
+            console.log("Token retrieval successful. Stopping retries.");
+            break; // Break out of the retry loop if token retrieval is successful
+        }
+    }
+
+    if (!token) {
+        console.error("Failed to retrieve token after maximum retry attempts.");
+    }
+
+    return token;
+};
+
+
+    let token = '';
+    if (process.client) {
+        token = await retryAuthStoreBearerToken();
+        console.log("SER", token);
+    }
 
 export interface Profile {
     id: number;

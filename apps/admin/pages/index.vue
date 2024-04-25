@@ -219,19 +219,8 @@ onMounted(async () => {
     const useToast = pkg.useToast;
     toast = useToast();
   }
-
-  
-  await getStakeHolders();
 });
 
-const getStakeHolders = async () => {
-  try {
-    const result = await $services.shareholder.getShareholders()
-    console.log(result)
-  } catch (err) {
-    console.log(err)
-  }
-}
 
 const chartData = ref([
   { name: "Equities", count: 12 },

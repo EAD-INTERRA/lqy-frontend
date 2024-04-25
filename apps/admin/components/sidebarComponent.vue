@@ -33,7 +33,7 @@
                         <span class="rounded-full bg-red-900 px-2 h-fit items-center">3</span></NuxtLink>
                     <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]"><img src="assets/images/setting.svg" />Settings
                     </NuxtLink>
-                    <NuxtLink to="" class="flex flex-row sidebarLink text-ox" @click="logout"><img src="~/assets/images/logout.svg" />Log Out</NuxtLink>
+                    <NuxtLink to="" class="flex flex-row sidebarLink text-ox cursor-pointer" @click="logout"><img src="~/assets/images/logout.svg" />Log Out</NuxtLink>
                 </div>
             </div>
         </div>
