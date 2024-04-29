@@ -40,10 +40,10 @@
             <NuxtLink
               to="/settings"
               class="flex flex-row sidebarLink text-ox"
-              exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]"
+              exact-active-class="text-theme-as border-l-[5px] border-theme-as "
               ><img src="assets/images/setting.svg" />Settings   
             </NuxtLink>
-             <NuxtLink to="" class="flex flex-row sidebarLink text-ox cursor-pointer"
+             <NuxtLink to="" class="flex flex-row sidebarLink text-ox rounded-b-[15px] cursor-pointer"
               ><img src="~/assets/images/logout.svg" />Log Out</NuxtLink
             >
           </div>
@@ -100,6 +100,12 @@ const options = [
     src: "assets/images/margin-icon.svg",
     src2: "assets/images/margin-icon.svg",
     title: "Margin list",
+  },
+  {
+    to: "",
+    src: "assets/images/notification-icon.svg",
+    src2: "assets/images/notification-icon.svg",
+    title: "Maintenance call",
   },
   {
     to: "",

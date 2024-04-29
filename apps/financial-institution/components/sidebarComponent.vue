@@ -78,6 +78,9 @@
               >3</span
             >
           </NuxtLink>
+          <NuxtLink to="" class="flex flex-row sidebarLink text-ox rounded-b-[15px] cursor-pointer"
+              ><img src="~/assets/images/logout.svg" />Log Out</NuxtLink
+            >
         </div>
       </div>
     </div>

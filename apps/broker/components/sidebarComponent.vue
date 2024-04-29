@@ -69,7 +69,7 @@
       title: 'History'
     },
     {
-      to: '/report',
+      to: '',
       src: 'assets/images/stakeholder-icon.svg',
       src2: 'assets/images/stakeholder-icon.svg',
       title: 'Report'
