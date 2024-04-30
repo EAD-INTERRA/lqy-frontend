@@ -40,7 +40,8 @@ module.exports = {
           "bcs":"#EE2E2E",
           "dg": "rgba(225, 229, 235, 0.55)",
           "vt": "#1f263e",
-          "tb": "#10356D1A"
+          "tb": "#10356D1A",
+          "cg": "#E1E5EB"
 
         },
       },

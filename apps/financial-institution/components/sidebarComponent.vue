@@ -1,67 +1,98 @@
 <template>
-    <div class="sidebar h-[100%]">
-      <div>
-        <img src="~/assets/images/lqyLogo.svg">
+  <div class="sidebar h-[100%]">
+    <div>
+      <img src="~/assets/images/lqyLogo.svg" />
+    </div>
+    <div class="sidebarDiv ">
+      <div class="overview">
+        <p class="overviewText text-ox text-left">Quick Access</p>
+        <div class="dashboardDiv">
+          <NuxtLink
+            to="/"
+            class="flex flex-row sidebarLink text-ox mr-9 "
+            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px] rounded-t-[15px] ">
+            <img src="~/assets/images/dashboard-icon.svg" />Dashboard
+          </NuxtLink>
+        </div>
       </div>
-      <div class="sidebarDiv">
-        <div class="overview">
-          <p class="overviewText text-ox text-left">Overview</p>
-          <div class="dashboardDiv">
-            <div v-for="(option, index) in options" :key="option.to">
-              <NuxtLink
-                :to="option.to"
-                :class="{
-                  'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2': true,
-                  'rounded-t-[15px]': isActive(index) && index === 0,
-                  'border-theme-as': isActive(index),
-                  'rounded-b-[15px]': isActive(index) && index === options.length - 1
-                }"
-                exact-active-class="text-theme-as border-l-[5px] border-theme-as"
-              >
-                <img :src="isActive(index) ? option.src2 : option.src" alt="" />
-                {{ option.title }}
-              </NuxtLink>
-            </div>
+      <div class="overview">
+        <p class="overviewText text-ox text-left">FI Group</p>
+        <div class="dashboardDiv mr-[-1%]">
+          <div v-for="(option, index) in options" :key="option.to">
+            <NuxtLink
+              :to="option.to"
+              :class="{
+                'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2 mr-[-1%] cursor-pointer': true,
+                'rounded-t-[15px]': isActive(index) && index === 0,
+                'border-theme-as': isActive(index),
+                'rounded-b-[15px]':
+                  isActive(index) && index === options.length - 1,
+              }"
+              exact-active-class="text-theme-as border-l-[5px] border-theme-as mr-[-1%]">
+              <img :src="isActive(index) ? option.src2 : option.src" alt="" />
+              {{ option.title }}
+            </NuxtLink>
           </div>
         </div>
-        <div class="overview">
-          <p class="overviewText text-ox text-left">Account</p>
-          <div class="dashboardDiv">
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
-              <img src="~/assets/images/notification-icon.svg">Notification
-              <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-4">3</span>
-            </NuxtLink>
-            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox">
-              <img src="~/assets/images/setting.svg" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]">More Info
-            </NuxtLink>
-           
-          </div>
+      </div>
+      <div class="overview">
+        <p class="overviewText text-ox text-left">Broker Group</p>
+        <div class="dashboardDiv mr-[-1%]">
+          <NuxtLink
+            to=""
+            class="flex flex-row sidebarLink text-ox cursor-pointer"
+            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px] rounded-t-[15px]">
+            <img src="/assets/images/FI-profile.svg" />Broker revenue
+          </NuxtLink>
+        </div>
+      </div>
+      <div class="overview">
+        <p class="overviewText text-ox text-left">Margin and security</p>
+        <div class="dashboardDiv">
+          <NuxtLink
+            to="/Maintenance"
+            class="flex flex-row sidebarLink text-ox h-fit mr-[-7%]"
+            exact-active-class="text-theme-as border-l-[5px] border-theme-as  rounded-t-[15px]">
+            <img src="~/assets/images/notification-icon.svg" />Maintenance call
+          </NuxtLink>
+          <NuxtLink
+            to="/Security-Lending"
+            class="flex flex-row sidebarLink text-ox"
+            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]">
+            <img src="~/assets/images/setting.svg" /> Sec. lending interest
+          </NuxtLink>
+        </div>
+      </div>
+      <div class="overview">
+        <p class="overviewText text-ox text-left">Account</p>
+        <div class="dashboardDiv">
+          <NuxtLink
+            to=""
+            class="flex flex-row sidebarLink text-ox cursor-pointer"
+            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-t-[15px]">
+            <img src="~/assets/images/setting.svg" />More Info
+          </NuxtLink>
+          <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
+            <img src="~/assets/images/notification-icon.svg" />Notification
+            <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-4"
+              >3</span
+            >
+          </NuxtLink>
+          <NuxtLink to="" class="flex flex-row sidebarLink text-ox rounded-b-[15px] cursor-pointer"
+              ><img src="~/assets/images/logout.svg" />Log Out</NuxtLink
+            >
         </div>
       </div>
     </div>
-  </template>
-  
-  <script lang="ts" setup>
-  import { useRoute } from 'vue-router';
-  import {
-    useAuthStore
-} from 'stores/authStore';
-import {
-    createPinia
-} from 'pinia';
+  </div>
+</template>
 
-const pinia = createPinia();
-pinia.use(useAuthStore);
-const authStore = useAuthStore(pinia);
+<script lang="ts" setup>
+import { useRoute } from "vue-router";
 
-const logout = () => {
-    authStore.logout();
+const route = useRoute();
 
-}
-  
-  const route = useRoute();
-  
-  const options = [
+const options = [
   {
     to: "FI-profile",
     src: "assets/images/FI-profile.svg",
@@ -81,9 +112,8 @@ const logout = () => {
     title: "FI fee revenue",
   }
 ];
-  
-  const isActive = (index: number): boolean => {
-    return options[index] && route.path === options[index].to;
-  };
-  </script>
-  
+
+const isActive = (index: number): boolean => {
+  return options[index] && route.path === options[index].to;
+};
+</script>
