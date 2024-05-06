@@ -13,8 +13,8 @@ interface LoginResponse {
 export interface SignupInput {
     company_name: string;
     email: string;
-    firstname: string;
-    lastname: string;
+    first_name: string;
+    last_name: string;
     country_code: string;
     state_id: number;
     type: string;

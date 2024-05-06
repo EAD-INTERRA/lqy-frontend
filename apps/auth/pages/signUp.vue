@@ -159,8 +159,8 @@ const submitForm = async (event: Event) => {
     const signupData = {
         company_name: company_name.value, 
         email: email.value, 
-        firstname: firstname.value, 
-        lastname: lastname.value, 
+        first_name: firstname.value, 
+        last_name: lastname.value, 
         country_code: country_code.value, 
         state_id: state_id.value, 
         type: type.value, 
