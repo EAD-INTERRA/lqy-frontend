@@ -91,8 +91,6 @@ const ToggleButton = () => {
   inputType.value = inputType.value === "password" ? "text" : "password";
 };
 
-const { $services } = useNuxtApp();
-
 const router = useRouter();
 const loading = ref(false);
 const email = ref("");
