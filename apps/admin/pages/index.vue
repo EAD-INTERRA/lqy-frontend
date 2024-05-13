@@ -182,7 +182,7 @@
                       <p>********</p>
                     </td>
                     <td class="table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
+                      <p class="text-green-500">$00,000</p>
                     </td>
                     
                   </tr>

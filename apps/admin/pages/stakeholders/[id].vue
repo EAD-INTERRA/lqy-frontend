@@ -29,7 +29,7 @@
           <div class="text-base">Investment Banking</div>
           <div class="text-xs">Last Name:</div>
           <div class="text-base" v-if="stakeholder.last_name">{{ stakeholder.first_name }}</div>
-          <div class="text-base" v-else>Unknown</div>
+          <div class="text-base" v-else>Uknown</div>
           <div class="text-xs">State:</div>
           <div class="text-base" v-if="stakeholder.state">{{ stakeholder.state }}</div>
           <div class="text-base" v-else>Unknown</div>
