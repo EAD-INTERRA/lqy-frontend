@@ -26,12 +26,12 @@
       </p>
       <hr />
       <div class="">
-        <table class="table-fixed w-full lg:w-full">
+        <table class="table-fixed w-full lg:w-auto">
           <thead>
             <tr
               class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-              <th class="w-24 pt-2 pb-2 hidden lg:table-cell">Role</th>
-              <th class="w-60 pt-2 pb-2 hidden lg:table-cell">
+              <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Role</th>
+              <th class="w-48 pt-2 pb-2 hidden lg:table-cell">
                 Stakeholder name
               </th>
               <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Organization</th>

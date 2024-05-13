@@ -72,7 +72,7 @@
                         <label class="font-ubuntu text-white text-sm font-normal leading-normal my-[5px] mx-[5px]">CAC Document</label>
                         <div class=" flex">
                             <!-- <p class="upload font-unbutu customWhite text-xs rounded-l-[8px]">Upload</p> -->
-                            <input type="file" class="form-control bg-theme-lb rounded-r-[8px] h-[40px] px-[10px] py-auto w-full" placeholder="" required />
+                            <input type="file" accept=".pdf, .docx, .doc, .png, .jpeg " class="form-control bg-theme-lb rounded-r-[8px] h-[40px] px-[10px] py-auto w-full" placeholder="" required />
                         </div>
 
                     </div>
