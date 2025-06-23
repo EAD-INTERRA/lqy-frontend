@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 space-y-6 mt-[50px] lg:mt-[100px] mx-auto lg:ml-64">
+  <div class="p-4 space-y-6 mt-[50px] lg:mt-[80px] mx-auto lg:ml-64">
     <section class="grid grid-cols-2 lg:grid-cols-4 w-fit lg:mr-6 gap-3 lg:gap-0">
       
       <div class="bg-theme-dg rounded-[12px]  px-[10px] py-[20px] md:p-[15px] w-[100%]  lg:w-[90%]">
@@ -182,7 +182,7 @@
                       <p>********</p>
                     </td>
                     <td class="table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
+                      <p class="text-green-500">$00,000</p>
                     </td>
                     
                   </tr>
@@ -203,6 +203,25 @@
 </template>
 
 <script lang="ts" setup>
+
+import { onMounted } from 'vue';
+import { StatusCode } from '~/helpers/statusCodes';
+
+let toast = null;
+const {
+    $services
+} = useNuxtApp()
+const route = useRoute();
+
+onMounted(async () => {
+  if (process.client) {
+    const pkg = await import('vue-toastification');
+    const useToast = pkg.useToast;
+    toast = useToast();
+  }
+});
+
+
 const chartData = ref([
   { name: "Equities", count: 12 },
   { name: "Bonds", count: 50 },
@@ -211,4 +230,5 @@ const chartData = ref([
 ]);
 
 const chartColors = ["#E0903F", "#65C569", "#AC65C5", "#6373F8"]; // External colors array
+
 </script>

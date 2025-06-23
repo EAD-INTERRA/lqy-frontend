@@ -15,7 +15,11 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@packages/authStore": ["packages/stores/authStore.ts"]
+    }
   },
   "exclude": ["node_modules"]
 }

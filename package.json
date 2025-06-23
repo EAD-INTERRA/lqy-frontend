@@ -13,5 +13,10 @@
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.6.10",
-  "name": "lqy-frontend"
+  "name": "lqy-frontend",
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
+    "packages": "link:C:/Users/user/Documents/Interra/lqy/packages",
+    "pinia": "^2.1.7"
+  }
 }

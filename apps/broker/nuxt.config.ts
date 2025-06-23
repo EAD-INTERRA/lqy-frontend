@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import {resolve} from "path";
+
+
 export default defineNuxtConfig({
   alias: {
     "@": resolve(__dirname, "/")
@@ -25,6 +27,12 @@ export default defineNuxtConfig({
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+    },
+  },
+  app: {
+    setup(app) {
+      // app.use(createPinia());
+      app.provide('pinia', pinia);
     },
   },
 })
