@@ -41,7 +41,8 @@ export const useAuthStore = defineStore({
       const token = getWithExpiry('authToken');
       console.log("HNMMM", token);
       if (!token) {
-        window.location.href = 'http://lqy-auth.interranetworks.com'; //TEST
+        console.log("Token is null or undefined.", token);
+        // window.location.href = 'http://lqy-auth.interranetworks.com'; //TEST
         // window.location.href = 'http://localhost:3000'; //LOCAL
         return false;
       }

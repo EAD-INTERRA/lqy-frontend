@@ -1,49 +1,53 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import {resolve} from "path";
+import { defineNuxtConfig } from "nuxt/config";
+import { config } from "dotenv";
+import { resolve } from "path";
+import { createPinia } from "pinia"; // ✅ Proper import for Pinia
+
 export default defineNuxtConfig({
   alias: {
-    "@": resolve(__dirname, "/")
+    "@": resolve(__dirname, "/"),
   },
   devtools: { enabled: true },
-   modules: [
-    ['@nuxtjs/google-fonts', {
-      families: {
-        Sen: true,
-        Oxygen: true,
+  modules: [
+    [
+      "@nuxtjs/google-fonts",
+      {
+        families: {
+          Sen: true,
+          Oxygen: true,
+        },
+        display: "swap", // Recommended for performance
+        prefetch: true, // Optional, improves initial loading speed
+        download: true, // Optional, downloads fonts on first visit
       },
-      display: 'swap', // Recommended for performance
-      prefetch: true, // Optional, improves initial loading speed
-      download: true // Optional, downloads fonts on first visit
-    }]
+    ],
   ],
   css: [
-    '~/assets/css/tailwind.css',
-    '~/assets/css/main.css',
-    // "~/assets/css/tailwind.scss",
-  ],
+      '~/assets/css/tailwind.css',
+      '~/assets/css/main.css',
+    ],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  runtimeConfig:{
+  runtimeConfig: {
     public: {
-      admin: process.env.admin,
-      Broker: process.env.Broker,
-      CSCS: process.env.CSCS,
-      Custodian: process.env.Custodian,
-      Investor: process.env.Investor,
-      Financial_Institutions: process.env.Financial_Institutions,
-      auth: process.env.auth
-    }
+          admin: process.env.admin,
+          Broker: process.env.Broker,
+          CSCS: process.env.CSCS,
+          Custodian: process.env.Custodian,
+          Investor: process.env.Investor,
+          Financial_Institutions: process.env.Financial_Institutions,
+          auth: process.env.auth
+        }
   },
-  plugins: [
-    '~/plugins/piniaPlugin.ts',
-  ],
+  plugins: ["~/plugins/piniaPlugin.ts"],
   app: {
     setup(app) {
-      app.use(createPinia());
+      app.use(createPinia()); 
     },
   },
 })

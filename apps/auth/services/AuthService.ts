@@ -41,13 +41,14 @@ export class AuthService implements AuthServiceInterface {
 
     async login(input: LoginInput): Promise<LoginResponse> {
         try {
-            const response = await this.client.post('/token', input) 
+            const response = await this.client.post('auth/login', input) 
             return response.data   
         } catch (error) {
             throw error 
         }
         
     }
+    
     
     async signup(input: SignupInput): Promise<SignupResponse> {
         try {
