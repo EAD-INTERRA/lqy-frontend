@@ -38,9 +38,20 @@
             </div>
 
             <div class="flex flex-col justify-center text-center mt-3">
-              <button
+              <!-- <button
                 class="font-ubuntu form-submit w-full h-[55px] md:p-2.5 dark text-sm md:text-lg font-normal leading-normal">
                 Login
+              </button> -->
+              <button
+                class="font-ubuntu form-submit w-full h-[40px] md:p-2.5 dark text-sm md:text-lg font-normal leading-normal"
+                :disabled="loading">
+                <span v-if="loading" class="animate-spin mr-2">
+                  <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                </span>
+                <span>{{ loading ? 'Logging in...' : 'Login' }}</span>
               </button>
               <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">
                 Don't have an account?
@@ -85,9 +96,10 @@ let roles: Ref<Roles[]> = ref([]);
 const submitForm = async (event: Event) => {
   event.preventDefault();
   loading.value = true;
+  localStorage.setItem("email", email.value);
 
   const loginData = {
-    email: email.value,
+    username: email.value,
     password: password.value,
   }
 
@@ -95,40 +107,12 @@ const submitForm = async (event: Event) => {
     const result = await $services.auth.login(loginData)
     console.log("result", result);
     if (result.message === "SUCCESSFUL") {
-      toast.success(result.message);
-      localStorage.setItem("credentials", JSON.stringify(result));
-      const authToken = result.body?.access_token;
-      localStorage.setItem("authToken", result.body.access_token);
-      console.log("authToken, redirect ", authToken);
-      // console.log("Store authToken, redirect ", authToken);
-
-      // ✅ Redirect to the dashboard
-      const config = useRuntimeConfig();
-      console.log("Config:::", config.public.admin);
-      const redirectionUrls = {
-        SUPERADMIN: config.public.admin,
-        admin: config.public.admin,
-        string: config.public.admin,
-        DOCTOR: config.public.doctor,
-        Broker: config.public.Broker,
-        CSCS: config.public.CSCS,
-        Custodian: config.public.Custodian,
-        Investor: config.public.Investor,
-        Financial_Institutions: config.public.Financial_Institutions
-      };
-
-      const role = result.body.role.name;
-      console.log("role", role);
-      console.log("Redirection URL:", redirectionUrls[role]);
-      if (redirectionUrls[role]) {
-        window.location.href = redirectionUrls[role] + "?token=" + authToken;
-        localStorage.setItem("Token", result.body.access_token);
-        return;
-      }
+      toast.success(result.body);
+      router.push("/otp");
     }
     else toast.error(result.body);
   } catch (error) {
-    const err = error.result.data.body
+    const err = error.result.body
     toast.error(err);
   } finally {
     loading.value = false

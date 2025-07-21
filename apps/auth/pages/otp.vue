@@ -68,21 +68,49 @@ const {
 
 const router = useRouter();
 const loading = ref(false);
-// const email = ref("");
+const email = ref("");
 const otp = ref("");
 
 const submitForm = async (event: Event) => {
   event.preventDefault();
   loading.value = true;
 
- console.log("otp", otp.value);
+  const loginData = {
+    email: localStorage.getItem("email") || email.value,
+    token: otp.value,
+  }
 
   try {
-    const result = await $services.auth.activate_account(otp.value);
+    const result = await $services.auth.verify_login(loginData)
     console.log("result", result);
     if (result.message === "SUCCESSFUL") {
       toast.success(result.body);
-      router.push("/");
+      localStorage.setItem("credentials", JSON.stringify(result));
+      const authToken = result.body?.access_token;
+      localStorage.setItem("authToken", result.body.access_token);
+      console.log("authToken, redirect ", authToken);
+      // console.log("Store authToken, redirect ", authToken);
+
+      // ✅ Redirect to the dashboard
+      const config = useRuntimeConfig();
+      console.log("Config:::", config.public.admin);
+      const redirectionUrls = {
+        SUPERADMIN: config.public.admin,
+        Broker: config.public.Broker,
+        CSCS: config.public.CSCS,
+        Custodian: config.public.Custodian,
+        Investor: config.public.Investor,
+        Financial_Institutions: config.public.Financial_Institutions
+      };
+
+      const role = result.body.role;
+      console.log("role", role);
+      console.log("Redirection URL:", redirectionUrls[role]);
+      if (redirectionUrls[role]) {
+        window.location.href = redirectionUrls[role] + "?token=" + authToken;
+        localStorage.setItem("Token", result.body.access_token);
+        return;
+      }
     }
     else toast.error(result.body);
   } catch (error) {

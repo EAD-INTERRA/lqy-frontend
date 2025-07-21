@@ -33,16 +33,15 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  runtimeConfig: {
+ runtimeConfig: {
     public: {
-          admin: process.env.admin,
-          Broker: process.env.Broker,
-          CSCS: process.env.CSCS,
-          Custodian: process.env.Custodian,
-          Investor: process.env.Investor,
-          Financial_Institutions: process.env.Financial_Institutions,
-          auth: process.env.auth
-        }
+      admin: process.env.NUXT_PUBLIC_ADMIN,
+      Broker: process.env.NUXT_PUBLIC_BROKER,
+      CSCS: process.env.NUXT_PUBLIC_CSCS,
+      Custodian: process.env.NUXT_PUBLIC_CUSTODIAN,
+      Investor: process.env.NUXT_PUBLIC_INVESTOR,
+      Financial_Institutions: process.env.NUXT_PUBLIC_FINANCIAL_INSTITUTIONS,
+    }
   },
   plugins: ["~/plugins/piniaPlugin.ts"],
   app: {
