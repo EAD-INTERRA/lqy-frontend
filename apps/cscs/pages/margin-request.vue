@@ -1,7 +1,7 @@
 <template>
     <div class="p-4 space-y-6 ">
         <section class="mb-4">
-            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Status</div>
+            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Request</div>
 
             <div class="bg-white shadow-lg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
 
@@ -12,7 +12,7 @@
                             <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">S/N</th>
                             <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">Account Name</th>
                             <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">CHN Number</th>
-                            <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">Status</th>
+                            <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,8 +30,8 @@
                             <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
                                 <p class="text-left">{{ allRequest.chn }}</p>
                             </td>
-                            <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                                <p class="text-left border">{{ allRequest.status }}</p>
+                            <td class=" flex mt-5 text-center justify-center items-center">
+                               <button @click="showModal(allRequest)" class="border border-solid border-blue-500 text-blue-500 text-ox text-base bg-white px-2 lg:px-6 rounded-[5px]">View</button>
                             </td>
                         </tr>
 
@@ -119,4 +119,36 @@ onMounted(async () => {
         toast.error("Failed to fetch profiles");
     }
 });
+
+const handleApprove = async (id) => {
+    try {
+        const response = await $services.base.approveMarginRequest(id);
+        if (response.message === 'SUCCESSFUL' || response.code === 200) {
+            toast.success('Margin request approved successfully!');
+            // Optionally, refresh the list of requests
+            onMounted();
+        } else {
+            toast.error('Failed to approve margin request: ' + (response.message || 'Unknown error'));
+        }
+    } catch (error) {
+        console.error("Error approving margin request:", error);
+        toast.error("Failed to approve margin request");
+    }
+};
+
+const handleDecline = async (id) => {
+    try {
+        const response = await $services.base.declineMarginRequest(id);
+        if (response.message === 'SUCCESSFUL' || response.code === 200) {
+            toast.success('Margin request declined successfully!');
+            // Optionally, refresh the list of requests
+            onMounted();
+        } else {
+            toast.error('Failed to decline margin request: ' + (response.message || 'Unknown error'));
+        }
+    } catch (error) {
+        console.error("Error declining margin request:", error);
+        toast.error("Failed to decline margin request");
+    }
+};  
 </script>

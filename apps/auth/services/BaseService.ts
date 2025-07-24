@@ -67,6 +67,7 @@ export class BaseService implements BaseServiceInterface {
     async getStatesByCountry(input: GetStateInput): Promise<GetStateResponse> {
         try {
             const response = await this.client.get(`base/country/state/${input.country_code}`  ) 
+            console.log("getStatesByCountry", response)
             return response.data   
         } catch (error) {
             throw error 

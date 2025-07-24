@@ -8,9 +8,9 @@
     </div>
     <div class="w-full max-w-md md:max-w-xl mx-auto">
       <div class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] p-6 sm:p-10 md:p-12 mt-8">
-        <img src="../assets/images/lock.svg" class="flex justify-center mx-auto mb-4" />
+        <!-- <img src="../assets/images/lock.svg" class="flex justify-center mx-auto mb-4" /> -->
         <h3 class="customWhite pb-8 text-center font-ubuntu text-2xl font-bold">
-          Authenticate your account
+          OTP
         </h3>
         <form @submit="submitForm">
           <div class="flex flex-col w-full">
@@ -154,21 +154,44 @@ const submitForm = async (event: Event) => {
     return;
   }
 
-  console.log("otp", otp);
+  const loginData = {
+    email: email.value,
+    token: otp,
+  };
 
   try {
-    const result = await $services.auth.activate_account(otp);
-    console.log("result", result);
+    const result = await $services.auth.verify_login(loginData);
     if (result.message === "SUCCESSFUL") {
-      toast.success(result.body);
-      router.push("/");
+      // toast.success(result.body);
+      localStorage.setItem("credentials", JSON.stringify(result));
+      const authToken = result.body?.access_token;
+      localStorage.setItem("authToken", result.body.access_token);
+
+      // Redirect to the dashboard
+      const config = useRuntimeConfig();
+      const redirectionUrls = {
+        SUPERADMIN: config.public.admin,
+        Broker: config.public.Broker,
+        CSCS: config.public.CSCS,
+        Custodian: config.public.Custodian,
+        Investor: config.public.Investor,
+        Financial_Institutions: config.public.Financial_Institutions
+      };
+
+      const role = result.body.role;
+      if (redirectionUrls[role]) {
+        window.location.href = redirectionUrls[role] + "?token=" + authToken;
+        localStorage.setItem("Token", result.body.access_token);
+        return;
+      }
+    } else {
+      toast.error(result.body);
     }
-    else toast.error(result.body);
   } catch (error) {
-    const err = error.result.data.body
+    const err = error.result?.data?.body || "OTP verification failed";
     toast.error(err);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 };
 </script>

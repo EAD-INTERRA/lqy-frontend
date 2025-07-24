@@ -175,7 +175,7 @@ body{
   padding: 5px 8px;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 45px;
   background: #10356d;
 }
 
@@ -211,7 +211,7 @@ body{
   gap: 5px;
   align-self: stretch;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
 }
 .sidebarLink {
   display: flex;

@@ -1,0 +1,13 @@
+<svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_3854_32846" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="3" width="42" height="51">
+<path d="M44.582 5.16602H11.9154C11.2965 5.16602 10.703 5.41185 10.2654 5.84943C9.82786 6.28702 9.58203 6.88051 9.58203 7.49935V49.4993C9.58203 50.1182 9.82786 50.7117 10.2654 51.1493C10.703 51.5868 11.2965 51.8327 11.9154 51.8327H44.582C45.2009 51.8327 45.7944 51.5868 46.232 51.1493C46.6695 50.7117 46.9154 50.1182 46.9154 49.4993V7.49935C46.9154 6.88051 46.6695 6.28702 46.232 5.84943C45.7944 5.41185 45.2009 5.16602 44.582 5.16602Z" fill="white" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.082 35.4993H36.4154M20.082 42.4993H28.2487M23.582 24.9993L32.9154 15.666M32.9154 24.9993L23.582 15.666" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</mask>
+<g mask="url(#mask0_3854_32846)">
+<path d="M0.25 0.5H56.25V56.5H0.25V0.5Z" fill="#F2A808"/>
+</g>
+<rect x="18.918" y="9.83398" width="19.8333" height="19.8333" fill="#F2A808"/>
+<circle cx="18.25" cy="21.5" r="2" fill="white"/>
+<circle cx="24.25" cy="21.5" r="2" fill="white"/>
+<circle cx="30.25" cy="21.5" r="2" fill="white"/>
+</svg>

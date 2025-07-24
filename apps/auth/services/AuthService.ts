@@ -29,6 +29,7 @@ interface  SignupResponse {
 
 export interface AuthServiceInterface {
     login(input: LoginInput): Promise<LoginResponse>
+    verify_login(input: LoginInput): Promise<LoginResponse>
     signup(input: SignupInput): Promise<SignupResponse>
 }
 
@@ -41,7 +42,17 @@ export class AuthService implements AuthServiceInterface {
 
     async login(input: LoginInput): Promise<LoginResponse> {
         try {
-            const response = await this.client.post('auth/login', input) 
+            const response = await this.client.post('token', input) 
+            return response.data   
+        } catch (error) {
+            throw error 
+        }
+        
+    }
+
+    async verify_login(input: LoginInput): Promise<LoginResponse> {
+        try {
+            const response = await this.client.post('verify_login', input) 
             return response.data   
         } catch (error) {
             throw error 
@@ -59,4 +70,14 @@ export class AuthService implements AuthServiceInterface {
         }
         
     }
+
+    async activate_account(otp: string): Promise<LoginResponse> {
+    try {
+        const response = await this.client.post(`activate/${otp}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+    
 }

@@ -9,13 +9,12 @@ export interface ServiceProviderInterface {
 
 export const serviceProvider = (): ServiceProviderInterface => {
     const auth = axios.create({
-        baseURL: 'https://resmat-coreapi.interranetworks.com/api/v1/' //TEST
-        // baseURL: 'http://131.226.242.233:5500/api/v1/account/' //TEST
-        // baseURL: 'http://localhost:3333/api/v1/account', //LOCAL
+        // baseURL: 'https://131.226.242.233:5500/api/v1/account/' //LOCAL
+        baseURL: 'https://lqy-authapi.interranetworks.com/api/v1/account/'//TEST
     })
     const base = axios.create({
-        // baseURL: 'http://localhost:3333/api/v1/'
-        baseURL: 'http://131.226.242.233:5500/api/v1/', //TEST
+        // baseURL: 'https://131.226.242.233:5500/api/v1/', //LOCAL
+        baseURL: 'https://lqy-authapi.interranetworks.com/api/v1/'  //TEST
     })
     return {
         auth: new AuthService(auth),
