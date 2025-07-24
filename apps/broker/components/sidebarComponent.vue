@@ -1,89 +1,130 @@
 <template>
-    <div class="sidebar h-[100vh]">
-      <div>
-        <img src="~/assets/images/lqyLogo.svg">
-      </div>
-      <div class="sidebarDiv">
-        <div class="overview">
-          <p class="overviewText text-ox text-left">Overview</p>
-          <div class="dashboardDiv space-y-2">
-            <div v-for="(option, index) in options" :key="option.to">
-              <NuxtLink
-                :to="option.to"
-                :class="{
-                  'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2 cursor-pointer': true,
-                  'rounded-t-[15px]': isActive(index) && index === 0,
-                  'border-theme-as': isActive(index),
-                  'rounded-b-[15px]': isActive(index) && index === options.length - 1
-                }"
-                exact-active-class="text-theme-as border-l-[5px] border-theme-as"
-              >
-                <img :src="isActive(index) ? option.src2 : option.src" alt="" />
-                {{ option.title }}
+  <div class="sidebar  h-[100vh]">
+    <div>
+      <img src="~/assets/images/lqyLogo.svg">
+    </div>
+    <div class="sidebarDiv">
+      <div class="overview">
+        <div class="dashboardDiv space-y-2">
+          <!-- Overview -->
+          <NuxtLink to="/"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/' }">
+            <img src="~/assets/images/dashboard-icon.svg" alt="" />
+            Overview
+          </NuxtLink>
+
+          <!-- Investor -->
+          <NuxtLink to="/investor"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/investor' }">
+            <img src="~/assets/images/dashboard-icon.svg" alt="" />
+            Investor
+          </NuxtLink>
+
+          <!-- Margin Dropdown -->
+          <div>
+            <button type="button" @click="showMargin = !showMargin"
+              class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
+              :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/margin-request', '/margin-check'].includes($route.path) }">
+              <img src="~/assets/images/stakeholder-icon.svg" alt="" />
+              Margin
+              <svg :class="['ml-auto transition-transform', showMargin ? 'rotate-90' : '']" width="16" height="16"
+                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div v-if="showMargin" class=" pl-5">
+              <NuxtLink to="/margin-check"
+                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2  py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/history' }">
+                Margin Check
+              </NuxtLink>
+              <NuxtLink to="/margin-request"
+                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/margin-request' }">
+                Margin Request
+              </NuxtLink>
+
+            </div>
+          </div>
+
+          <!-- History Dropdown -->
+          <div>
+            <button type="button" @click="showHistory = !showHistory"
+              class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
+              :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/trading-history', '/history'].includes($route.path) }">
+              <img src="~/assets/images/stakeholder-icon.svg" alt="" />
+              History
+              <svg :class="['ml-auto transition-transform', showHistory ? 'rotate-90' : '']" width="16" height="16"
+                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div v-if="showHistory" class="pl-5">
+              <NuxtLink to="/trading-history"
+                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/trading-history' }">
+                <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
+                Trading History
+              </NuxtLink>
+              <NuxtLink to="/history"
+                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/history' }">
+                <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
+                Case History
+              </NuxtLink>
+              <NuxtLink to="/history"
+                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/history' }">
+                <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
+                Transaction History
               </NuxtLink>
             </div>
           </div>
-        </div>
-        <div class="overview">
-          <p class="overviewText text-ox text-left">Account</p>
-          <div class="dashboardDiv">
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit cursor-pointer" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-t-[15px] ">
-              <img src="~/assets/images/notification-icon.svg">Notification
-              <span class="rounded-full bg-red-900 px-2 mr-5 h-fit items-center">3</span>
-            </NuxtLink>
-            <NuxtLink to="/settings" class="flex flex-row sidebarLink text-ox" exact-active-class="text-theme-as border-l-[5px] border-theme-as">
-              <img src="~/assets/images/setting.svg">Settings
-            </NuxtLink>
-            <NuxtLink to="" class="flex flex-row sidebarLink text-ox" exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]">
-              <img src="~/assets/images/logout.svg">Log Out
-            </NuxtLink>
-          </div>
+
+          <!-- Report -->
+          <NuxtLink to="/investor-request"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/investor-request' }">
+            <img src="~/assets/images/stakeholder-icon.svg" alt="" />
+            Report
+          </NuxtLink>
+
+          <!-- Settings -->
+          <NuxtLink to="/settings"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/settings' }">
+            <img src="~/assets/images/setting.svg" alt="" />
+            Settings
+          </NuxtLink>
+
+          <!-- Log Out -->
+          <NuxtLink to="/logout"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/logout' }">
+            <img src="~/assets/images/logout.svg" alt="" />
+            Log Out
+          </NuxtLink>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script lang="ts" setup>
-  import { useRoute } from 'vue-router';
-  
-  const route = useRoute();
-  
-  const options = [
-    {
-      to: '/',
-      src: 'assets/images/dashboard-icon.svg',
-      src2: 'assets/images/dashboard-icon-active.svg',
-      title: 'Dashboard'
-    },
-    {
-      // to: '/trade-view',
-      to: '',
-      src: 'assets/images/stakeholder-icon.svg',
-      src2: 'assets/images/stakeholder-icon.svg',
-      title: 'Trading View'
-    },
-    {
-      to: '/history',
-      src: 'assets/images/stakeholder-icon.svg',
-      src2: 'assets/images/stakeholder-icon.svg',
-      title: 'History'
-    },
-    {
-      to: '',
-      src: 'assets/images/stakeholder-icon.svg',
-      src2: 'assets/images/stakeholder-icon.svg',
-      title: 'Report'
-    },
-    {
-      to: '/investor-request',
-      src: 'assets/images/stakeholder-icon.svg',
-      src2: 'assets/images/stakeholder-icon.svg',
-      title: 'Investors Request'
-    }
-  ];
-  
-  const isActive = (index: number): boolean => {
-    return options[index] && route.path === options[index].to;
-  };
-  </script>
-  
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const showMargin = ref(false);
+const showHistory = ref(false);
+</script>

@@ -1,12 +1,13 @@
 <template>
-    <section class="hero custom-container bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32">
+    <section class="hero custom-container bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative">
+        <!-- Logo at top-left corner on md+ screens -->
+        <div class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10">
+            <h1 class="l-color">L</h1>
+            <h1 class="customWhite">Q</h1>
+            <h1 class="y-color">Y</h1>
+        </div>
         <div class="w-full max-w-4xl mx-auto">
-            <div class="hidden md:flex justify-center font-ubuntu text-[50px] pb-5 font-bold">
-                <h1 class="l-color">L</h1>
-                <h1 class="customWhite">Q</h1>
-                <h1 class="y-color">Y</h1>
-            </div>
-            <div class="customBorder shadow-lg rounded-[8px] p-6 sm:p-12 md:p-16">
+            <div class="customBorder shadow-lg rounded-[8px] p-6 sm:p-12 md:p-6 bg-opacity-90">
                 <h3 class="customWhite pb-8 text-center font-ubuntu text-xl font-bold">SignUp</h3>
                 <form @submit="submitForm">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
@@ -78,10 +79,10 @@
                             <input :type="inputType" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-3 pr-10"
                                 placeholder="Enter your password" required v-model="password" />
                             <button type="button" @click="togglePassword" aria-label="Toggle password visibility"
-                                class="absolute right-3 top-9 text-xl text-white bg-transparent focus:outline-none flex items-center p-1"
+                                class="absolute right-3 top-9 text-xl customOrange bg-transparent focus:outline-none flex items-center p-1"
                                 tabindex="0">
                                 <span v-if="inputType === 'password'">
-                                    <!-- Eye icon -->
+                                    <!-- Eye icon (blue) -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -89,7 +90,7 @@
                                     </svg>
                                 </span>
                                 <span v-else>
-                                    <!-- Eye-off icon -->
+                                    <!-- Eye-off icon (blue) -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -111,7 +112,7 @@
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                                 </svg>
                             </span>
-                            <span>{{ loading ? 'Submitting...' : 'Submit' }}</span>
+                            <span>{{ loading ? 'Submitting...' : 'Submit Details' }}</span>
                         </button>
                         <p class="customWhite text-center text-lg font-ubuntu">
                             Already have an account?
@@ -211,9 +212,22 @@ const submitForm = async (event: Event) => {
 </script>
 
 <style scoped>
+@media (max-width: 1024px) {
+    .customBorder {
+        padding: 1.5rem !important;
+    }
+}
 @media (max-width: 768px) {
     .customBorder {
         padding: 1rem !important;
+    }
+    .max-w-4xl {
+        max-width: 100% !important;
+    }
+}
+@media (max-width: 640px) {
+    .customBorder {
+        padding: 0.5rem !important;
     }
 }
 </style>

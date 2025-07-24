@@ -1,11 +1,11 @@
 <template>
   <div class="p-4 space-y-6">
     <section class="grid grid-cols-3 w-3/4 gap-4">
-      <div class="bg-theme-cg rounded-[12px] px-[32px] py-[16px]">
+      <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
         <p class="font-ox text-ox-xs">Account Balance</p>
         <p class="font-ox font-bold text-ox-lg">$754,434.90</p>
       </div>
-      <div class="bg-theme-cg rounded-[12px] p-[16px]">
+      <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">-[16px]">
         <div class="flex font-normal font-ox justify-between">
           <p class="text-ox-xs">30 Days Profit</p>
           <div class="flex flex-col items-end mr-4">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-theme-cg rounded-[12px] p-[16px]">
+      <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">-[16px]">
         <div class="flex font-normal font-ox justify-between">
           <p class="text-ox-xs">Overall Loss</p>
           <div class="flex flex-col items-end mr-4">
@@ -26,7 +26,7 @@
     </section>
 
     <section class="flex">
-      <div class="w-[75%] rounded-md bg-theme-cg p-[25px]">
+      <div class="w-[75%] rounded-md bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">p-[25px]">
         <LineChart :labels="chartLabels" :datasets="chartDatasets" />
       </div>
       <div class="w-[25%] flex flex-col items-center space-y-8">
@@ -37,7 +37,7 @@
 
     <section class="mb-4">
       <div
-        class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
+        class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
         <div class="mb-6">
           <p
             class="bg-theme-bc bg-opacity-25 bolder w-fit text-lg px-3 py-1 rounded-[5px]">

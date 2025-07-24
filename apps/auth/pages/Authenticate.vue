@@ -1,48 +1,56 @@
 <template>
-  <section class="hero bg h-[100vh] w-full">
-    <div class="flex flex-col w-full md:w-full mx-auto">
-      <div class="hidden md:flex font-ubuntu pt-5 pl-5 text-[50px] pb-5 font-bold">
-        <h1 class="l-color">L</h1>
-        <h1 class="customWhite">Q</h1>
-        <h1 class="y-color">Y</h1>
-        <!-- <img src="url(/_nuxt/public/assets/images/auth-bg.svg)" /> -->
-      </div>
-      <div
-        class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] w-fit mx-[50px] mt-[40%] md:mt-0 md:w-[721px] h-[100%] p-[25px] md:mx-auto">
-        <h3 class="customWhite md:pb-8 justify-center text-center font-ubuntu text-xl font-bold">
-          OTP
+  <section class="hero bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative">
+    <!-- Logo at top-left corner on md+ screens -->
+    <div class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10">
+      <h1 class="l-color">L</h1>
+      <h1 class="customWhite">Q</h1>
+      <h1 class="y-color">Y</h1>
+    </div>
+    <div class="w-full max-w-md md:max-w-xl mx-auto">
+      <div class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] p-6 sm:p-10 md:p-12 mt-8">
+        <img src="../assets/images/lock.svg" class="flex justify-center mx-auto mb-4" />
+        <h3 class="customWhite pb-8 text-center font-ubuntu text-2xl font-bold">
+          Authenticate your account
         </h3>
-         <form action="" @submit="submitForm">
-            <div class="flex flex-col">
-              <label
-                class="font-ubuntu customWhite text-lg mb-3 text-center font-normal leading-normal"
-                >Enter the OTP sent to your mail.</label
-              >
+        <form @submit="submitForm">
+          <div class="flex flex-col w-full">
+            <label class="font-ubuntu customWhite text-sm mb-3 text-center font-normal leading-normal">
+              Enter the OTP sent to your mail.
+            </label>
+            <div class="flex justify-center gap-2 mb-4">
               <input
-                type="password"
-                v-model="otp"
-                class="form-control bg-theme-lb rounded-[8px] h-[40px] px-[10px] py-auto w-full"
-                placeholder=""
-                required />
-           </div>
-          <div class="justify-center text-center mt-6">
-            <!-- <button
-              class="font-ubuntu form-submit w-[70%] mb-3 h-[55px] p-2.5 dark text-lg font-normal leading-normal">
-              Let’s Go...
-            </button> -->
-
+                v-for="(digit, idx) in otpDigits"
+                :key="idx"
+                ref="otpInput"
+                :ref="el => otpRefs[idx] = el"
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                class="w-10 h-12 text-center text-xl rounded bg-theme-lb text-white border border-theme-lb focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                v-model="otpDigits[idx]"
+                @input="onInput(idx, $event)"
+                @keydown="onKeydown(idx, $event)"
+                @paste="onPaste($event)"
+                autocomplete="one-time-code"
+              />
+            </div>
+          </div>
+          <div class="flex w-full flex-col items-center justify-center text-center mt-4">
             <button
-                class="font-ubuntu form-submit w-full h-[40px] md:p-2.5 dark text-sm md:text-lg font-normal leading-normal"
-                :disabled="loading">
-                <span v-if="loading" class="animate-spin mr-2">
-                  <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                  </svg>
-                </span>
-                <span>{{ loading ? 'Logging in...' : 'Let’s Go...' }}</span>
-              </button>
-            <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">Didn’t get an OTP at “example@mail.com” ? <nuxt-link to="#" class="customOrange">Resend</nuxt-link></p>
+              class="font-ubuntu form-submit w-[60%] h-[40px] md:p-2.5 dark text-sm md:text-lg hover:bg-theme-lb hover:text-white font-normal leading-normal flex items-center justify-center"
+              :disabled="loading">
+              <span v-if="loading" class="animate-spin mr-2">
+                <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                </svg>
+              </span>
+              <span>{{ loading ? 'Logging in...' : 'Let’s Go...' }}</span>
+            </button>
+            <p class="customWhite pb-8 flex w-full justify-center text-center text-sm font-ubuntu mt-3">
+              Didn’t get an OTP at “{{ emailDisplay }}” ?
+              <NuxtLink to="#" class="customOrange">Resend</NuxtLink>
+            </p>
           </div>
         </form>
       </div>
@@ -51,34 +59,105 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  StatusCode
-} from '~/helpers/statusCodes';
-let toast = null;
+import { ref, computed, nextTick } from 'vue';
+import { useRouter, useNuxtApp, useRuntimeConfig } from '#imports';
+import { StatusCode } from '~/helpers/statusCodes';
 
+let toast = null;
 if (process.client) {
   import('vue-toastification').then(pkg => {
     const useToast = pkg.useToast;
     toast = useToast();
   });
 }
-const {
-  $services
-} = useNuxtApp()
+const { $services } = useNuxtApp();
 
 const router = useRouter();
 const loading = ref(false);
-// const email = ref("");
-const otp = ref("");
+const email = ref("");
+if (process.client) {
+  email.value = localStorage.getItem("email") || "";
+}
+
+const otpDigits = ref(["", "", "", "", "", ""]);
+const otpRefs = Array(6).fill(null);
+
+const emailDisplay = computed(() => email.value || "your email");
+
+// Handle input, auto-move, and paste
+const onInput = (idx: number, event: Event) => {
+  const input = event.target as HTMLInputElement;
+  let value = input.value.replace(/\D/g, "");
+  if (value.length > 1) {
+    // If user pastes multiple digits, split and fill
+    const values = value.split('');
+    for (let i = 0; i < values.length && idx + i < 6; i++) {
+      otpDigits.value[idx + i] = values[i];
+      // Move focus to next
+      if (otpRefs[idx + i + 1]) {
+        (otpRefs[idx + i + 1] as HTMLInputElement).focus();
+      }
+    }
+  } else {
+    otpDigits.value[idx] = value;
+    if (value && idx < 5) {
+      nextTick(() => {
+        (otpRefs[idx + 1] as HTMLInputElement)?.focus();
+      });
+    }
+  }
+};
+
+const onKeydown = (idx: number, event: KeyboardEvent) => {
+  const input = event.target as HTMLInputElement;
+  if (event.key === "Backspace") {
+    if (otpDigits.value[idx]) {
+      otpDigits.value[idx] = "";
+    } else if (idx > 0) {
+      nextTick(() => {
+        (otpRefs[idx - 1] as HTMLInputElement)?.focus();
+        otpDigits.value[idx - 1] = "";
+      });
+    }
+    event.preventDefault();
+  } else if (event.key >= "0" && event.key <= "9") {
+    // Allow only one digit per box
+    otpDigits.value[idx] = "";
+  }
+};
+
+const onPaste = (event: ClipboardEvent) => {
+  event.preventDefault();
+  const pasted = event.clipboardData?.getData('text')?.replace(/\D/g, '') || '';
+  if (pasted.length) {
+    for (let i = 0; i < 6; i++) {
+      otpDigits.value[i] = pasted[i] || '';
+    }
+    // Focus the last filled input
+    const lastIdx = Math.min(pasted.length, 6) - 1;
+    nextTick(() => {
+      if (otpRefs[lastIdx]) {
+        (otpRefs[lastIdx] as HTMLInputElement).focus();
+      }
+    });
+  }
+};
 
 const submitForm = async (event: Event) => {
   event.preventDefault();
   loading.value = true;
 
- console.log("otp", otp.value);
+  const otp = otpDigits.value.join("");
+  if (otp.length < 6) {
+    toast && toast.error("Please enter the 6-digit OTP.");
+    loading.value = false;
+    return;
+  }
+
+  console.log("otp", otp);
 
   try {
-    const result = await $services.auth.activate_account(otp.value);
+    const result = await $services.auth.activate_account(otp);
     console.log("result", result);
     if (result.message === "SUCCESSFUL") {
       toast.success(result.body);
@@ -91,5 +170,5 @@ const submitForm = async (event: Event) => {
   } finally {
     loading.value = false
   }
-}
+};
 </script>
