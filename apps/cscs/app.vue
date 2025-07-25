@@ -7,7 +7,7 @@
             </div>
            <div class="w-[100%]">
             <headerComponent class="relative" />
-            <NuxtPage class="overflow-scroll h-[95vh] pb-3 pt-[50px] pl-[20px] "/>
+            <NuxtPage class="overflow-scroll h-[95vh] pb-3 pt-[50px] mx-[20px] "/>
            </div>
         </div>
     </NuxtLayout>

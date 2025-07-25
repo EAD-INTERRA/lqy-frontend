@@ -46,7 +46,7 @@
           <NuxtLink to="/"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
-            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/investor' }">
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/' }">
             <img src="~/assets/images/dashboard-icon.svg" alt="" />
             Broker
           </NuxtLink>
@@ -55,7 +55,7 @@
           <NuxtLink to="/margin-account"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
-            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/investor' }">
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/margin-account' }">
             <img src="~/assets/images/dashboard-icon.svg" alt="" />
             Margin Account
           </NuxtLink>
@@ -64,14 +64,14 @@
           <NuxtLink to="/margin-request"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
-            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/investor' }">
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/margin-request' }">
             <img src="~/assets/images/dashboard-icon.svg" alt="" />
             Margin Request
           </NuxtLink>
 
 
 
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
+          <NuxtLink to="/" class="flex flex-row sidebarLink text-ox h-fit">
             <img src="~/assets/images/notification-icon.svg" />Notification
             <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-3">3</span>
           </NuxtLink>
@@ -99,8 +99,8 @@
   </div>
 </template>
 
-<script setup>
-// import { ref } from "vue";
+<script lang="ts" setup>
+import { ref } from "vue";
 
 const showMargin = ref(false);
 const showHistory = ref(false);

@@ -1,0 +1,17 @@
+{
+    "name": "@dial-a-doc/ui",
+    "version": "1.0.0",
+    "main": "index.ts",
+    "module": "index.ts",
+    "types": "index.d.ts",
+    "files": [
+      "index.ts",
+      "components",
+      "styles" 
+    ],
+    "exports": {
+      "./styles": "./styles/index.css"
+    },
+    "dependencies": {}
+  }
+  
