@@ -1,154 +1,110 @@
 <template>
-    <div class="p-4 space-y-6 ">
+    <div class="p-4 space-y-6">
         <section class="mb-4">
             <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Request</div>
-
-            <div class="bg-white shadow-lg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
-
-                <table class="table-fixed w-[100%]">
-                    <thead>
-                        <tr
-                            class=" text-gray-500 font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
-                            <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">S/N</th>
-                            <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">Account Name</th>
-                            <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">CHN Number</th>
-                            <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-if="allRequests.length > 0" v-for="(allRequest, index) in allRequests"
-                            class="rowText text-gray-500  font-ox text-base font-normal leading-normal">
-
-                            <td class=" hidden lg:table-cell text-center font-bold">
-                                <p class="text-left">{{ index + 1 }}</p>
-                            </td>
-                            <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                                <p class="text-left">{{ allRequest.user.profile?.first_name }} {{
-                                    allRequest.user.profile?.last_name }}
-                                </p>
-                            </td>
-                            <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                                <p class="text-left">{{ allRequest.chn }}</p>
-                            </td>
-                            <td class=" flex mt-5 text-center justify-center items-center">
-                               <button @click="showModal(allRequest)" class="border border-solid border-blue-500 text-blue-500 text-ox text-base bg-white px-2 lg:px-6 rounded-[5px]">View</button>
-                            </td>
-                        </tr>
-
-                        <tr v-else class="rowText text-gray-500  font-ox text-base font-normal leading-normal">
-                            <td colspan="4" class="hidden lg:table-cell text-center py-4">
-                                <div class="flex flex-col items-center">
-                                    <div
-                                        class="w-16 h-16 mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-                                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="text-lg font-medium text-gray-900 mb-2">No request found
-                                    </h3>
-                                    <p class="text-gray-500">There are no items to display at the moment.</p>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="bg-white shadow-lg p-5 rounded-lg mb-4">
+                <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false">
+                    <template #cell-0="{ row }">
+                        <span>{{ row.values[0] }}</span>
+                    </template>
+                    <template #cell-1="{ row }">
+                        <span>{{ row.values[1] }}</span>
+                    </template>
+                    <template #cell-2="{ row }">
+                        <span>{{ row.values[2] }}</span>
+                    </template>
+                    <template #cell-3="{ row }">
+                        <button @click="openModal(row.raw.request_id, `${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}`, row.raw.chn,
+                            row.raw.status)" class="border border-gray-500 text-gray-500 px-4 py-1 rounded hover:bg-blue-50">
+                            View
+                        </button>
+                    </template>
+                </BaseTable>
+                <BasePagination :currentPage="currentPage" :totalPages="totalPages" :startItem="startItem"
+                    :endItem="endItem" :totalCount="totalCount" @update:page="setCurrentPage" />
             </div>
         </section>
+        <!-- Modal -->
+        <marginRequestModal v-if="showModal" :requestId="selectedRequestId" :accountName="selectedRequestName"
+            :chn="selectedRequestChn" :status="selectedRequestStatus" @close="showModal = false" />
     </div>
 </template>
 
 <script lang="ts" setup>
-const chartData = ref([{
-    name: 'Equities',
-    count: 12
-},
-{
-    name: 'Bonds',
-    count: 50
-},
-{
-    name: 'Derivatives',
-    count: 20
-},
-{
-    name: 'Other Assets',
-    count: 18
-},
-]);
+import { ref, computed, onMounted } from 'vue';
+import { useToast } from 'vue-toastification';
+import marginRequestModal from '../components/marginRequestModal.vue';
+import BaseTable from '../../../packages/ui/components/BaseTable.vue';
+import BasePagination from '../../../packages/ui/components/BasePagination.vue';
 
-const chartColors = ['#E0903F', '#65C569', '#AC65C5', '#6373F8']; // External colors array
-
-const chartLabels = ref(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
-const chartDatasets = ref([{
-    label: 'Series A',
-    data: [65, 59, 80, 81, 56, 55, 100],
-    borderColor: 'rgba(16, 53, 109, 1)',
-    backgroundColor: 'rgba(16, 53, 109, 0.2)',
-    fill: false,
-},
-{
-    label: 'Series B',
-    data: [28, 48, 40, 19, 86, 27, 90],
-    borderColor: 'rgba(238, 46, 46, 1)',
-    backgroundColor: 'rgba(238, 46, 46, 0.2)',
-    fill: false,
-},
-]);
-import { onMounted, ref } from 'vue';
-import { useToast } from "vue-toastification";
 const toast = useToast();
-const allCount = ref("");
 const { $services } = useNuxtApp();
-const loading = ref(false);
-const allRequests = ref([]);
 
+const allRequests = ref([]);
+const loading = ref(true);
+const showModal = ref(false);
+
+// Table headers
+const headers = [
+    "S/N",
+    "Account Name",
+    "CHN Number",
+    "Action"
+];
+
+// Pagination logic
+const currentPage = ref(1);
+const pageSize = ref(10);
+
+const totalCount = computed(() => allRequests.value.length);
+const totalPages = computed(() => Math.ceil(totalCount.value / pageSize.value));
+const startItem = computed(() => (currentPage.value - 1) * pageSize.value + 1);
+const endItem = computed(() =>
+    Math.min(currentPage.value * pageSize.value, totalCount.value)
+);
+
+const paginatedRows = computed(() => {
+    const start = (currentPage.value - 1) * pageSize.value;
+    const end = start + pageSize.value;
+    return allRequests.value.slice(start, end).map((request, index) => ({
+        values: [
+            start + index + 1,
+            `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
+            request.chn,
+            "View"
+        ],
+        raw: request,
+    }));
+});
+
+function setCurrentPage(page: number) {
+    if (page >= 1 && page <= totalPages.value) {
+        currentPage.value = page;
+    }
+}
 
 onMounted(async () => {
-    //   fetchProfiles()
     try {
         const response = await $services.base.getAllMarginRequests();
-        console.log("All Margin Requests fetched:", response);
-        allCount.value = response.body.count || 0;
         allRequests.value = response.body.rows || [];
-
     } catch (error) {
-        console.error("Error fetching profiles:", error);
-        toast.error("Failed to fetch profiles");
+        console.error('Error fetching margin requests:', error);
+        toast.error('Failed to fetch margin requests');
+    } finally {
+        loading.value = false;
     }
 });
 
-const handleApprove = async (id) => {
-    try {
-        const response = await $services.base.approveMarginRequest(id);
-        if (response.message === 'SUCCESSFUL' || response.code === 200) {
-            toast.success('Margin request approved successfully!');
-            // Optionally, refresh the list of requests
-            onMounted();
-        } else {
-            toast.error('Failed to approve margin request: ' + (response.message || 'Unknown error'));
-        }
-    } catch (error) {
-        console.error("Error approving margin request:", error);
-        toast.error("Failed to approve margin request");
-    }
-};
+const selectedRequestId = ref('');
+const selectedRequestChn = ref('');
+const selectedRequestName = ref('');
+const selectedRequestStatus = ref('');
 
-const handleDecline = async (id) => {
-    try {
-        const response = await $services.base.declineMarginRequest(id);
-        if (response.message === 'SUCCESSFUL' || response.code === 200) {
-            toast.success('Margin request declined successfully!');
-            // Optionally, refresh the list of requests
-            onMounted();
-        } else {
-            toast.error('Failed to decline margin request: ' + (response.message || 'Unknown error'));
-        }
-    } catch (error) {
-        console.error("Error declining margin request:", error);
-        toast.error("Failed to decline margin request");
-    }
-};  
+const openModal = (requestId: string, accountName: string, chn: string, status: string) => {
+    selectedRequestId.value = requestId;
+    selectedRequestName.value = accountName;
+    selectedRequestChn.value = chn;
+    selectedRequestStatus.value = status;
+    showModal.value = true;
+};
 </script>
