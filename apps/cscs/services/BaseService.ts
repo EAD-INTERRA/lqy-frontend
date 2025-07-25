@@ -68,6 +68,7 @@ interface GetProfileResponse {
 
 export interface BaseServiceInterface {
   getProfiles(): Promise<GetProfileResponse>;
+  getAllInvestors(): Promise<GetProfileResponse>;
   getPendingMarginRequests(): Promise<GetProfileResponse>;
   getAcceptedMarginRequests(): Promise<GetProfileResponse>;
   getRejectedMarginRequests(): Promise<GetProfileResponse>;
@@ -109,6 +110,31 @@ export class BaseService implements BaseServiceInterface {
     }
   }
 
+  async getAllInvestors(): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("/investors", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getPendingMarginRequests Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
   async getPendingMarginRequests(): Promise<GetProfileResponse> {
     try {
       const tokenObj = localStorage.getItem("authToken");

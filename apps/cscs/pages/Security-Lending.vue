@@ -1,360 +1,141 @@
 <template>
-<div class="p-4 space-y-6 ">
-    <section class="mb-4">
+    <div class="p-4 pt-[50px] space-y-6 ">
+        <section class="mb-4">
+            <div class="bg-white shadow-lg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
+                <div class="flex items-center justify-between mb-6">
+                    <p
+                        class=" bg-theme-bc text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
+                        Security Lending</p>
 
-        <div class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
-            <div class="flex justify-between">
-                <p class=" bg-theme-tb font-semibold w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Security Lending</p>
-                <!-- <p class=" bg-blue-400 text-white font-ox border border-black w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Margin Check</p> -->
+                    <!-- <button @click="handleAddProfile" class="bg-theme-bc text-white px-4 py-2 rounded-md float-right">
+                        Margin Check
+                    </button> -->
+                </div>
+                <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false" class="">
+                    <template #cell-0="{ row }">
+                        <span>{{ row.values[0] }}</span>
+                    </template>
+                    <template #cell-1="{ row }">
+                        <span>{{ row.values[1] }}</span>
+                    </template>
+                    <template #cell-2="{ row }">
+                        <span>{{ row.values[2] }}</span>
+                    </template>
+                    <template #cell-3="{ row }">
+                        <span v-if="row.values[3]?.toLowerCase() === 'accepted'"
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white">
+                            {{ row.values[3] }}
+                        </span>
+                        <span v-else-if="row.values[3]?.toLowerCase() === 'pending'"
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white">
+                            {{ row.values[3] }}
+                        </span>
+                        <span v-else-if="row.values[3]?.toLowerCase() === 'rejected'"
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white">
+                            {{ row.values[3] }}
+                        </span>
+                        <span v-else>
+                            {{ row.values[3] }}
+                        </span>
+                    </template>
+                </BaseTable>
+
+                <!-- Pagination -->
+                <BasePagination :currentPage="currentPage" :totalPages="totalPages" :startItem="startItem"
+                    :endItem="endItem" :totalCount="totalCount" @update:page="setCurrentPage" />
+
             </div>
-            
-            <table class="table-fixed w-[100%]">
-                <thead>
-                    <tr class=" text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
-                        <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">Name</th>
-                        <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">CHN Number</th>
-                        <th class="w-80 pt-2 pb-2 hidden lg:table-cell text-left">Interest Accrued ($)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                           <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                           <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                           <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                           <div class="flex">
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
-
-
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">**********</p>
-                        </td>
-                       
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               543,095
-                            </p>
-                        </td>
-                       
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 </template>
 
 <script lang="ts" setup>
-const chartData = ref([{
-        name: 'Equities',
-        count: 12
-    },
-    {
-        name: 'Bonds',
-        count: 50
-    },
-    {
-        name: 'Derivatives',
-        count: 20
-    },
-    {
-        name: 'Other Assets',
-        count: 18
-    },
-]);
+import { ref, computed, onMounted } from 'vue';
+import BaseTable from '../../../packages/ui/components/BaseTable.vue'
+import BasePagination from '../../../packages/ui/components/BasePagination.vue'
+import { useToast } from "vue-toastification";
 
-const chartColors = ['#E0903F', '#65C569', '#AC65C5', '#6373F8']; // External colors array
+const toast = useToast();
+const { $services } = useNuxtApp();
+const loading = ref(false);
+const allInvestors = ref([]);
+const profiles = ref([]);
+const pendingCount = ref("");
+const acceptedCount = ref("");
+const rejectedCount = ref("");
+const allCount = ref("");
 
-const chartLabels = ref(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
-const chartDatasets = ref([{
-        label: 'Series A',
-        data: [65, 59, 80, 81, 56, 55, 100],
-        borderColor: 'rgba(16, 53, 109, 1)',
-        backgroundColor: 'rgba(16, 53, 109, 0.2)',
-        fill: false,
-    },
-    {
-        label: 'Series B',
-        data: [28, 48, 40, 19, 86, 27, 90],
-        borderColor: 'rgba(238, 46, 46, 1)',
-        backgroundColor: 'rgba(238, 46, 46, 0.2)',
-        fill: false,
-    },
-]);
+const headers = [
+    "Name",
+    "CHN Number",
+    "Interest Accrued ($)",
+];
+
+
+// Fetch and Init
+onMounted(async () => {
+    //   fetchProfiles()
+    try {
+        // Fetch all investors
+        const investors = await $services.base.getAllInvestors();
+        allInvestors.value = investors.body.rows || [];
+        // Fetch profiles
+        const response = await $services.base.getProfiles();
+        console.log("Profiles fetched:", response);
+        profiles.value = response.body.results || [];
+        // Fetch pending margin requests
+        const pendingRequests = await $services.base.getPendingMarginRequests();
+        // pendingCount.value = pendingRequests.body.count || 0;
+        // console.log("Pending Margin Requests fetched:", pendingRequests);
+        // Fetch accepted margin requests
+        const acceptedRequests = await $services.base.getAcceptedMarginRequests();
+        // acceptedCount.value = acceptedRequests.body.count || 0;
+        // console.log("Accepted Margin Requests fetched:", acceptedRequests);
+        // Fetch rejected margin requests
+        const rejectedRequests = await $services.base.getRejectedMarginRequests();
+        // rejectedCount.value = rejectedRequests.body.count || 0;
+        // console.log("Rejected Margin Requests fetched:", rejectedRequests);
+        // Fetch all margin requests
+        const allRequests = await $services.base.getAllMarginRequests();
+        // allCount.value = allRequests.body.count || 0;
+        // console.log("All Margin Requests fetched:", allRequests);
+
+    } catch (error) {
+        console.error("Error fetching profiles:", error);
+        toast.error("Failed to fetch Records");
+    }
+});
+
+const paginatedRows = computed(() => {
+    const start = (currentPage.value - 1) * pageSize.value;
+    const end = start + pageSize.value;
+    return allInvestors.value.slice(start, end).map((request, index) => ({
+        values: [
+            start + index + 1,
+            `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
+            request.chn,
+            request.status,
+        ],
+        raw: request,
+    }));
+});
+
+// Pagination logic
+const currentPage = ref(1);
+const pageSize = ref(10);
+const totalCount = computed(() => allInvestors.value.length);
+const totalPages = computed(() => Math.ceil(totalCount.value / pageSize.value));
+const startItem = computed(() => (currentPage.value - 1) * pageSize.value + 1);
+const endItem = computed(() =>
+    Math.min(currentPage.value * pageSize.value, totalCount.value)
+);
+
+function setCurrentPage(page: number) {
+    if (page >= 1 && page <= totalPages.value) {
+        currentPage.value = page;
+    }
+}
+// Pagination logic End
+
+
 </script>
