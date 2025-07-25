@@ -109,13 +109,13 @@
           </NuxtLink>
 
           <!-- Log Out -->
-          <NuxtLink to="/logout"
+          <button @click="handleLogout"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
             :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/logout' }">
             <img src="~/assets/images/logout.svg" alt="" />
             Log Out
-          </NuxtLink>
+        </button>
         </div>
       </div>
     </div>
@@ -127,4 +127,9 @@ import { ref } from "vue";
 
 const showMargin = ref(false);
 const showHistory = ref(false);
+const handleLogout = () => {
+  localStorage.clear(); // Clear all local storage
+  // Redirect to login or home page
+  window.location.href = "https://lqy-auth.interranetworks.com/"; // Adjust the path as necessary
+};
 </script>
