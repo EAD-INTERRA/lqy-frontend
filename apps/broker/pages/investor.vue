@@ -84,9 +84,15 @@
 import { ref, computed, onMounted } from 'vue';
 import BaseTable from '../../../packages/ui/components/BaseTable.vue'
 import BasePagination from '../../../packages/ui/components/BasePagination.vue'
-import { useToast } from "vue-toastification";
+// import { useToast } from "vue-toastification";
 
-const toast = useToast();
+if (process.client) {
+  import("vue-toastification").then((pkg) => {
+    const useToast = pkg.useToast;
+    toast = useToast();
+  });
+}
+let toast = null;
 const { $services } = useNuxtApp();
 const loading = ref(false);
 const allInvestors = ref([]);
@@ -102,42 +108,20 @@ const headers = [
   "Value of Associated Security",
   "Margin Lending Value",
   "Security Lending Value",
-  "Action",
-
+  "Action"
 ];
 
 
-// Fetch and Init
 onMounted(async () => {
-  //   fetchProfiles()
   try {
-    // Fetch all investors
     const investors = await $services.base.getAllInvestors();
     allInvestors.value = investors.body.rows || [];
-    // Fetch profiles
     const response = await $services.base.getProfiles();
     console.log("Profiles fetched:", response);
     profiles.value = response.body.results || [];
-    // Fetch pending margin requests
-    const pendingRequests = await $services.base.getPendingMarginRequests();
-    // pendingCount.value = pendingRequests.body.count || 0;
-    // console.log("Pending Margin Requests fetched:", pendingRequests);
-    // Fetch accepted margin requests
-    const acceptedRequests = await $services.base.getAcceptedMarginRequests();
-    // acceptedCount.value = acceptedRequests.body.count || 0;
-    // console.log("Accepted Margin Requests fetched:", acceptedRequests);
-    // Fetch rejected margin requests
-    const rejectedRequests = await $services.base.getRejectedMarginRequests();
-    // rejectedCount.value = rejectedRequests.body.count || 0;
-    // console.log("Rejected Margin Requests fetched:", rejectedRequests);
-    // Fetch all margin requests
-    const allRequests = await $services.base.getAllMarginRequests();
-    // allCount.value = allRequests.body.count || 0;
-    // console.log("All Margin Requests fetched:", allRequests);
-
-  } catch (error) {
+   } catch (error) {
     console.error("Error fetching profiles:", error);
-    toast.error("Failed to fetch Records");
+    // toast.error("Failed to fetch Records");
   }
 });
 

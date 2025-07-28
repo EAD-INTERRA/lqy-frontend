@@ -46,11 +46,16 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, computed } from 'vue';
-import { useToast } from "vue-toastification";
 import BaseTable from '../../../packages/ui/components/BaseTable.vue';
 import BasePagination from '../../../packages/ui/components/BasePagination.vue';
 
-const toast = useToast();
+if (process.client) {
+  import("vue-toastification").then((pkg) => {
+    const useToast = pkg.useToast;
+    toast = useToast();
+  });
+}
+let toast = null;
 const allCount = ref("");
 const { $services } = useNuxtApp();
 const loading = ref(false);

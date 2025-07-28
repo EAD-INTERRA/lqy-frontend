@@ -149,13 +149,9 @@ let profile = ref('');
 
 onMounted(async () => {
   try {
-    const response = await $services.base.getProfile();
+    const response = await $services.base.getProfiles();
     console.log(response)
-    if (response.code === 200) {
-      profile.value = typeof response.body === 'object' ? response.body : JSON.parse(response.body); // Assuming body is a JSON string   
-    } else {
-      console.error('Failed to fetch profile:', response.message);
-    }
+  
   } catch (error) {
     console.error('Error fetching profile:', error);
   }

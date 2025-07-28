@@ -7,10 +7,9 @@
     "build": "tsc"
   },
   "dependencies": {
-    "vuex": "^4.0.2"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "typescript": "^4.5.4"
   }
 }
-
