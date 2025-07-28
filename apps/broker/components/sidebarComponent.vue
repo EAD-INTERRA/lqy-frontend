@@ -11,7 +11,7 @@
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
             :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/' }">
-            <img src="~/assets/images/dashboard-icon.svg" alt="" />
+            <img src="~/assets/images/overview-icon.svg" alt="" />
             Overview
           </NuxtLink>
 
@@ -20,7 +20,7 @@
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
             :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/investor' }">
-            <img src="~/assets/images/dashboard-icon.svg" alt="" />
+            <img src="~/assets/images/investor-icon.svg" alt="" />
             Investor
           </NuxtLink>
 
@@ -29,24 +29,24 @@
             <button type="button" @click="showMargin = !showMargin"
               class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
               :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/margin-request', '/margin-check'].includes($route.path) }">
-              <img src="~/assets/images/stakeholder-icon.svg" alt="" />
+              <img src="~/assets/images/other-margin-icon.svg" alt="" />
               Margin
               <svg :class="['ml-auto transition-transform', showMargin ? 'rotate-90' : '']" width="16" height="16"
                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <div v-if="showMargin" class=" pl-5">
+            <div v-if="showMargin" class=" pl-5 mt-2">
               <NuxtLink to="/margin-check"
                 class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2  py-2 font-normal text-white text-opacity-50 cursor-pointer"
                 exact-active-class="text-theme-as  rounded-md"
-                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/history' }">
+                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/margin-check' }">
                 Margin Check
               </NuxtLink>
               <NuxtLink to="/margin-request"
-                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
                 exact-active-class="text-theme-as  rounded-md"
-                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/margin-request' }">
+                :class="{ 'bg-[mt-2 rgba(255,255,255,0.1)]': $route.path === '/margin-request' }">
                 Margin Request
               </NuxtLink>
 
@@ -58,7 +58,7 @@
             <button type="button" @click="showHistory = !showHistory"
               class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
               :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/trading-history', '/history'].includes($route.path) }">
-              <img src="~/assets/images/stakeholder-icon.svg" alt="" />
+              <img src="~/assets/images/history-icon.svg" alt="" />
               History
               <svg :class="['ml-auto transition-transform', showHistory ? 'rotate-90' : '']" width="16" height="16"
                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -66,24 +66,17 @@
               </svg>
             </button>
             <div v-if="showHistory" class="pl-5">
-              <NuxtLink to="/trading-history"
+              <NuxtLink to="/trade-history"
                 class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
                 exact-active-class="text-theme-as  rounded-md"
                 :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/trading-history' }">
                 <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
                 Trading History
               </NuxtLink>
-              <NuxtLink to="/history"
-                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+              <NuxtLink to="/transction-history"
+                class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
                 exact-active-class="text-theme-as  rounded-md"
-                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/history' }">
-                <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
-                Case History
-              </NuxtLink>
-              <NuxtLink to="/history"
-                class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
-                exact-active-class="text-theme-as  rounded-md"
-                :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/history' }">
+                :class="{ 'mt-2 bg-[rgba(255,255,255,0.1)]': $route.path === '/transction-history' }">
                 <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
                 Transaction History
               </NuxtLink>
@@ -91,11 +84,11 @@
           </div>
 
           <!-- Report -->
-          <NuxtLink to="/investor-request"
+          <NuxtLink to="/"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
-            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/investor-request' }">
-            <img src="~/assets/images/stakeholder-icon.svg" alt="" />
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/' }">
+            <img src="~/assets/images/report-icon.svg" alt="" />
             Report
           </NuxtLink>
 
@@ -104,7 +97,7 @@
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
             :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/settings' }">
-            <img src="~/assets/images/setting.svg" alt="" />
+            <img src="~/assets/images/settings-icon.svg" alt="" />
             Settings
           </NuxtLink>
 
@@ -115,16 +108,13 @@
             :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/logout' }">
             <img src="~/assets/images/logout.svg" alt="" />
             Log Out
-        </button>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script setup>
-import { ref } from "vue";
-
 const showMargin = ref(false);
 const showHistory = ref(false);
 const handleLogout = () => {

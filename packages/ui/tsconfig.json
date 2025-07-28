@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "target": "ESNext",
+      "strict": true,
+      "esModuleInterop": true,
+      "allowJs": true,
+      "skipLibCheck": true,
+      "declaration": true,
+      "jsx": "preserve",
+      "types": ["vue"]
+    },
+    "include": ["global.d.ts", "components/**/*.vue", "../../apps/admin/components/userComponent/CreateUserModal.vue"]
+  }
+  
