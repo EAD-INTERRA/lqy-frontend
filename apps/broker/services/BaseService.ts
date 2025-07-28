@@ -67,8 +67,14 @@ interface GetProfileResponse {
 }
 
 export interface BaseServiceInterface {
-  getProfile(): Promise<GetProfileResponse>;
+  getProfiles(): Promise<GetProfileResponse>;
+  getAllInvestors(): Promise<GetProfileResponse>;
+  getPendingMarginRequests(): Promise<GetProfileResponse>;
+  getAcceptedMarginRequests(): Promise<GetProfileResponse>;
+  getRejectedMarginRequests(): Promise<GetProfileResponse>;
   getAllMarginRequests(): Promise<GetProfileResponse>;
+  acceptMarginRequest(id: string): Promise<GetProfileResponse>;
+  rejectMarginRequest(id: string): Promise<GetProfileResponse>;
 }
 
 export class BaseService implements BaseServiceInterface {
@@ -78,19 +84,7 @@ export class BaseService implements BaseServiceInterface {
     this.client = base;
   }
 
-  async getProfile(): Promise<GetProfileResponse> {
-    try {
-      const response = await this.client.get("/get_profile", {
-        headers: { authorization: "Bearer " + authToken },
-      });
-      console.log("getProfile Response:", response);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-   async getAllMarginRequests(): Promise<GetProfileResponse> {
+  async getProfiles(): Promise<GetProfileResponse> {
     try {
       const tokenObj = localStorage.getItem("authToken");
       let authToken = "";
@@ -107,6 +101,132 @@ export class BaseService implements BaseServiceInterface {
       }
       console.log("Authorization token:", authToken);
       const response = await this.client.get("/get_profile", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getProfile Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getAllInvestors(): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("/investors", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getPendingMarginRequests Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getPendingMarginRequests(): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("/get_pending_margin_requests", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getPendingMarginRequests Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getAcceptedMarginRequests(): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("/get_accepted_margin_requests", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getProfile Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getRejectedMarginRequests(): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("/get_rejected_margin_requests", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getProfile Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getAllMarginRequests(): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("/get_all_margin_requests", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getProfile Response:", response);
@@ -137,6 +257,57 @@ export class BaseService implements BaseServiceInterface {
         { headers: { authorization: "Bearer " + authToken } }
       );
       console.log("margin_request Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async acceptMarginRequest(id: string): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      const response = await this.client.post(
+        'accept_request', { request_id: id },
+        { headers: { authorization: "Bearer " + authToken } }
+      );
+      console.log("acceptMarginRequest Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async rejectMarginRequest(id: string): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      const response = await this.client.post(
+        "reject_request", { request_id: id },
+        { headers: { authorization: "Bearer " + authToken } }
+      );
+      console.log("rejectMarginRequest Response:", response);
       return response.data;
     } catch (error) {
       throw error;
