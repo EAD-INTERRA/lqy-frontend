@@ -1,5 +1,6 @@
 <template>
-    <section class="hero custom-container bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative">
+    <section
+        class="hero custom-container bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative">
         <!-- Logo at top-left corner on md+ screens -->
         <div class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10">
             <h1 class="l-color">L</h1>
@@ -28,7 +29,9 @@
                         <div class="flex flex-col" v-if="showChnInput">
                             <label class="font-ubuntu text-white text-sm font-normal my-1 mx-1">CHN Number</label>
                             <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-3"
-                                placeholder="Enter CHN Number" v-model="chn_number" required />
+                                placeholder="Enter CHN Number" v-model="chn_number" required maxlength="12"
+                                pattern="[A-Za-z0-9]{1,12}"
+                                @input="chn_number = chn_number.replace(/[^A-Za-z0-9]/g, '')" />
                         </div>
                         <div class="flex flex-col">
                             <label class="font-ubuntu text-white text-sm font-normal my-1 mx-1">First Name</label>
@@ -151,7 +154,7 @@ const state_id = ref('');
 const type = ref('');
 const password = ref('');
 const city = ref('');
-const chn_number = ref('');
+// const chn_number = ref('');
 const inputType = ref('password');
 
 const togglePassword = () => {
@@ -217,14 +220,17 @@ const submitForm = async (event: Event) => {
         padding: 1.5rem !important;
     }
 }
+
 @media (max-width: 768px) {
     .customBorder {
         padding: 1rem !important;
     }
+
     .max-w-4xl {
         max-width: 100% !important;
     }
 }
+
 @media (max-width: 640px) {
     .customBorder {
         padding: 0.5rem !important;

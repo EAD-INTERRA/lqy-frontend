@@ -103,6 +103,7 @@ const rejectedCount = ref("");
 const allCount = ref("");
 
 const headers = [
+  "S/N",
   "Investor Name",
   "CHN Number",
   "Value of Associated Security",
@@ -131,9 +132,12 @@ const paginatedRows = computed(() => {
   return allInvestors.value.slice(start, end).map((request, index) => ({
     values: [
       start + index + 1,
-      `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
+      `${request.name || ''}`,
       request.chn,
-      request.status,
+      request.security_val,
+      request.margin_lending_val,
+      request.security_lending_val,
+      // request.status,
     ],
     raw: request,
   }));

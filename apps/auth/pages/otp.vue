@@ -12,12 +12,12 @@
         <h3 class="customWhite pb-8 text-center font-ubuntu text-2xl font-bold">
           OTP
         </h3>
-        <form @submit="submitForm">
+        <form @submit.prevent="submitForm">
           <div class="flex flex-col w-full">
             <label class="font-ubuntu customWhite text-sm mb-3 text-center font-normal leading-normal">
               Enter the OTP sent to your mail.
             </label>
-            <div class="flex justify-center gap-2 mb-4">
+            <!-- <div class="flex justify-center gap-2 mb-4">
               <input
                 v-for="(digit, idx) in otpDigits"
                 :key="idx"
@@ -33,6 +33,21 @@
                 @paste="onPaste($event)"
                 autocomplete="one-time-code"
               />
+            </div> -->
+             <div class="grid grid-cols-6 gap-4 mt-5 w-full md:px-[80px]">
+              <input
+                v-for="(digit, idx) in otpDigits"
+                :key="idx"
+                class="w-10 h-12 text-center text-xl rounded bg-theme-lb text-white border border-theme-lb focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                type="tel"
+                maxlength="1"
+                v-model="otpDigits[idx]"
+                @input="handleInput(idx)"
+                @keydown="onKeydown(idx, $event)"
+                @paste="onPaste($event)"
+                autocomplete="one-time-code"
+                required
+              />
             </div>
           </div>
           <div class="flex w-full flex-col items-center justify-center text-center mt-4">
@@ -45,7 +60,7 @@
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                 </svg>
               </span>
-              <span>{{ loading ? 'Logging in...' : 'Let’s Go...' }}</span>
+              <span>{{ loading ? 'Logging in...' : 'Login' }}</span>
             </button>
             <p class="customWhite pb-8 flex w-full justify-center text-center text-sm font-ubuntu mt-3">
               Didn’t get an OTP at “{{ emailDisplay }}” ?
@@ -71,7 +86,9 @@ if (process.client) {
   });
 }
 const { $services } = useNuxtApp();
-
+// Handle OTP input navigation
+  
+  
 const router = useRouter();
 const loading = ref(false);
 const email = ref("");
@@ -108,6 +125,15 @@ const onInput = (idx: number, event: Event) => {
   }
 };
 
+const handleInput = (index: number, event: Event) => {
+    if (otpDigits.value[index].length > 1) {
+      otpDigits.value[index] = otpDigits.value[index].slice(0, 1);
+    }
+    if (/^\d$/.test(otpDigits.value[index]) && index < 5) {
+      const nextInput = document.querySelectorAll("input[type='tel']")[index + 1];
+      nextInput && nextInput.focus();
+    }
+  };
 const onKeydown = (idx: number, event: KeyboardEvent) => {
   const input = event.target as HTMLInputElement;
   if (event.key === "Backspace") {
