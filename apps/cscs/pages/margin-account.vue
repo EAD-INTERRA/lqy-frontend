@@ -1,7 +1,7 @@
 <template>
     <div class="p-4 space-y-6">
         <section class="mb-4">
-            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Account</div>
+            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Status</div>
             <div class="bg-white shadow-lg p-5 lg:p-5 rounded-lg lg:rounded-2xl mb-2.5">
                 <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false" class="">
                     <template #cell-0="{ row }">
@@ -96,8 +96,8 @@ onMounted(async () => {
         const response = await $services.base.getAllMarginRequests();
         allRequests.value = response.body.rows || [];
     } catch (error) {
-        console.error("Error fetching margin accounts:", error);
-        toast.error("Failed to fetch margin accounts");
+        console.error("Error fetching margin status:", error);
+        toast.error("Failed to fetch margin status. Please try again later.");
     } finally {
         loading.value = false;
     }

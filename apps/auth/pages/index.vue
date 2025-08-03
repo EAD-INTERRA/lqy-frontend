@@ -15,7 +15,7 @@
           <div class="grid grid-cols-1 gap-4 w-full">
             <div class="flex flex-col">
               <label class="font-ubuntu text-white text-xs md:text-sm font-normal leading-normal my-1 mx-1">
-                User Name / Email
+                Email
               </label>
               <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-3"
                 placeholder="Enter your details" v-model="email" required />
@@ -56,15 +56,15 @@
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
-                  <span>Submitting...</span>
+                  <!-- <span>Processin...</span> -->
                 </template>
                 <template v-else>
-                  <span>Submit Details</span>
+                  <span>Log In</span>
                 </template>
               </button>
               <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">
                 Don't have an account?
-                <NuxtLink to="/signUp" class="customOrange">SignUp</NuxtLink>
+                <NuxtLink to="/signUp" class="customOrange">Sign Up</NuxtLink>
               </p>
             </div>
           </div>
@@ -74,8 +74,6 @@
   </section>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useRouter, useNuxtApp } from '#imports';
 import { StatusCode } from '~/helpers/statusCodes';
 
 let toast = null;

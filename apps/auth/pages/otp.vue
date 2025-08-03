@@ -1,55 +1,87 @@
 <template>
-  <section class="hero bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative">
+  <section
+    class="hero bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative"
+  >
     <!-- Logo at top-left corner on md+ screens -->
-    <div class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10">
+    <div
+      class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10"
+    >
       <h1 class="l-color">L</h1>
       <h1 class="customWhite">Q</h1>
       <h1 class="y-color">Y</h1>
     </div>
     <div class="w-full max-w-md md:max-w-xl mx-auto">
-      <div class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] p-6 sm:p-10 md:p-12 mt-8">
-        <!-- <img src="../assets/images/lock.svg" class="flex justify-center mx-auto mb-4" /> -->
-        <h3 class="customWhite pb-8 text-center font-ubuntu text-2xl font-bold">
-          OTP
-        </h3>
-        <form @submit="submitForm">
+      <div
+        class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] p-6 sm:p-10 md:p-12 mt-8"
+      >
+        <h3 class="customWhite pb-8 text-center font-ubuntu text-2xl font-bold">OTP</h3>
+        <form @submit.prevent="submitForm">
           <div class="flex flex-col w-full">
-            <label class="font-ubuntu customWhite text-sm mb-3 text-center font-normal leading-normal">
+            <label
+              class="font-ubuntu customWhite text-sm mb-3 text-center font-normal leading-normal"
+            >
               Enter the OTP sent to your mail.
             </label>
             <div class="flex justify-center gap-2 mb-4">
-              <input
-                v-for="(digit, idx) in otpDigits"
-                :key="idx"
-                ref="otpInput"
-                :ref="el => otpRefs[idx] = el"
-                type="text"
-                inputmode="numeric"
-                maxlength="1"
-                class="w-10 h-12 text-center text-xl rounded bg-theme-lb text-white border border-theme-lb focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                v-model="otpDigits[idx]"
-                @input="onInput(idx, $event)"
-                @keydown="onKeydown(idx, $event)"
-                @paste="onPaste($event)"
-                autocomplete="one-time-code"
-              />
+              <template v-for="(otp, index) in otps" :key="index">
+                <input
+                  class="border border-gray-300 bg-gray-100 text-gray-900 text-lg font-medium rounded-lg text-center w-[65px] h-[65px] focus:outline-none focus:border-theme-primary"
+                  type="tel"
+                  maxlength="1"
+                  v-model="otps[index]"
+                  @input="handleInput(index)"
+                  @keydown.backspace="handleBackspace(index)"
+                  @paste="handlePaste($event)"
+                  placeholder="0"
+                  required
+                />
+              </template>
             </div>
           </div>
+
           <div class="flex w-full flex-col items-center justify-center text-center mt-4">
             <button
               class="font-ubuntu form-submit w-[60%] h-[40px] md:p-2.5 dark text-sm md:text-lg hover:bg-theme-lb hover:text-white font-normal leading-normal flex items-center justify-center"
-              :disabled="loading">
+              :disabled="loading"
+              type="submit"
+            >
               <span v-if="loading" class="animate-spin mr-2">
-                <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v8z"
+                  ></path>
                 </svg>
               </span>
-              <span>{{ loading ? 'Logging in...' : 'Let’s Go...' }}</span>
+              <span>{{ loading ? 'Logging in...' : 'Verify OTP' }}</span>
             </button>
-            <p class="customWhite pb-8 flex w-full justify-center text-center text-sm font-ubuntu mt-3">
-              Didn’t get an OTP at “{{ emailDisplay }}” ?
-              <NuxtLink to="#" class="customOrange">Resend</NuxtLink>
+            <p class="text-center mt-4 flex justify-between items-center w-full">
+              <button
+                @click="resendOtp"
+                class="customWhite font-bold font-ubuntu "
+                :class="timeLeft > 0 ? `cursor-not-allowed opacity-50` : `cursor-pointer`"
+                :disabled="timeLeft > 0"
+              >
+                Resend Code
+              </button>
+
+              <span v-if="timeLeft > 0" class="ml-2 text-white font-ubuntu font-semibold">
+                (Retry in {{ formattedTime }})
+              </span>
             </p>
           </div>
         </form>
@@ -59,115 +91,110 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, nextTick } from 'vue';
-import { useRouter, useNuxtApp, useRuntimeConfig } from '#imports';
-import { StatusCode } from '~/helpers/statusCodes';
-
 let toast = null;
 if (process.client) {
-  import('vue-toastification').then(pkg => {
-    const useToast = pkg.useToast;
-    toast = useToast();
+  import("vue-toastification").then((pkg) => {
+    toast = pkg.useToast();
   });
 }
+
 const { $services } = useNuxtApp();
 
-const router = useRouter();
 const loading = ref(false);
 const email = ref("");
 if (process.client) {
   email.value = localStorage.getItem("email") || "";
 }
+const otps = ref(Array(6).fill(""));
 
-const otpDigits = ref(["", "", "", "", "", ""]);
-const otpRefs = Array(6).fill(null);
+const timeLeft = ref(0);
+let interval: ReturnType<typeof setInterval> | null = null;
 
-const emailDisplay = computed(() => email.value || "your email");
+const formattedTime = computed(() => {
+  const minutes = Math.floor(timeLeft.value / 60);
+  const seconds = timeLeft.value % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+});
 
-// Handle input, auto-move, and paste
-const onInput = (idx: number, event: Event) => {
-  const input = event.target as HTMLInputElement;
-  let value = input.value.replace(/\D/g, "");
+function startTimer() {
+  timeLeft.value = 180; // 180 seconds = 3 minutes
+
+  if (interval) clearInterval(interval);
+  interval = setInterval(() => {
+    if (timeLeft.value > 0) {
+      timeLeft.value--;
+    } else {
+      clearInterval(interval!);
+      interval = null;
+    }
+  }, 1000);
+}
+
+const handleInput = (index: number) => {
+  const value = otps.value[index];
   if (value.length > 1) {
-    // If user pastes multiple digits, split and fill
-    const values = value.split('');
-    for (let i = 0; i < values.length && idx + i < 6; i++) {
-      otpDigits.value[idx + i] = values[i];
-      // Move focus to next
-      if (otpRefs[idx + i + 1]) {
-        (otpRefs[idx + i + 1] as HTMLInputElement).focus();
+    otps.value[index] = value.slice(0, 1);
+  }
+
+  if (/^\d$/.test(value)) {
+    if (index < 5) {
+      const nextInput = document.querySelectorAll("input[type='tel']")[index + 1];
+      nextInput && (nextInput as HTMLElement).focus();
+    } else if (index === 5) {
+      const isComplete = otps.value.every((digit) => digit.trim() !== "");
+      if (isComplete) {
+        setTimeout(() => {
+          submitForm();
+        }, 200);
       }
-    }
-  } else {
-    otpDigits.value[idx] = value;
-    if (value && idx < 5) {
-      nextTick(() => {
-        (otpRefs[idx + 1] as HTMLInputElement)?.focus();
-      });
     }
   }
 };
 
-const onKeydown = (idx: number, event: KeyboardEvent) => {
-  const input = event.target as HTMLInputElement;
-  if (event.key === "Backspace") {
-    if (otpDigits.value[idx]) {
-      otpDigits.value[idx] = "";
-    } else if (idx > 0) {
-      nextTick(() => {
-        (otpRefs[idx - 1] as HTMLInputElement)?.focus();
-        otpDigits.value[idx - 1] = "";
-      });
-    }
-    event.preventDefault();
-  } else if (event.key >= "0" && event.key <= "9") {
-    // Allow only one digit per box
-    otpDigits.value[idx] = "";
+const handleBackspace = (index: number) => {
+  if (index > 0 && otps.value[index] === "") {
+    const prevInput = document.querySelectorAll("input[type='tel']")[index - 1];
+    prevInput && (prevInput as HTMLElement).focus();
   }
 };
 
-const onPaste = (event: ClipboardEvent) => {
-  event.preventDefault();
-  const pasted = event.clipboardData?.getData('text')?.replace(/\D/g, '') || '';
-  if (pasted.length) {
-    for (let i = 0; i < 6; i++) {
-      otpDigits.value[i] = pasted[i] || '';
-    }
-    // Focus the last filled input
-    const lastIdx = Math.min(pasted.length, 6) - 1;
-    nextTick(() => {
-      if (otpRefs[lastIdx]) {
-        (otpRefs[lastIdx] as HTMLInputElement).focus();
-      }
+const handlePaste = (event: ClipboardEvent) => {
+  const pastedText = event.clipboardData?.getData("text") || "";
+  const digits = pastedText.replace(/\D/g, "").slice(0, 6);
+  if (digits.length > 0) {
+    digits.split("").forEach((digit, index) => {
+      otps.value[index] = digit;
     });
+
+    const nextInput = document.querySelectorAll("input[type='tel']")[digits.length - 1];
+    nextInput && (nextInput as HTMLElement).focus();
+
+    if (digits.length === 6) {
+      setTimeout(() => {
+        submitForm();
+      }, 200);
+    }
   }
+
+  event.preventDefault(); // Prevent default paste
 };
 
-const submitForm = async (event: Event) => {
-  event.preventDefault();
+const submitForm = async () => {
   loading.value = true;
-
-  const otp = otpDigits.value.join("");
-  if (otp.length < 6) {
-    toast && toast.error("Please enter the 6-digit OTP.");
-    loading.value = false;
-    return;
-  }
-
   const loginData = {
     email: email.value,
-    token: otp,
+    token: parseInt(otps.value.join(""), 10),
   };
 
   try {
     const result = await $services.auth.verify_login(loginData);
+
     if (result.message === "SUCCESSFUL") {
-      // toast.success(result.body);
       localStorage.setItem("credentials", JSON.stringify(result));
       const authToken = result.body?.access_token;
-      localStorage.setItem("authToken", result.body.access_token);
+      localStorage.setItem("authToken", authToken);
 
-      // Redirect to the dashboard
+      // Redirect logic
       const config = useRuntimeConfig();
       const redirectionUrls = {
         SUPERADMIN: config.public.admin,
@@ -175,23 +202,57 @@ const submitForm = async (event: Event) => {
         CSCS: config.public.CSCS,
         Custodian: config.public.Custodian,
         Investor: config.public.Investor,
-        Financial_Institutions: config.public.Financial_Institutions
+        Financial_Institutions: config.public.Financial_Institutions,
       };
 
       const role = result.body.role;
       if (redirectionUrls[role]) {
         window.location.href = redirectionUrls[role] + "?token=" + authToken;
-        localStorage.setItem("Token", result.body.access_token);
+        localStorage.setItem("Token", authToken);
         return;
       }
     } else {
-      toast.error(result.body);
+      toast.error(result.customMessage || "An error occurred.");
     }
   } catch (error) {
-    const err = error.result?.data?.body || "OTP verification failed";
-    toast.error(err);
+    toast.error("Invalid email, password, or OTP.");
   } finally {
     loading.value = false;
   }
 };
+
+async function resendOtp() {
+  if (timeLeft.value > 0) return; // prevent resend if timer active
+
+  const loginData = {
+    email: email.value,
+  };
+
+  try {
+    const result = await $services.auth.resendOtp(loginData);
+
+    if (result.message === "SUCCESSFUL") {
+      toast.success(result.customMessage);
+      startTimer();
+      otps.value = Array(6).fill("");
+      // Optionally focus first input after clearing
+      setTimeout(() => {
+        const firstInput = document.querySelector("input[type='tel']");
+        firstInput && (firstInput as HTMLElement).focus();
+      }, 100);
+    } else {
+      toast.error(result.customMessage);
+    }
+  } catch (error) {
+    toast.error("An error occurred. Please try again later.");
+  }
+}
+
+onMounted(() => {
+  startTimer();
+});
+
+onUnmounted(() => {
+  if (interval) clearInterval(interval);
+});
 </script>

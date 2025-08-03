@@ -62,7 +62,7 @@
             exact-active-class="text-theme-as  rounded-md"
             :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/margin-account' }">
             <img src="~/assets/images/margin-icons.svg" alt="" />
-            Margin Account
+            Margin Status
           </NuxtLink>
 
           <!-- Investor -->
