@@ -25,23 +25,29 @@
             <div class="flex justify-center gap-2 mb-4">
               <template v-for="(otp, index) in otps" :key="index">
                 <input
-                  class="border border-gray-300 bg-gray-100 text-gray-900 text-lg font-medium rounded-lg text-center w-[65px] h-[65px] focus:outline-none focus:border-theme-primary"
-                  type="tel"
-                  maxlength="1"
-                  v-model="otps[index]"
-                  @input="handleInput(index)"
-                  @keydown.backspace="handleBackspace(index)"
-                  @paste="handlePaste($event)"
-                  placeholder="0"
-                  required
-                />
+  class="border border-gray-300 bg-gray-100 text-gray-900 text-lg font-medium rounded-lg text-center w-[65px] h-[65px]
+         xs:w-[48px] xs:h-[48px]
+         sm:w-[55px] sm:h-[55px]
+         md:w-[60px] md:h-[60px]
+         lg:w-[65px] lg:h-[65px]
+         focus:outline-none focus:border-theme-primary transition duration-150"
+  type="tel"
+  maxlength="1"
+  v-model="otps[index]"
+  @input="handleInput(index)"
+  @keydown.backspace="handleBackspace(index)"
+  @paste="handlePaste($event)"
+  placeholder="0"
+  required
+/>
+
               </template>
             </div>
           </div>
 
           <div class="flex w-full flex-col items-center justify-center text-center mt-4">
             <button
-              class="font-ubuntu form-submit w-[60%] h-[40px] md:p-2.5 dark text-sm md:text-lg hover:bg-theme-lb hover:text-white font-normal leading-normal flex items-center justify-center"
+              class="font-ubuntu form-submit w-[60%] h-[40px] md:p-2.5 dark text-sm md:text-lg hover:bg-gray-200 hover:shadow-lg font-normal leading-normal flex items-center justify-center"
               :disabled="loading"
               type="submit"
             >
@@ -183,7 +189,7 @@ const submitForm = async () => {
   loading.value = true;
   const loginData = {
     email: email.value,
-    token: parseInt(otps.value.join(""), 10),
+    token: otps.value.join(""),
   };
 
   try {
@@ -193,7 +199,6 @@ const submitForm = async () => {
       localStorage.setItem("credentials", JSON.stringify(result));
       const authToken = result.body?.access_token;
       localStorage.setItem("authToken", authToken);
-
       // Redirect logic
       const config = useRuntimeConfig();
       const redirectionUrls = {
@@ -204,8 +209,10 @@ const submitForm = async () => {
         Investor: config.public.Investor,
         Financial_Institutions: config.public.Financial_Institutions,
       };
-
+      
+      
       const role = result.body.role;
+      console.log(role)
       if (redirectionUrls[role]) {
         window.location.href = redirectionUrls[role] + "?token=" + authToken;
         localStorage.setItem("Token", authToken);

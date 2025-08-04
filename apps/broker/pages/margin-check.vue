@@ -15,15 +15,15 @@
           </template>
           <template #cell-3="{ row }">
             <span v-if="row.values[3]?.toLowerCase() === 'accepted'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white">
+              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white capitalize">
               {{ row.values[3] }}
             </span>
             <span v-else-if="row.values[3]?.toLowerCase() === 'pending'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white">
+              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white capitalize">
               {{ row.values[3] }}
             </span>
             <span v-else-if="row.values[3]?.toLowerCase() === 'rejected'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white">
+              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white capitalize">
               {{ row.values[3] }}
             </span>
             <span v-else>
@@ -105,7 +105,7 @@ onMounted(async () => {
     loading.value = true;
     const response = await $services.base.getAllMarginRequests();
     allCount.value = response.body.count || 0;
-    allRequests.value = response.body.rows || [];
+    allRequests.value = response.body.records || [];
   } catch (error) {
     console.error("Error fetching profiles:", error);
     toast.error("Failed to fetch profiles");

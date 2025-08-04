@@ -1,10 +1,17 @@
 <template>
   <div class="w-full bg-white rounded-lg border border-gray-200 overflow-hidden font-pop">
-    <!-- Mobile Card View (hidden on larger screens) -->
-    <div class="hidden">
-      <!-- Loading State for Mobile -->
-      <div v-if="loading" class="p-4">
+    <div class="p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search..."
+        class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-500 text-sm"
+      />
+    </div>
 
+    <!-- Mobile Card View (hidden on larger screens) -->
+    <div class="mobile-only">
+      <div v-if="loading" class="p-4">
         <div v-for="n in 3" :key="n" class="mb-4 p-4 border border-gray-100 rounded-lg animate-pulse">
           <div class="space-y-2">
             <div class="h-4 bg-gray-200 rounded w-3/4"></div>
@@ -14,8 +21,7 @@
         </div>
       </div>
 
-      <!-- Empty State for Mobile -->
-      <div v-else-if="rows.length === 0" class="p-8 text-center">
+      <div v-else-if="filteredRows.length === 0" class="p-8 text-center">
         <div class="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
           <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -27,10 +33,8 @@
         <p class="text-gray-500">There are no items to display at the moment.</p>
       </div>
 
-      <!-- Mobile Cards -->
       <div v-else class="divide-y divide-gray-100 max-h-96 overflow-y-auto">
-        <div v-for="(row, rowIndex) in rows" :key="rowIndex"
-          class="p-4 hover:bg-gray-50 transition-colors duration-150">
+        <div v-for="(row, rowIndex) in filteredRows" :key="rowIndex" class="p-4 hover:bg-gray-50 transition-colors duration-150">
           <div class="space-y-2">
             <div v-for="(cell, cellIndex) in row.values" :key="cellIndex" class="flex justify-between items-start">
               <span class="text-[16px] font-medium text-gray-600 min-w-0 flex-shrink-0 mr-4">
@@ -47,8 +51,8 @@
       </div>
     </div>
 
-    <!-- Desktop Table View (visible on larger screens) -->
-    <div class="md:block">
+    <!-- Desktop Table View -->
+    <div class="desktop-only">
       <div class="overflow-x-auto">
         <table class="w-full">
           <!-- Header -->
@@ -62,16 +66,16 @@
           </thead>
 
           <!-- Loading State -->
-          <tbody v-if="loading" class="bg-white divide-y divide-gray-100">
+          <tbody v-if="loading" class="bg-white divide-y divide-gray-300">
             <tr v-for="n in 5" :key="n" class="animate-pulse">
               <td v-for="(head, index) in headers" :key="index" class="px-6 py-4 whitespace-nowrap">
-                <div class="h-4 bg-gray-200 rounded w-full"></div>
+                <div class="h-4 bg-gray-300 rounded w-full"></div>
               </td>
             </tr>
           </tbody>
 
           <!-- Empty State -->
-          <tbody v-else-if="rows.length === 0" class="bg-white">
+          <tbody v-else-if="filteredRows.length === 0" class="bg-white">
             <tr>
               <td :colspan="headers.length" class="px-6 py-12 text-center">
                 <div class="flex flex-col items-center">
@@ -92,8 +96,8 @@
           </tbody>
 
           <!-- Data Rows -->
-          <tbody v-else class="bg-white divide-y divide-gray-100">
-            <tr v-for="(row, rowIndex) in rows" :key="rowIndex" class="hover:bg-gray-50 transition-colors duration-150">
+          <tbody v-else class="bg-white divide-y divide-gray-200">
+            <tr v-for="(row, rowIndex) in filteredRows" :key="rowIndex" class="hover:bg-gray-100 transition-colors duration-150">
               <td v-for="(cell, cellIndex) in row.values" :key="cellIndex"
                 class="px-6 py-4 text-sm text-gray-700 whitespace-nowrap">
                 <div class="truncate" :title="cell">
@@ -111,7 +115,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, computed } from 'vue';
 
 const props = defineProps({
   headers: {
@@ -138,11 +142,21 @@ const props = defineProps({
   }
 });
 
-// You can add additional reactive data or methods here if needed
+const searchQuery = ref('');
+
+const filteredRows = computed(() => {
+  const query = searchQuery.value.trim().toLowerCase();
+  if (!query) return props.rows;
+
+  return props.rows.filter(row =>
+    row.values.some(cell =>
+      String(cell).toLowerCase().includes(query)
+    )
+  );
+});
 </script>
 
 <style scoped>
-/* Custom scrollbar for webkit browsers */
 .overflow-x-auto::-webkit-scrollbar {
   height: 6px;
 }
@@ -161,20 +175,17 @@ const props = defineProps({
   background: #94a3b8;
 }
 
-/* Smooth transitions */
 * {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
 
-/* Ensure proper table styling */
 table {
   border-collapse: separate;
   border-spacing: 0;
 }
 
-/* Header styling to match the image */
 thead th {
   background-color: #f9fafb;
   border-bottom: 1px solid #e5e7eb;
@@ -183,7 +194,6 @@ thead th {
   font-size: 14px;
 }
 
-/* Row styling to match the image */
 tbody tr {
   border-bottom: 1px solid #f3f4f6;
 }
@@ -197,8 +207,27 @@ tbody td {
   font-weight: 400;
 }
 
-/* Hover effects */
 tbody tr:hover {
   background-color: #f9fafb;
+}
+
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
 }
 </style>
