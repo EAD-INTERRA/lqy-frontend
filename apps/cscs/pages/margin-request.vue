@@ -8,7 +8,7 @@
                         <span>{{ row.values[0] }}</span>
                     </template>
                     <template #cell-1="{ row }">
-                        <span>{{ row.values[1] }}</span>
+                        <span class="capitalize">{{ row.values[1] }}</span>
                     </template>
                     <template #cell-2="{ row }">
                         <span>{{ row.values[2] }}</span>

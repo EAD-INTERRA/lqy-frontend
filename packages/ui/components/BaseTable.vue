@@ -68,7 +68,7 @@
           <!-- Loading State -->
           <tbody v-if="loading" class="bg-white divide-y divide-gray-300">
             <tr v-for="n in 5" :key="n" class="animate-pulse">
-              <td v-for="(head, index) in headers" :key="index" class="px-6 py-4 whitespace-nowrap">
+              <td v-for="(head, index) in headers" :key="index" class="px-6 py-2 whitespace-nowrap">
                 <div class="h-4 bg-gray-300 rounded w-full"></div>
               </td>
             </tr>
@@ -97,9 +97,9 @@
 
           <!-- Data Rows -->
           <tbody v-else class="bg-white divide-y divide-gray-200">
-            <tr v-for="(row, rowIndex) in filteredRows" :key="rowIndex" class="hover:bg-gray-100 transition-colors duration-150">
+            <tr v-for="(row, rowIndex) in filteredRows" :key="rowIndex"   :class="`transition-colors duration-150 hover:bg-gray-200 ${rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-100'}`">
               <td v-for="(cell, cellIndex) in row.values" :key="cellIndex"
-                class="px-6 py-4 text-sm text-gray-700 whitespace-nowrap">
+                class="px-6 py-2 text-sm text-gray-700 whitespace-nowrap">
                 <div class="truncate" :title="cell">
                   <slot :name="'cell-' + cellIndex" :value="cell" :row="row">
                     {{ cell ? (typeof cell === 'string' ? cell.charAt(0).toUpperCase() + cell.slice(1) : cell) : "—" }}

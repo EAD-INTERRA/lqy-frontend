@@ -8,22 +8,22 @@
                         <span>{{ row.values[0] }}</span>
                     </template>
                     <template #cell-1="{ row }">
-                        <span>{{ row.values[1] }}</span>
+                        <span class="capitalize">{{ row.values[1] }}</span>
                     </template>
                     <template #cell-2="{ row }">
                         <span>{{ row.values[2] }}</span>
                     </template>
                     <template #cell-3="{ row }">
                         <span v-if="row.values[3]?.toLowerCase() === 'accepted'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white">
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white capitalize">
                             {{ row.values[3] }}
                         </span>
                         <span v-else-if="row.values[3]?.toLowerCase() === 'pending'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white">
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white capitalize">
                             {{ row.values[3] }}
                         </span>
                         <span v-else-if="row.values[3]?.toLowerCase() === 'rejected'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white">
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white capitalize">
                             {{ row.values[3] }}
                         </span>
                         <span v-else>

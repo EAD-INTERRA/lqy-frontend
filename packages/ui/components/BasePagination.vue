@@ -13,14 +13,19 @@
         ]">
         Previous
       </button>
-      <button v-for="page in totalPages" :key="page" @click="$emit('update:page', page)" :class="[
+      <button
+      v-for="page in totalPages"
+      :key="page"
+      @click="$emit('update:page', page)"
+      :class="[
         'px-3 py-1 text-sm border rounded-md min-w-[40px] transition-colors',
         currentPage === page
-          ? 'bg-blue-600 text-white border-blue-600 hover:bg-blue-700'
+          ? '!bg-[#852282] text-white border-blue-600 hover:!bg-[#6b1b68]'
           : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-      ]">
-        {{ page }}
-      </button>
+      ]"
+    >
+      {{ page }}
+    </button>
       <button @click="$emit('update:page', Math.min(totalPages, currentPage + 1))"
         :disabled="currentPage === totalPages" :class="[
           'px-3 py-1 text-sm border rounded-md transition-colors',

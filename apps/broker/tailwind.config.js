@@ -12,6 +12,7 @@ module.exports = {
        fontFamily: {
         sen: ['"Sen"', 'sans'],
         ox: ['"Oxygen"', 'sans'],
+        ub: ['"Ubuntu"', 'sans'],
       },
       fontSize:{
         'sen-sm': '16px',

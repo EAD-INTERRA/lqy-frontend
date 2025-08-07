@@ -1,9 +1,9 @@
 <template>
-  <div class="p-4">
-    <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Request</div>
+  <div class="p-4 flex flex-col items-center">
+    <div class="text-xl text-[#FF0000] font-bold font-ox mb-4">Margin Request</div>
     <form class="bg-wite p-[50px]  lg:p-10 rounded-lg w-[80%] max-w-md  shadow-lg" @submit.prevent="submitMarginRequest">
       <div class="mb-4">
-        <label for="chn" class="block text-sm font-medium text-[#00000] mb-1">
+        <label for="chn" class="block text-[18px] font-ub text-[#00000] mb-1">
           CHN Number
         </label>
         <input
@@ -11,12 +11,12 @@
           type="text"
           v-model="chn"
           placeholder="Enter customer's CHN number"
-          class="block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-600 focus:border-blue-600 sm:text-sm bg-gray-100 mt-5 text-black placeholder-gray-400"
+          class="block w-full px-3 py-4 rounded-md shadow-sm focus:outline-none focus:ring-blue-600 focus:border-blue-600 sm:text-sm bg-black/10 mt-5 text-black placeholder-gray-400"
         />
       </div>
       <button
         type="submit"
-        class="w-full bg-blue-600 mt-[30px] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition flex items-center justify-center"
+        class="w-full bg-[#10356D] mt-[30px] shadow-lg text-white py-4 px-4 rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center"
         :disabled="loading"
       >
         <span v-if="loading" class="animate-spin mr-2">
