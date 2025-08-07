@@ -31,7 +31,7 @@
     </section>
 
     <!-- Table Section -->
-    <section class="p-4mb-4">
+    <section class="p-4 mb-4">
       <div class="bg-white shadow-custom-heavy p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
         <div class="flex items-center justify-between mb-6">
           <p class="bg-gray-300 text-gray-500 bg-opacity-25 bolder w-fit text-lg px-3 py-1 rounded-[5px] font-bold">
