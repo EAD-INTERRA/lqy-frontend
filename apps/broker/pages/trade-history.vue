@@ -34,19 +34,19 @@
           <template #cell-4="{ row }">
             <span
               v-if="row.values[4]?.toLowerCase() === 'completed'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white"
+              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-green-500 text-white capitalize w-1/2 justify-center"
             >
               {{ row.values[4] }}
             </span>
             <span
               v-else-if="row.values[4]?.toLowerCase() === 'pending'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white"
+              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white capitalize w-1/2 justify-center"
             >
               {{ row.values[4] }}
             </span>
             <span
               v-else-if="row.values[4]?.toLowerCase() === 'failed'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white"
+              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white capitalize w-1/2 justify-center"
             >
               {{ row.values[4] }}
             </span>

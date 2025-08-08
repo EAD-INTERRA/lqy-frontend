@@ -30,19 +30,19 @@
           <template #cell-4="{ row }">
             <span
               v-if="row.values[4]?.toLowerCase() === 'accepted'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white"
+              class="inline-flex w-1/2 text-center justify-center items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white capitalize"
             >
               {{ row.values[4] }}
             </span>
             <span
               v-else-if="row.values[4]?.toLowerCase() === 'pending'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white"
+              class="inline-flex w-1/2 text-center justify-center items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white capitalize"
             >
               {{ row.values[4] }}
             </span>
             <span
               v-else-if="row.values[4]?.toLowerCase() === 'rejected'"
-              class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white"
+              class="inline-flex w-1/2 text-center justify-center items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white capitalize"
             >
               {{ row.values[4] }}
             </span>
@@ -149,11 +149,12 @@ const paginatedRows = computed(() =>
     .slice((currentPage.value - 1) * pageSize.value, currentPage.value * pageSize.value)
     .map((item) => ({
       values: [
-        item.transactionId,
+        item.transactionId, 
         item.transactionType,
         item.date,
         `₦${item.amount.toLocaleString()}`,
         item.status,
+        null
       ],
       raw: item,
     }))
