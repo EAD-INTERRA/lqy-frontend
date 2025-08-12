@@ -14,7 +14,7 @@ export const serviceProvider = (): ServiceProviderInterface => {
     })
     const client = axios.create({
         // baseURL: 'http://localhost:4444/api/v1/' //Local
-        baseURL: 'http://131.226.242.233:5600/api/v1/' //TEST
+        baseURL: 'https://lqy-adminapi.interranetworks.com/api/v1/' //TEST
     })
     return {
         shareholder: new ShareholderService(client),

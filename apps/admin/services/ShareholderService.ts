@@ -111,7 +111,8 @@ export class ShareholderService implements ShareholderServiceInterface {
 
     async getShareholders(): Promise<GetShareholdersResponse> {
         try {
-            const response = await this.client.get('stakeholder?page=1&size=5&type=', { headers: { authorization: "Bearer " + token } }) 
+            const response = await this.client.get('stakeholder', { headers: { authorization: "Bearer " + token } }) 
+            console.log(response)
             return response.data   
         } catch (error) {
             throw error 
