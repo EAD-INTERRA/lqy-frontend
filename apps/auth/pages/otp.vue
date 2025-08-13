@@ -202,7 +202,7 @@ const submitForm = async () => {
       // Redirect logic
       const config = useRuntimeConfig();
       const redirectionUrls = {
-        SUPERADMIN: config.public.admin,
+        LQY_Admin: config.public.admin,
         Broker: config.public.Broker,
         CSCS: config.public.CSCS,
         Custodian: config.public.Custodian,
