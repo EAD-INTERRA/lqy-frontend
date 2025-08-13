@@ -35,7 +35,7 @@ export default defineNuxtConfig({
   },
  runtimeConfig: {
     public: {
-      LQY_Admin: process.env.NUXT_PUBLIC_ADMIN,
+      admin: process.env.NUXT_PUBLIC_ADMIN,
       Broker: process.env.NUXT_PUBLIC_BROKER,
       CSCS: process.env.NUXT_PUBLIC_CSCS,
       Custodian: process.env.NUXT_PUBLIC_CUSTODIAN,
