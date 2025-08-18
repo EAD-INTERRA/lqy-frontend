@@ -1,6 +1,7 @@
 <template>
   <div class="p-4 space-y-6">
-    <div class="text-xl text-[#FF0000] font-semibold mb-4">CAPITAL ASSET LTD</div>
+    <div v-if="activeTab === 1" class="space-y-6">
+      <div class="text-xl text-[#FF0000] font-semibold mb-4">CAPITAL ASSET LTD</div>
 
     <!-- Summary Cards -->
     <section class="grid grid-cols-4 w-full gap-6">
@@ -31,7 +32,7 @@
     </section>
 
     <!-- Table Section -->
-    <section class="p-4 mb-4">
+    <section class=" mb-4">
       <div class="bg-white shadow-custom-heavy p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
         <div class="flex items-center justify-between mb-6">
           <p class="bg-gray-300 text-gray-500 bg-opacity-25 bolder w-fit text-lg px-3 py-1 rounded-[5px] font-bold">
@@ -47,7 +48,7 @@
         >
         <template #cell-5="{ row }">
             <button
-              @click="openModal(row.raw)"
+              @click="openDetails(row.raw)"
               class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105"
             >
               View
@@ -66,6 +67,20 @@
         />
       </div>
     </section>
+    </div>
+    <InvestorPortfolio
+  v-if="activeTab === 2"
+  @go-back="activeTab = 1"
+  :investor="investor"
+  :cashDrawn="cashDrawn"
+  :chnNo="chnNo"
+  :accNo="accNo"
+  :vasSec="vasSec"
+  :mlv="mlv"
+  :slv="slv"
+  :interestM="interestM"
+  :interestS="interestS"
+/>
   </div>
 </template>
 
@@ -75,7 +90,18 @@ import BaseTable from '../../../packages/ui/components/BaseTable.vue'
 import BasePagination from '../../../packages/ui/components/BasePagination.vue'
 
 const { $services } = useNuxtApp();
+const investor = ref("")
+const cashDrawn = ref("")
+const chnNo = ref("")
+const accNo = ref("")
+const vasSec = ref("")
+const mlv = ref("")
+const slv = ref("")
+const InterestM = ref("")
+const InterestS = ref("")
 
+
+const activeTab = ref(1);
 const loading = ref(false);
 const allInvestors = ref([]);
 const profiles = ref([]);
@@ -170,4 +196,21 @@ const paginatedRows = computed(() => {
     raw: request,
   }));
 });
+
+function openDetails(request) {
+  
+  const mlRatio = Math.floor(Math.random() * 71) + 20; // 20–90%
+  const slRatio = Math.floor(Math.random() * 79) + 40; // 20–90%
+  console.log(request)
+  investor.value = request.name;
+  cashDrawn.value = request.mlv;
+  chnNo.value = request.chn;
+  accNo.value = request.vas;
+  vasSec.value = request.vas;
+  mlv.value = request.mlv;
+  slv.value = request.slv;
+  InterestM.value = mlRatio;
+  InterestS.value = slRatio;
+  activeTab.value = 2;
+}
 </script>
