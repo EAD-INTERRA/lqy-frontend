@@ -14,17 +14,17 @@
         <form @submit="submitForm">
           <div class="grid grid-cols-1 gap-4 w-full">
             <div class="flex flex-col">
-              <label class="font-ubuntu text-white text-xs md:text-sm font-normal leading-normal my-1 mx-1">
+              <label class="font-ubuntu !text-white text-xs md:text-sm font-normal leading-normal my-1 mx-1">
                 Email
               </label>
-              <input type="text" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-3"
+              <input type="text" class="form-control text-white bg-theme-lb rounded-[8px] h-[40px] px-3"
                 placeholder="Enter your details" v-model="email" required />
             </div>
             <div class="flex flex-col relative">
-              <label class="font-ubuntu text-white text-sm font-normal leading-normal my-1 mx-1">
+              <label class="font-ubuntu !text-white text-sm font-normal leading-normal my-1 mx-1">
                 Password
               </label>
-              <input id="password" :type="inputType" class="form-control bg-theme-lb rounded-[8px] h-[40px] px-3 pr-10"
+              <input id="password" :type="inputType" class="form-control text-white bg-theme-lb rounded-[8px] h-[40px] px-3 pr-10"
                 placeholder="********" v-model="password" required />
               <button type="button" @click="ToggleButton" aria-label="Toggle password visibility"
                 class="absolute right-3 top-9 text-xl bg-transparent focus:outline-none flex items-center p-1"
