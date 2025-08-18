@@ -93,7 +93,7 @@
           :showCheckbox="false"
         >
           <template #cell-0="{ row }">
-            <span class="text-blue-700 underline">{{ row.values[0] }}</span>
+            <span class="text-[#007FFD] underline">{{ row.values[0] }}</span>
           </template>
           <template #cell-1="{ row }">
             <span>{{ row.values[1] }}</span>

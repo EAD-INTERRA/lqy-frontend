@@ -138,6 +138,7 @@
                 <input
                   ref="fileInput"
                   id="cac-document"
+                  name="cac-document"
                   type="file"
                   accept=".pdf,.docx,.doc,.png,.jpeg"
                   class="hidden"

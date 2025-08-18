@@ -18,7 +18,7 @@
             We've sent a confirmation email to your inbox. Please check your email and await approval from LQY. This
             process may take 2-3 working days. Thank you for your patience!"</p>
           <div class="flex justify-center text-center  mt-6">
-            <NuxtLink to="/Authenticate" class="font-ubuntu customWhite ok-btn justify-center items-center font-semibold">
+            <NuxtLink to="/" class="font-ubuntu customWhite ok-btn justify-center items-center font-semibold">
               Ok
             </NuxtLink>
           </div>
