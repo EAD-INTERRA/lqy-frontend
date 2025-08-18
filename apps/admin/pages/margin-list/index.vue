@@ -8,7 +8,7 @@ const { $services } = useNuxtApp();
 const margins = ref([]);
 
 onMounted(async () => {
-  const response = await $services.shareholder.getShareholders();
+  const response = await $services.shareholder.getMargins();
   margins.value = response.body
 });
 const headers = [

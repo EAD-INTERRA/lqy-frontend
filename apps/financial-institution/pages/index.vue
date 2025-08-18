@@ -100,7 +100,7 @@ function toggleBroker(idx: number) {
         >
           <img src="/assets/images/icon-park-solid.svg" class="rounded-full" alt="icon" />
           <div>
-            <p class="font-ox text-ox-xs">Pending Request</p>
+            <p class="font-ox text-ox-xs font-bold">Total Request</p>
             <p class="font-ox font-bold text-center text-ox-lg">43,543</p>
           </div>
         </div>
@@ -109,7 +109,7 @@ function toggleBroker(idx: number) {
         >
           <img src="/assets/images/doc-success.svg" class="rounded-full" alt="icon" />
           <div>
-            <p class="font-ox text-ox-xs">Total Request</p>
+            <p class="font-ox text-ox-xs font-bold">Approved Request</p>
             <p class="font-ox font-bold text-center text-ox-lg">43</p>
           </div>
         </div>
@@ -118,7 +118,7 @@ function toggleBroker(idx: number) {
         >
           <img src="/assets/images/doc-fail.svg" class="rounded-full" alt="icon" />
           <div>
-            <p class="font-ox text-ox-xs">Total Request</p>
+            <p class="font-ox text-ox-xs font-bold">Rejected Request</p>
             <p class="font-ox font-bold text-center text-ox-lg">545</p>
           </div>
         </div>

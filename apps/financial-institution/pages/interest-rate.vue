@@ -6,7 +6,7 @@
       >
         <div class="flex justify-between">
           <p class="bg-theme-tb font-semibold w-fit text-lg px-3 py-1 rounded-[5px] mb-6">
-            Interest List
+            Profit List
           </p>
         </div>
 
@@ -56,14 +56,16 @@ import BaseTable from "../../../packages/ui/components/BaseTable.vue";
 import BasePagination from "../../../packages/ui/components/BasePagination.vue";
 // Table headers
 const headers = [
-  "Financial Institution",
-  "Cash Disbursed ($)",
+  "Brokers",
+  "Cash Disbursed (₦)",
   "Proportion of Funds (%)",
   "Interest Accrued",
 ];
 
 // Random generators
-const banks = ["ABC Bank", "XYZ Bank", "DEF Bank", "PQR Bank", "LMN Bank"];
+const banks = [
+  "John Doe", "Jane Smith", "Alex Hum", "Chris Xi", "Taylor Swift", "Jordan Michael", "Morgan Foxx", "Pat Brad", "Sam Fu", "Lee Xin"
+];
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -103,4 +105,6 @@ function setCurrentPage(page) {
 function openDetails(row) {
   console.log("Open details for:", row);
 }
+
+
 </script>

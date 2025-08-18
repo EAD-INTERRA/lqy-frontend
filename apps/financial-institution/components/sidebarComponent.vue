@@ -38,7 +38,7 @@
                 class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
                 exact-active-class="text-theme-as  rounded-md"
                 :class="{ 'bg-[mt-2 rgba(255,255,255,0.1)]': $route.path === '/finance/management-fee-earned' }">
-                Management Fee Earned By Bank
+                Management Fee Earned
               </NuxtLink>
               <NuxtLink to="/finance/maintainance-call"
                 class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
@@ -55,7 +55,7 @@
             exact-active-class="text-theme-as  rounded-md"
             :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/interest-rate' }">
             <img src="/assets/images/profit.svg" alt="" />
-            Interest List
+            Profit List
           </NuxtLink>
           <NuxtLink to="/funding"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"

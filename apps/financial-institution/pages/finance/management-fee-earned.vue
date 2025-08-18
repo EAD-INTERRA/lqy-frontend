@@ -53,25 +53,16 @@ const activeTab = ref(1);
 
 const headers = [
   "S/N",
-  "Bank",
+  "Broker",
   "Cash Drawn",
   "Value of Ass. Sec",
   "Management Fee Earned",
 ];
 
 const nigerianBanks = [
-  "Access Bank PLC.",
-  "Guarantee Trust Bank PLC",
-  "Zenith Bank PLC",
-  "First Bank PLC",
-  "Union Bank PLC",
-  "United Bank of Africa PLC",
-  "Fidelity Bank PLC",
-  "Sterling Bank PLC",
-  "Polaris Bank PLC",
-  "Wema Bank PLC",
-  "Unity Bank PLC",
+  "John Doe", "Jane Smith", "Alex Hum", "Chris Xi", "Taylor Swift", "Jordan Michael", "Morgan Foxx", "Pat Brad", "Sam Fu", "Lee Xin"
 ];
+
 function generateBankData() {
   const banksData = nigerianBanks.map((bank, index) => {
     const cashDrawn = Math.floor(Math.random() * (5_000_000 - 500_000 + 1)) + 500_000; // 0.5M - 5M NGN
