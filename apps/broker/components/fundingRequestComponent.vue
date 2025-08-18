@@ -27,6 +27,7 @@
                 id="chn"
                 v-model="form.chn"
                 type="text"
+                maxlength="12"
                 placeholder="Enter CHN number"
                 class="form-input"
               />
