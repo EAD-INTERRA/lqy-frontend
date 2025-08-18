@@ -20,7 +20,7 @@
       :class="[
         'px-3 py-1 text-sm border rounded-md min-w-[40px] transition-colors',
         currentPage === page
-          ? '!bg-[#852282] text-white border-blue-600 hover:!bg-[#6b1b68]'
+          ? 'bg-blue-900 text-black border-blue-600 hover:!bg-[#6b1b68]'
           : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
       ]"
     >

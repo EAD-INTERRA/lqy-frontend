@@ -36,7 +36,7 @@
                 v-model="type"
               >
                 <option value="" selected disabled>Select your business type</option>
-                <option v-for="role in roles" :key="role.name" :value="role.name">
+                <option v-for="role in roles" :key="role.name" :value="role.name" class="bg-white text-black">
                   {{ role.name }}
                 </option>
               </select>
@@ -49,6 +49,7 @@
                 type="text"
                 class="form-control bg-theme-lb text-white rounded-[8px] h-[40px] px-3"
                 placeholder="Enter CHN Number"
+                maxlength="12"
                 v-model="chn_number"
                 required
               />
@@ -108,7 +109,7 @@
                 v-model="state_id"
               >
                 <option value="" selected disabled>Select State</option>
-                <option v-for="state in states" :key="state.id" :value="state.id">
+                <option v-for="state in states" :key="state.id" :value="state.id" class="bg-white text-black">
                   {{ state.name }}
                 </option>
               </select>

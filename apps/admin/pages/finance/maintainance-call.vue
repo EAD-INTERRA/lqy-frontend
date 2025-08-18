@@ -2,7 +2,7 @@
     <div class="p-4 space-y-6">
       <div class="flex justify-between" v-if="activeTab === 1">
         <div class="text-xl text-[#FF0000] font-bold mb-4 font-ox">
-          Management Fee Earned by Broker
+          Maintainance Call
         </div>
       </div>
   

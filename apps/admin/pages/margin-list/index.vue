@@ -3,6 +3,14 @@ import { ref, computed } from "vue";
 import BaseTable from "../../../packages/ui/components/BaseTable.vue";
 import BasePagination from "../../../packages/ui/components/BasePagination.vue";
 
+const { $services } = useNuxtApp();
+
+const margins = ref([]);
+
+onMounted(async () => {
+  const response = await $services.shareholder.getShareholders();
+  margins.value = response.body
+});
 const headers = [
   "S/N",
   "Name",

@@ -1,13 +1,9 @@
-<svg width="56" height="57" viewBox="0 0 56 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_476_11737" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="3" width="42" height="51">
-<path d="M44.334 5.16602H11.6673C11.0485 5.16602 10.455 5.41185 10.0174 5.84943C9.57982 6.28702 9.33398 6.88051 9.33398 7.49935V49.4993C9.33398 50.1182 9.57982 50.7117 10.0174 51.1493C10.455 51.5868 11.0485 51.8327 11.6673 51.8327H44.334C44.9528 51.8327 45.5463 51.5868 45.9839 51.1493C46.4215 50.7117 46.6673 50.1182 46.6673 49.4993V7.49935C46.6673 6.88051 46.4215 6.28702 45.9839 5.84943C45.5463 5.41185 44.9528 5.16602 44.334 5.16602Z" fill="white" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M19.834 35.4993H36.1673M19.834 42.4993H28.0007M23.334 24.9993L32.6673 15.666M32.6673 24.9993L23.334 15.666" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="42" height="52" viewBox="0 0 42 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_3856_35388" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="42" height="52">
+<path d="M37.332 2.61914H4.66536C4.04653 2.61914 3.45303 2.86497 3.01545 3.30256C2.57786 3.74014 2.33203 4.33364 2.33203 4.95247V46.9525C2.33203 47.5713 2.57786 48.1648 3.01545 48.6024C3.45303 49.04 4.04653 49.2858 4.66536 49.2858H37.332C37.9509 49.2858 38.5444 49.04 38.9819 48.6024C39.4195 48.1648 39.6654 47.5713 39.6654 46.9525V4.95247C39.6654 4.33364 39.4195 3.74014 38.9819 3.30256C38.5444 2.86497 37.9509 2.61914 37.332 2.61914Z" fill="white" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.832 32.9525H29.1654M12.832 39.9525H20.9987M27.9987 13.1191L18.6654 22.4525L13.9987 17.7858" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </mask>
-<g mask="url(#mask0_476_11737)">
-<path d="M0 0.5H56V56.5H0V0.5Z" fill="#E1E5EB"/>
+<g mask="url(#mask0_3856_35388)">
+<path d="M-7 -2.04688H49V53.9531H-7V-2.04688Z" fill="#4C7ACA"/>
 </g>
-<rect x="18.666" y="9.83398" width="19.8333" height="19.8333" fill="#E1E5EB"/>
-<circle cx="18" cy="21.5" r="2" fill="#FD9B05"/>
-<circle cx="24" cy="21.5" r="2" fill="#FD9B05"/>
-<circle cx="30" cy="21.5" r="2" fill="#FD9B05"/>
 </svg>
