@@ -131,7 +131,7 @@
                 for="cac-document"
                 class="font-ubuntu text-white text-sm font-medium ml-1"
               >
-                CAC Document
+                CAC Document (Max 2MB, PDF, DOCX, DOC, PNG, JPEG)
               </label>
 
               <div class="relative w-full">
@@ -175,60 +175,64 @@
                 v-model="email"
               />
             </div>
+            
             <div class="flex flex-col relative">
-              <label class="font-ubuntu text-white text-sm font-normal my-1 mx-1"
-                >Password</label
-              >
-              <input
-                :type="inputType"
-                class="form-control bg-theme-lb text-white rounded-[8px] h-[40px] px-3 pr-10"
-                placeholder="Enter your password"
-                required
-                v-model="password"
-              />
-              <button
-                type="button"
-                @click="togglePassword"
-                aria-label="Toggle password visibility"
-                class="absolute right-3 top-9 text-xl customOrange bg-transparent focus:outline-none flex items-center p-1"
-                tabindex="0"
-              >
-                <span v-if="inputType === 'password'">
-                  <!-- Eye icon (blue) -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0c0 5-4.03 9-9 9S3 17 3 12 7.03 3 12 3s9 4.03 9 9z"
-                    />
-                  </svg>
-                </span>
-                <span v-else>
-                  <!-- Eye-off icon (blue) -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13.875 18.825A9.956 9.956 0 0112 19c-4.97 0-9-4.03-9-9 0-1.657.445-3.216 1.225-4.575M6.7 6.7A9.956 9.956 0 0112 5c4.97 0 9 4.03 9 9 0 1.657-.445 3.216-1.225 4.575M15 12a3 3 0 11-6 0 3 3 0 016 0zM3 3l18 18"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
+  <label class="font-ubuntu text-white text-sm font-normal my-1 mx-1">
+    Password
+  </label>
+  <input
+    :type="inputType"
+    class="form-control bg-theme-lb text-white rounded-[8px] h-[40px] px-3 pr-10"
+    placeholder="Enter your password"
+    required
+    v-model="password"
+  />
+
+  <!-- Toggle visibility button -->
+  <button
+    type="button"
+    @click="togglePassword"
+    aria-label="Toggle password visibility"
+    class="absolute right-3 top-9 text-xl customOrange bg-transparent focus:outline-none flex items-center p-1"
+    tabindex="0"
+  >
+    <span v-if="inputType === 'password'">
+      <!-- Eye icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0c0 5-4.03 9-9 9S3 17 3 12 7.03 3 12 3s9 4.03 9 9z" />
+      </svg>
+    </span>
+    <span v-else>
+      <!-- Eye-off icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M13.875 18.825A9.956 9.956 0 0112 19c-4.97 0-9-4.03-9-9 0-1.657.445-3.216 1.225-4.575M6.7 6.7A9.956 9.956 0 0112 5c4.97 0 9 4.03 9 9 0 1.657-.445 3.216-1.225 4.575M15 12a3 3 0 11-6 0 3 3 0 016 0zM3 3l18 18" />
+      </svg>
+    </span>
+  </button>
+
+  <!-- Password rules feedback -->
+  <div class=" bg-white shadow-lg rounded-md font-ox text-xs mt-2 ml-1 p-2">
+    <div class="grid grid-cols-2">
+      <span :class="isMinLength ? 'text-green-500' : 'text-red-500'">
+       - Minimum 8 characters
+    </span>
+    <span :class="hasUppercase ? 'text-green-500' : 'text-red-500'">
+       - At least 1 uppercase letter (A-Z)
+    </span>
+    <span :class="hasLowercase ? 'text-green-500' : 'text-red-500'">
+       - At least 1 lowercase letter (a-z)
+    </span>
+    <span :class="hasDigit ? 'text-green-500' : 'text-red-500'">
+       - At least 1 digit (0-9)
+    </span>
+    </div>
+    <span :class="hasSpecial ? 'text-green-500' : 'text-red-500'">
+      - At least 1 special character (!@#$%^&* etc.)
+    </span>
+  </div>
+</div>
           </div>
           <div class="flex flex-col items-center mt-8">
             <button
@@ -302,6 +306,16 @@ const inputType = ref('password');
 const togglePassword = () => {
     inputType.value = inputType.value === 'password' ? 'text' : 'password';
 };
+
+
+// ✅ Computed validations
+const isMinLength = computed(() => password.value.length >= 8)
+const hasUppercase = computed(() => /[A-Z]/.test(password.value))
+const hasLowercase = computed(() => /[a-z]/.test(password.value))
+const hasDigit = computed(() => /\d/.test(password.value))
+const hasSpecial = computed(() =>
+  /[!@#$%^&*()_\-+=\[\]{}|;:',.<>\/?`~]/.test(password.value)
+)
 
 const showChnInput = computed(() => type.value === 'Broker');
 

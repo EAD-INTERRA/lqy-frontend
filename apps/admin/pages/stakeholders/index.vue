@@ -101,11 +101,11 @@
               </div>
               <div>
                 <h3 class="text-[14px]">Country</h3>
-                <span class="text-[20px]">{{selectedStakeholder?.country}}</span>
+                <span class="text-[20px]">{{selectedStakeholder?.state.country_code}}</span>
               </div>
               <div>
                 <h3 class="text-[14px]">State</h3>
-                <span class="text-[20px]">{{selectedStakeholder?.state}}</span>
+                <span class="text-[20px]">{{selectedStakeholder?.state.name}}</span>
               </div>
               <div>
                 <h3 class="text-[14px]">Town/City</h3>
