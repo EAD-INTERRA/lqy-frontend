@@ -49,10 +49,6 @@
                 <span class="text-[20px]">&#8358; 42,000,000</span>
               </div>
               <div>
-                <h3 class="text-[14px]">Tenure</h3>
-                <span class="text-[20px]">36 Months</span>
-              </div>
-              <div>
                 <h3 class="text-[14px]">Date Submitted</h3>
                 <span class="text-[20px]">July 30th, 2025</span>
               </div>
