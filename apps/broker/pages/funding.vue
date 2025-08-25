@@ -1,6 +1,6 @@
 
 <template>
-  <div class="p-4 space-y-6">
+  <div class="px-4 space-y-6">
     <div class="flex justify-between" v-if="activeTab === 1">
       <div class="text-xl text-[#FF0000] font-semibold mb-4">Funding Request</div>
       <button @click="activeTab = 2" class="bg-[#10356D] shadow-lg text-white py-2 px-4 rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center">

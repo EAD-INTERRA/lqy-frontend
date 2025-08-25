@@ -1,71 +1,30 @@
 <template>
   <div class="px-4 space-y-6">
-  <div class="flex justify-between" v-if="activeTab === 1 || activeTab === 2">
-    <div class="relative flex justify-between bg-gray-200 rounded-[16px] w-[22%] p-[0.9px]" >
-    <span
-      class="absolute top-[0.9px] left-[0.9px] h-[calc(100%-1.8px)] rounded-[16px] bg-white shadow-lg transition-all duration-300 ease-in-out"
-      :style="{
-        width: activeTab === 1 ? '50%' : '50%',
-        transform: activeTab === 1 ? 'translateX(0%)' : 'translateX(100%)',
-      }"
-    ></span>
-
-    <!-- Funding Request Tab -->
-    <button 
-      @click="activeTab = 1" 
-      class="relative z-10 py-2 px-4 rounded-[16px] font-in font-md text-[18px] flex items-center justify-center transition-colors duration-300"
-      :class="activeTab === 1 ? 'text-black' : 'text-gray-800'"
-    >
-      Investors Securities
-    </button>
-
-    <!-- Accounts Funded Tab -->
-    <button 
-      @click="activeTab = 2" 
-      class="relative z-10 py-2 px-4 rounded-[16px] font-in font-md text-[18px] flex items-center justify-center transition-colors duration-300"
-      :class="activeTab === 2 ? 'text-black' : 'text-gray-800'"
-    >
-      My Investors
-    </button>
-  </div>
-  <div class="p-[0.9px]" v-if="activeTab === 2">
-    <button @click="activeTab = 4" class="bg-[#10356D] font-ox font-bold text-[14px] shadow-lg text-white py-2 px-4 rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9.99935 4.16699V10.0003M9.99935 10.0003V15.8337M9.99935 10.0003H15.8327M9.99935 10.0003H4.16602" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-        Create Investor
-     </button>
-  </div>
-  </div>
-    <div v-if="activeTab === 1" class="space-y-6">
+    <div class="space-y-6">
       <!-- <div class="text-xl text-[#FF0000] font-semibold mb-4">CAPITAL ASSET LTD</div> -->
 
     <!-- Summary Cards -->
-    <section class="grid grid-cols-4 w-full gap-6">
-      <div class="bg-white shadow-custom-heavy flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
-        <div>
-          <p class="font-in font-medium text-[#687280] text-[12px]">Cash Drawn</p>
-          <p class="font-in font-bold text-left text-ox-lg text-[#10356D]">{{ formatCurrency(totalCashDrawn) }}</p>
-        </div>
+    <section class="grid grid-cols-3 w-full gap-6">
+      <div class="bg-white shadow-custom-heavy flex justify-between gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+         <div>
+          <p class="font-in font-medium text-[#687280] text-[12px]">Total Investors</p>
+          <p class="font-in font-bold text-left text-ox-lg text-[#155DFC]">{{ totalCashDrawn }}</p>
+         </div>
+         <img src="/assets/images/investors.svg" alt="">
       </div>
-      <div class="bg-white shadow-custom-heavy flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+      <div class="bg-white shadow-custom-heavy flex justify-between gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
         <div>
-          <p class="font-in font-medium text-[#687280] text-[12px]">Total MLV</p>
-          <p class="font-in font-bold text-left text-ox-lg text-[#10356D]">{{ formatCurrency(totalMLV) }}</p>
+          <p class="font-in font-medium text-[#687280] text-[12px]">Active Investors</p>
+          <p class="font-in font-bold text-left text-ox-lg text-[#0E8E3D]">{{ totalMLV }}</p>
         </div>
+        <img src="/assets/images/active.svg" alt="">
       </div>
-      <div class="bg-white shadow-custom-heavy flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+      <div class="bg-white shadow-custom-heavy flex justify-between gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
         <div>
-          <p class="font-in font-medium text-[#687280] text-[12px]">Total VAS</p>
-          <p class="font-in font-bold text-left text-ox-lg text-[#10356D]">{{ formatCurrency(totalVAS) }}</p>
+          <p class="font-in font-medium text-[#687280] text-[12px]">Pending Activations</p>
+          <p class="font-in font-bold text-left text-ox-lg text-[#FF5F57]">{{ totalVAS }}</p>
         </div>
-      </div>
-      <div class="bg-white shadow-custom-heavy flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
-        <div>
-          <p class="font-in font-medium text-[#687280] text-[12px]">Total SLV</p>
-          <p class="font-in font-bold text-left text-ox-lg text-[#10356D]">{{ formatCurrency(totalSLV) }}</p>
-        </div>
+        <img src="/assets/images/pending.svg" alt="">
       </div>
     </section>
 
@@ -106,32 +65,6 @@
       </div>
     </section>
     </div>
-    <InvestorPortfolio
-  v-if="activeTab === 3"
-  @go-back="activeTab = 1"
-  :investor="investor"
-  :cashDrawn="cashDrawn"
-  :chnNo="chnNo"
-  :accNo="accNo"
-  :vasSec="vasSec"
-  :mlv="mlv"
-  :slv="slv"
-  :interestM="interestM"
-  :interestS="interestS"
-/>
-
-<Investors
-  v-if="activeTab === 2"
-  @open-details="handleOpenDetails"
-/>
-<create-investor
-  v-if="activeTab === 4"
-  @go-back="activeTab = 2"
-/>
-<ViewInvestor
-  v-if="activeTab === 5"
-  @go-back="activeTab = 2"
-/>
   </div>
 </template>
 
@@ -252,24 +185,9 @@ const paginatedRows = computed(() => {
   }));
 });
 
-function openDetails(request) {
-  
-  const mlRatio = Math.floor(Math.random() * 71) + 20; // 20–90%
-  const slRatio = Math.floor(Math.random() * 79) + 40; // 20–90%
-  console.log(request)
-  investor.value = request.name;
-  cashDrawn.value = request.mlv;
-  chnNo.value = request.chn;
-  accNo.value = request.vas;
-  vasSec.value = request.vas;
-  mlv.value = request.mlv;
-  slv.value = request.slv;
-  InterestM.value = mlRatio;
-  InterestS.value = slRatio;
-  activeTab.value = 3;
-}
+const emit = defineEmits(["open-details"]);
 
-function handleOpenDetails(request) {
-  activeTab.value = 5;
+function openDetails(request) {
+  emit("open-details", request); // send request to parent
 }
 </script>

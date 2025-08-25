@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 space-y-6">
+  <div class="px-4 space-y-6">
     <section class="mb-4">
       <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Status</div>
       <div class="bg-white shadow-lg p-5 lg:p-5 rounded-lg lg:rounded-2xl mb-2.5">

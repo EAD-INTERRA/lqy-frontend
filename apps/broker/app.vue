@@ -17,7 +17,7 @@
         <HeaderComponent class="relative z-10" @toggle-sidebar="toggleSidebar" />
 
         <!-- Page Content -->
-        <main class="flex-1 overflow-y-auto px-5 pt-[60px] pb-4">
+        <main class="flex-1 overflow-y-auto px-5 py-[2%] pb-4">
           <NuxtPage />
         </main>
       </div>

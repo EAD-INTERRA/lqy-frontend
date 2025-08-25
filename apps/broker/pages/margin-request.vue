@@ -11,6 +11,7 @@
           type="text"
           v-model="chn"
           placeholder="Enter customer's CHN number"
+          maxLength="12"
           class="block w-full px-3 py-4 rounded-md shadow-sm focus:outline-none focus:ring-blue-600 focus:border-blue-600 sm:text-sm bg-black/10 mt-5 text-black placeholder-gray-400"
         />
       </div>
