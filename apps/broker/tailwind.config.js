@@ -12,6 +12,7 @@ module.exports = {
        fontFamily: {
         sen: ['"Sen"', 'sans'],
         ox: ['"Oxygen"', 'sans'],
+        ub: ['"Ubuntu"', 'sans'],
       },
       fontSize:{
         'sen-sm': '16px',
@@ -47,6 +48,7 @@ module.exports = {
       },
       boxShadow: {
         'pricing': '0px 4px 8px 0px rgba(3, 47, 60, 0.05), 1px -4px 8px 0px rgba(3, 47, 60, 0.05);',
+          'custom-heavy': '0 4px 20px 4px rgba(0, 0, 0, 0.15)', // x, y, blur, spread
       },
     },
   },

@@ -4,6 +4,11 @@ export interface LoginInput {
     username: string;
     password: string;
 }
+
+export interface OTPInput {
+    email: string;
+    token: number;
+}
 interface LoginResponse {
     body: string;
     message: string;
@@ -29,7 +34,7 @@ interface  SignupResponse {
 
 export interface AuthServiceInterface {
     login(input: LoginInput): Promise<LoginResponse>
-    verify_login(input: LoginInput): Promise<LoginResponse>
+    verify_login(input: OTPInput): Promise<LoginResponse>
     signup(input: SignupInput): Promise<SignupResponse>
 }
 
@@ -50,7 +55,7 @@ export class AuthService implements AuthServiceInterface {
         
     }
 
-    async verify_login(input: LoginInput): Promise<LoginResponse> {
+    async verify_login(input: OTPInput): Promise<LoginResponse> {
         try {
             const response = await this.client.post('verify_login', input) 
             return response.data   

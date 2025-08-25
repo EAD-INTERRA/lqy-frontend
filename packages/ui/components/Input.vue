@@ -13,8 +13,7 @@
           :pattern="
             type === 'tel'
               ? '^(\\+234|0)?(70[0-9]|80[0-9]|81[0-9]|90[0-9]|91[0-9])[0-9]{7}$'
-              : undefined
-          "
+              : undefined"
           class="w-full px-4 py-3 bg-white border border-gray-400 rounded-lg text-theme-textColor placeholder-gray-500 placeholder:text-[16px] focus:outline-none focus:ring-2 focus:ring-theme-primary/50 pr-10"
           :placeholder="placeholder"
           :value="modelValue"

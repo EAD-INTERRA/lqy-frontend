@@ -1,29 +1,29 @@
 <template>
     <div class="p-4 space-y-6">
         <section class="mb-4">
-            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Account</div>
+            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Status</div>
             <div class="bg-white shadow-lg p-5 lg:p-5 rounded-lg lg:rounded-2xl mb-2.5">
                 <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false" class="">
                     <template #cell-0="{ row }">
                         <span>{{ row.values[0] }}</span>
                     </template>
                     <template #cell-1="{ row }">
-                        <span>{{ row.values[1] }}</span>
+                        <span class="capitalize">{{ row.values[1] }}</span>
                     </template>
                     <template #cell-2="{ row }">
                         <span>{{ row.values[2] }}</span>
                     </template>
                     <template #cell-3="{ row }">
                         <span v-if="row.values[3]?.toLowerCase() === 'accepted'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white">
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-blue-500 text-white capitalize">
                             {{ row.values[3] }}
                         </span>
                         <span v-else-if="row.values[3]?.toLowerCase() === 'pending'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white">
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-500 text-white capitalize">
                             {{ row.values[3] }}
                         </span>
                         <span v-else-if="row.values[3]?.toLowerCase() === 'rejected'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white">
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-500 text-white capitalize">
                             {{ row.values[3] }}
                         </span>
                         <span v-else>
@@ -96,8 +96,8 @@ onMounted(async () => {
         const response = await $services.base.getAllMarginRequests();
         allRequests.value = response.body.rows || [];
     } catch (error) {
-        console.error("Error fetching margin accounts:", error);
-        toast.error("Failed to fetch margin accounts");
+        console.error("Error fetching margin status:", error);
+        toast.error("Failed to fetch margin status. Please try again later.");
     } finally {
         loading.value = false;
     }

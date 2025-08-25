@@ -1,502 +1,263 @@
-<template>
-<div class="p-4 space-y-6 ">
-    <section class="grid grid-cols-4 w-fit gap-6">
-        <div class="bg-custom-orange flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/icon-park-solid.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Pending Request </p>
-                <p class="font-ox font-bold text-center text-ox-lg">43,543</p>
-            </div>
-        </div>
-        <div class=" bg-custom-blue flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/doc-success.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Total Request </p>
-                <p class="font-ox font-bold text-center text-ox-lg">43</p>
-            </div>
-        </div>
-        <div class="bg-custom-red flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/doc-fail.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Total Request  </p>
-                <p class="font-ox font-bold text-center text-ox-lg">545</p>
-            </div>
-        </div>
-        <div class="bg-custom-purple flex gap-6 rounded-[12px] w-[265px] px-[30px] py-[16px]">
-            <img src="/assets/images/doc-fail.svg" class="rounded-full" alt="icon" />
-            <div>
-                <p class="font-ox text-ox-xs">Total Request  </p>
-                <p class="font-ox font-bold text-center text-ox-lg">545</p>
-            </div>
-        </div>
+<script setup lang="ts">
+ import BaseTable from "../../../packages/ui/components/BaseTable.vue";
+  import BasePagination from "../../../packages/ui/components/BasePagination.vue";
 
-    </section>
+  
+  const headers = [
+  "S/N",
+  "Broker",
+  "Cash Drawn",
+  "Value of Association Security",
+  "Interest Earned",
+];
 
-    <section class="mb-4">
+const nigerianBanks = [
+  "John Doe", "Jane Smith", "Alex Hum", "Chris Xi", "Taylor Swift", "Jordan Michael", "Morgan Foxx", "Pat Brad", "Sam Fu", "Lee Xin"
+];
 
-        <div class="bg-theme-cg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
-            <div class="flex justify-between">
-                <p class=" bg-theme-tb font-semibold w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Investors Security</p>
-                <p class=" bg-blue-400 text-white font-ox border border-black w-fit  text-lg px-3 py-1 rounded-[5px] mb-6">Margin Check</p>
-            </div>
-            
-            <table class="table-fixed w-[80%]">
-                <thead>
-                    <tr class=" text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
-                        <th class="w-44 pt-2 pb-2 hidden lg:table-cell text-left">Investors</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Ticker Symbol</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Security Name</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left ">Quantity</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">Market Value ($)</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Asset Class</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">DIvidend Yield (%)</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Liquidity Rate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
+function generateBankData() {
+  const banksData = nigerianBanks.map((bank, index) => {
+    const cashDrawn = Math.floor(Math.random() * (5_000_000 - 500_000 + 1)) + 500_000; // 0.5M - 5M NGN
+    const valueOfAssSec = Math.floor(cashDrawn * (Math.random() * (1.5 - 1.0) + 1.0)); // 1x to 1.5x of cash drawn
+    const managementFeeRate = (Math.random() * (5 - 1) + 1) / 100; // 1% to 5%
+    const managementFeeEarned = Math.round(cashDrawn * managementFeeRate);
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
-                            </div>
+    return {
+      sn: index + 1,
+      bank,
+      cashDrawn,
+      valueOfAssSec,
+      managementFeeEarned,
+    };
+  });
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
+  return banksData;
+}
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
-                            </div>
+const allRequests = ref(generateBankData());
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
+const currentPage = ref(1);
+const pageSize = ref(10);
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
-                            </div>
+const totalCount = computed(() => allRequests.value.length);
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7" alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6 text-left">Jon Doe</NuxtLink>
-                            </div>
+const totalCashDrawn = computed(() =>
+  allRequests.value.reduce((sum, r) => sum + r.cashDrawn, 0)
+);
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">AAPL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Apple INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                                500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    <tr class="rowText bg-theme-tb text-black  font-ox text-base font-normal leading-normal">
-                        <td class="  text-center flex flex-col gap-0 lg:gap-2 w-full mt-1  pt-2 pb-2 ">
-                            <dl class="lg:hidden ">
-                                <dt class="sr-only">Name</dt>
-                                <dd class="text-black font-ox text-base font-normal leading-normal">
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-md font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="lg:hidden">
-                                <dt class="sr-only">Name</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <img src="/assets/images/profileImage.svg" class="rounded-full" alt="icon" />
-                                        <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2 leading-6">Jon Doe</NuxtLink>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <div class="flex pl-2">
-                                <img src="/assets/images/profileImage.svg" class="rounded-full w-7 " alt="icon" />
-                                <NuxtLink to="/" class="font-ox text-ox-sm font-bold ml-2  leading-6">Jon Doe</NuxtLink>
-                            </div>
+const totalValueOfAssSec = computed(() =>
+  allRequests.value.reduce((sum, r) => sum + r.valueOfAssSec, 0)
+);
 
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">GOOGL</p>
-                        </td>
-                        <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left"> Alphabet INC.</p>
-                        </td>
-                        <td class=" lg:table-cell mt-5 text-center font-bold  lg:pt-2 pb-2">
-                            <p class="text-left">
-                               500
-                            </p>
-                        </td>
-                        <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                            <p class="text-left">$75,000</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">Equity</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">1.5</p>
-                        </td>
-                        <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                            <p class="text-left">High</p>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-    </section>
-</div>
-</template>
+const totalManagementFeeEarned = computed(() =>
+  allRequests.value.reduce((sum, r) => sum + r.managementFeeEarned, 0)
+);
 
-<script lang="ts" setup>
-const chartData = ref([{
-        name: 'Equities',
-        count: 12
-    },
-    {
-        name: 'Bonds',
-        count: 50
-    },
-    {
-        name: 'Derivatives',
-        count: 20
-    },
-    {
-        name: 'Other Assets',
-        count: 18
-    },
-]);
+const totalPages = computed(() => Math.ceil(totalCount.value / pageSize.value));
+const startItem = computed(() => (currentPage.value - 1) * pageSize.value + 1);
+const endItem = computed(() =>
+  Math.min(currentPage.value * pageSize.value, totalCount.value)
+);
 
-const chartColors = ['#E0903F', '#65C569', '#AC65C5', '#6373F8']; // External colors array
+const paginatedRows = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value;
+  const end = start + pageSize.value;
+  return allRequests.value.slice(start, end).map((request) => ({
+    values: [
+      request.sn,
+      request.bank,
+      formatCurrency(request.cashDrawn),
+      formatCurrency(request.valueOfAssSec),
+      formatCurrency(request.managementFeeEarned),
+    ],
+    raw: request,
+  }));
+});
 
-const chartLabels = ref(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
-const chartDatasets = ref([{
-        label: 'Series A',
-        data: [65, 59, 80, 81, 56, 55, 100],
-        borderColor: 'rgba(16, 53, 109, 1)',
-        backgroundColor: 'rgba(16, 53, 109, 0.2)',
-        fill: false,
-    },
-    {
-        label: 'Series B',
-        data: [28, 48, 40, 19, 86, 27, 90],
-        borderColor: 'rgba(238, 46, 46, 1)',
-        backgroundColor: 'rgba(238, 46, 46, 0.2)',
-        fill: false,
-    },
-]);
+function setCurrentPage(page: number) {
+  if (page >= 1 && page <= totalPages.value) currentPage.value = page;
+}
+
+const currencyFormatter = new Intl.NumberFormat("en-NG", {
+  style: "currency",
+  currency: "NGN",
+  maximumFractionDigits: 2,
+});
+
+function formatCurrency(value: number) {
+  return currencyFormatter.format(value);
+}
+const brokers = ref([
+  {
+    name: "Broker A",
+    open: true,
+    values: [
+      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+    ]
+  },
+  {
+    name: "Broker B",
+    open: true,
+    values: [
+      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+    ]
+  },
+  {
+    name: "Broker C",
+    open: true,
+    values: [
+      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+    ]
+  },
+  {
+    name: "Broker D",
+    open: true,
+    values: [
+      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+    ]
+  }
+])
+
+// Toggle open/close
+function toggleBroker(idx: number) {
+  brokers.value[idx].open = !brokers.value[idx].open
+}
 </script>
+
+<template>
+  <div class="min-h-screen">
+    <!-- <div class="flex gap-6"> -->
+      
+      <!-- Left/Main Content -->
+      <div class=" space-y-6">
+        
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-4 gap-6">
+        <div
+          class="shadow-lg flex gap-6 rounded-[12px] px-[30px] py-[16px]"
+        >
+          <!-- <img src="/assets/images/icon-park-solid.svg" class="rounded-full" alt="icon" /> -->
+          <div>
+            <p class="font-ox text-ox-xs font-bold">Total Number of Brokers</p>
+            <p class="font-ox font-bold text-ox-lg">{{totalCount}}</p>
+          </div>
+        </div>
+        <div
+          class="shadow-lg flex gap-6 rounded-[12px] px-[30px] py-[16px]"
+        >
+          <!-- <img src="/assets/images/doc-success.svg" class="rounded-full" alt="icon" /> -->
+          <div>
+            <p class="font-ox text-ox-xs font-bold">Total Cash Drawn</p>
+            <p class="font-ox font-bold text-ox-lg">{{ formatCurrency(totalCashDrawn) }}</p>
+          </div>
+        </div>
+        <div
+          class="shadow-lg flex gap-6 rounded-[12px] px-[30px] py-[16px]"
+        >
+          <!-- <img src="/assets/images/doc-fail.svg" class="rounded-full" alt="icon" /> -->
+          <div>
+            <p class="font-ox text-ox-xs font-bold">Value of Associated Security</p>
+            <p class="font-ox font-bold text-ox-lg">{{formatCurrency(totalValueOfAssSec)}}</p>
+          </div>
+        </div>
+        
+        <div
+          class="shadow-lg flex gap-6 rounded-[12px] px-[30px] py-[16px]"
+        >
+          <!-- <img src="/assets/images/doc-fail.svg" class="rounded-full" alt="icon" /> -->
+          <div>
+            <p class="font-ox text-ox-xs font-bold">Total Interest Earned</p>
+            <p class="font-ox font-bold text-ox-lg">{{formatCurrency(totalManagementFeeEarned)}}</p>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- Verification Requests -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h2 class="text-lg font-semibold text-gray-700 mb-4">List of Brokers</h2>
+          <BaseTable
+          :headers="headers"
+          :rows="paginatedRows"
+          :loading="false"
+          :showCheckbox="false"
+          class="!font-ox !font-bold m-2"
+        >
+          <template #cell-0="{ row }">
+            <span>{{ row.values[0] }}</span>
+          </template>
+          <template #cell-1="{ row }">
+            <span class="font-bold font-ox">{{ row.values[1] }}</span>
+          </template>
+          <template #cell-2="{ row }">
+            <span>{{ row.values[2] }}</span>
+          </template>
+          <template #cell-3="{ row }">
+            <span>{{ row.values[3] }}</span>
+          </template>
+          <template #cell-4="{ row }">
+            <span>{{ row.values[4] }}</span>
+          </template>
+        </BaseTable>
+
+        <BasePagination
+          :currentPage="currentPage"
+          :totalPages="totalPages"
+          :startItem="startItem"
+          :endItem="endItem"
+          :totalCount="totalCount"
+          @update:page="setCurrentPage"
+        />
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <!-- <div class="space-y-6 w-[20%]">
+        <div class="bg-white rounded-xl shadow-md p-6 space-y-4">
+          <p class="bg-theme-tb font-semibold w-full text-lg px-3 py-1 rounded-[5px] mb-6">
+            List of Brokers
+          </p>
+          <p class="bg-[#19B6E8]/15 p-2 text-sm text-gray-500 rounded-lg">
+            <span class="text-blue-500 font-bold">CW</span> Cash withdrawn<br />
+            <span class="text-green-500 font-bold">VAS</span> Value of Associated Security<br />
+            <span class="text-purple-500 font-bold">VIE</span> Value of Interest earned
+          </p>
+          
+          <div
+          v-for="(broker, idx) in brokers"
+          :key="idx"
+          class="border-b-2 border-gray-300 space-y-3 mb-2"
+        >
+          <button
+            @click="toggleBroker(idx)"
+            class="bg-theme-tb rounded-lg w-full flex justify-between items-center px-6 py-4 text-gray-700 font-semibold"
+          >
+            {{ broker.name }}
+            <span :class="broker.open ? 'rotate-180' : ''" class="transition-transform">⌄</span>
+          </button>
+
+          <div v-if="broker.open" class="px-6 pb-4">
+            <div
+              v-for="(item, j) in broker.values"
+              :key="j"
+              class="flex justify-between text-sm mb-2"
+            >
+              <span :class="item.color + ' font-bold'">{{ item.label }}</span>
+              <span>{{ item.amount }}</span>
+            </div>
+          </div>
+        </div>
+        </div>        
+      </div> -->
+
+    <!-- </div> -->
+  </div>
+</template>

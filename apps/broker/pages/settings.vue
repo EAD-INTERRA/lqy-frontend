@@ -1,135 +1,86 @@
 <template>
-  <div
-    class="flex flex-col md:flex-row gap-[5%] p-4  mt-[50px] lg:mt-[10px] mx-auto lg:ml-2 mb-2 lg:mb-5">
-    <section class="w-full  md:w-[35%]">
-      <div class="flex ">
-        <div class="text-black font-ox font-bold py-2.5 pr-2">
-          My Profile
-        </div>
-        <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
+  <div class="flex flex-row gap-3 p-5 w-full h-full font-ox">
+    <section class="w-1/4 h-fit">
+      <div class="flex">
+        <div class="text-black font-ox font-bold py-2.5 pr-2">My Profile</div>
+        <div class="rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2"></div>
       </div>
-      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " v-if="profile">
-        <img class="mx-auto rounded-full w-[150px] " src="/assets/images/profileImage.svg" />
+      <div class="bg-white shadow-lg w-full h-fit rounded-[5px] mt-1 py-[30px]">
+        <img
+          class="mx-auto rounded-full w-[150px]"
+          src="/assets/images/profileImage.svg"
+        />
         <div class="flex gap-1 text-lg font-bold justify-center">
-          {{profile.first_name}} {{profile.last_name}}
-        <img class="" src="/assets/images/tick.svg" />
+          {{ profile.first_name || "N/A" }} {{ profile.last_name || "N/A" }}
+          <img v-if="profile" class="" src="/assets/images/tick.svg" />
         </div>
-        <p class="text-sm text-center ">{{profile.company_name}}</p>
-        <div class="justify-center mt-5  md:justify-end flex mr-5">
-          <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
-        </div>
+        <p class="text-sm text-center">{{ profile.company_name || "N/A" }}</p>
+        <!-- <div class="justify-center mt-5 md:justify-end flex mr-5">
+          <button class="border border-solid border-black rounded-[10px] py-0 px-3">
+            Edit
+          </button>
+        </div> -->
       </div>
-      <div v-else>
-        <p>Loading...</p>
-      </div>
+    </section>
 
-
-      <div class="flex ">
+    <section class="w-3/4 flex flex-col h-fit gap-3 mr-3">
+      <div class="h-fit">
+        <div class="flex ">
         <div class="text-black font-ox font-bold py-2.5 pr-2">
           Personal Information
         </div>
         <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
       </div>
-      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
+      <div class="bg-white shadow-lg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
        
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-1 font-ox">
           <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Firstname</label>
-            <div class="text-lg font-bold">{{profile.first_name}}</div>
+            <label for="" class="text-[14px] text-opacity-45">Firstname</label>
+            <div class="text-[18px] font-bold">{{profile.first_name || "N/A"}}</div>
           </div>
           <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Lastname</label>
-            <div class="text-lg font-bold">{{profile.last_name}}</div>
+            <label for="" class="text-[14px] text-opacity-45">Lastname</label>
+            <div class="text-[18px] font-bold">{{profile.last_name || "N/A"}}</div>
           </div>
           <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Email</label>
-            <div class="text-lg font-bold text-blue-500">{{profile.email}}</div>
+            <label for="" class="text-[14px] text-opacity-45">Email</label>
+            <div class="text-[18px] font-bold text-blue-500">{{profile.email || "N/A"}}</div>
           </div>
           <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Phone</label>
-            <div class="text-lg font-bold text-blue-500">{{profile.phone_number}}</div>
+            <label for="" class="text-[14px] text-opacity-45">Phone</label>
+            <div class="text-[18px] font-bold text-blue-500">{{profile.phone || "N/A"}}</div>
           </div>
         </div>
-        <div class="justify-center mt-5 md:justify-end flex mr-5">
+        <!-- <div class="justify-center mt-5 md:justify-end flex mr-5">
           <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
-        </div>
+        </div> -->
       </div>
-    </section>
-    
-    <section class="w-full md:w-[60%] h-fit mr-3">
-      <div class="flex ">
-        <div class="text-black font-ox font-bold py-2.5 pr-2">
-          Address
-        </div>
-        <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
       </div>
-      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
-       
-        <div class="flex flex-col gap-3 ">
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Country</label>
-            <div class="text-lg font-bold">Nigeria</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">State</label>
-            <div class="text-lg font-bold">{{profile.city}}</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Town/City</label>
-            <div class="text-lg font-bold">{{profile.city}}</div>
-          </div>
-
+      <div class=" h-full">
+        <div class="flex">
+          <div class="text-black font-ox font-bold py-2.5 pr-2">Address</div>
+          <div class="rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2"></div>
         </div>
-        <div class="justify-center mt-5  md:justify-end flex pr-6">
-          <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
-        </div>
-      </div>
-     
-     
-      <div class="flex ">
-        <div class="text-black font-ox font-bold py-2.5 pr-2">
-          Business Information
-        </div>
-        <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
-      </div>
-      <div class="bg-theme-dg w-full  h-fit rounded-[5px] mt-1 py-[30px] " >
-       
-        <div class="flex flex-col gap-3 ">
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Business Type</label>
-            <div class="text-lg font-bold">Financial Institution</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Tax identification number</label>
-            <div class="text-lg font-bold">uhdb8ewg8</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">License Number</label>
-            <div class="text-lg font-bold">FI28382ubdj ms</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Capital Adequacy</label>
-            <div class="text-lg font-bold">$483,949</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Networth</label>
-            <div class="text-lg font-bold">$4,093,029</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Tolerance</label>
-            <div class="text-lg font-bold">High</div>
-          </div>
-          <div class="px-[30px] grid grid-col md:grid-cols-2 text-center md:text-left">
-            <label for="" class="text-opacity-45 font-semibold">Preferred Asset Class</label>
-            <div class="justify-center md:justify-start gap-3 md:gap-1 mt-2 md:mt-0 flex pr-0 md:pr-6">
-              <button class=" border border-solid border-blue-500 bg-blue-200 font-semibold rounded-[10px] py-1 px-3"> Equities</button>
-              <button class=" border border-solid border-blue-500 bg-blue-200 font-semibold rounded-[10px] py-1 px-3"> Stocks</button>
+        <div class="bg-white shadow-lg w-full h-full rounded-[5px] mt-1 py-[30px]">
+          <div class="flex flex-col gap-3">
+            <div class="px-[30px] flex flex-row gap-3 items-center h-fit text-left">
+              <label for="" class="text-opacity-45 text-[14px] w-[10%]">Country</label>
+              <div class="text-lg font-bold w-[90%]">{{profile.city || "N/A"}}</div>
+            </div>
+            <div class="px-[30px] flex flex-row gap-3 items-center h-fit text-left">
+              <label for="" class="text-opacity-45 text-[14px] w-[10%]">State</label>
+              <div class="text-lg font-bold w-[90%]">{{ profile.city || "N/A"}}</div>
+            </div>
+            <div class="px-[30px] flex flex-row gap-3 items-center h-fit text-left">
+              <label for="" class="text-opacity-45 text-[14px] w-[10%]">Town/City</label>
+              <div class="text-lg font-bold w-[90%]">{{ profile.city || "N/A"}}</div>
             </div>
           </div>
-
-        </div>
-        <div class="justify-center mt-5  md:justify-end flex pr-0 md:pr-6">
-          <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
+          <!-- <div class="justify-center mt-5 md:justify-end flex pr-6">
+            <button class="border border-solid border-black rounded-[10px] py-0 px-3">
+              Edit
+            </button>
+          </div> -->
         </div>
       </div>
     </section>
@@ -137,24 +88,20 @@
 </template>
 
 <script lang="ts" setup>
-import {
-    StatusCode
-} from '~/helpers/statusCodes';
+import { StatusCode } from "~/helpers/statusCodes";
 
-const {
-    $services
-} = useNuxtApp()
+const { $services } = useNuxtApp();
 
-let profile = ref('');
+const profile = ref("");
 
 onMounted(async () => {
   try {
     const response = await $services.base.getProfiles();
-    console.log(response)
-  
+    console.log(response);
+    profile.value = response.body;
   } catch (error) {
-    console.error('Error fetching profile:', error);
+    console.error("Error fetching profile:", error);
   }
-  return {profile};
+  return { profile };
 });
 </script>

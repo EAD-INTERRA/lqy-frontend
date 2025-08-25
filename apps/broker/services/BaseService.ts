@@ -226,7 +226,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("/get_all_margin_requests", {
+      const response = await this.client.get("/margin_requests", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getProfile Response:", response);

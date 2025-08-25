@@ -12,6 +12,7 @@ export default defineNuxtConfig({
       families: {
         Sen: true,
         Oxygen: true,
+        Ubuntu: true,
       },
       display: 'swap', // Recommended for performance
       prefetch: true, // Optional, improves initial loading speed

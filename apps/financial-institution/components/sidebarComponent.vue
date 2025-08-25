@@ -1,119 +1,108 @@
 <template>
-  <div class="sidebar h-[100%]">
+  <div class="sidebar  h-[100vh] w-[inherit]">
     <div>
-      <img src="~/assets/images/lqyLogo.svg" />
+      <img src="~/assets/images/lqyLogo.svg">
     </div>
-    <div class="sidebarDiv ">
+    <div class="">
       <div class="overview">
-        <p class="overviewText text-ox text-left">Quick Access</p>
-        <div class="dashboardDiv">
-          <NuxtLink
-            to="/"
-            class="flex flex-row sidebarLink text-ox mr-9 "
-            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px] rounded-t-[15px] ">
-            <img src="~/assets/images/dashboard-icon.svg" />Dashboard
+        <div class="dashboardDiv space-y-2">
+          <!-- Overview -->
+          <NuxtLink to="/"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/' }">
+            <img src="/assets/images/overview-icon.svg" alt="" />
+            Overview
           </NuxtLink>
-        </div>
-      </div>
-      <div class="overview">
-        <p class="overviewText text-ox text-left">FI Group</p>
-        <div class="dashboardDiv mr-[-1%]">
-          <div v-for="(option, index) in options" :key="option.to">
-            <NuxtLink
-              :to="option.to"
-              :class="{
-                'flex flex-row p-2 font-bold text-ox text-white text-opacity-50 gap-2 mr-[-1%] cursor-pointer': true,
-                'rounded-t-[15px]': isActive(index) && index === 0,
-                'border-theme-as': isActive(index),
-                'rounded-b-[15px]':
-                  isActive(index) && index === options.length - 1,
-              }"
-              exact-active-class="text-theme-as border-l-[5px] border-theme-as mr-[-1%]">
-              <img :src="isActive(index) ? option.src2 : option.src" alt="" />
-              {{ option.title }}
-            </NuxtLink>
+
+          <!-- Margin Dropdown -->
+          <div>
+            <button type="button" @click="showMargin = !showMargin"
+              class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
+              :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/finance/bank-interest-accrued', '/finance/management-fee-earned-by-broker'].includes($route.path) }">
+              <img src="/assets/images/finance-icon.svg" alt="" />
+              Finance
+              <svg :class="['ml-auto transition-transform', showMargin ? 'rotate-90' : '']" width="16" height="16"
+                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div v-if="showMargin" class=" pl-5 mt-2">
+              <NuxtLink to="/finance/security-lending"
+                class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[mt-2 rgba(255,255,255,0.1)]': $route.path === '/finance/security-lending' }">
+                Security Lending
+              </NuxtLink>
+              <NuxtLink to="/finance/management-fee-earned"
+                class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[mt-2 rgba(255,255,255,0.1)]': $route.path === '/finance/management-fee-earned' }">
+                Management Fee Earned
+              </NuxtLink>
+              <NuxtLink to="/finance/maintainance-call"
+                class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
+                exact-active-class="text-theme-as  rounded-md"
+                :class="{ 'bg-[mt-2 rgba(255,255,255,0.1)]': $route.path === '/finance/maintainance-call' }">
+                Maintainance Call
+              </NuxtLink>
+
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="overview">
-        <p class="overviewText text-ox text-left">Broker Group</p>
-        <div class="dashboardDiv mr-[-1%]">
-          <NuxtLink
-            to=""
-            class="flex flex-row sidebarLink text-ox cursor-pointer"
-            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px] rounded-t-[15px]">
-            <img src="/assets/images/FI-profile.svg" />Broker revenue
+ 
+          <NuxtLink to="/interest-rate"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/interest-rate' }">
+            <img src="/assets/images/profit.svg" alt="" />
+            Profit List
           </NuxtLink>
-        </div>
-      </div>
-      <div class="overview">
-        <p class="overviewText text-ox text-left">Margin and security</p>
-        <div class="dashboardDiv">
-          <NuxtLink
-            to="/Maintenance"
-            class="flex flex-row sidebarLink text-ox h-fit mr-[-7%]"
-            exact-active-class="text-theme-as border-l-[5px] border-theme-as  rounded-t-[15px]">
-            <img src="~/assets/images/notification-icon.svg" />Maintenance call
+          <NuxtLink to="/funding"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/funding' }">
+            <img src="/assets/images/funding.svg" alt="" />
+            Funding
           </NuxtLink>
-          <NuxtLink
-            to="/Security-Lending"
-            class="flex flex-row sidebarLink text-ox"
-            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-b-[15px]">
-            <img src="~/assets/images/setting.svg" /> Sec. lending interest
+
+          <div class="border-t">
+            <NuxtLink to="/"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/' }">
+            <img src="/assets/images/notification.svg" alt="" />
+            Notification 
           </NuxtLink>
-        </div>
-      </div>
-      <div class="overview">
-        <p class="overviewText text-ox text-left">Account</p>
-        <div class="dashboardDiv">
-          <NuxtLink
-            to=""
-            class="flex flex-row sidebarLink text-ox cursor-pointer"
-            exact-active-class="text-theme-as border-l-[5px] border-theme-as rounded-t-[15px]">
-            <img src="~/assets/images/setting.svg" />More Info
+
+          <!-- Settings -->
+          <NuxtLink to="/settings"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/settings' }">
+            <img src="/assets/images/settings.svg" alt="" />
+            Settings
           </NuxtLink>
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox h-fit">
-            <img src="~/assets/images/notification-icon.svg" />Notification
-            <span class="rounded-full bg-red-900 px-2 h-fit items-center mr-4"
-              >3</span
-            >
-          </NuxtLink>
-          <NuxtLink to="" class="flex flex-row sidebarLink text-ox rounded-b-[15px] cursor-pointer"
-              ><img src="~/assets/images/logout.svg" />Log Out</NuxtLink
-            >
+          </div>
+
+          <!-- Log Out -->
+          <button @click="handleLogout"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/logout' }">
+            <img src="/assets/images/logout.svg" alt="" />
+            Log Out
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useRoute } from "vue-router";
-
-const route = useRoute();
-
-const options = [
-  {
-    to: "FI-profile",
-    src: "assets/images/FI-profile.svg",
-    src2: "assets/images/FI-profile.svg",
-    title: "FI profile",
-  },
-  {
-    to: "/FI-interest",
-    src: "assets/images/notification-icon.svg",
-    src2: "assets/images/notification-icon.svg",
-    title: "FI interest accrued",
-  },
-  {
-    to: "",
-    src: "assets/images/setting.svg",
-    src2: "assets/images/setting.svg",
-    title: "FI fee revenue",
-  }
-];
-
-const isActive = (index: number): boolean => {
-  return options[index] && route.path === options[index].to;
+<script setup>
+const showMargin = ref(false);
+const showHistory = ref(false);
+const handleLogout = () => {
+  localStorage.clear(); // Clear all local storage
+  // Redirect to login or home page
+  window.location.href = "https://lqy-auth.interranetworks.com/"; // Adjust the path as necessary
 };
 </script>

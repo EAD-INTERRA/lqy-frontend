@@ -1,9 +1,13 @@
-<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_476_11756" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="2" width="42" height="52">
-<path d="M44.334 4.66602H11.6673C11.0485 4.66602 10.455 4.91185 10.0174 5.34943C9.57982 5.78702 9.33398 6.38051 9.33398 6.99935V48.9994C9.33398 49.6182 9.57982 50.2117 10.0174 50.6493C10.455 51.0869 11.0485 51.3327 11.6673 51.3327H44.334C44.9528 51.3327 45.5463 51.0869 45.9839 50.6493C46.4215 50.2117 46.6673 49.6182 46.6673 48.9994V6.99935C46.6673 6.38051 46.4215 5.78702 45.9839 5.34943C45.5463 4.91185 44.9528 4.66602 44.334 4.66602Z" fill="white" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M19.834 34.9994H36.1673M19.834 41.9994H28.0007M35.0007 15.166L25.6673 24.4993L21.0007 19.8327" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_3856_35401" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="3" width="43" height="52">
+<path d="M44.832 5.61914H12.1654C11.5465 5.61914 10.953 5.86497 10.5154 6.30256C10.0779 6.74014 9.83203 7.33364 9.83203 7.95247V49.9525C9.83203 50.5713 10.0779 51.1648 10.5154 51.6024C10.953 52.04 11.5465 52.2858 12.1654 52.2858H44.832C45.4509 52.2858 46.0444 52.04 46.482 51.6024C46.9195 51.1648 47.1654 50.5713 47.1654 49.9525V7.95247C47.1654 7.33364 46.9195 6.74014 46.482 6.30256C46.0444 5.86497 45.4509 5.61914 44.832 5.61914Z" fill="white" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.332 35.9525H36.6654M20.332 42.9525H28.4987M23.832 25.4525L33.1654 16.1191M33.1654 25.4525L23.832 16.1191" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </mask>
-<g mask="url(#mask0_476_11756)">
-<path d="M0 0H56V56H0V0Z" fill="#E1E5EB"/>
+<g mask="url(#mask0_3856_35401)">
+<path d="M0.5 0.953125H56.5V56.9531H0.5V0.953125Z" fill="#F2A808"/>
 </g>
+<rect x="19.168" y="10.2871" width="19.8333" height="19.8333" fill="#F2A808"/>
+<circle cx="18.5" cy="21.9531" r="2" fill="white"/>
+<circle cx="24.5" cy="21.9531" r="2" fill="white"/>
+<circle cx="30.5" cy="21.9531" r="2" fill="white"/>
 </svg>

@@ -41,7 +41,7 @@
                 class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2  py-2 font-normal text-white text-opacity-50 cursor-pointer"
                 exact-active-class="text-theme-as  rounded-md"
                 :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/margin-check' }">
-                Margin Check
+                Margin Status
               </NuxtLink>
               <NuxtLink to="/margin-request"
                 class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
@@ -52,7 +52,13 @@
 
             </div>
           </div>
-
+          <NuxtLink to="/funding"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/funding' }">
+            <img src="/assets/images/funding.svg" alt="" />
+            Funding
+          </NuxtLink>
           <!-- History Dropdown -->
           <div>
             <button type="button" @click="showHistory = !showHistory"
@@ -73,10 +79,10 @@
                 <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
                 Trading History
               </NuxtLink>
-              <NuxtLink to="/transction-history"
+              <NuxtLink to="/transaction-history"
                 class="flex mt-2 flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-normal text-white text-opacity-50 cursor-pointer"
                 exact-active-class="text-theme-as  rounded-md"
-                :class="{ 'mt-2 bg-[rgba(255,255,255,0.1)]': $route.path === '/transction-history' }">
+                :class="{ 'mt-2 bg-[rgba(255,255,255,0.1)]': $route.path === '/transaction-history' }">
                 <!-- <img src="~/assets/images/stakeholder-icon.svg" alt="" /> -->
                 Transaction History
               </NuxtLink>

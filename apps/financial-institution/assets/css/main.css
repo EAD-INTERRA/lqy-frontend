@@ -172,18 +172,20 @@ body{
 /* Sidebar Start */
 .sidebar {
   display: flex;
-  padding: 5px 8px;
+  padding: 19px 8px;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 40px;
   background: #10356d;
+  position: fixed;
+  z-index: 100;
 }
 
 .sidebarDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 48px;
   align-self: stretch;
 }
 .overview {
@@ -201,17 +203,17 @@ body{
   line-height: normal;
   opacity: 0.45;
   padding-left: 10%;
-  margin-top: -12%;
+  margin-top: -8%;
 }
 
 .dashboardDiv {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2px;
+  gap: 5px;
   align-self: stretch;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
 }
 .sidebarLink {
   display: flex;
