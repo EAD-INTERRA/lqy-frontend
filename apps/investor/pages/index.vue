@@ -1,136 +1,129 @@
 <template>
-  <div
-    class="flex flex-col md:flex-row gap-[5%] p-4  mt-[50px] lg:mt-[10px] mx-auto lg:ml-6">
-    <section class="w-full  md:w-[35%]">
-      <div class="flex ">
-        <div class="text-black font-ox font-bold py-2.5 pr-2">
-          My Profile
-        </div>
-        <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
-      </div>
-      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
-        <img class="mx-auto rounded-full w-[150px] " src="/assets/images/profileImage.svg" />
-        <div class="flex gap-1 text-lg font-bold justify-center">
-          Jon Dovina
-        <img class="" src="/assets/images/tick.svg" />
-        </div>
-        <p class="text-sm text-center ">Example networks limite</p>
-        <div class="justify-center mt-5  md:justify-end flex mr-5">
-          <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
-        </div>
-      </div>
+  <div class="p-8 flex flex-col space-y-6 gap-8">
 
-
-      <div class="flex ">
-        <div class="text-black font-ox font-bold py-2.5 pr-2">
-          Personal Information
-        </div>
-        <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
-      </div>
-      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
-       
-        <div class="flex flex-col gap-1">
-          <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Firstname</label>
-            <div class="text-lg font-bold">Dovina</div>
-          </div>
-          <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Lastname</label>
-            <div class="text-lg font-bold">Jonnathan</div>
-          </div>
-          <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Email</label>
-            <div class="text-lg font-bold text-blue-500">example@mail.com</div>
-          </div>
-          <div class="px-6">
-            <label for="" class="text-opacity-45 font-semibold">Phone</label>
-            <div class="text-lg font-bold text-blue-500">(+234) 814 1225 566</div>
-          </div>
-        </div>
-        <div class="justify-center mt-5 md:justify-end flex mr-5">
-          <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
-        </div>
+    <!-- Header Section -->
+    <section class="mb-8">
+      <div >
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome back, John!</h1>
+        <p class="text-gray-600">Here's an overview of your investments at a glance.</p>
       </div>
     </section>
 
-    <section class="w-full md:w-[60%] h-fit mr-3">
-      <div class="flex ">
-        <div class="text-black font-ox font-bold py-2.5 pr-2">
-          Address
-        </div>
-        <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
+    <section class="grid grid-cols-3 w-full gap-4 mb-8">
+      <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
+        <p class="text-sm text-gray-500 mb-1">Total Portfolio Value</p>
+        <p class="text-2xl font-bold text-blue-900 mb-1">₦1,200</p>
+        <p class="text-xs text-gray-400">+12% from last month</p>
       </div>
-      <div class="bg-theme-dg w-full h-fit rounded-[5px] mt-1 py-[30px] " >
-       
-        <div class="flex flex-col gap-3 ">
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Country</label>
-            <div class="text-lg font-bold">Nigeria</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">State</label>
-            <div class="text-lg font-bold">Federal Capital Teritory</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Town/City</label>
-            <div class="text-lg font-bold">Abuja</div>
-          </div>
+      <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
+        <p class="text-sm text-gray-500 mb-1">Total P&L</p>
+        <p class="text-2xl font-bold text-green-600 mb-1">+₦320</p>
+        <p class="text-xs text-green-500 ">+12% overall</p>
+      </div>
+      <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
+        <p class="text-sm text-gray-500 mb-1">Active Positions</p>
+        <p class="text-2xl font-bold text-blue-900 mb-1">3</p>
+        <p class="text-xs text-red-500 bg-red-100 p-1 rounded-lg">1 require attention</p>
+      </div>
+    </section>
 
-        </div>
-        <div class="justify-center mt-5  md:justify-end flex pr-6">
-          <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
-        </div>
+    <section class="flex gap-[5%]">
+      <div class="w-[70%] rounded-lg bg-white shadow-md rounded-[12px] px-[32px] py-[16px] p-[25px]">
+        <LineChart :labels="chartLabels" :datasets="chartDatasets" />
       </div>
-     
-     
-      <div class="flex ">
-        <div class="text-black font-ox font-bold py-2.5 pr-2">
-          Business Information
-        </div>
-        <div class="  rounded-full bg-green-500 w-[20px] h-[20px] my-auto mr-2" ></div>
+      <div class="w-[25%] flex flex-col items-center space-y-8 rounded-lg bg-white shadow-md rounded-[12px] ">
+        <span class="font-ox text-ox-md text-center">Asset Allocation</span>
+        <DoughnutChart :data="chartData" :colors="chartColors" />
       </div>
-      <div class="bg-theme-dg w-full  h-fit rounded-[5px] mt-1 py-[30px] " >
-       
-        <div class="flex flex-col gap-3 ">
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Business Type</label>
-            <div class="text-lg font-bold">Financial Institution</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Tax identification number</label>
-            <div class="text-lg font-bold">uhdb8ewg8</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">License Number</label>
-            <div class="text-lg font-bold">FI28382ubdj ms</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Capital Adequacy</label>
-            <div class="text-lg font-bold">$483,949</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Networth</label>
-            <div class="text-lg font-bold">$4,093,029</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-2 text-left">
-            <label for="" class="text-opacity-45 font-semibold">Tolerance</label>
-            <div class="text-lg font-bold">High</div>
-          </div>
-          <div class="px-[30px] grid grid-col md:grid-cols-2 text-center md:text-left">
-            <label for="" class="text-opacity-45 font-semibold">Preferred Asset Class</label>
-            <div class="justify-center md:justify-start gap-3 md:gap-1 mt-2 md:mt-0 flex pr-0 md:pr-6">
-              <button class=" border border-solid border-blue-500 bg-blue-200 font-semibold rounded-[10px] py-1 px-3"> Equities</button>
-              <button class=" border border-solid border-blue-500 bg-blue-200 font-semibold rounded-[10px] py-1 px-3"> Stocks</button>
+    </section>
+
+    <section class="mb-4 rounded-lg bg-white shadow-md rounded-[12px] ">
+      <!-- Recent Alerts -->
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Alerts</h3>
+
+        <div class="space-y-4">
+          <!-- Maintenance Alert -->
+          <div class="flex justify-between items-start bg-red-100 rounded-lg p-4">
+            <div class="">
+              <h4 class="font-semibold text-red-600">Maintenance Limit Warning</h4>
+              <p class="text-sm text-red-600">TSLA position approaching maintenance limit</p>
             </div>
+            <span class="text-xs text-gray-400">2 hours ago</span>
           </div>
 
-        </div>
-        <div class="justify-center mt-5  md:justify-end flex pr-0 md:pr-6">
-          <button class=" border border-solid border-black rounded-[10px] py-0 px-3"> Edit</button>
+          <!-- Trade Executed -->
+          <div class="flex justify-between items-start border border-gray-400 p-4 rounded-lg">
+            <div>
+              <h4 class="font-semibold text-gray-900">Trade Executed</h4>
+              <p class="text-sm text-gray-600">Bought 100 shares of AAPL at $150.25</p>
+            </div>
+            <span class="text-xs text-gray-400">2 hours ago</span>
+          </div>
         </div>
       </div>
     </section>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+// import { useAuthStore } from 'stores/authStore';
+// import { createPinia } from 'pinia';
+
+// const pinia = createPinia();
+// pinia.use(useAuthStore);
+// const route = useRoute();
+// const authStore = useAuthStore(pinia);
+
+// if (process.client) {
+//   authStore.login();
+//   authStore.checkAuth();
+// }
+
+const chartData = ref([
+  {
+    name: "Equities",
+    count: 12,
+  },
+  {
+    name: "Bonds",
+    count: 50,
+  },
+  {
+    name: "Derivatives",
+    count: 20,
+  },
+  {
+    name: "Other Assets",
+    count: 18,
+  },
+]);
+
+const chartColors = ["#E0903F", "#65C569", "#AC65C5", "#6373F8"]; // External colors array
+
+const chartLabels = ref([
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+]);
+const chartDatasets = ref([
+  {
+    label: "Series A",
+    data: [65, 59, 80, 81, 56, 55, 100],
+    borderColor: "rgba(16, 53, 109, 1)",
+    backgroundColor: "rgba(16, 53, 109, 0.2)",
+    fill: false,
+  },
+  {
+    label: "Series B",
+    data: [28, 48, 40, 19, 86, 27, 90],
+    borderColor: "rgba(238, 46, 46, 1)",
+    backgroundColor: "rgba(238, 46, 46, 0.2)",
+    fill: false,
+  },
+]);
+</script>
