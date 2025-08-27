@@ -176,6 +176,7 @@ function setCurrentPage(page: number) {
 }
 
 const headers = [
+  "S/N",
   "Investor Name",
   "CHN Number",
   "Value of Associated Security (VAS)",

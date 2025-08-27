@@ -45,7 +45,7 @@
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                 </svg>
               </span>
-              <span>{{ loading ? 'Logging in...' : 'Let’s Go...' }}</span>
+              <span>{{ loading ? 'Activating...' : 'Activate' }}</span>
             </button>
             <p class="customWhite pb-8 flex w-full justify-center text-center text-sm font-ubuntu mt-3">
               Didn’t get an OTP at “{{ emailDisplay }}” ?
@@ -158,7 +158,7 @@ const submitForm = async (event: Event) => {
 
   try {
     const result = await $services.auth.activate_account(otp);
-    console.log("result", result);
+    // console.log("result", result);
     if (result.message === "SUCCESSFUL") {
       toast.success(result.body);
       router.push("/");
