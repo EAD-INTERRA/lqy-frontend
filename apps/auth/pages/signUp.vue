@@ -354,7 +354,7 @@ const submitForm = async (event: Event) => {
         city: city.value,
         company_name: company_name.value,
         state_id: state_id.value,
-        // country_code: country_code.value,
+        country_code: country_code.value,
     };
     if (type.value === 'Broker') {
         signupData.chn_number = chn_number.value;
