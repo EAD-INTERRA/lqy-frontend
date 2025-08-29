@@ -300,7 +300,7 @@ const state_id = ref('');
 const type = ref('');
 const password = ref('');
 const city = ref('');
-const chn_number = ref('');
+// const chn_number = ref('');
 const inputType = ref('password');
 
 const togglePassword = () => {
@@ -382,6 +382,7 @@ const submitForm = async (event: Event) => {
     padding: 1.5rem !important;
   }
 }
+
 @media (max-width: 768px) {
   .customBorder {
     padding: 1rem !important;
@@ -390,6 +391,7 @@ const submitForm = async (event: Event) => {
     max-width: 100% !important;
   }
 }
+
 @media (max-width: 640px) {
   .customBorder {
     padding: 0.5rem !important;

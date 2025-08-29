@@ -1,8 +1,17 @@
 <template>
-  <div class="time-range-selector space-x-2">
-    <button @click="selectTimeRange('7 days')" class="border-[1.5px] border-black border-opacity-50 bg-white shadow-sm rounded p-1 font-ox">Last 7 Days</button>
-    <button @click="selectTimeRange('30 days')" class="border-[1.5px] border-black border-opacity-50 bg-white shadow-sm rounded p-1 font-ox">Last 30 Days</button>
-    <button @click="selectCustomRange" class="border-[1.5px] border-black border-opacity-50 bg-white shadow-sm rounded p-1 font-ox">Custom</button>
+  <div class="time-range-selector space-x-2 ">
+    <button @click="selectTimeRange('7 days')"
+      class="px-4 py-2 text-sm border border-blue-500 text-blue-500 rounded-md font-ox">Last 7 Days</button>
+    <button @click="selectTimeRange('30 days')"
+      class="px-4 py-2 text-sm border border-gray-500 text-blue-500 rounded-md font-ox text-gray-600">Last 30
+      Days</button>
+    <button @click="selectCustomRange"
+      class="px-4 py-2 text-sm border border-gray-500 text-blue-500 rounded-md font-ox text-gray-600">Custom</button>
+  </div>
+  <!-- Chart Header -->
+  <div class="my-4 flex gap-4">
+    <h3 class="text-lg font-semibold text-gray-900 font-ox">CUMULATIVE EXPOSURE</h3>
+    <p class="text-lg font-bold text-red-600 font-ox">-$21,984</p>
   </div>
   <canvas ref="chartCanvasRef" class="w-[100%]"></canvas>
 </template>
