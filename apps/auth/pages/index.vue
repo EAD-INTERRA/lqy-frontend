@@ -24,8 +24,9 @@
               <label class="font-ubuntu !text-white text-sm font-normal leading-normal my-1 mx-1">
                 Password
               </label>
-              <input id="password" :type="inputType" class="form-control text-white bg-theme-lb rounded-[8px] h-[40px] px-3 pr-10"
-                placeholder="********" v-model="password" required />
+              <input id="password" :type="inputType"
+                class="form-control text-white bg-theme-lb rounded-[8px] h-[40px] px-3 pr-10" placeholder="********"
+                v-model="password" required />
               <button type="button" @click="ToggleButton" aria-label="Toggle password visibility"
                 class="absolute right-3 top-9 text-xl bg-transparent focus:outline-none flex items-center p-1"
                 tabindex="0">
@@ -106,14 +107,13 @@ const submitForm = async (event: Event) => {
 
   try {
     const result = await $services.auth.login(loginData);
+    console.log("Login Result", result)
     if (result.message === "SUCCESSFUL") {
       toast.success(result.body);
       router.push("/otp");
-    } else {
-      toast.error(result.body);
-    }
+    } else toast.error(result.body);
   } catch (error) {
-    const err = error.result?.body || "Login failed";
+    const err = error.response.data.body;
     toast.error(err);
   } finally {
     loading.value = false;
