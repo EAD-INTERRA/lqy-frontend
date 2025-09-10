@@ -19,17 +19,18 @@
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <img src="../assets/images/rejected-request.svg" class="rounded-full" alt="icon" />
                 <div>
-                    <p class="font-ox text-ox-xs">Pending Request </p>
+                    <p class="font-ox text-ox-xs">Rejected Request</p>
                     <p class="font-ox font-bold text-center text-ox-lg">{{ pendingCount || 0 }}</p>
                 </div>
             </div>
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <img src="../assets/images/rejected-request.svg" class="rounded-full" alt="icon" />
                 <div>
-                    <p class="font-ox text-ox-xs">Rejected Request </p>
+                    <p class="font-ox text-ox-xs">Broker</p>
                     <p class="font-ox font-bold text-center text-ox-lg">{{ rejectedCount || 0 }}</p>
                 </div>
             </div>
+           
 
         </section>
 
@@ -37,7 +38,7 @@
             <div class="bg-white shadow-lg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
                 <div class="flex items-center justify-between mb-6">
                     <p
-                        class=" bg-theme-bc text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
+                        class=" bg-gray-300 text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
                         Investor Security</p>
 
                     <button @click="handleAddProfile" class="bg-theme-bc text-white px-4 py-2 rounded-md float-right">

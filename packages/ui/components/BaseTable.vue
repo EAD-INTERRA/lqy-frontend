@@ -56,7 +56,7 @@
       <div class="overflow-x-auto">
         <table class="w-full">
           <!-- Header -->
-          <thead class="bg-gray-50 border-b border-gray-200">
+          <thead class="m-4 bg-gray-50 border-b border-gray-200">
             <tr>
               <th v-for="(head, index) in headers" :key="index"
                 class="px-6 py-4 text-left text-sm font-normal text-gray-500 whitespace-nowrap">

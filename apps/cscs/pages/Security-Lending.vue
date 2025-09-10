@@ -4,7 +4,7 @@
             <div class="bg-white shadow-lg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
                 <div class="flex items-center justify-between mb-6">
                     <p
-                        class=" bg-theme-bc text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
+                        class=" bg-gray-300 text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
                         Security Lending</p>
 
                     <!-- <button @click="handleAddProfile" class="bg-theme-bc text-white px-4 py-2 rounded-md float-right">

@@ -1,7 +1,7 @@
 <template>
     <div class="p-4 space-y-6">
         <section class="mb-4">
-            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Status</div>
+            <div class=" bg-gray-300 text-red-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">Margin Accounts</div>
             <div class="bg-white shadow-lg p-5 lg:p-5 rounded-lg lg:rounded-2xl mb-2.5">
                 <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false" class="">
                     <template #cell-0="{ row }">
