@@ -1,7 +1,9 @@
 <template>
     <div class="p-4 space-y-6">
         <section class="mb-4">
-            <div class="text-xl text-[#FF0000] font-semibold mb-4">Margin Request</div>
+            <div
+                class=" bg-gray-300 text-red-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
+                Margin Request</div>
             <div class="bg-white shadow-lg p-5 rounded-lg mb-4">
                 <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false">
                     <template #cell-0="{ row }">
@@ -15,7 +17,8 @@
                     </template>
                     <template #cell-3="{ row }">
                         <button @click="openModal(row.raw.request_id, `${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}`, row.raw.chn,
-                            row.raw.status)" class="border border-gray-500 text-gray-500 px-4 py-1 rounded hover:bg-blue-50">
+                            row.raw.status)"
+                            class="border border-gray-500 text-gray-500 px-4 py-1 rounded hover:bg-blue-50">
                             View
                         </button>
                     </template>
@@ -49,6 +52,7 @@ const headers = [
     "S/N",
     "Account Name",
     "CHN Number",
+    "Status",
     "Action"
 ];
 

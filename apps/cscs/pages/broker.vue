@@ -4,7 +4,7 @@
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <div>
                     <p class="font-ox text-ox-xs">Cash Draw </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">{{ allCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ allCount || 0 }}</p>
                 </div>
                 <!-- <img src="../assets/images/total-request.svg" class="rounded-full" alt="icon" /> -->
 
@@ -13,21 +13,21 @@
                 <!-- <img src="../assets/images/accepted-request.svg" class="rounded-full" alt="icon" /> -->
                 <div>
                     <p class="font-ox text-ox-xs">Value of Ass. Sec </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">{{ acceptedCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ acceptedCount || 0 }}</p>
                 </div>
             </div>
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <!-- <img src="../assets/images/rejected-request.svg" class="rounded-full" alt="icon" /> -->
                 <div>
                     <p class="font-ox text-ox-xs">ML Value </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">{{ pendingCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ pendingCount || 0 }}</p>
                 </div>
             </div>
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <!-- <img src="../assets/images/rejected-request.svg" class="rounded-full" alt="icon" /> -->
                 <div>
                     <p class="font-ox text-ox-xs">SL Value </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">{{ rejectedCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ rejectedCount || 0 }}</p>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
             <div class="bg-white shadow-lg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
                 <div class="flex items-center justify-between mb-6">
                     <p
-                        class=" bg-theme-bc text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
+                        class=" bg-gray-300 text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
                         Broker List</p>
 
                     <!-- <button @click="handleAddProfile" class="bg-theme-bc text-white px-4 py-2 rounded-md float-right">
@@ -91,7 +91,7 @@ import { useToast } from "vue-toastification";
 const toast = useToast();
 const { $services } = useNuxtApp();
 const loading = ref(false);
-const allInvestors = ref([]);
+const allBrokers = ref([]);
 const profiles = ref([]);
 const pendingCount = ref("");
 const acceptedCount = ref("");
@@ -115,8 +115,8 @@ onMounted(async () => {
     //   fetchProfiles()
     try {
         // Fetch all investors
-        const investors = await $services.base.getAllInvestors();
-        allInvestors.value = investors.body.rows || [];
+        const brokers = await $services.base.getBrokers();
+        allBrokers.value = brokers.body.rows || [];
         // Fetch profiles
         const response = await $services.base.getProfiles();
         console.log("Profiles fetched:", response);
@@ -147,7 +147,7 @@ onMounted(async () => {
 const paginatedRows = computed(() => {
     const start = (currentPage.value - 1) * pageSize.value;
     const end = start + pageSize.value;
-    return allInvestors.value.slice(start, end).map((request, index) => ({
+    return allBrokers.value.slice(start, end).map((request, index) => ({
         values: [
             start + index + 1,
             `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
@@ -161,7 +161,7 @@ const paginatedRows = computed(() => {
 // Pagination logic
 const currentPage = ref(1);
 const pageSize = ref(10);
-const totalCount = computed(() => allInvestors.value.length);
+const totalCount = computed(() => allBrokers.value.length);
 const totalPages = computed(() => Math.ceil(totalCount.value / pageSize.value));
 const startItem = computed(() => (currentPage.value - 1) * pageSize.value + 1);
 const endItem = computed(() =>
