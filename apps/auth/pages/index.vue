@@ -113,7 +113,7 @@ const submitForm = async (event: Event) => {
       router.push("/otp");
     } else toast.error(result.body);
   } catch (error) {
-    const err = error.response.data.body;
+    const err = error?.response?.data?.body;
     toast.error(err);
   } finally {
     loading.value = false;

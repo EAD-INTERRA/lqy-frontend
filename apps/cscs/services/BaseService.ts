@@ -127,7 +127,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("stakeholder", {
+      const response = await this.client.get("cscs/get_stakeholders?type=Broker&page=1&size=5", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getBroker Response:", response);
@@ -253,7 +253,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("/get_all_margin_requests", {
+      const response = await this.client.get("cscs/get_all_margin_requests", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getProfile Response:", response);
@@ -306,7 +306,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       const response = await this.client.post(
-        'accept_request', { request_id: id },
+        'cscs/accept_request', { request_id: id },
         { headers: { authorization: "Bearer " + authToken } }
       );
       console.log("acceptMarginRequest Response:", response);

@@ -10,17 +10,38 @@
                         <span>{{ row.values[0] }}</span>
                     </template>
                     <template #cell-1="{ row }">
-                        <span class="capitalize">{{ row.values[1] }}</span>
+                        <span class="capitalize font-semibold text-black">{{ row.values[1] }}</span>
                     </template>
                     <template #cell-2="{ row }">
-                        <span>{{ row.values[2] }}</span>
+                        <span class="text-left font-semibold capitalize underline cursor-pointer text-blue-600">{{
+                            row.values[2] }}</span>
                     </template>
                     <template #cell-3="{ row }">
-                        <button @click="openModal(row.raw.request_id, `${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}`, row.raw.chn,
+                        <span v-if="row.values[3]?.toLowerCase() === 'pending'"
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-50  text-orange-700  capitalize">
+                            {{ row.values[3] }}
+                        </span>
+                        <!-- <span v-else-if="row.values[3]?.toLowerCase() === 'pending'"
+                                                class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-300 text-white capitalize">
+                                                {{ row.values[3] }}
+                                            </span> -->
+                        <!-- <span v-else-if="row.values[3]?.toLowerCase() === 'rejected'"
+                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-50 text-red-700 capitalize">
+                            {{ row.values[3] }}
+                        </span> -->
+
+                    </template>
+                    <template #cell-4="{ row }">
+                        <!-- <button @click="openModal(row.raw.request_id, `${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}`, row.raw.chn,
                             row.raw.status)"
                             class="border border-gray-500 text-gray-500 px-4 py-1 rounded hover:bg-blue-50">
                             View
-                        </button>
+                        </button> -->
+                        <!-- <NuxtLink :to="`/margin-request/${row.raw.request_id}`" -->
+                        <NuxtLink :to="`/margin-portfollio`"
+                            class="border border-blue-500 text-blue-500 px-4 py-1 rounded hover:bg-blue-50">
+                            View
+                        </NuxtLink>
                     </template>
                 </BaseTable>
                 <BasePagination :currentPage="currentPage" :totalPages="totalPages" :startItem="startItem"
@@ -75,7 +96,8 @@ const paginatedRows = computed(() => {
             start + index + 1,
             `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
             request.chn,
-            "View"
+            "Pending",
+            null
         ],
         raw: request,
     }));
