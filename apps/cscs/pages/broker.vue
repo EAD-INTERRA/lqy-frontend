@@ -98,6 +98,17 @@ const acceptedCount = ref("");
 const rejectedCount = ref("");
 const allCount = ref("");
 
+// const headers = [
+//     "S/N",
+//     "Brokers",
+//     "Broker Code",
+//     "Cash Drawn",
+//      "Value of Ass. Sec.",
+//     "ML Value",
+//     "SL Value",
+//     "Action",
+// ];
+
 const headers = [
     "S/N",
     "Brokers",
@@ -112,35 +123,14 @@ const headers = [
 
 // Fetch and Init
 onMounted(async () => {
-    //   fetchProfiles()
     try {
-        // Fetch all investors
-        const brokers = await $services.shareholder.getShareholders();
+        // Fetch all brokers
+        console.log("Fetching brokers...");
+        const brokers = await $services.base.getBrokers();
         console.log("Brokers fetched:", brokers);
-        allBrokers.value = brokers.body.rows || [];
-        // Fetch profiles
-        // const response = await $services.base.getProfiles();
-        // console.log("Profiles fetched:", response);
-        // profiles.value = response.body.results || [];
-        // Fetch pending margin requests
-        // const pendingRequests = await $services.base.getPendingMarginRequests();
-        // pendingCount.value = pendingRequests.body.count || 0;
-        // console.log("Pending Margin Requests fetched:", pendingRequests);
-        // Fetch accepted margin requests
-        // const acceptedRequests = await $services.base.getAcceptedMarginRequests();
-        // acceptedCount.value = acceptedRequests.body.count || 0;
-        // console.log("Accepted Margin Requests fetched:", acceptedRequests);
-        // Fetch rejected margin requests
-        // const rejectedRequests = await $services.base.getRejectedMarginRequests();
-        // rejectedCount.value = rejectedRequests.body.count || 0;
-        // console.log("Rejected Margin Requests fetched:", rejectedRequests);
-        // Fetch all margin requests
-        // const allRequests = await $services.base.getAllMarginRequests();
-        // allCount.value = allRequests.body.count || 0;
-        // console.log("All Margin Requests fetched:", allRequests);
-
+        allBrokers.value = brokers.body.records || [];
     } catch (error) {
-        console.error("Error fetching profiles:", error);
+        console.error("Error fetching brokers:", error);
         toast.error("Failed to fetch Records");
     }
 });
@@ -148,17 +138,20 @@ onMounted(async () => {
 const paginatedRows = computed(() => {
     const start = (currentPage.value - 1) * pageSize.value;
     const end = start + pageSize.value;
-    return allBrokers.value.slice(start, end).map((request, index) => ({
+    return allBrokers.value.slice(start, end).map((broker, index) => ({
         values: [
             start + index + 1,
-            `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
-            request.chn,
-            request.status,
+            `${broker.first_name || ''} ${broker.last_name || ''}`,
+            broker.code || 'XXXX', // Broker Code (use another field if needed)
+            broker.cash_drawn || '3,400,389',
+            broker.value_of_assured_security || '48,493,932',
+            broker.ml_value || '',
+            broker.sl_value || '14,009,493',
+            null, // Placeholder for Action column
         ],
-        raw: request,
+        raw: broker,
     }));
 });
-
 // Pagination logic
 const currentPage = ref(1);
 const pageSize = ref(10);

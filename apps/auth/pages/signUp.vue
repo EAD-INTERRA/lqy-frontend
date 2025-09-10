@@ -144,7 +144,7 @@
                   </span>
                 </div>
                 <span :class="hasSpecial ? 'text-green-500' : 'text-red-500'">
-                  - At least 1 special character (!@#$%^&* etc.)hello world. how are you feeling okay. God abeg o make I no break codebase oo. Lori videoshoot.Get shwifty Rick and Morty Season4. How to kill a herd of sheep using 
+                  - At least 1 special character (!@#$%^&* etc.)
                 </span>
               </div>
             </div>
