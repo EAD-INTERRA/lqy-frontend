@@ -120,7 +120,7 @@ const handleAccept = async (id: string) => {
     }
   } catch (error) {
     console.log("error", error.body)
-    // toast.error(error.body || 'Error accepting request');
+    toast.error(error.body || 'Error accepting request');
   } finally {
     approveLoading.value = false;
   }
