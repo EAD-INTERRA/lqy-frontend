@@ -32,9 +32,9 @@
             Portfolio
           </NuxtLink>
           <NuxtLink
-          to="/"
+          to=""
           title="Notifications"
-          class="rounded-xl w-full flex gap-4 items-center text-white hover:bg-white/10 py-3 px-4 cursor-pointer"
+          class="rounded-xl w-[250px] flex gap-4 items-center text-white hover:bg-white/10 py-3 px-4 cursor-pointer"
         >
           <img
             src="../assets/images/notification-icons.svg"

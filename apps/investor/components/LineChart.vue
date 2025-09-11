@@ -10,8 +10,8 @@
   </div>
   <!-- Chart Header -->
   <div class="my-4 flex gap-4">
-    <h3 class="text-lg font-semibold text-gray-900 font-ox">CUMULATIVE EXPOSURE</h3>
-    <p class="text-lg font-bold text-red-600 font-ox">-$21,984</p>
+    <h3 class="text-lg font-semibold text-gray-900 font-ox">{{ title }}</h3>
+    <p class="text-lg font-bold text-red-600 font-ox">{{ exposure }}</p>
   </div>
   <canvas ref="chartCanvasRef" class="w-[100%]"></canvas>
 </template>
@@ -22,7 +22,7 @@ import { ref, onMounted, defineProps } from 'vue';
 
 const chartCanvasRef = ref<HTMLCanvasElement | null>(null);
 
-const { labels, datasets } = defineProps<{
+const { labels, datasets, exposure, title } = defineProps<{
   labels: string[];
   datasets: {
     label: string;
@@ -31,6 +31,8 @@ const { labels, datasets } = defineProps<{
     backgroundColor?: string;
     fill?: boolean;
   }[];
+  exposure: string | number;
+  title: string;
 }>()
 
 onMounted(() => {

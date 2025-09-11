@@ -91,8 +91,8 @@ const endItem = computed(() =>
 
 const paginatedRows = computed(() => {
     const filtered = allRequests.value.filter(
-            req => req.status?.toLowerCase() !== 'accepted'
-        );
+        req => req.status?.toLowerCase() === 'pending'
+    );
     const start = (currentPage.value - 1) * pageSize.value;
     const end = start + pageSize.value;
     return filtered.slice(start, end).map((request, index) => ({
