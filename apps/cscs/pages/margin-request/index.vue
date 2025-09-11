@@ -38,7 +38,8 @@
                             View
                         </button> -->
                         <!-- <NuxtLink :to="`/margin-request/${row.raw.request_id}`" -->
-                        <NuxtLink :to="`/margin-portfollio`"
+                        <NuxtLink
+                            :to="`/margin-portfollio?request_id=${row.raw.request_id}&account_name=${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}&chn=${row.raw.chn}&status=${row.raw.status}`"
                             class="border border-blue-500 text-blue-500 px-4 py-1 rounded hover:bg-blue-50">
                             View
                         </NuxtLink>
