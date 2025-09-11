@@ -165,8 +165,8 @@ const submitForm = async () => {
       const config = useRuntimeConfig();
       const redirectionUrls = {
         LQY_Admin: config.public.admin,
-        // Broker: config.public.Broker,
-        Broker: config.public.Investor,
+        Broker: config.public.Broker,
+        // Broker: config.public.Investor,
         CSCS: config.public.CSCS,
         Custodian: config.public.Custodian,
         Investor: config.public.Investor,
