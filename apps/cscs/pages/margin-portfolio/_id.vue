@@ -24,7 +24,7 @@
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <div>
                     <p class="font-ox text-ox-xs">Investors Name</p>
-                    <p>Oluchi Johnson</p>
+                    <p>{row.raw.user.profile?.first_name || ''} {row.raw.user.profile?.last_name || ''}</p>
                 </div>
                 <div>
                     <p class="font-ox text-ox-xs">Cash Drawn</p>
@@ -139,19 +139,17 @@ function setCurrentPage(page: number) {
     }
 }
 
-// onMounted(async () => {
-//     try {
-//         const response = await $services.base.getAllMarginRequests();
-//         allRequests.value = response.body.rows || [];
-//     } catch (error) {
-//         console.error('Error fetching margin requests:', error);
-//         toast.error('Failed to fetch margin requests');
-//     } finally {
-//         loading.value = false;
-//     }
-// });
-
-
+onMounted(async () => {
+    try {
+        const response = await $services.base.getAllMarginRequests();
+        allRequests.value = response.body.rows || [];
+    } catch (error) {
+        console.error('Error fetching margin requests:', error);
+        toast.error('Failed to fetch margin requests');
+    } finally {
+        loading.value = false;
+    }
+});
 
 const selectedRequestId = ref('');
 const selectedRequestChn = ref('');

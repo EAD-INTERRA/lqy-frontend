@@ -39,7 +39,7 @@
                         </button> -->
                         <!-- <NuxtLink :to="`/margin-request/${row.raw.request_id}`" -->
                         <NuxtLink
-                            :to="`/margin-portfollio?request_id=${row.raw.request_id}&account_name=${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}&chn=${row.raw.chn}&status=${row.raw.status}`"
+                            :to="`/margin-portfolio?request_id=${row.raw.request_id}&account_name=${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}&chn=${row.raw.chn}&status=${row.raw.status}`"
                             class="border border-blue-500 text-blue-500 px-4 py-1 rounded hover:bg-blue-50">
                             View
                         </NuxtLink>
@@ -90,9 +90,12 @@ const endItem = computed(() =>
 );
 
 const paginatedRows = computed(() => {
+    const filtered = allRequests.value.filter(
+            req => req.status?.toLowerCase() !== 'accepted'
+        );
     const start = (currentPage.value - 1) * pageSize.value;
     const end = start + pageSize.value;
-    return allRequests.value.slice(start, end).map((request, index) => ({
+    return filtered.slice(start, end).map((request, index) => ({
         values: [
             start + index + 1,
             `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
