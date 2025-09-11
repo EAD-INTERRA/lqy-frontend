@@ -1,4 +1,3 @@
-
 <template>
     <div class=" space-y-6">
         <div class="relative flex bg-gray-200 rounded-[16px] w-fit p-[0.9px]" v-if="activeTab === 1 || activeTab === 2">
@@ -81,29 +80,26 @@
               <span>{{ row.values[3] }}</span>
             </template>
             <template #cell-4="{ row }">
-              <span>{{ row.values[4] }}</span>
-            </template>
-            <template #cell-5="{ row }">
               <span
-                v-if="row.values[5]?.toLowerCase() === 'approved'"
+                v-if="row.values[4]?.toLowerCase() === 'approved'"
                 class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#027A48]/20 text-[#027A48] capitalize"
               >
-                {{ row.values[5] }}
+                {{ row.values[4] }}
               </span>
               <span
-                v-else-if="row.values[5]?.toLowerCase() === 'pending'"
+                v-else-if="row.values[4]?.toLowerCase() === 'pending'"
                 class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-500/20 text-orange-500 capitalize"
               >
-                {{ row.values[5] }}
+                {{ row.values[4] }}
               </span>
               <span
-                v-else-if="row.values[5]?.toLowerCase() === 'rejected'"
+                v-else-if="row.values[4]?.toLowerCase() === 'rejected'"
                 class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#B42318]/20 text-[#B42318] capitalize"
               >
-                {{ row.values[5] }}
+                {{ row.values[4] }}
               </span>
             </template>
-            <template #cell-6="{ row }">
+            <template #cell-5="{ row }">
               <button
                 @click="openDetails(row.raw)"
                 class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105"
@@ -137,42 +133,37 @@
   
   const activeTab = ref(1);
   
-  const headers = ["S/N", "CHN Number", "Credit Line Amount", "Tenure", "Date Submitted", "Status", "Action"];
+  const headers = ["S/N", "CHN Number", "Credit Line Amount", "Date Submitted", "Status", "Action"];
   
   const allRequests = ref([
     {
       chn: "CHN001",
       creditLineAmount: 2500000,
-      tenure: "12 months",
       dateSubmitted: "2025-07-15",
       status: "Approved",
     },
     {
-      chn: "CHN002",
-      creditLineAmount: 1500000,
-      tenure: "6 months",
-      dateSubmitted: "2025-07-12",
+      chn: "CHN001",
+      creditLineAmount: 2500000,
+      dateSubmitted: "2025-07-15",
       status: "Pending",
     },
     {
-      chn: "CHN003",
-      creditLineAmount: 3500000,
-      tenure: "24 months",
-      dateSubmitted: "2025-07-10",
+      chn: "CHN001",
+      creditLineAmount: 2500000,
+      dateSubmitted: "2025-07-15",
       status: "Rejected",
     },
     {
-      chn: "CHN004",
-      creditLineAmount: 2000000,
-      tenure: "18 months",
-      dateSubmitted: "2025-07-08",
+      chn: "CHN001",
+      creditLineAmount: 2500000,
+      dateSubmitted: "2025-07-15",
       status: "Approved",
     },
     {
-      chn: "CHN005",
-      creditLineAmount: 3000000,
-      tenure: "9 months",
-      dateSubmitted: "2025-07-05",
+      chn: "CHN001",
+      creditLineAmount: 2500000,
+      dateSubmitted: "2025-07-15",
       status: "Pending",
     },
   ]);
@@ -200,7 +191,6 @@
         start + index + 1,            // S/N
         request.chn,                 // CHN Number
         formatCurrency(request.creditLineAmount), // Credit Line Amount
-        request.tenure,              // Tenure
         request.dateSubmitted,       // Date Submitted
         request.status,              // Status
         null,                       // Action (for button)
@@ -235,4 +225,3 @@ function handleOpenDetails(request) {
   activeTab.value = 5; // switch tab
 }
   </script>
-  
