@@ -1,5 +1,5 @@
 {
-  "name": "financial-institution",
+  "name": "financial-institutions",
   "private": true,
   "scripts": {
     "build": "nuxt build",

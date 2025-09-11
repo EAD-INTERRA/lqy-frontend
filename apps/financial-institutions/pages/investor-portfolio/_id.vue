@@ -3,46 +3,71 @@
         <section class="mb-4">
             <div
                 class=" bg-gray-300 text-red-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
-                Margin Request</div>
+                <div>
+                    <p>Portfolio Details </p>
+                    <p>CHN234567</p>
+                </div>
+                <!-- <span v-if="row.values[3]?.toLowerCase() === 'pending'" -->
+                <span
+                    class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-50  text-orange-700  capitalize">
+                    Pending
+                </span>
+                <button
+                    @click="openModal(row.raw.request_id, `${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}`, row.raw.chn, row.raw.status)"
+                    class="border border-gray-500 text-gray-500 px-4 py-1 rounded hover:bg-blue-50">
+                    Check Marginability
+                </button>
+            </div>
+
+        </section>
+        <section class="grid grid-cols-2 w-full gap-6 mb-4">
+            <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+                <div>
+                    <p class="font-ox text-ox-xs">Investors Name</p>
+                    <p>{row.raw.user.profile?.first_name || ''} {row.raw.user.profile?.last_name || ''}</p>
+                </div>
+                <div>
+                    <p class="font-ox text-ox-xs">Cash Drawn</p>
+                    <p>₦3,530,029</p>
+                </div>
+                <div>
+                    <p class="font-ox text-ox-xs">CHN No</p>
+                    <p>xxxxx123</p>
+                </div>
+                <div>
+                    <p class="font-ox text-ox-xs">Acct No</p>
+                    <p>123xxxxxxx</p>
+                </div>
+            </div>
+            <div class=" bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+                <div>
+                    <p class="font-ox text-ox-xs">VAS Sec.</p>
+                    <p>₦4,210,765</p>
+                </div>
+                <div>
+                    <p class="font-ox text-ox-xs">ML Value</p>
+                    <p>₦4,210,765</p>
+                </div>
+                <div>
+                    <p class="font-ox text-ox-xs">Interest on Margin</p>
+                    <p>xxxx</p>
+                </div>
+                <div>
+                    <p class="font-ox text-ox-xs">Interest Due from SL</p>
+                    <p>Nxx</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-4">
             <div class="bg-white shadow-lg p-5 rounded-lg mb-4">
                 <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false">
                     <template #cell-0="{ row }">
                         <span>{{ row.values[0] }}</span>
                     </template>
                     <template #cell-1="{ row }">
-                        <span class="capitalize font-semibold text-black">{{ row.values[1] }}</span>
-                    </template>
-                    <template #cell-2="{ row }">
                         <span class="text-left font-semibold capitalize underline cursor-pointer text-blue-600">{{
-                            row.values[2] }}</span>
-                    </template>
-                    <template #cell-3="{ row }">
-                        <span v-if="row.values[3]?.toLowerCase() === 'pending'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-50  text-orange-700  capitalize">
-                            {{ row.values[3] }}
-                        </span>
-                        <!-- <span v-else-if="row.values[3]?.toLowerCase() === 'pending'"
-                                                class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-orange-300 text-white capitalize">
-                                                {{ row.values[3] }}
-                                            </span> -->
-                        <!-- <span v-else-if="row.values[3]?.toLowerCase() === 'rejected'"
-                            class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-red-50 text-red-700 capitalize">
-                            {{ row.values[3] }}
-                        </span> -->
-
-                    </template>
-                    <template #cell-4="{ row }">
-                        <!-- <button @click="openModal(row.raw.request_id, `${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}`, row.raw.chn,
-                            row.raw.status)"
-                            class="border border-gray-500 text-gray-500 px-4 py-1 rounded hover:bg-blue-50">
-                            View
-                        </button> -->
-                        <!-- <NuxtLink :to="`/margin-request/${row.raw.request_id}`" -->
-                        <NuxtLink
-                            :to="`/margin-portfolio?request_id=${row.raw.request_id}&account_name=${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}&chn=${row.raw.chn}&status=${row.raw.status}`"
-                            class="border border-blue-500 text-blue-500 px-4 py-1 rounded hover:bg-blue-50">
-                            View
-                        </NuxtLink>
+                            row.values[1] }}</span>
                     </template>
                 </BaseTable>
                 <BasePagination :currentPage="currentPage" :totalPages="totalPages" :startItem="startItem"
@@ -71,11 +96,13 @@ const showModal = ref(false);
 
 // Table headers
 const headers = [
-    "S/N",
-    "Account Name",
-    "CHN Number",
-    "Status",
-    "Action"
+    "Symbol",
+    "Balance",
+    "Pending",
+    "Current Price",
+    "Value",
+    "ML Value",
+    "SL Value"
 ];
 
 // Pagination logic
@@ -90,18 +117,17 @@ const endItem = computed(() =>
 );
 
 const paginatedRows = computed(() => {
-    const filtered = allRequests.value.filter(
-            req => req.status?.toLowerCase() !== 'accepted'
-        );
     const start = (currentPage.value - 1) * pageSize.value;
     const end = start + pageSize.value;
-    return filtered.slice(start, end).map((request, index) => ({
+    return allRequests.value.slice(start, end).map((request, index) => ({
         values: [
-            start + index + 1,
-            `${request.user.profile?.first_name || ''} ${request.user.profile?.last_name || ''}`,
+            "TNC",
+            "131,300",
             request.chn,
-            "Pending",
-            null
+            "384",
+            "758,039",
+            "3,495,294.90",
+            "728,495.48",
         ],
         raw: request,
     }));
