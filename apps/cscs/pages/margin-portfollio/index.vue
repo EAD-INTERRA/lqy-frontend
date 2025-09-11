@@ -12,15 +12,17 @@
 
             <!-- Title and Actions -->
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <div>
+                <div class="flex flex-col text-left items-left gap-4">
+                    <div class="flex  items-center gap-4">
                         <h1 class="text-2xl font-semibold text-gray-900">Portfolio Details</h1>
-                        <p class="text-gray-500 text-sm">CHN123456</p>
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-700">
+                            <!-- {{ status || 'Pending' }} -->
+                            Pending
+                        </span>
                     </div>
-                    <span
-                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
-                        Pending
-                    </span>
+                    <p class="text-gray-500 text-sm">{{ chn }}</p>
+
                 </div>
                 <button @click="openModal('REQ12345', 'Oluchi Johnson', 'CHN123456', 'Pending')"
                     class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
@@ -35,10 +37,10 @@
         <!-- Information Cards -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <!-- Left Card -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div class="bg-white rounded-lg flex flex-col gap-4 shadow-sm border border-gray-200 p-6">
                 <div class="flex justify-between w-full">
                     <p class="text-sm text-gray-500 mb-1">Investors Name</p>
-                    <p class="font-semibold text-gray-900">Oluchi Johnson</p>
+                    <p class="font-semibold text-gray-900">{{ accountName }}</p>
                 </div>
 
                 <div class="flex justify-between w-full">
@@ -48,7 +50,7 @@
 
                 <div class="flex justify-between w-full">
                     <p class="text-sm text-gray-500 mb-1">CHN No</p>
-                    <p class="font-semibold text-gray-900">xxxxx123</p>
+                    <p class="font-semibold text-gray-900">{{ chn }}</p>
                 </div>
 
                 <div class="flex justify-between w-full">
@@ -57,7 +59,7 @@
                 </div>
 
             </div>
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div class="bg-white rounded-lg flex flex-col gap-4 shadow-sm border border-gray-200 p-6">
 
                 <div class="flex justify-between w-full">
                     <p class="text-sm text-gray-500 mb-1">VAS Sec.</p>
@@ -158,13 +160,23 @@
         </div>
 
         <!-- Modal -->
-        <marginRequestModal v-if="showModal" :requestId="selectedRequestId" :accountName="selectedRequestName"
-            :chn="selectedRequestChn" :status="selectedRequestStatus" @close="showModal = false" />
+        <marginRequestModal v-if="showModal" :requestId="requestId" :accountName="accountName" :chn="chn"
+            :status="status" @close="showModal = false" />
+
+
+
     </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+const route = useRoute();
+const requestId = computed(() => route.query.request_id);
+
+const accountName = computed(() => route.query.account_name);
+const chn = computed(() => route.query.chn);
+const status = computed(() => route.query.status);
 
 const showModal = ref(false)
 const selectedRequestId = ref('')

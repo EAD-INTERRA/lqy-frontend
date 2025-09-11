@@ -153,7 +153,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("/investors", {
+      const response = await this.client.get("cscs/investors", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getPendingMarginRequests Response:", response);
@@ -178,7 +178,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("/get_pending_margin_requests", {
+      const response = await this.client.get("cscs/get_pending_margin_requests", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getPendingMarginRequests Response:", response);
@@ -203,7 +203,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("/get_accepted_margin_requests", {
+      const response = await this.client.get("cscs/get_accepted_margin_requests", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getProfile Response:", response);
@@ -228,7 +228,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("/get_rejected_margin_requests", {
+      const response = await this.client.get("cscs/get_rejected_margin_requests", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getProfile Response:", response);
@@ -331,7 +331,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       const response = await this.client.post(
-        "reject_request", { request_id: id },
+        "cscs/reject_request", { request_id: id },
         { headers: { authorization: "Bearer " + authToken } }
       );
       console.log("rejectMarginRequest Response:", response);
