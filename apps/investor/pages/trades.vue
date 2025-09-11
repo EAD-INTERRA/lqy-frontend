@@ -28,6 +28,9 @@
         <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false"
           class="!font-ox !font-bold">
           // ...existing code...
+          <template #cell-0="{ row }">
+            <span class="text-gray-700 ">{{ row.values[0] }}</span>
+          </template>
           <template #cell-1="{ row }">
             <span :class="row.values[1] === 'Buy' ? 'text-green-600' : 'text-red-600'">
               {{ row.values[1] }}
@@ -43,10 +46,10 @@
             </span>
           </template>
           <template #cell-7="{ row }">
-            <button @click="openModal(row.raw)"
+            <NuxtLink :to="`/asset-detail?security=${row.raw.chn || ''}`"
               class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105">
               View
-            </button>
+            </NuxtLink>
           </template>
         </BaseTable>
 
@@ -145,7 +148,7 @@ if (process.client) {
 
 const { $services } = useNuxtApp();
 
-const headers = ["Security", "Order Type", "Quantity", "Price", "Total Value", "Date", "Status", ""];
+const headers = ["Security", "Order Type", "Quantity", "Price", "Total Value", "Date", "Status", "Actions"];
 // const allRequests = ref([]);
 const currentPage = ref(1);
 const pageSize = ref(10);
