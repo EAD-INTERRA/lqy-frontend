@@ -34,7 +34,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <h2 class="text-lg font-semibold text-black-900">Brokers Information</h2>
+                    <h2 class="text-lg font-semibold text-black-900">{{ stakeholderType }} Information</h2>
                 </div>
             </div>
 
@@ -43,29 +43,29 @@
                     <!-- <CHANGE> Added brokers information grid layout -->
                     <div>
                         <p class="text-sm text-black-500 mb-1">Profile ID</p>
-                        <p class="font-semibold text-black-900">BRK1234</p>
+                        <p class="font-semibold text-black-900">{{ profileId }}</p>
                     </div>
 
                     <div>
                         <p class="text-sm text-black-500 mb-1">Company Name</p>
-                        <p class="font-semibold text-green-600">Capital Asset LTD</p>
+                        <p class="font-semibold text-green-600">{{ companyName }}</p>
                     </div>
 
                     <div>
                         <p class="text-sm text-black-500 mb-1">Full Name</p>
-                        <p class="font-semibold text-black-900">John Doe</p>
+                        <p class="font-semibold text-black-900">{{ fullName }}</p>
                     </div>
 
                     <div>
                         <p class="text-sm text-black-500 mb-1">Submitted</p>
-                        <p class="font-semibold text-black-900">Aug 15th, 2025, 10:45:00 AM</p>
+                        <p class="font-semibold text-black-900">{{ formatDate(date) }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Investors Section -->
-        <div class="bg-white rounded-lg shadow-md mb-[20px]">
+        <div v-if="stakeholderType === 'Broker'" class="bg-white rounded-lg shadow-md mb-[20px]">
             <div class="px-6 py-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2">
@@ -138,9 +138,9 @@
                         </button>
 
                         <button v-for="page in visiblePages" :key="page" @click="setCurrentPage(page)" :class="[
-                            'px-3 py-1 border rounded text-sm',
-                            page === currentPage
-                                ? 'bg-[#034579] text-white border-[#034579] '
+                            'px-3 py-1 text-sm border rounded',
+                            currentPage === page
+                                ? 'bg-[#2E66E3] text-white border-[#2E66E3]'
                                 : 'border-gray-300 hover:bg-gray-50'
                         ]">
                             {{ page }}
@@ -160,10 +160,28 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const stakeholderType = route.query.type;
+const profileId = route.query.profile_id;
+const companyName = route.query.company;
+const date = route.query.date;
+const fullName = route.query.fullName;
 import { ref, computed } from 'vue'
 
 // <CHANGE> Added search functionality
 const searchQuery = ref('')
+
+const formatDate = (dateString, locale = "en-UK", options = {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+}) => {
+    const date = new Date(dateString);
+    const dateFormatter = new Intl.DateTimeFormat(locale, options);
+    return dateFormatter.format(date);
+};
 
 // Table headers
 const headers = [

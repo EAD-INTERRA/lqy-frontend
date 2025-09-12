@@ -129,9 +129,9 @@
                         </button>
 
                         <button v-for="page in visiblePages" :key="page" @click="setCurrentPage(page)" :class="[
-                            'px-3 py-1 border rounded text-sm',
-                            page === currentPage
-                                ? 'bg-[#034579] text-white border-[#034579] '
+                            'px-3 py-1 text-sm border rounded',
+                            currentPage === page
+                                ? 'bg-[#2E66E3] text-white border-[#2E66E3]'
                                 : 'border-gray-300 hover:bg-gray-50'
                         ]">
                             {{ page }}

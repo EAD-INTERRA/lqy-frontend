@@ -101,7 +101,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("cscs/get_profile", {
+      const response = await this.client.get("/profile", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getProfile Response:", response);

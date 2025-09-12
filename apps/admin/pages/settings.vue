@@ -142,9 +142,9 @@ const userProfile = ref("");
 
 const fetchUserProfile = async () => {
   try {
-    const response = await $services.base.getProfiles();
+    const response = await $services.auth.getProfile();
     console.log('Fetched user profile:', response);
-    userProfile.value = response.body.body;
+    userProfile.value = response.body;
   } catch (error) {
     console.error('Error fetching user profile:', error);
   }
