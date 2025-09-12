@@ -5,7 +5,7 @@ pipeline {
         DEPLOY_PATH   = '/var/www/html/lqy-frontend/apps'
         MAX_BACKUPS   = 3
         SLACK_CHANNEL = '#lqy'
-        GIT_BRANCH    = 'main'  // Target branch
+        GIT_BRANCH    = 'main'  
     }
 
     triggers {
