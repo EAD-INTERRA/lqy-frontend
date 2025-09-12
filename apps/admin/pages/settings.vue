@@ -138,13 +138,13 @@
 import { ref, onMounted } from 'vue';
 const { $services } = useNuxtApp();
 
-const userProfile = ref<any>(null);
+const userProfile = ref("");
 
 const fetchUserProfile = async () => {
   try {
     const response = await $services.base.getProfiles();
     console.log('Fetched user profile:', response);
-    userProfile.value = response.body; // Assign body only
+    userProfile.value = response.body.body;
   } catch (error) {
     console.error('Error fetching user profile:', error);
   }

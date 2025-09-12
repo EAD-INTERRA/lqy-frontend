@@ -1,11 +1,24 @@
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import BaseTable from "../../../packages/ui/components/BaseTable.vue";
 import BasePagination from "../../../packages/ui/components/BasePagination.vue";
 
 const { $services } = useNuxtApp();
 
+const userProfile = ref("");
+
+const fetchUserProfile = async () => {
+  try {
+    const response = await $services.base.getProfiles();
+    console.log('Fetched user profile:', response);
+    userProfile.value = response.body.body;
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+  }
+};
+
 const margins = ref([]);
+fetchUserProfile();
 
 onMounted(async () => {
   const response = await $services.margin.getMargins();
@@ -29,7 +42,7 @@ const uploaderNames = [
 
 function generateDummyData(rows: number) {
   const randomIndex = Math.floor(Math.random() * uploaderNames.length);
-const randomName = uploaderNames[randomIndex];
+  const randomName = uploaderNames[randomIndex];
   const data = [];
   for (let i = 1; i <= rows; i++) {
     data.push({
@@ -139,68 +152,37 @@ function closeSuccessModal() {
   <div class="p-4 bg-white shadow-lg rounded-xl my-2">
     <div class="flex justify-between">
       <h3>Margin List</h3>
-    <button
-      @click="openUploadModal"
-      class="mb-4 px-4 py-2 bg-white text-blue-900 rounded-lg border border-blue-900 hover:bg-gray200"
-    >
-      Upload Files
-    </button>
+      <button @click="openUploadModal"
+        class="mb-4 px-4 py-2 bg-white text-blue-900 rounded-lg border border-blue-900 hover:bg-gray200">
+        Upload Files
+      </button>
     </div>
 
-    <BaseTable
-      :headers="headers"
-      :rows="paginatedRows"
-      :loading="false"
-      :showCheckbox="false"
-      class="!font-ox !font-bold m-2"
-    >
+    <BaseTable :headers="headers" :rows="paginatedRows" :loading="false" :showCheckbox="false"
+      class="!font-ox !font-bold m-2">
       <template #cell-0="{ row }"><span>{{ row.values[0] }}</span></template>
       <template #cell-1="{ row }"><span class="font-bold font-ox">{{ row.values[1] }}</span></template>
       <template #cell-2="{ row }"><span>{{ row.values[2] }}</span></template>
       <template #cell-3="{ row }"><span>{{ row.values[3] }}</span></template>
     </BaseTable>
 
-    <BasePagination
-      :currentPage="currentPage"
-      :totalPages="totalPages"
-      :startItem="startItem"
-      :endItem="endItem"
-      :totalCount="totalCount"
-      @update:page="setCurrentPage"
-    />
+    <BasePagination :currentPage="currentPage" :totalPages="totalPages" :startItem="startItem" :endItem="endItem"
+      :totalCount="totalCount" @update:page="setCurrentPage" />
 
     <!-- Upload Modal -->
-    <div
-      v-if="showUploadModal"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-      @dragover.prevent="onDragOver"
-      @drop.prevent="onDrop"
-    >
-      <div
-        class="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-lg relative"
-      >
+    <div v-if="showUploadModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      @dragover.prevent="onDragOver" @drop.prevent="onDrop">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-lg relative">
         <h3 class="text-xl font-bold mb-4">Upload and Attach Files</h3>
 
         <!-- Hidden native file input -->
-        <input
-          ref="fileInputRef"
-          type="file"
-          multiple
-          class="hidden"
-          @change="onFileInputChange"
-          accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg"
-        />
+        <input ref="fileInputRef" type="file" multiple class="hidden" @change="onFileInputChange"
+          accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg" />
 
         <!-- Upload area -->
-        <div
-          class="border-2 border-dashed border-gray-400 rounded p-8 text-center mb-4 cursor-pointer hover:bg-gray-50"
-          @click="triggerFileSelect"
-        >
-          <img
-            src="~/assets/images/uploadFile.svg"
-            alt="Upload Icon"
-            class="mx-auto mb-3"
-          />
+        <div class="border-2 border-dashed border-gray-400 rounded p-8 text-center mb-4 cursor-pointer hover:bg-gray-50"
+          @click="triggerFileSelect">
+          <img src="~/assets/images/uploadFile.svg" alt="Upload Icon" class="mx-auto mb-3" />
           <p>
             <button class="underline font-bold text-blue-600">Click to upload</button>
             or drag and drop
@@ -210,17 +192,11 @@ function closeSuccessModal() {
 
         <!-- Selected files list -->
         <div v-if="selectedFiles.length > 0" class="max-h-48 overflow-y-auto mb-4">
-          <div
-            v-for="(file, index) in selectedFiles"
-            :key="index"
-            class="flex items-center justify-between border border-gray-300 rounded p-3 mb-2"
-          >
+          <div v-for="(file, index) in selectedFiles" :key="index"
+            class="flex items-center justify-between border border-gray-300 rounded p-3 mb-2">
             <p class="truncate">{{ file.name }} ({{ (file.size / 1024).toFixed(2) }} KB)</p>
-            <button
-              @click="removeFile(index)"
-              class="text-red-600 hover:text-red-800 font-bold"
-              aria-label="Remove file"
-            >
+            <button @click="removeFile(index)" class="text-red-600 hover:text-red-800 font-bold"
+              aria-label="Remove file">
               ✕
             </button>
           </div>
@@ -228,16 +204,11 @@ function closeSuccessModal() {
 
         <!-- Buttons -->
         <div class="flex justify-end gap-4">
-          <button
-            @click="closeUploadModal"
-            class="px-4 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-50"
-          >
+          <button @click="closeUploadModal"
+            class="px-4 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-50">
             Cancel
           </button>
-          <button
-            @click="uploadFiles"
-            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
+          <button @click="uploadFiles" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
             Upload files
           </button>
         </div>
@@ -245,17 +216,12 @@ function closeSuccessModal() {
     </div>
 
     <!-- Success Modal -->
-    <div
-      v-if="showSuccessModal"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-    >
+    <div v-if="showSuccessModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white rounded-lg shadow-lg p-6 w-96 max-w-full text-center">
         <h3 class="text-xl font-bold mb-4 text-green-600">Upload Successful!</h3>
-        <p class="mb-4">Files were uploaded successfully by <strong>{{ uploadSuccessUploader }}</strong>.</p>
-        <button
-          @click="closeSuccessModal"
-          class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-        >
+        <p class="mb-4">Files were uploaded successfully by <strong>{{ userProfile?.first_name || '-' }} {{
+          userProfile?.last_name || '-' }}</strong>.</p>
+        <button @click="closeSuccessModal" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
           Close
         </button>
       </div>
