@@ -101,7 +101,7 @@
               </div>
               <div>
                 <h3 class="text-[14px]">Country</h3>
-                <span class="text-[20px]">{{selectedStakeholder?.state.country_code}}</span>
+                <span class="text-[20px]">{{selectedStakeholder?.country?.name}}</span>
               </div>
               <div>
                 <h3 class="text-[14px]">State</h3>

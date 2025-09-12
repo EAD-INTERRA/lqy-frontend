@@ -66,8 +66,13 @@ interface GetProfileResponse {
   code: number;
 }
 
+interface GetStateInput {
+  country_code: string;
+}
+
 export interface BaseServiceInterface {
   getProfiles(): Promise<GetProfileResponse>;
+  createInvestor(payload: any): Promise<GetProfileResponse>;
   getAllInvestors(): Promise<GetProfileResponse>;
   getPendingMarginRequests(): Promise<GetProfileResponse>;
   getAcceptedMarginRequests(): Promise<GetProfileResponse>;
@@ -110,6 +115,32 @@ export class BaseService implements BaseServiceInterface {
     }
   }
 
+  async createInvestor(payload: any): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.post("/create_investor", payload, {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("createInvestor Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getAllInvestors(): Promise<GetProfileResponse> {
     try {
       const tokenObj = localStorage.getItem("authToken");
@@ -135,6 +166,7 @@ export class BaseService implements BaseServiceInterface {
       throw error;
     }
   }
+
   async getPendingMarginRequests(): Promise<GetProfileResponse> {
     try {
       const tokenObj = localStorage.getItem("authToken");
@@ -279,7 +311,8 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       const response = await this.client.post(
-        'accept_request', { request_id: id },
+        "accept_request",
+        { request_id: id },
         { headers: { authorization: "Bearer " + authToken } }
       );
       console.log("acceptMarginRequest Response:", response);
@@ -304,7 +337,8 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       const response = await this.client.post(
-        "reject_request", { request_id: id },
+        "reject_request",
+        { request_id: id },
         { headers: { authorization: "Bearer " + authToken } }
       );
       console.log("rejectMarginRequest Response:", response);
