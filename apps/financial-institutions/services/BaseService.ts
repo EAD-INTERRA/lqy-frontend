@@ -68,6 +68,7 @@ interface GetProfileResponse {
 
 export interface BaseServiceInterface {
   getProfiles(): Promise<GetProfileResponse>;
+  getCountries(): Promise<GetProfileResponse>;
   getBrokers(): Promise<GetProfileResponse>;
   getAllInvestors(): Promise<GetProfileResponse>;
   getPendingMarginRequests(): Promise<GetProfileResponse>;
@@ -101,7 +102,7 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.get("cscs/get_profile", {
+      const response = await this.client.get("/profile", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getProfile Response:", response);

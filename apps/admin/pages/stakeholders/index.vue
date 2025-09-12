@@ -95,7 +95,7 @@
                     View Request
                   </button>
                   <NuxtLink v-if="getStatusText(item.user?.status) === 'Approved'"
-                    :to="`/stakeholders/capital-asset?${item.id}`"
+                    :to="`/stakeholders/capital-asset?type=${item.type}&profile_id=${item.profile_id}&company=${item.company_name}&date=${item.created_at}&fullName=${item.first_name} ${item.last_name}`"
                     class="border border-gray-200 text-black-700 px-4 py-1 rounded-lg text-sm transition-all duration-200 hover:bg-gray-50 hover:border-gray-300">
                     View Profile
                   </NuxtLink>
@@ -118,9 +118,9 @@
             </button>
 
             <button v-for="page in visiblePages" :key="page" @click="setCurrentPage(page)" :class="[
-              'px-3 py-1 border rounded text-sm',
-              page === currentPage
-                ? 'bg-[#034579] text-white border-[#034579] '
+              'px-3 py-1 text-sm border rounded',
+              currentPage === page
+                ? 'bg-[#2E66E3] text-white border-[#2E66E3]'
                 : 'border-gray-300 hover:bg-gray-50'
             ]">
               {{ page }}
@@ -248,7 +248,7 @@ const { $services } = useNuxtApp();
 const tabs = [
   { key: 'all', label: 'All' },
   { key: 'broker', label: 'Broker' },
-  { key: 'financial_institution', label: 'Financial Institution' },
+  { key: 'financial_institutions', label: 'Financial Institution' },
   { key: 'cscs', label: 'CSCS' }
 ];
 
