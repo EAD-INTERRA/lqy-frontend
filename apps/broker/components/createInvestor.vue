@@ -39,26 +39,6 @@
             <p v-if="errors.chn" class="text-red-500 text-sm mt-1">{{ errors.chn }}</p>
           </div>
           <div>
-            <label for="security_val">Security Value</label>
-            <input id="security_val" v-model.number="security_val" type="number" placeholder="Enter Security Value"
-              class="w-full p-2 border rounded-md bg-black/5" />
-          </div>
-          <div>
-            <label for="margin_lending_val">Margin Lending Value</label>
-            <input id="margin_lending_val" v-model.number="margin_lending_val" type="number"
-              placeholder="Enter Margin Lending Value" class="w-full p-2 border rounded-md bg-black/5" />
-          </div>
-          <div>
-            <label for="security_lending_val">Security Lending Value</label>
-            <input id="security_lending_val" v-model.number="security_lending_val" type="number"
-              placeholder="Enter Security Lending Value" class="w-full p-2 border rounded-md bg-black/5" />
-          </div>
-          <div>
-            <label for="phone">Phone</label>
-            <input id="phone" v-model="phone" type="text" placeholder="Enter phone number"
-              class="w-full p-2 border rounded-md bg-black/5" />
-          </div>
-          <div>
             <label for="country_id">Country</label>
             <select id="country_id" v-model="country_id" @change="handleCountryChange"
               class="w-full p-2 border rounded-md bg-black/5">
@@ -77,24 +57,31 @@
             </select>
           </div>
           <div>
-            <label for="company_name">Company Name</label>
-            <input id="company_name" v-model="company_name" type="text" placeholder="Enter company name"
-              class="w-full p-2 border rounded-md bg-black/5" />
-          </div>
-          <div>
-            <label for="city">City</label>
-            <input id="city" v-model="city" type="text" placeholder="Enter city"
-              class="w-full p-2 border rounded-md bg-black/5" />
-          </div>
-          <!-- <div>
-            <label for="user_type">User Type</label>
-            <input id="user_type" v-model="user_type" type="text" placeholder="Enter user type"
-              class="w-full p-2 border rounded-md bg-black/5" />
-          </div> -->
-          <div>
             <label for="password">Password</label>
-            <input id="password" v-model="password" type="password" placeholder="Enter password"
-              class="w-full p-2 border rounded-md bg-black/5" />
+            <div class="relative">
+              <input
+                id="password"
+                v-model="password"
+                :type="showPassword ? 'text' : 'password'"
+                placeholder="Enter password"
+                class="w-full p-2 border rounded-md bg-black/5 pr-10"
+              />
+              <button
+                type="button"
+                class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                @click="showPassword = !showPassword"
+                tabindex="-1"
+              >
+                <svg v-if="showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.907-4.568M6.634 6.634A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.956 9.956 0 01-4.818 5.626M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -129,17 +116,12 @@ const firstName = ref("")
 const lastName = ref("")
 const email = ref("")
 const chn = ref("")
-const security_val = ref<number | null>(null)
-const margin_lending_val = ref<number | null>(null)
-const security_lending_val = ref<number | null>(null)
-const phone = ref("")
 const country_code = ref('');
 const country_id = ref('');
 const state_id = ref('');
-const company_name = ref("")
-const city = ref("")
 const user_type = ref("Investor")
 const password = ref("")
+const showPassword = ref(false)
 const errors = ref<{ [key: string]: string }>({})
 const countries = ref<any[]>([])
 const states = ref<any[]>([])
@@ -169,14 +151,8 @@ const resetForm = () => {
   lastName.value = ""
   email.value = ""
   chn.value = ""
-  security_val.value = null
-  margin_lending_val.value = null
-  security_lending_val.value = null
-  phone.value = ""
   country_id.value = null
   state_id.value = null
-  company_name.value = ""
-  city.value = ""
   user_type.value = "Investor"
   password.value = ""
   errors.value = {}
@@ -216,17 +192,11 @@ const submitForm = async () => {
   try {
     const payload = {
       chn: chn.value,
-      security_val: security_val.value,
-      margin_lending_val: margin_lending_val.value,
-      security_lending_val: security_lending_val.value,
       first_name: firstName.value,
       last_name: lastName.value,
-      phone: phone.value,
       email: email.value,
       country_id: country_id.value,
       state_id: state_id.value,
-      company_name: company_name.value,
-      city: city.value,
       user_type: "Investor",
       password: password.value
     }
@@ -235,6 +205,7 @@ const submitForm = async () => {
     console.log("Result:", result)
     if (result.message === "SUCCESSFUL") {
       toast.success("Investor Created Successfully!");
+      Loading.value = false
     } else toast.error(result.body);
     resetForm()
   } catch (error: any) {
@@ -242,7 +213,7 @@ const submitForm = async () => {
     toast.error(error.response?.data?.message || "Something went wrong")
     Loading.value = false
   } finally {
-    // Loading.value = false
+    Loading.value = false
   }
 }
 </script>

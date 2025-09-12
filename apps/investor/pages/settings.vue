@@ -218,7 +218,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useNuxtApp } from '#app'
 
 // Reactive data
 const userProfile = ref(null)
