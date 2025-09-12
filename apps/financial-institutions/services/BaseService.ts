@@ -68,6 +68,7 @@ interface GetProfileResponse {
 
 export interface BaseServiceInterface {
   getProfiles(): Promise<GetProfileResponse>;
+  getCountries(): Promise<GetProfileResponse>;
   getBrokers(): Promise<GetProfileResponse>;
   getAllInvestors(): Promise<GetProfileResponse>;
   getPendingMarginRequests(): Promise<GetProfileResponse>;
