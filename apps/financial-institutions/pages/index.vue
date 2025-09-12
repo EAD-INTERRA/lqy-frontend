@@ -5,7 +5,7 @@
   
   const headers = [
   "S/N",
-  "Broker",
+  "Name of Broker",
   "Cash Drawn",
   "Value of Association Security",
   "Interest Earned",

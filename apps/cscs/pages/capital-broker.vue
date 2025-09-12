@@ -1,10 +1,13 @@
 <template>
     <div class="p-4 pt-[50px] space-y-6 ">
+
+        <div class="text-xl text-[#FF0000] font-bold mb-4 font-ox">Capital Broker</div>
+
         <section class="grid grid-cols-4 w-full gap-6">
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <div>
                     <p class="font-ox text-ox-xs">Cash Draw </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ allCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦1,2000,000</p>
                 </div>
                 <!-- <img src="../assets/images/total-request.svg" class="rounded-full" alt="icon" /> -->
 
@@ -13,21 +16,21 @@
                 <!-- <img src="../assets/images/accepted-request.svg" class="rounded-full" alt="icon" /> -->
                 <div>
                     <p class="font-ox text-ox-xs">Value of Ass. Sec </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ acceptedCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦175,000,000</p>
                 </div>
             </div>
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <!-- <img src="../assets/images/rejected-request.svg" class="rounded-full" alt="icon" /> -->
                 <div>
                     <p class="font-ox text-ox-xs">ML Value </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ pendingCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦175,000,000</p>
                 </div>
             </div>
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <!-- <img src="../assets/images/rejected-request.svg" class="rounded-full" alt="icon" /> -->
                 <div>
                     <p class="font-ox text-ox-xs">SL Value </p>
-                    <p class="font-ox font-bold text-left text-ox-lg">₦ {{ rejectedCount || 0 }}</p>
+                    <p class="font-ox font-bold text-left text-ox-lg">₦175,000,000</p>
                 </div>
             </div>
 
@@ -38,7 +41,7 @@
                 <div class="flex items-center justify-between mb-6">
                     <p
                         class=" bg-gray-300 text-gray-500 bg-opacity-25 bolder w-fit  text-lg px-3 py-1 rounded-[5px] font-bold ">
-                        Broker List</p>
+                        Investor List</p>
 
                     <!-- <button @click="handleAddProfile" class="bg-theme-bc text-white px-4 py-2 rounded-md float-right">
                         Margin Check
@@ -72,14 +75,9 @@
                         </span>
                     </template>
                     <template #cell-7="{ row }">
-                        <!-- <NuxtLink
-                            :to="`/margin-portfollio?request_id=${row.raw.request_id}&account_name=${row.raw.user.profile?.first_name || ''} ${row.raw.user.profile?.last_name || ''}&chn=${row.raw.chn}&status=${row.raw.status}`"
-                            class="border border-blue-500 text-blue-500 px-4 py-1 rounded hover:bg-blue-50">
-                            View
-                        </NuxtLink> -->
-                         <NuxtLink
-                            :to="`/capital-broker`"
-                            class=" font-semibold text-red-500 px-4 py-1 rounded hover:bg-red-50">
+                        <NuxtLink
+                            :to="`/investor-portfolio?request_id=${'xxxxx123'}&account_name=${'Iroko'} ${'Johnson'}&chn=${'xxxxx123'}`"
+                            class="font-semibold text-red-500 px-4 py-1 rounded hover:bg-red-50">
                             View
                         </NuxtLink>
                     </template>
@@ -123,8 +121,8 @@ const allCount = ref("");
 
 const headers = [
     "S/N",
-    "Brokers",
-    "Broker Code",
+    "Investor Name",
+    "CHN",
     "Cash Drawn",
     "Value of Ass. Sec.",
     "ML Value",
@@ -153,7 +151,7 @@ const paginatedRows = computed(() => {
     return allBrokers.value.slice(start, end).map((broker, index) => ({
         values: [
             start + index + 1,
-            `${broker.first_name || ''} ${broker.last_name || ''}`,
+            `${broker.firstName || 'Iroko'} ${broker.lastName || 'Johnson'}`,
             broker.code || 'XXXX', // Broker Code (use another field if needed)
             broker.cash_drawn || '3,400,389',
             broker.value_of_assured_security || '14,009,493',

@@ -29,7 +29,12 @@
 
     <section class="flex gap-[5%]">
       <div class="w-[70%] rounded-lg bg-white shadow-md rounded-[12px] px-[32px] py-[16px] p-[25px]">
-        <LineChart :labels="chartLabels" :datasets="chartDatasets" />
+        <LineChart
+          :labels="chartLabels"
+          :datasets="chartDatasets"
+          :title="'CUMULATIVE EXPOSURE'"
+          :exposure="200"
+        />
       </div>
       <div class="w-[25%] flex flex-col items-center space-y-8 rounded-lg bg-white shadow-md rounded-[12px] ">
         <span class="font-ox text-ox-md text-center">Asset Allocation</span>

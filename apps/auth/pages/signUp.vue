@@ -198,6 +198,7 @@ const country_id = ref('');
 const state_id = ref('');
 const type = ref('');
 const password = ref('');
+const chn_number = ref('');
 const city = ref('');
 // const chn_number = ref('');
 const inputType = ref('password');
@@ -254,7 +255,20 @@ const submitForm = async (event: Event) => {
   event.preventDefault();
   loading.value = true;
 
-  const signupData = {
+  type SignupData = {
+    first_name: string;
+    last_name: string;
+    email: string;
+    type: string;
+    password: string;
+    city: string;
+    company_name: string;
+    state_id: string;
+    country_id: string;
+    chn_number?: string;
+  };
+
+  const signupData: SignupData = {
     first_name: firstname.value,
     last_name: lastname.value,
     email: email.value,

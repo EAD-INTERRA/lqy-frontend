@@ -44,8 +44,9 @@ interface GetRolesResponse {
 
 export interface BaseServiceInterface {
     getCountries(): Promise<GetCountriesResponse>;
-    getRoles(): Promise<GetRolesResponse>;
     getStatesByCountry(input:  GetStateInput): Promise<GetStateResponse>;
+    getRoles(): Promise<GetRolesResponse>;
+    getProfiles(): Promise<GetRolesResponse>;
 }
 
 export class BaseService implements BaseServiceInterface {
@@ -54,6 +55,33 @@ export class BaseService implements BaseServiceInterface {
     constructor(base: AxiosInstance) {
         this.client = base;
     }
+
+
+    async getProfiles(): Promise<GetRolesResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("/get_profile", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getProfile Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 
     async getCountries(): Promise<GetCountriesResponse> {
         try {

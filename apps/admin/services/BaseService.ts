@@ -46,6 +46,7 @@ export interface BaseServiceInterface {
     getCountries(): Promise<GetCountriesResponse>;
     getRoles(): Promise<GetRolesResponse>;
     getStatesByCountry(input:  GetStateInput): Promise<GetStateResponse>;
+    getProfiles(): Promise<any>;
 }
 
 export class BaseService implements BaseServiceInterface {
@@ -55,6 +56,29 @@ export class BaseService implements BaseServiceInterface {
         this.client = base;
     }
 
+    async getProfiles(): Promise<any> {
+        try {
+            const tokenObj = localStorage.getItem("authToken") || localStorage.getItem("token");
+            let authToken = "";
+            if (tokenObj) {
+                try {
+                    const parsed = JSON.parse(tokenObj);
+                    authToken = parsed.value;
+                } catch {
+                    authToken = tokenObj; // fallback if not JSON
+                }
+            }
+            if (!authToken) {
+                throw new Error("Authorization token is missing");
+            }
+            const response = await this.client.get("/profile", {
+                headers: { authorization: "Bearer " + authToken },
+            });
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
     async getCountries(): Promise<GetCountriesResponse> {
         try {
             const response = await this.client.get('base/country') 

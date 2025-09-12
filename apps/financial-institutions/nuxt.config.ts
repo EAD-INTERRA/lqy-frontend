@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     "@": resolve(__dirname, "/")
   },
   devtools: { enabled: true },
-   modules: [
+  modules: [
     ['@nuxtjs/google-fonts', {
       families: {
         Sen: true,
@@ -27,4 +27,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  plugins: [
+    '~/plugins/provider.ts'
+  ],
 })

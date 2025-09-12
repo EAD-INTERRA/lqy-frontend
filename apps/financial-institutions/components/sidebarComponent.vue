@@ -16,7 +16,7 @@
           </NuxtLink>
 
           <!-- Margin Dropdown -->
-          <div>
+          <div class="w-[250px]">
             <button type="button" @click="showMargin = !showMargin"
               class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
               :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/finance/bank-interest-accrued', '/finance/management-fee-earned-by-broker'].includes($route.path) }">
@@ -65,7 +65,7 @@
             Funding
           </NuxtLink>
 
-          <div class="border-t">
+          <div class="">
             <NuxtLink to="/"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"

@@ -25,9 +25,9 @@
           </NuxtLink>
 
           <!-- Margin Dropdown -->
-          <div>
+          <div class="w-[250px]">
             <button type="button" @click="showMargin = !showMargin"
-              class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
+              class="flex flex-row w-full hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
               :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/margin-request', '/margin-check'].includes($route.path) }">
               <img src="~/assets/images/other-margin-icon.svg" alt="" />
               Margin
@@ -60,7 +60,7 @@
             Funding
           </NuxtLink>
           <!-- History Dropdown -->
-          <div>
+          <div class="w-[250px]">
             <button type="button" @click="showHistory = !showHistory"
               class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
               :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/trading-history', '/history'].includes($route.path) }">
