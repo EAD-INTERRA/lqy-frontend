@@ -58,7 +58,7 @@ export class BaseService implements BaseServiceInterface {
 
     async getProfiles(): Promise<any> {
         try {
-            const tokenObj = localStorage.getItem("authToken");
+            const tokenObj = localStorage.getItem("token");
             let authToken = "";
             if (tokenObj) {
                 try {
@@ -71,7 +71,7 @@ export class BaseService implements BaseServiceInterface {
             if (!authToken) {
                 throw new Error("Authorization token is missing");
             }
-            const response = await this.client.get("admin/get_profile", {
+            const response = await this.client.get("/get_profile", {
                 headers: { authorization: "Bearer " + authToken },
             });
             return response.data;

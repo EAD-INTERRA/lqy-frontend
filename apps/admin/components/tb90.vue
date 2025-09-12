@@ -1,167 +1,17 @@
 <template>
-    <div class="p-4 mx-auto">
+    <div class="px-4 mx-auto">
     
       <div class="flex">
         <section class="w-[70%] rounded-md bg-theme-cg">
-          <div class="bg-theme-dg p-[20px] lg:p-[40px] rounded-[10px] w-[100%]">
-            <div class="flex justify-between pr-9 mb-6">
-              <p class="w-fit text-lg px-3 py-1">90-DAYS TB RATE </p>
-            </div>
-            <hr />
-            <div class="">
-              <table class="table-fixed w-full lg:w-auto">
-                <thead>
-                  <tr
-                    class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                    <th class="w-56 pt-2 pb-2 hidden lg:table-cell">Name</th>
-                    <th class="w-56 pt-2 pb-2 hidden lg:table-cell">
-                      CHN Number
-                    </th>
-                    <th class="w-56 pt-2 pb-2 hidden lg:table-cell">
-                      Interest Accrued
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="bg-theme-tb rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td
-                      class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Organization</dt>
-                        <!-- <dd>{Organization.name}</dd> -->
-                        <dd
-                          class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                          Wells fargo
-                        </dd>
-                      </dl>
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">name</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>David Superman</dd>
-                      </dl>
-                      <p>David Superman</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p>********</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
-                    </td>
-                  </tr>
-                  <tr
-                    class="rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td
-                      class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Organization</dt>
-                        <!-- <dd>{Organization.name}</dd> -->
-                        <dd
-                          class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                          Wells fargo
-                        </dd>
-                      </dl>
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">name</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>David Superman</dd>
-                      </dl>
-                      <p>David Superman</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p>********</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
-                    </td>
-                  </tr>
-                  <tr
-                    class="bg-theme-tb rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td
-                      class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Organization</dt>
-                        <!-- <dd>{Organization.name}</dd> -->
-                        <dd
-                          class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                          Wells fargo
-                        </dd>
-                      </dl>
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">name</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>David Superman</dd>
-                      </dl>
-                      <p>David Superman</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p>********</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
-                    </td>
-                  </tr>
-                  <tr
-                    class="rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td
-                      class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Organization</dt>
-                        <!-- <dd>{Organization.name}</dd> -->
-                        <dd
-                          class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                          Wells fargo
-                        </dd>
-                      </dl>
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">name</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>David Superman</dd>
-                      </dl>
-                      <p>David Superman</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p>********</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
-                    </td>
-                  </tr>
-                  <tr
-                    class="bg-theme-tb rowText bg-opacity-10 text-black text-opacity-85 font-ox text-base font-normal leading-normal">
-                    <td
-                      class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">Organization</dt>
-                        <!-- <dd>{Organization.name}</dd> -->
-                        <dd
-                          class="text-black text-opacity-45 font-ox text-base font-normal leading-normal">
-                          Wells fargo
-                        </dd>
-                      </dl>
-                      <dl class="lg:hidden">
-                        <dt class="sr-only">name</dt>
-                        <!-- <dd>{Stakeholder.name}</dd> -->
-                        <dd>David Superman</dd>
-                      </dl>
-                      <p>David Superman</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p>********</p>
-                    </td>
-                    <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class=" px-[20px]  lg:p-[10px] rounded-[10px] w-full">
+                         <img class="mx-auto my-6" src="/assets/images/tb.png" alt="graph" />
+
           </div>
-          <div class="p-[20px] rounded-[10px]">
+          <div class="bg-white shadow-md w-[94%] ml-6 p-[20px] rounded-[10px]">
             <p class="text-black mt-[20px] mb-[10px] font-ox font-semibold">
               Treasury Bill Rates
             </p>
-            <table class="border-collapse border mx-auto border-slate-500 ...">
+            <table class="border-collapse w-full border mx-auto border-slate-500 ...">
               <thead>
                 <tr class="bg-theme-tb text-xs font-ox ">
                   <th class="border border-slate-600 ... px-[30px] py-[15px] ">Issue Date</th>
@@ -233,39 +83,42 @@
           </div>
         </section>
   
-        <section class="w-[28%] flex flex-col items-center">
+        <section class="w-[28%] mt-7 flex flex-col items-center">
           <div
-            class="bg-theme-dg p-[20px] mx-9 gap-3 flex flex-col rounded-[10px]">
+            class="bg-white shadow-md p-[20px] mx-9 gap-4 flex flex-col rounded-[10px]">
             <p class="text-black font-ox font-bold">
-              91-DAYS  TB RATE
+              Proposed Security Lending Rate
             </p>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-4">
+              <input class="m-auto flex justify-between text-base align-middle font-normal text-white px-[10px] w-full py-[5px] bg-white border border-gray border-solid rounded-[10px]" placeholder="Interest rate" />
+              <input class="m-auto flex justify-between text-base align-middle font-normal text-white px-[10px] w-full py-[5px] bg-white border border-gray border-solid rounded-[10px]" placeholder="Financial Institution Spread" />
+              <input class="m-auto flex justify-between text-base align-middle font-normal text-white px-[10px] w-full py-[5px] bg-white border border-gray border-solid rounded-[10px]" placeholder="LQY Admin Fee" />
               <div
-                class="m-auto flex justify-between text-base align-middle font-normal text-white px-[10px] w-full py-[5px] bg-white border border-gray border-solid rounded-[10px]">
+                class="m-auto flex justify-between text-base align-middle font-normal text-white px-[10px] w-full py-[5px] ">
                 <p class="text-sm text-black my-auto">758.43</p>
                 <div
-                  class="bg-gray-300 flex gap-1 px-2 my-auto rounded-[3px] text-red-500 text-lg font-bold">
-                  <buttom>-</buttom>
-                  <buttom>+</buttom>
+                  class=" flex gap-2">
+                  <buttom class="cursor-pointer bg-gray-300 px-2 my-auto rounded-[3px] text-red-500 text-lg font-bold">-</buttom>
+                  <buttom class="cursor-pointer bg-gray-300 px-2 my-auto rounded-[3px] text-red-500 text-lg font-bold">+</buttom>
                 </div>
               </div>
-              <div class="flex text-[14px] justify-start ml-2">=$758.43</div>
+              <div class="flex text-[14px] justify-start ml-2 mb-3">=$758.43</div>
               <div class="m-auto">
                 <buttom
-                  class="text-base font-normal text-white px-[80px] py-[5px] bg-blue-400 border border-gray border-solid rounded-[10px]"
+                  class="cursor-pointer text-base font-normal text-white my-5 px-[100px] py-[10px] bg-blue-400 border border-gray border-solid rounded-[10px]"
                   >Update</buttom
                 >
               </div>
-              <div class="flex text-[10px] justify-end mr-2">
+              <div class="flex text-[14px] justify-end mr-2 mt-2">
                 Last updated 01/05/2024 08:06 (UTC)
               </div>
             </div>
           </div>
-          <div class="bg-theme-dg p-[20px] mt-3  rounded-[10px]">
+          <div class="bg-white shadow-md w-[82%] p-[20px] mt-10  rounded-[10px]">
                 <p class="text-black font-ox font-bold">Related Indicators</p>
                 <div class="text-black font-ox font-semibold mb-1 mt-3">Treasury Yield Curve</div>
                 
-          <table class="border-collapse border mx-auto border-slate-500 ...">
+          <table class="border-collapse w-full border mx-auto border-slate-500 ...">
               
               <tbody class="">
                 <tr>

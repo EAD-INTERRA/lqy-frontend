@@ -105,7 +105,8 @@
           </button>
           <button type="submit"
             class="bg-[#10356D] shadow-lg text-white py-2 px-[5%] rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center">
-            Submit Request
+            <template v-if="Loading"> Submitting...</template>
+            <template v-else> Submit Request</template>
           </button>
         </div>
       </form>
@@ -123,6 +124,7 @@ if (process.client) {
     toast = useToast();
   });
 }
+const Loading = ref(false)
 const firstName = ref("")
 const lastName = ref("")
 const email = ref("")
@@ -206,6 +208,7 @@ const validateForm = () => {
 
 // Form submit handler
 const submitForm = async () => {
+  Loading.value = true
   if (!validateForm()) {
     return
   }
@@ -236,7 +239,10 @@ const submitForm = async () => {
     resetForm()
   } catch (error: any) {
     console.error("Submission failed:", error)
-    alert(error.response?.data?.message || "Something went wrong")
+    toast.error(error.response?.data?.message || "Something went wrong")
+    Loading.value = false
+  } finally {
+    // Loading.value = false
   }
 }
 </script>

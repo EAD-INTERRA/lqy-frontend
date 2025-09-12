@@ -25,9 +25,9 @@
           </NuxtLink>
 
           <!-- Margin Dropdown -->
-          <div class="w-[250px]">
+          <div class="w-full ">
             <button type="button" @click="showMargin = !showMargin"
-              class="flex flex-row  hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
+              class="flex w-full gap-10 justify-between flex-row  hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
               :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/finance/bank-interest-accrued', '/finance/management-fee-earned-by-broker'].includes($route.path) }">
               <img src="/assets/images/finance-icon.svg" alt="" />
               Finance
