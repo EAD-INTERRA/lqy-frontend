@@ -25,9 +25,9 @@
           </NuxtLink>
 
           <!-- Margin Dropdown -->
-          <div class="w-full ">
+          <div class="w-[250px]">
             <button type="button" @click="showMargin = !showMargin"
-              class="flex w-full gap-10 justify-between flex-row  hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
+              class="flex  justify-between flex-row  hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 rounded-md px-2 py-2 font-bold text-white w-full text-opacity-50 cursor-pointer focus:outline-none"
               :class="{ 'bg-[rgba(255,255,255,0.1)]': ['/finance/bank-interest-accrued', '/finance/management-fee-earned-by-broker'].includes($route.path) }">
               <img src="/assets/images/finance-icon.svg" alt="" />
               Finance
@@ -88,10 +88,10 @@
           </NuxtLink>
           <!-- Report -->
           <div class="">
-            <NuxtLink to="/"
+            <NuxtLink to=""
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
             exact-active-class="text-theme-as  rounded-md"
-            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/' }">
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '' }">
             <img src="/assets/images/notification.svg" alt="" />
             Notification 
           </NuxtLink>

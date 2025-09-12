@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-between h-fit bg-white shadow-sm p-2 gap-4 w-[100%]">
-        <div class="relative ">
+    <div class="flex justify-between h-fit bg-white shadow-sm p-2 gap-4 w-[100%] ">
+        <div class="relative mx-10">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none border-r-1">
                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -9,7 +9,7 @@
                 </svg>
             </div>
             <input type="search" id="search"
-                class="block w-full ps-12 py-2 bg-gray-100 text-sm text-gray-900 border border-gray-300 rounded-[20px] bg-white focus:ring-gray-500 focus:border-gray-900"
+                class="block w-full  ps-12 py-2 bg-gray-100 text-sm text-gray-900 border border-gray-300 rounded-[20px] bg-white focus:ring-gray-500 focus:border-gray-900"
                 placeholder="Search" required>
         </div>
         <div class=" flex gap-6">
