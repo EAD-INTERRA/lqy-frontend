@@ -47,8 +47,8 @@
             <div class="text-sm font-bold text-blue-500">{{ userProfile?.email || '-' }}</div>
           </div>
           <div class="px-6">
-            <label class="text-gray-600 font-semibold text-sm">Phone</label>
-            <div class="text-lg font-bold text-blue-500">{{ userProfile?.phone_number || '-' }}</div>
+            <label class="text-gray-600 font-semibold text-sm">User</label>
+            <div class="text-lg font-bold text-blue-500">{{ userProfile?.type || '-' }}</div>
           </div>
         </div>
         <div class="flex justify-center mt-5 md:justify-end md:mr-5">

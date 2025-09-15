@@ -1,30 +1,50 @@
 <template>
   <div class="p-4 space-y-6">
-    <section class="grid grid-cols-3 w-3/4 gap-4">
+    <!-- Top Metrics Cards -->
+    <section class="grid grid-cols-3 gap-6 mb-8">
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
-        <p class="font-ox text-ox-xs">Account Balance</p>
-        <p class="font-ox font-bold text-ox-lg">$754,434.90</p>
+        <p class="text-gray-500 text-sm mb-2">Account Balance</p>
+        <p class="text-3xl font-bold text-gray-900">$754,583,492</p>
       </div>
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
-        <div class="flex font-normal font-ox justify-between">
-          <p class="text-ox-xs">30 Days Profit</p>
-          <div class="flex flex-col items-end mr-4">
-            <b>+ $23,331</b>
-            <span class="text-ox-xs text-green-700">+1.23%</span>
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="text-gray-500 text-sm mb-2">30 Days Profit</p>
+            <div class="flex items-center gap-2">
+              <!-- Added small chart visualization -->
+              <svg width="60" height="20" viewBox="0 0 60 20" class="mr-2">
+                <path d="M0,15 Q15,5 30,8 T60,3" stroke="#10b981" stroke-width="2" fill="none" />
+                <path d="M0,15 Q15,5 30,8 T60,3 L60,20 L0,20 Z" fill="#10b981" fill-opacity="0.1" />
+              </svg>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-xl font-bold text-gray-900">+$21,736</p>
+            <p class="text-sm text-green-600">+1.23%</p>
           </div>
         </div>
       </div>
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
-        <div class="flex font-normal font-ox justify-between">
-          <p class="text-ox-xs">Overall Loss</p>
-          <div class="flex flex-col items-end mr-4">
-            <b>- $123,331</b>
-            <span class="text-ox-xs text-red-700">-24.23%</span>
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="text-gray-500 text-sm mb-2">Over All Profit</p>
+            <div class="flex items-center gap-2">
+              <!-- Added small chart visualization -->
+              <svg width="60" height="20" viewBox="0 0 60 20" class="mr-2">
+                <path d="M0,5 Q15,15 30,12 T60,17" stroke="#ef4444" stroke-width="2" fill="none" />
+                <path d="M0,5 Q15,15 30,12 T60,17 L60,20 L0,20 Z" fill="#ef4444" fill-opacity="0.1" />
+              </svg>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-xl font-bold text-gray-900">-$102,304</p>
+            <p class="text-sm text-red-600">-25.23%</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Chart Section -->
     <section class="flex">
       <div class="w-[75%] rounded-md bg-white shadow-md rounded-[12px] px-[32px] py-[16px] p-[25px]">
         <LineChart :labels="chartLabels" :datasets="chartDatasets" />
@@ -35,168 +55,99 @@
       </div>
     </section>
 
-    <section class="mb-4">
-      <div
-        class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px] p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]">
-        <div class="mb-6">
-          <p
-            class="bg-theme-bc bg-opacity-25 bolder w-fit text-lg px-3 py-1 rounded-[5px]">
-            Assets
-          </p>
+    <!-- Bottom Section -->
+    <section class="flex gap-6">
+      <!-- Recent Trade Activity -->
+      <div class="w-[70%] bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Recent Trade Activity</h3>
+        <p class="text-sm text-gray-500 mb-6">Latest trade requests and executions</p>
+
+        <div class="space-y-4">
+          <div class="flex items-center justify-between py-3 rounded-[8px] p-3 bg-gray-50">
+            <div>
+              <p class="font-semibold text-gray-900">Buy AAPL</p>
+              <p class="text-sm text-gray-500">investor@mail.com</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-sm text-gray-500">04:00 PM</span>
+              <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Pending</span>
+              <NuxtLink to="/investor-portfolio"
+                class="text-sm text-gray-500 hover:text-gray-700 border border-gray-500 px-3 py-2 rounded-md">View →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between py-3 rounded-[8px] p-3 bg-gray-50">
+            <div>
+              <p class="font-semibold text-gray-900">Buy AAPL</p>
+              <p class="text-sm text-gray-500">investor@mail.com</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-sm text-gray-500">04:00 PM</span>
+              <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Pending</span>
+              <NuxtLink to="/investor-portfolio"
+                class="text-sm text-gray-500 hover:text-gray-700 border border-gray-500 px-3 py-2 rounded-md">View →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between py-3 rounded-[8px] p-3 bg-gray-50">
+            <div>
+              <p class="font-semibold text-gray-900">Buy AAPL</p>
+              <p class="text-sm text-gray-500">investor@mail.com</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-sm text-gray-500">04:00 PM</span>
+              <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Pending</span>
+              <NuxtLink to="/investor-portfolio"
+                class="text-sm text-gray-500 hover:text-gray-700 border border-gray-500 px-3 py-2 rounded-md">View →
+              </NuxtLink>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between py-3 rounded-[8px] p-3 bg-gray-50">
+            <div>
+              <p class="font-semibold text-gray-900">Buy AAPL</p>
+              <p class="text-sm text-gray-500">investor@mail.com</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-sm text-gray-500">04:00 PM</span>
+              <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Pending</span>
+              <NuxtLink to="/investor-portfolio"
+                class="text-sm text-gray-500 hover:text-gray-700 border border-gray-500 px-3 py-2 rounded-md">View →
+              </NuxtLink>
+            </div>
+          </div>
         </div>
-        <table class="table-fixed w-[100%]">
-          <thead>
-            <tr
-              class="text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
-              <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Name</th>
-              <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Price</th>
-              <th class="w-32 pt-2 pb-2 hidden lg:table-cell">Change(%)</th>
-              <th class="w-32 pt-2 pb-2 hidden lg:table-cell">Volume</th>
-              <th class="w-48 pt-2 pb-2 hidden lg:table-cell">Market Cap</th>
-              <th class="w-48 pt-2 pb-2 hidden lg:table-cell text-left">
-                Sector
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              class="rowText text-black font-ox text-base font-normal leading-normal">
-              <td
-                class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                <dl class="lg:hidden">
-                  <dt class="sr-only">Name</dt>
-                  <dd
-                    class="text-black font-ox text-base font-normal leading-normal">
-                    <div class="flex">
-                      <img
-                        src="/assets/images/agilents-tech.svg"
-                        class="rounded-full"
-                        alt="icon" />
-                      <NuxtLink
-                        to="/"
-                        class="font-ox text-ox-md font-bold ml-2 leading-6"
-                        >Agilents Technologies</NuxtLink
-                      >
-                    </div>
-                  </dd>
-                </dl>
-                <dl class="lg:hidden">
-                  <dt class="sr-only">Name</dt>
-                  <dd>
-                    <div class="flex">
-                      <img
-                        src="/assets/images/agilents-tech.svg"
-                        class="rounded-full"
-                        alt="icon" />
-                      <NuxtLink
-                        to="/"
-                        class="font-ox text-ox-sm font-bold ml-2 leading-6"
-                        >Agilents Technologies</NuxtLink
-                      >
-                    </div>
-                  </dd>
-                </dl>
-                <div class="flex">
-                  <img
-                    src="/assets/images/agilents-tech.svg"
-                    class="rounded-full"
-                    alt="icon" />
-                  <NuxtLink
-                    to="/"
-                    class="font-ox text-ox-sm font-bold ml-2 leading-6"
-                    >Agilents Technologies</NuxtLink
-                  >
-                </div>
-              </td>
-              <td class="hidden lg:table-cell text-center font-bold">
-                <p>230.32 USD</p>
-              </td>
-              <td class="hidden lg:table-cell text-center font-bold">
-                <p class="text-green-500">+1.3%</p>
-              </td>
-              <td class="lg:table-cell mt-5 text-center font-bold lg:pt-2 pb-2">
-                <p>2.324M</p>
-              </td>
-              <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                <p>234.9B USD</p>
-              </td>
-              <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                <p>Health Technology</p>
-              </td>
-            </tr>
-            <tr
-              class="rowText text-black-900 font-bold font-ox text-base font-normal leading-normal">
-              <td
-                class="text-center flex flex-col gap-0 lg:gap-2 w-full mt-1 pt-2 pb-2">
-                <dl class="lg:hidden">
-                  <dt class="sr-only">Name</dt>
-                  <dd
-                    class="text-black font-ox text-base font-normal leading-normal">
-                    <div class="flex">
-                      <img
-                        src="/assets/images/agilents-tech.svg"
-                        class="rounded-full"
-                        alt="icon" />
-                      <NuxtLink
-                        to="/"
-                        class="font-ox text-ox-md font-bold ml-2 leading-6"
-                        >Agilents Technologies</NuxtLink
-                      >
-                    </div>
-                  </dd>
-                </dl>
-                <dl class="lg:hidden">
-                  <dt class="sr-only">Name</dt>
-                  <dd>
-                    <div class="flex">
-                      <img
-                        src="/assets/images/agilents-tech.svg"
-                        class="rounded-full"
-                        alt="icon" />
-                      <NuxtLink
-                        to="/"
-                        class="font-ox text-ox-sm font-bold ml-2 leading-6"
-                        >Agilents Technologies</NuxtLink
-                      >
-                    </div>
-                  </dd>
-                </dl>
-                <div class="flex">
-                  <img
-                    src="/assets/images/agilents-tech.svg"
-                    class="rounded-full"
-                    alt="icon" />
-                  <NuxtLink
-                    to="/"
-                    class="font-ox text-ox-sm font-bold ml-2 leading-6"
-                    >Agilents Technologies</NuxtLink
-                  >
-                </div>
-              </td>
-              <td class="hidden lg:table-cell text-center font-bold">
-                <p>230.32 USD</p>
-              </td>
-              <td class="hidden lg:table-cell text-center font-bold">
-                <p class="text-green-500">+1.3%</p>
-              </td>
-              <td class="lg:table-cell mt-5 text-center font-bold lg:pt-2 pb-2">
-                <p>2.324M</p>
-              </td>
-              <td class="text-center font-bold hidden lg:table-cell pt-2 pb-2">
-                <p>234.9B USD</p>
-              </td>
-              <td class="hidden lg:table-cell text-left pt-2 pb-2 font-bold">
-                <p>Health Technology</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      </div>
+
+      <!-- Performance Summary -->
+      <div class="w-[30%] bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
+        <h3 class="text-lg font-semibold text-gray-900 mb-6">Performance Summary</h3>
+
+        <div class="space-y-8 ">
+          <div class="text-center rounded-[8px] p-3 bg-white shadow-md rounded-[12px] mb-4">
+            <p class="text-sm text-gray-500 mb-2">Total Trades Processed</p>
+            <p class="text-4xl font-bold text-blue-600">4</p>
+          </div>
+
+          <div class="text-center rounded-[8px] p-3 bg-white shadow-md rounded-[12px] mb-4">
+            <p class="text-sm text-gray-500 mb-2">Average Processing Time</p>
+            <p class="text-3xl font-bold text-blue-600">2.4 mins</p>
+          </div>
+
+          <div class="text-center rounded-[8px] p-3 bg-white shadow-md rounded-[12px]">
+            <p class="text-sm text-gray-500 mb-2">Client Satisfaction</p>
+            <p class="text-3xl font-bold text-blue-600">98.5%</p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { useAuthStore } from 'stores/authStore';
 import { createPinia } from 'pinia';
 
@@ -209,6 +160,21 @@ if (process.client) {
   authStore.login();
   authStore.checkAuth();
 }
+
+
+
+const recentTrades = ref([
+  { action: "Buy AAPL", email: "investor@mail.com", time: "04:00 PM", status: "accepted" },
+  { action: "Buy AAPL", email: "investor@mail.com", time: "04:00 PM", status: "Pending" },
+  { action: "Buy AAPL", email: "investor@mail.com", time: "04:00 PM", status: "Executed" },
+  { action: "Buy AAPL", email: "investor@mail.com", time: "04:00 PM", status: "accepted" },
+]);
+
+const performanceMetrics = ref({
+  totalTrades: 4,
+  avgProcessingTime: "2.4 mins",
+  clientSatisfaction: "98.5%"
+});
 
 const chartData = ref([
   {
