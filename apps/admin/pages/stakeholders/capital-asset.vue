@@ -15,7 +15,7 @@
         </div>
 
         <!-- Title and Status -->
-        <div class="mb-6">
+        <div v-if="stakeholderType === 'Broker'" class="mb-6">
             <div class="flex items-center gap-4 mb-2">
                 <h1 class="text-2xl font-semibold text-black-900">Capital Asset LTD</h1>
                 <span
@@ -54,6 +54,19 @@
                     <div>
                         <p class="text-sm text-black-500 mb-1">Full Name</p>
                         <p class="font-semibold text-black-900">{{ fullName }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-black-500 mb-1">Status</p>
+                        <p class="font-semibold text-black-900"><span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
+                                Approved
+                            </span></p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-black-500 mb-1">Email</p>
+                        <p class="font-semibold text-black-900">{{ email || 'N/A' }}</p>
                     </div>
 
                     <div>
@@ -168,6 +181,7 @@ const profileId = route.query.profile_id;
 const companyName = route.query.company;
 const date = route.query.date;
 const fullName = route.query.fullName;
+const email = route.query.email || 'N/A';
 import { ref, computed } from 'vue'
 
 // <CHANGE> Added search functionality

@@ -77,7 +77,8 @@
               <tr class="border-b border-gray-200">
                 <th class="text-left py-3 px-4 font-medium text-black-600">Profile ID</th>
                 <th class="text-left py-3 px-4 font-medium text-black-600">Role</th>
-                <th class="text-left py-3 px-4 font-medium text-black-600">Company Name</th>
+                <!-- <th class="text-left py-3 px-4 font-medium text-black-600">Company Name</th> -->
+                <th class="text-left py-3 px-4 font-medium text-black-600">Email</th>
                 <th class="text-left py-3 px-4 font-medium text-black-600">Created At</th>
                 <th class="text-left py-3 px-4 font-medium text-black-600">Status</th>
                 <th class="text-left py-3 px-4 font-medium text-black-600"></th>
@@ -87,7 +88,7 @@
               <tr v-for="(item, index) in paginatedRows" :key="index" class="border-b border-gray-100 hover:bg-gray-50">
                 <td class="py-4 px-4 font-medium">{{ item.profile_id }}</td>
                 <td class="py-4 px-4">{{ item.type }}</td>
-                <td class="py-4 px-4 text-blue-600">{{ item.company_name }}</td>
+                <td class="py-4 px-4 text-blue-600">{{ item.email }}</td>
                 <td class="py-4 px-4 text-black-600">{{ formatDate(item.created_at) }}</td>
                 <td class="py-4 px-4">
                   <span :class="getStatusClass(item.user?.status)"
@@ -101,7 +102,7 @@
                     View Request
                   </button>
                   <NuxtLink v-if="getStatusText(item.user?.status) === 'Approved'"
-                    :to="`/stakeholders/capital-asset?type=${item.type}&profile_id=${item.profile_id}&company=${item.company_name}&date=${item.created_at}&fullName=${item.first_name} ${item.last_name}`"
+                    :to="`/stakeholders/capital-asset?type=${item.type}&profile_id=${item.profile_id}&company=${item.company_name}&date=${item.created_at}&fullName=${item.first_name} ${item.last_name}&email=${item.email}`"
                     class="border border-gray-200 text-black-700 px-4 py-1 rounded-lg text-sm transition-all duration-200 hover:bg-gray-50 hover:border-gray-300">
                     View Profile
                   </NuxtLink>
