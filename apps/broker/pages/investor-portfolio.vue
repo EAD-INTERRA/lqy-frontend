@@ -4,12 +4,12 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">
       <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 text-gray-600 hover:text-gray-800">
+        <NuxtLink to="/" class="flex items-center gap-2 text-gray-600 hover:text-gray-800">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Back to Requests
-        </button>
+        </NuxtLink>
       </div>
       <div class="flex gap-3">
         <!-- Added click handlers to show modals -->
@@ -269,7 +269,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900">Trade Request Approved</h3>
+          <h3 class="text-lg font-semibold text-gray-900">Trade Request Rejected</h3>
         </div>
       </div>
     </div>
