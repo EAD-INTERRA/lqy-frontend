@@ -48,7 +48,7 @@
           </div>
           <div class="px-6">
             <label class="text-gray-600 font-semibold text-sm">User</label>
-            <div class="text-lg font-bold text-blue-500">{{ userProfile?.type || '-' }}</div>
+            <div class="text-lg font-bold text-blue-500">Admin</div>
           </div>
         </div>
         <div class="flex justify-center mt-5 md:justify-end md:mr-5">
@@ -91,55 +91,6 @@
         </div>
       </div>
 
-      <!-- Business Information Card -->
-      <div class="flex items-center mb-2">
-        <div class="text-black font-bold py-2.5 pr-2">Business Information</div>
-        <div class="rounded-full bg-green-500 w-[20px] h-[20px]"></div>
-      </div>
-
-      <div class="bg-gray-100 w-full rounded-[5px] mt-1 py-[30px]">
-        <div class="flex flex-col gap-3">
-          <div class="px-[30px] grid grid-cols-1 md:grid-cols-2 gap-2">
-            <label class="text-gray-600 font-semibold text-sm">Business Type</label>
-            <div class="text-lg font-bold">{{ userProfile?.type || '-' }}</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-1 md:grid-cols-2 gap-2">
-            <label class="text-gray-600 font-semibold text-sm">Tax ID Number</label>
-            <div class="text-lg font-bold">{{ userProfile?.tax_id || '-' }}</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-1 md:grid-cols-2 gap-2">
-            <label class="text-gray-600 font-semibold text-sm">License Number</label>
-            <div class="text-lg font-bold">{{ userProfile?.license_number || '-' }}</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-1 md:grid-cols-2 gap-2">
-            <label class="text-gray-600 font-semibold text-sm">Capital Adequacy</label>
-            <div class="text-lg font-bold">{{ userProfile?.capital_adequacy || '-' }}</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-1 md:grid-cols-2 gap-2">
-            <label class="text-gray-600 font-semibold text-sm">Networth</label>
-            <div class="text-lg font-bold">{{ userProfile?.networth || '-' }}</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-1 md:grid-cols-2 gap-2">
-            <label class="text-gray-600 font-semibold text-sm">Tolerance</label>
-            <div class="text-lg font-bold">{{ userProfile?.tolerance || '-' }}</div>
-          </div>
-          <div class="px-[30px] grid grid-cols-1 gap-2">
-            <label class="text-gray-600 font-semibold text-sm">Preferred Asset Class</label>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <span v-for="(asset, idx) in userProfile?.preferred_asset_class || []" :key="idx"
-                class="border border-blue-500 bg-blue-100 text-blue-700 font-semibold rounded-[10px] py-1 px-3 text-sm">
-                {{ asset }}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center mt-5 md:justify-end md:pr-6">
-          <button class="border border-solid border-black rounded-[10px] py-2 px-4 hover:bg-gray-50 transition-colors"
-            @click="openEditModal">
-            Edit
-          </button>
-        </div>
-      </div>
     </section>
 
     <!-- Edit Profile Modal -->

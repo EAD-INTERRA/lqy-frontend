@@ -43,10 +43,14 @@
               class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105">
               View
             </button> -->
-            <button
+            <!-- <button
               class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105">
               View
-            </button>
+            </button> -->
+             <NuxtLink :to="`/asset-detail?security=${row.raw.chn || ''}`"
+              class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105">
+              View
+            </NuxtLink>
           </template>
         </BaseTable>
 
