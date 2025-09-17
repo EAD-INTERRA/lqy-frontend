@@ -3,12 +3,12 @@
         <!-- Header Section -->
         <div class="mb-6 flex flex-col gap-4 items-left">
             <!-- Back Button -->
-            <NuxtLink :to="`/stakeholders/capital-asset`" class="flex items-center text-black-600 hover:text-black-800">
+            <button type="button" @click="$router.back()" class="flex items-center text-black-600 hover:text-black-800">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
                 Back
-            </NuxtLink>
+            </button>
 
             <!-- Title and CHN -->
             <div class="flex flex-col">
