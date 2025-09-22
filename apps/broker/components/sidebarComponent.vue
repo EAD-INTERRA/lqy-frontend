@@ -1,6 +1,6 @@
 <template>
   <div :class="[
-    'lg:relative fixed top-0 left-0 h-screen lg:w-full w-[80%] bg-theme-sidebar text-white border-r border-gray-600 transition-transform duration-300 ease-in-out z-50',
+    'lg:relative fixed top-0 left-0 h-screen lg:w-full w-[280px] bg-theme-sidebar text-white border-r border-gray-600 transition-transform duration-300 ease-in-out z-50',
     isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
   ]" @click.stop>
     <!-- Close button for mobile -->

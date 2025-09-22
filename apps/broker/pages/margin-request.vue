@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 flex flex-col items-center  h-screen">
     <div class="text-xl text-[#FF0000] font-bold font-ox mb-4 text-left w-full">Margin Request</div>
-    <form class="bg-white shadow-xl p-[50px] mt-[15%]  lg:p-10 rounded-lg w-[50%]   shadow-lg" @submit.prevent="submitMarginRequest">
+    <form class="bg-white shadow-xl p-[10px] mt-[15%]  lg:p-10 rounded-lg w-[50%]   shadow-lg" @submit.prevent="submitMarginRequest">
       <div class="mb-4">
         <label for="chn" class="block text-[18px] font-ub text-[#00000] mb-1">
           CHN Number
