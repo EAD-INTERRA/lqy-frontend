@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 space-y-6">
+  <div class="p-4 space-y-6 overflow-y-auto">
     <!-- Top Metrics Cards -->
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
@@ -46,19 +46,19 @@
 
     <!-- Chart Section -->
     <section class="flex flex-col md:flex-row gap-6 mb-8">
-      <div class="w-full md:w-[75%] rounded-md bg-white shadow-md rounded-[12px] px-[32px] py-[16px] p-[25px]">
+      <div class="w-full md:w-[70%] rounded-md bg-white shadow-md rounded-[12px] px-[32px] py-[16px] p-[25px]">
         <LineChart :labels="chartLabels" :datasets="chartDatasets" />
       </div>
-      <div class="w-full md:w-[25%] flex flex-col items-center space-y-8 h-fit">
+      <div class="w-full md:w-[30%] flex flex-col md:block items-center space-y-8 h-full">
         <span class="font-ox text-ox-md text-center">Asset Allocation</span>
         <DoughnutChart :data="chartData" :colors="chartColors" />
       </div>
     </section>
 
     <!-- Bottom Section -->
-    <section class="flex flex-col md:flex-row gap-6">
+    <section class="flex flex-col md:flex-row gap-6 ">
       <!-- Recent Trade Activity -->
-      <div class="w-full md:w-[70%] bg-white shadow-md rounded-[12px] px-[10px] md:px-[32px] py-[16px]">
+      <div class="w-full md:w-[70%] bg-white shadow-md rounded-[12px] px-[10px] md:px-[32px] py-[16px] mb-0 md:mb-[10%]">
         <h3 class="text-lg font-semibold text-gray-900 mb-2">Recent Trade Activity</h3>
         <p class="text-sm text-gray-500 mb-6">Latest trade requests and executions</p>
 
@@ -122,7 +122,7 @@
       </div>
 
       <!-- Performance Summary -->
-      <div class="w-full md:w-[30%] bg-white shadow-md rounded-[12px] px-[10px] md:px-[32px]  py-[16px]">
+      <div class="w-full md:w-[30%] bg-white shadow-md rounded-[12px] px-[10px] md:px-[32px]  py-[16px] mb-[20%] md:mb-[10%]">
         <h3 class="text-lg font-semibold text-gray-900 mb-6">Performance Summary</h3>
 
         <div class="space-y-8 ">

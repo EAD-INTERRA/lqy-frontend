@@ -1,7 +1,7 @@
 <template>
-  <div class="px-4 space-y-6">
+  <div class="px-4 space-y-6 overflow-y-auto">
     <div class="flex justify-between" v-if="activeTab === 1 || activeTab === 2">
-      <div class="relative flex justify-between bg-gray-200 rounded-[16px] w-[22%] p-[0.9px]">
+      <div class="relative flex justify-between bg-gray-200 rounded-[16px] w-[70%] md:w-[22%] p-[0.9px]">
         <span
           class="absolute top-[0.9px] left-[0.9px] h-[calc(100%-1.8px)] rounded-[16px] bg-white shadow-lg transition-all duration-300 ease-in-out"
           :style="{

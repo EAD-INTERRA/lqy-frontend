@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-row gap-[5%] p-4 mt-[10px] lg:mt-[2px] mb-5 mx-auto lg:ml-6">
+  <div class="flex flex-col md:flex-row gap-[5%] p-4 mt-[10px] lg:mt-[2px] mb-5 mx-auto lg:ml-6 overflow-y-auto">
 
     <!-- Profile Section -->
     <section class="w-full md:w-[35%]">

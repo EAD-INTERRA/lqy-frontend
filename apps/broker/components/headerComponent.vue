@@ -13,7 +13,7 @@
         placeholder="Search" required />
     </div>
 
-    <div class="flex md:hidden items-center gap-4">
+    <div class="flex md:hidden items-center justify-between w-full">
       <!-- Sidebar Toggle Button (visible on small screens) -->
       <button @click="emit('toggle-sidebar')" class="lg:hidden text-black focus:outline-none">
         <svg v-if="!isSidebarOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
@@ -28,10 +28,10 @@
         {{ currentPageTitle }}
       </h1>
     </div>
-    <div class="flex gap-6">
-      <nuxt-link to="" class=""><img src="~/assets/images/headerSetting-icon.svg" /></nuxt-link>
-      <nuxt-link to="" class=""><img src="~/assets/images/headerBell-icon.svg" /></nuxt-link>
-      <nuxt-link to="" class=""><img src="~/assets/images/logout.svg" /></nuxt-link>
+    <div class="flex gap-3 md:gap-6 justify-right">
+      <nuxt-link to=""><img class="w-[80%] md:w-full" src="~/assets/images/headerSetting-icon.svg" /></nuxt-link>
+      <nuxt-link to=""><img class="w-[80%] md:w-full" src="~/assets/images/headerBell-icon.svg" /></nuxt-link>
+      <!-- <nuxt-link to=""><img class="w-[8%] " src="~/assets/images/profileImage.svg" /></nuxt-link> -->
     </div>
   </div>
 </template>

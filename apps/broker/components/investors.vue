@@ -1,10 +1,10 @@
 <template>
-  <div class="px-4 space-y-6">
+  <div class="px-4 space-y-6 overflow-y-auto">
     <div class="space-y-6">
       <!-- <div class="text-xl text-[#FF0000] font-semibold mb-4">CAPITAL ASSET LTD</div> -->
 
       <!-- Summary Cards -->
-      <section class="grid grid-cols-3 w-full gap-6">
+      <section class="grid grid-cols-1 md:grid-cols-3 w-full gap-6">
         <div class="bg-white shadow-custom-heavy flex justify-between gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
           <div>
             <p class="font-in font-medium text-[#687280] text-[12px]">Total Investors</p>
