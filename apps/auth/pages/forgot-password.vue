@@ -1,16 +1,18 @@
 <template>
-  <section class="hero custom-container bg min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-16 lg:px-32 xl:px-64">
-    <div class="w-full max-w-md mx-auto">
-      <div class="hidden md:flex justify-center font-ubuntu text-[40px] md:text-[50px] pb-5 font-bold">
-        <h1 class="l-color">L</h1>
-        <h1 class="customWhite">Q</h1>
-        <h1 class="y-color">Y</h1>
-      </div>
-      <div class="customBorder shadow-lg rounded-[8px] mt-10 md:mt-0 p-6 sm:p-10 md:p-12 lg:p-16">
-        <h3 class="customWhite pb-6 text-center font-ubuntu text-lg md:text-xl font-bold">
+  <section class="hero bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative">
+    <!-- Logo at top-left corner on md+ screens -->
+    <div class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10">
+      <h1 class="l-color">L</h1>
+      <h1 class="customWhite">Q</h1>
+      <h1 class="y-color">Y</h1>
+    </div>
+    <div class="w-full max-w-md md:max-w-xl mx-auto">
+      <div class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] p-6 sm:p-10 md:p-12">
+        <h3 class="customWhite pb-8 text-center font-ubuntu text-xl font-bold">
           Forgot Password
         </h3>
-        <p class="text-white mb-5 text-center text-sm md:text-base">A link will be sent to your email to help reset your password.</p>
+        <p class="text-white mb-5 text-center text-sm md:text-base">A link will be sent to your email to help reset your
+          password.</p>
         <form @submit.prevent="submitForm">
           <div class="grid grid-cols-1 gap-4">
             <div class="flex flex-col">
@@ -34,12 +36,10 @@
                 <span>send link</span>
               </template>
             </button>
-            <div class="flex justify-between items-center mt-4">
-              <p class="customWhite text-center text-base md:text-lg font-ubuntu mt-3">
-                Back to
-                <NuxtLink to="/" class="customOrange">Login</NuxtLink>
-              </p>
-            </div>
+            <p class="customWhite pb-8 justify-center text-right text-lg font-ubuntu mt-3 mr-3">
+              Back to
+              <NuxtLink to="/" class="customOrange">Login</NuxtLink>
+            </p>
           </div>
         </form>
       </div>
