@@ -38,8 +38,7 @@
     <div v-if="activeTab === 1" class="space-y-6">
       <!-- <div class="text-xl text-[#FF0000] font-semibold mb-4">CAPITAL ASSET LTD</div> -->
 
-      <!-- Summary Cards -->
-      <section class="grid grid-cols-4 w-full gap-6">
+      <section class="grid grid-cols-1 md:grid-cols-4 w-full gap-6">
         <div class="bg-white shadow-custom-heavy flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
           <div>
             <p class="font-in font-medium text-[#687280] text-[12px]">Cash Drawn</p>

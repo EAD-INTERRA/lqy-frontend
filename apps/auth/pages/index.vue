@@ -63,10 +63,13 @@
                   <span>Log In</span>
                 </template>
               </button>
-              <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">
+              <div class="flex justify-between">
+                <NuxtLink to="/forgot-password" class="customOrange mt-3">Forgot Password</NuxtLink>
+                <div><p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">
                 Don't have an account?
                 <NuxtLink to="/signUp" class="customOrange">Sign Up</NuxtLink>
-              </p>
+              </p></div>
+              </div>
             </div>
           </div>
         </form>

@@ -1,6 +1,6 @@
 <!-- ChartComponent.vue -->
 <template>
-      <canvas ref="chartCanvasRef" style="height: 70%; width: 70%;"></canvas>
+      <canvas ref="chartCanvasRef" class="w-full md:w-[70%] h-full md:h-[70%]"></canvas>
   </template>
   
   <script setup lang="ts">
