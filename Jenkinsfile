@@ -17,6 +17,17 @@ pipeline {
     }
 
     stages {
+         stage('Notify Start') {
+            steps {
+                script {
+                    slackSend(
+                        channel: env.SLACK_CHANNEL,
+                        message: "▶️ Job *${env.JOB_NAME}* #${env.BUILD_NUMBER} triggered by ${currentBuild.getBuildCauses()[0].userId ?: 'GitHub Push'}"
+                    )
+                }
+            }
+        }
+        
         stage('Checkout') {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'LQY_KEY', keyFileVariable: 'SSH_KEY')]) {
@@ -88,7 +99,14 @@ fi
                                 """
                                 buildStatus[folder] = "success"
                             } catch (err) {
-                                buildStatus[folder] = "failed"
+                           
+                                 // Extract only error lines (ignore warnings)
+                                def logExcerpt = sh(
+                                    script: "grep -i '\\[error\\]' build.log | tail -n 50 || true",
+                                    returnStdout: true
+                                ).trim()
+
+                                errorMessages[folder] = logExcerpt ?: "❌ Build failed but no explicit [error] lines found. Check full log."
                             }
                         }
                     }
@@ -97,7 +115,15 @@ fi
                     def attachments = folders.collect { app ->
                         def color = buildStatus[app] == "success" ? "good" : "danger"
                         def emoji = buildStatus[app] == "success" ? "✅" : "❌"
-                        [ color: color, title: "${emoji} ${app} Build/Generate", text: "Status: ${buildStatus[app].toUpperCase()}" ]
+                        def msg = buildStatus[app] == "success"
+                            ? "Build & Generate succeeded"
+                            : "Error:\n```" + errorMessages[app] + "```"
+
+                        [
+                            color: color,
+                            title: "${emoji} ${app}",
+                            text: msg
+                        ]
                     }
 
                     slackSend(
@@ -106,64 +132,66 @@ fi
                         attachments: attachments
                     )
 
-                    if (buildStatus.values().contains("failed")) {
-                        error("One or more builds failed.")
-                    }
+                    env.SUCCESSFUL_APPS = folders.findAll { buildStatus[it] == "success" }.join(" ")
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                sh '''
-                echo "🚀 Deploying build artifacts to ${DEPLOY_PATH}..."
+                script {
+                    slackSend(
+                        channel: env.SLACK_CHANNEL,
+                        message: "🚀 Deployment started for successful apps: ${env.SUCCESSFUL_APPS}"
+                    )
 
-                TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+                    sh """
+                    echo "🚀 Deploying build artifacts to \$DEPLOY_PATH..."
 
-                for app in $(ls -d apps/*/ | xargs -n 1 basename | grep -v '@tmp')
-                do
-                    echo "📂 Deploying $app..."
-                    
-                    if [ -d "${DEPLOY_PATH}/$app/dist" ]; then
-                        echo "📦 Backing up existing dist for $app..."
-                        sudo mv ${DEPLOY_PATH}/$app/dist ${DEPLOY_PATH}/$app/dist_backup_${TIMESTAMP}
-                    fi
+                    TIMESTAMP=\$(date +"%Y-%m-%d_%H-%M-%S")
 
-                    sudo cp -r ${WORKSPACE}/apps/$app/dist ${DEPLOY_PATH}/$app/
+                    for app in \$SUCCESSFUL_APPS; do
+                        echo "📂 Deploying \$app..."
 
-                    backups=( $(ls -dt ${DEPLOY_PATH}/$app/dist_backup_* 2>/dev/null || true) )
-                    if [ ${#backups[@]} -gt ${MAX_BACKUPS} ]; then
-                        for old in "${backups[@]:${MAX_BACKUPS}}"; do
-                            echo "🧹 Removing old backup $old for $app"
-                           sudo rm -rf "$old"
-                        done
-                    fi
-                done
-                echo "✅ Deployment finished to ${DEPLOY_PATH}"
-                '''
+                        if [ -d "\$DEPLOY_PATH/\$app/dist" ]; then
+                            echo "📦 Backing up existing dist for \$app..."
+                            sudo mv "\$DEPLOY_PATH/\$app/dist" "\$DEPLOY_PATH/\$app/dist_backup_\${TIMESTAMP}"
+                        fi
+
+                        sudo cp -r "\$WORKSPACE/apps/\$app/dist" "\$DEPLOY_PATH/\$app/"
+
+                        backups=( \$(ls -dt "\$DEPLOY_PATH/\$app/dist_backup_"* 2>/dev/null || true) )
+                        if [ \${#backups[@]} -gt \$MAX_BACKUPS ]; then
+                            for old in "\${backups[@]:\$MAX_BACKUPS}"; do
+                                echo "🧹 Removing old backup \$old for \$app"
+                                sudo rm -rf "\$old"
+                            done
+                        fi
+                    done
+                    echo "✅ Deployment finished to \$DEPLOY_PATH"
+                    """
+                }
             }
         }
 
         stage('Rollback (if needed)') {
             when { expression { currentBuild.currentResult == 'FAILURE' } }
             steps {
-                sh '''
+                sh """
                 echo "⏪ Rolling back to previous version..."
-
-                for app in $(ls -d ${DEPLOY_PATH}/*/ | xargs -n 1 basename)
+                for app in \$(ls -d \$DEPLOY_PATH/*/ | xargs -n 1 basename)
                 do
-                    latest_backup=$(ls -dt ${DEPLOY_PATH}/$app/dist_backup_* 2>/dev/null | head -n 1)
-                    if [ -n "$latest_backup" ]; then
-                        echo "🔄 Restoring $latest_backup for $app..."
-                       sudo rm -rf ${DEPLOY_PATH}/$app/dist
-                       sudo mv "$latest_backup" ${DEPLOY_PATH}/$app/dist
+                    latest_backup=\$(ls -dt \$DEPLOY_PATH/\$app/dist_backup_* 2>/dev/null | head -n 1)
+                    if [ -n "\$latest_backup" ]; then
+                        echo "🔄 Restoring \$latest_backup for \$app..."
+                        sudo rm -rf \$DEPLOY_PATH/\$app/dist
+                        sudo mv "\$latest_backup" \$DEPLOY_PATH/\$app/dist
                     else
-                        echo "⚠️ No backup found for $app, skipping rollback..."
+                        echo "⚠️ No backup found for \$app, skipping rollback..."
                     fi
                 done
-
                 echo "✅ Rollback completed."
-                '''
+                """
             }
         }
     }
