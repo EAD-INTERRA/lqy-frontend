@@ -36,6 +36,8 @@ export interface AuthServiceInterface {
     login(input: LoginInput): Promise<LoginResponse>
     verify_login(input: OTPInput): Promise<LoginResponse>
     signup(input: SignupInput): Promise<SignupResponse>
+    forgotPassword(input: { email: string }): Promise<LoginResponse>
+    resetPassword(input: LoginInput): Promise<LoginResponse>
 }
 
 export class AuthService implements AuthServiceInterface {
@@ -84,5 +86,25 @@ export class AuthService implements AuthServiceInterface {
         throw error;
     }
 }
+
+ async forgotPassword(input: { email: string }): Promise<LoginResponse> {
+        try {
+            const response = await this.client.post('request-password-reset', input) 
+            return response.data   
+        } catch (error) {
+            throw error 
+        }
+        
+    }
+
+    async resetPassword(input: LoginInput): Promise<LoginResponse> {
+        try {
+            const response = await this.client.post('password-reset', input) 
+            return response.data   
+        } catch (error) {
+            throw error 
+        }
+        
+    }
     
 }

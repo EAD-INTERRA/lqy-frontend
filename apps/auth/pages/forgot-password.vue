@@ -65,13 +65,12 @@ const email = ref("");
 if (process.client) {
   email.value = localStorage.getItem("email") || "";
 }
-const password = ref("");
 
 const submitForm = async (event: Event) => {
   event.preventDefault();
   loading.value = true;
   const Data = {
-    username: email.value,
+    email: email.value,
   };
   // console.log("Data", Data);
   try {
