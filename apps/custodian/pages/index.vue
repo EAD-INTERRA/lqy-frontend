@@ -3,13 +3,13 @@
     <section class="grid grid-cols-3 w-3/4 gap-4">
         <div class="bg-theme-cg rounded-[12px] px-[32px] py-[16px]">
             <p class="font-ox text-ox-xs">Account Balance</p>
-            <p class="font-ox font-bold text-ox-lg">$754,434.90</p>
+            <p class="font-ox font-bold text-ox-lg">₦754,434.90</p>
         </div>
         <div class="bg-theme-cg rounded-[12px] p-[16px]">
             <div class="flex font-normal font-ox justify-between">
                 <p class="text-ox-xs">30 Days Profit</p>
                 <div class="flex flex-col items-end mr-4">
-                    <b>+ $23,331</b>
+                    <b>+ ₦23,331</b>
                     <span class="text-ox-xs text-green-700">+1.23%</span>
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="flex font-normal font-ox justify-between">
                 <p class="text-ox-xs">Overall Loss</p>
                 <div class="flex flex-col items-end mr-4">
-                    <b>- $123,331</b>
+                    <b>- ₦123,331</b>
                     <span class="text-ox-xs text-red-700">-24.23%</span>
                 </div>
             </div>
@@ -77,10 +77,10 @@
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$56,000</p>
+                            <p class="text-left">₦56,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$765,930.39</p>
+                            <p class="text-left">₦765,930.39</p>
                         </td>
                         
                     </tr>
@@ -111,10 +111,10 @@
 
                         </td>
                         <td class="hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$56,000</p>
+                            <p class="text-left">₦56,000</p>
                         </td>
                         <td class="hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$765,930.39</p>
+                            <p class="text-left">₦765,930.39</p>
                         </td>
                         
                     </tr>
@@ -145,10 +145,10 @@
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$56,000</p>
+                            <p class="text-left">₦56,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$765,930.39</p>
+                            <p class="text-left">₦765,930.39</p>
                         </td>
                         
                     </tr>
@@ -179,10 +179,10 @@
 
                         </td>
                         <td class="hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$56,000</p>
+                            <p class="text-left">₦56,000</p>
                         </td>
                         <td class="hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$765,930.39</p>
+                            <p class="text-left">₦765,930.39</p>
                         </td>
                         
                     </tr>
@@ -213,10 +213,10 @@
 
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$56,000</p>
+                            <p class="text-left">₦56,000</p>
                         </td>
                         <td class=" hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$765,930.39</p>
+                            <p class="text-left">₦765,930.39</p>
                         </td>
                         
                     </tr>
@@ -247,10 +247,10 @@
 
                         </td>
                         <td class="hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$56,000</p>
+                            <p class="text-left">₦56,000</p>
                         </td>
                         <td class="hidden lg:table-cell text-center font-bold">
-                            <p class="text-left">$765,930.39</p>
+                            <p class="text-left">₦765,930.39</p>
                         </td>
                         
                     </tr>

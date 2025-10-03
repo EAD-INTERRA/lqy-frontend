@@ -12,7 +12,7 @@
                 <thead>
                     <tr class=" text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
                         <th class="w-72 pt-2 pb-2 hidden lg:table-cell text-left">Financial Institution</th>
-                        <th class="w-64 pt-2 pb-2 hidden lg:table-cell text-left">Cash Disbursed ($)</th>
+                        <th class="w-64 pt-2 pb-2 hidden lg:table-cell text-left">Cash Disbursed (₦)</th>
                         <th class="w-64 pt-2 pb-2 hidden lg:table-cell text-left">Proportion of funds (%)</th>
                         <th class="w-64 pt-2 pb-2 hidden lg:table-cell text-left">Management fees earn (FI)</th>
                     </tr>

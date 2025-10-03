@@ -212,23 +212,23 @@ const allInvestors = ref([
     {
         name: "Oluchi Johnson",
         chn: "CHN12345",
-        associatedValue: "$10,000",
-        marginLevel: "$10,000",
-        securityValue: "$10,000"
+        associatedValue: "₦10,000",
+        marginLevel: "₦10,000",
+        securityValue: "₦10,000"
     },
     {
         name: "Jonnuel Doe",
         chn: "CHN12345",
-        associatedValue: "$10,000",
-        marginLevel: "$10,000",
-        securityValue: "$10,000"
+        associatedValue: "₦10,000",
+        marginLevel: "₦10,000",
+        securityValue: "₦10,000"
     },
     {
         name: "Jonnuel Doe",
         chn: "CHN12345",
-        associatedValue: "$10,000",
-        marginLevel: "$10,000",
-        securityValue: "$10,000"
+        associatedValue: "₦10,000",
+        marginLevel: "₦10,000",
+        securityValue: "₦10,000"
     }
 ])
 

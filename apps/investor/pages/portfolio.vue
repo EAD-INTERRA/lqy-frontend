@@ -209,9 +209,9 @@ const paginatedRows = computed(() => {
       `
       ${request.chn || ""} `,
       request.orderType || "Buy",
-      request.quantity || "$10,000",
-      request.price || "$150.00",
-      request.totalValue || "$1,500.00",
+      request.quantity || "₦10,000",
+      request.price || "₦150.00",
+      request.totalValue || "₦1,500.00",
       request.date || "Feb 2, 2025, 5:00PM",
       null,
     ],
@@ -224,35 +224,35 @@ const paginatedRows = computed(() => {
 const allRequests = ref([
   {
     chn: "TNC",
-    orderType: "$10,000",
+    orderType: "₦10,000",
     quantity: 0,
-    price: "$10,000",
-    totalValue: "$10,000",
-    date: "$10,000"
+    price: "₦10,000",
+    totalValue: "₦10,000",
+    date: "₦10,000"
   },
   {
     chn: "TNC",
-    orderType: "$10,000",
+    orderType: "₦10,000",
     quantity: 0,
-    price: "$10,000",
-    totalValue: "$10,000",
-    date: "$10,000"
+    price: "₦10,000",
+    totalValue: "₦10,000",
+    date: "₦10,000"
   },
   {
     chn: "TNC",
-    orderType: "$10,000",
+    orderType: "₦10,000",
     quantity: 0,
-    price: "$10,000",
-    totalValue: "$10,000",
-    date: "$10,000"
+    price: "₦10,000",
+    totalValue: "₦10,000",
+    date: "₦10,000"
   },
   {
     chn: "TNC",
-    orderType: "$10,000",
+    orderType: "₦10,000",
     quantity: 0,
-    price: "$10,000",
-    totalValue: "$10,000",
-    date: "$10,000"
+    price: "₦10,000",
+    totalValue: "₦10,000",
+    date: "₦10,000"
   },
 ]);
 

@@ -46,7 +46,7 @@ import { ref, computed } from "vue";
 import BaseTable from "../../../packages/ui/components/BaseTable.vue";
   import BasePagination from "../../../packages/ui/components/BasePagination.vue";
 // Headers for BaseTable
-const headers = ["Asset Name", "Asset ID", "Current Value ($)", "Category", "Owner"];
+const headers = ["Asset Name", "Asset ID", "Current Value (₦)", "Category", "Owner"];
 
 // Loading state
 const loading = ref(false);

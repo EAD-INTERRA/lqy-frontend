@@ -52,7 +52,7 @@
                   <buttom  >+</buttom>
                 </div>
               </div>
-              <div class="flex text-[14px] justify-start ml-2 ">=$758.43</div>
+              <div class="flex text-[14px] justify-start ml-2 ">=₦758.43</div>
               <div class="m-auto">
                 <buttom class="text-base font-normal text-white px-[80px] py-[5px] bg-blue-400 border border-gray border-solid  rounded-[10px] ">Update</buttom>
               </div>

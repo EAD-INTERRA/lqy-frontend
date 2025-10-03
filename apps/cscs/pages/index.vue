@@ -104,7 +104,7 @@ const headers = [
     "Ticker Symbol",
     "Security Name",
     "Quantity",
-    "Market Value ($)",
+    "Market Value (₦)",
     "Asset Class",
     "DIvidend Yield (%)",
     "Liquidity Rate",
@@ -116,9 +116,9 @@ onMounted(async () => {
     //   fetchProfiles()
     try {
         // Fetch profiles
-        const response = await $services.base.getProfiles();
-        console.log("Profiles fetched:", response);
-        profiles.value = response.body.results || [];
+        // const response = await $services.base.getProfiles();
+        // console.log("Profiles fetched:", response);
+        // profiles.value = response.body.results || [];
         // Fetch pending margin requests
         const pendingRequests = await $services.base.getPendingMarginRequests();
         // console.log("Pending Margin Requests fetched:", pendingRequests);

@@ -45,7 +45,7 @@
                       <p>********</p>
                     </td>
                     <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
+                      <p class="text-green-500">₦200,000</p>
                     </td>
                   </tr>
                   <tr
@@ -71,7 +71,7 @@
                       <p>********</p>
                     </td>
                     <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
+                      <p class="text-green-500">₦200,000</p>
                     </td>
                   </tr>
                   <tr
@@ -97,7 +97,7 @@
                       <p>********</p>
                     </td>
                     <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
+                      <p class="text-green-500">₦200,000</p>
                     </td>
                   </tr>
                   <tr
@@ -123,7 +123,7 @@
                       <p>********</p>
                     </td>
                     <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
+                      <p class="text-green-500">₦200,000</p>
                     </td>
                   </tr>
                   <tr
@@ -149,7 +149,7 @@
                       <p>********</p>
                     </td>
                     <td class="hidden lg:table-cell text-center">
-                      <p class="text-green-500">$200,000</p>
+                      <p class="text-green-500">₦200,000</p>
                     </td>
                   </tr>
                 </tbody>
@@ -174,27 +174,27 @@
               </thead>
               <tbody class="">
                 <tr>
-                  <td class="border border-slate-700 px-[10px] ">$0-$20,859.64</td>
+                  <td class="border border-slate-700 px-[10px] ">₦0-₦20,859.64</td>
                   <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
                   <td class="border border-slate-700 px-[10px]">17.564%</td>
                 </tr>
                 <tr>
-                  <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                  <td class="border border-slate-700 px-[10px]">₦0-₦20,859.64</td>
                   <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
                   <td class="border border-slate-700 px-[10px]">17.564%</td>
                 </tr>
                 <tr>
-                  <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                  <td class="border border-slate-700 px-[10px]">₦0-₦20,859.64</td>
                   <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
                   <td class="border border-slate-700 px-[10px]">17.564%</td>
                 </tr>
                 <tr>
-                  <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                  <td class="border border-slate-700 px-[10px]">₦0-₦20,859.64</td>
                   <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
                   <td class="border border-slate-700 px-[10px]">17.564%</td>
                 </tr>
                 <tr>
-                  <td class="border border-slate-700 px-[10px]">$0-$20,859.64</td>
+                  <td class="border border-slate-700 px-[10px]">₦0-₦20,859.64</td>
                   <td class="border border-slate-700 px-[10px]">Base Rate = 1.384%</td>
                   <td class="border border-slate-700 px-[10px]">17.564%</td>
                 </tr>
@@ -219,7 +219,7 @@
                   <buttom>+</buttom>
                 </div>
               </div>
-              <div class="flex text-[14px] justify-start ml-2">=$758.43</div>
+              <div class="flex text-[14px] justify-start ml-2">=₦758.43</div>
               <div class="m-auto">
                 <buttom
                   class="text-base font-normal text-white px-[80px] py-[5px] bg-blue-400 border border-gray border-solid rounded-[10px]"

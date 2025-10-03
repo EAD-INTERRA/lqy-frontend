@@ -92,36 +92,36 @@ const brokers = ref([
     name: "Broker A",
     open: true,
     values: [
-      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
-      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
-      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+      { label: "CW", amount: "₦874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "₦74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "₦504,392.94", color: "text-purple-500" }
     ]
   },
   {
     name: "Broker B",
     open: true,
     values: [
-      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
-      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
-      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+      { label: "CW", amount: "₦874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "₦74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "₦504,392.94", color: "text-purple-500" }
     ]
   },
   {
     name: "Broker C",
     open: true,
     values: [
-      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
-      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
-      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+      { label: "CW", amount: "₦874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "₦74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "₦504,392.94", color: "text-purple-500" }
     ]
   },
   {
     name: "Broker D",
     open: true,
     values: [
-      { label: "CW", amount: "$874,392.94", color: "text-blue-500" },
-      { label: "VAS", amount: "$74,392.94", color: "text-green-500" },
-      { label: "VIE", amount: "$504,392.94", color: "text-purple-500" }
+      { label: "CW", amount: "₦874,392.94", color: "text-blue-500" },
+      { label: "VAS", amount: "₦74,392.94", color: "text-green-500" },
+      { label: "VIE", amount: "₦504,392.94", color: "text-purple-500" }
     ]
   }
 ])

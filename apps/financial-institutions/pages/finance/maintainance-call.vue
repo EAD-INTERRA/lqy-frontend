@@ -60,11 +60,11 @@ import BasePagination from "../../../packages/ui/components/BasePagination.vue";
 const headers = [
   "Name",
   "CHN Number",
-  "Cash Drawn ($)",
-  "Value of Securities ($)",
-  "Margin Lending Value ($)",
-  "Security Lending Value ($)",
-  "Maintenance Requirement ($)",
+  "Cash Drawn (₦)",
+  "Value of Securities (₦)",
+  "Margin Lending Value (₦)",
+  "Security Lending Value (₦)",
+  "Maintenance Requirement (₦)",
 ];
 
 function generateRandomName() {

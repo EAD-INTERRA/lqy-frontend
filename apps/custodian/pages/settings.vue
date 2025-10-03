@@ -106,11 +106,11 @@
           </div>
           <div class="px-[30px] grid grid-cols-2 text-left">
             <label for="" class="text-opacity-45 font-semibold">Capital Adequacy</label>
-            <div class="text-lg font-bold">$483,949</div>
+            <div class="text-lg font-bold">₦483,949</div>
           </div>
           <div class="px-[30px] grid grid-cols-2 text-left">
             <label for="" class="text-opacity-45 font-semibold">Networth</label>
-            <div class="text-lg font-bold">$4,093,029</div>
+            <div class="text-lg font-bold">₦4,093,029</div>
           </div>
           <div class="px-[30px] grid grid-cols-2 text-left">
             <label for="" class="text-opacity-45 font-semibold">Tolerance</label>

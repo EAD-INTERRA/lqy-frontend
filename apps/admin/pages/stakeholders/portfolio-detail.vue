@@ -189,9 +189,9 @@ const endItem = computed(() => Math.min(currentPage.value * pageSize.value, tota
 
 // <CHANGE> Updated sample data to match the image with TNC, SPD, AAPL stocks
 const paginatedRows = computed(() => [
-    { values: ["TNC", "$10,000", "0", "$8.3", "$10,000", "$10,000", "$10,000"] },
-    { values: ["SPD", "$10,000", "4", "$10.1", "$10,000", "$10,000", "$10,000"] },
-    { values: ["AAPL", "$10,000", "0", "$4.21", "$10,000", "$10,000", "$10,000"] }
+    { values: ["TNC", "₦10,000", "0", "₦8.3", "₦10,000", "₦10,000", "₦10,000"] },
+    { values: ["SPD", "₦10,000", "4", "₦10.1", "₦10,000", "₦10,000", "₦10,000"] },
+    { values: ["AAPL", "₦10,000", "0", "₦4.21", "₦10,000", "₦10,000", "₦10,000"] }
 ])
 
 // <CHANGE> Added visible pages computation for better pagination display

@@ -11,7 +11,9 @@
         <h3 class="customWhite pb-8 text-center font-ubuntu text-xl font-bold">
           Forgot Password
         </h3>
-        <p class="text-white mb-5 text-center text-sm md:text-base">A link will be sent to your email to help reset your
+        <!-- <p class="text-white mb-5 text-center text-sm md:text-base">A link will be sent to your email to help reset your
+          pas</p> -->
+          <p class="text-white mb-5 text-center text-sm md:text-base">A link will be sent to your email to help reset your
           password.</p>
         <form @submit.prevent="submitForm">
           <div class="grid grid-cols-1 gap-4">
@@ -65,13 +67,12 @@ const email = ref("");
 if (process.client) {
   email.value = localStorage.getItem("email") || "";
 }
-const password = ref("");
 
 const submitForm = async (event: Event) => {
   event.preventDefault();
   loading.value = true;
   const Data = {
-    username: email.value,
+    email: email.value,
   };
   // console.log("Data", Data);
   try {
