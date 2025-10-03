@@ -102,7 +102,7 @@
                   <buttom class="cursor-pointer bg-gray-300 px-2 my-auto rounded-[3px] text-red-500 text-lg font-bold">+</buttom>
                 </div>
               </div>
-              <div class="flex text-[14px] justify-start ml-2 mb-3">=$758.43</div>
+              <div class="flex text-[14px] justify-start ml-2 mb-3">=₦758.43</div>
               <div class="m-auto">
                 <buttom
                   class="cursor-pointer text-base font-normal text-white my-5 px-[100px] py-[10px] bg-blue-400 border border-gray border-solid rounded-[10px]"

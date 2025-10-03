@@ -4,7 +4,7 @@
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
         <p class="text-gray-500 text-sm mb-2">Account Balance</p>
-        <p class="text-3xl font-bold text-gray-900">$754,583,492</p>
+        <p class="text-3xl font-bold text-gray-900">₦754,583,492</p>
       </div>
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
         <div class="flex justify-between items-start">
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="text-right">
-            <p class="text-xl font-bold text-gray-900">+$21,736</p>
+            <p class="text-xl font-bold text-gray-900">+₦21,736</p>
             <p class="text-sm text-green-600">+1.23%</p>
           </div>
         </div>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="text-right">
-            <p class="text-xl font-bold text-gray-900">-$102,304</p>
+            <p class="text-xl font-bold text-gray-900">-₦102,304</p>
             <p class="text-sm text-red-600">-25.23%</p>
           </div>
         </div>

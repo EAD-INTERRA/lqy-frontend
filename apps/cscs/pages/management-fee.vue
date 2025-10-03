@@ -5,7 +5,7 @@
         <section class="grid grid-cols-4 w-full gap-6">
             <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
                 <div>
-                    <p class="font-ox text-ox-xs">Cash Disbursed ($)</p>
+                    <p class="font-ox text-ox-xs">Cash Disbursed (₦)</p>
                     <p class="font-ox font-bold text-left text-ox-lg">{{ allCount || 0 }}</p>
                 </div>
                 <!-- <img src="../assets/images/total-request.svg" class="rounded-full" alt="icon" /> -->

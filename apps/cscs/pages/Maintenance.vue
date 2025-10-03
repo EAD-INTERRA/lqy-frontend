@@ -12,11 +12,11 @@
                     <tr class=" text-black font-ox text-base font-normal leading-normal border-b-[0.1px] border-black">
                         <th class="w-44 pt-2 pb-2 hidden lg:table-cell text-left">Name</th>
                         <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">CHN Number</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Cash Drawn ($)</th>
-                        <th class="w-44 pt-2 pb-2 hidden lg:table-cell text-left ">Value of securities ($)</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">Margin Lending Value ($)</th>
-                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Security Lending Value ($)</th>
-                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">Maintenance Requirement ($)</th>
+                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Cash Drawn (₦)</th>
+                        <th class="w-44 pt-2 pb-2 hidden lg:table-cell text-left ">Value of securities (₦)</th>
+                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">Margin Lending Value (₦)</th>
+                        <th class="w-32 pt-2 pb-2 hidden lg:table-cell text-left">Security Lending Value (₦)</th>
+                        <th class="w-36 pt-2 pb-2 hidden lg:table-cell text-left">Maintenance Requirement (₦)</th>
                     </tr>
                 </thead>
                 <tbody>
