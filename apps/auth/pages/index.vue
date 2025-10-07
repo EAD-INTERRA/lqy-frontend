@@ -65,10 +65,16 @@
               </button>
               <div class="flex justify-between">
                 <NuxtLink to="/forgot-password" class="customOrange mt-3">Forgot Password</NuxtLink>
-                <div><p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3">
-                Don't have an account?
-                <NuxtLink to="/signUp" class="customOrange">Sign Up</NuxtLink>
-              </p></div>
+                <div>
+                  <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3 flex items-center gap-2">
+                    Don't have an account?
+                    <!-- Arrow illustration -->
+                    <svg class="inline-block w-6 h-6 text-customOrange " fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 18l6-6-6-6" />
+                    </svg>
+                    <NuxtLink to="/signUp" class="customOrange">Sign Up</NuxtLink>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
