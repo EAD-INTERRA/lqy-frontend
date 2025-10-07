@@ -19,16 +19,16 @@
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
         <p class="text-sm text-gray-500 mb-1">Current Price</p>
         <p class="text-2xl font-bold text-blue-900 mb-1">₦1,200</p>
-        <p class="text-xs text-green-500">+$300 (20%)</p>
+        <p class="text-xs text-green-500">+₦300 (20%)</p>
       </div>
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
         <p class="text-sm text-gray-500 mb-1">Your Position</p>
         <p class="text-2xl font-bold text-blue-900 mb-1">100 shares</p>
-        <p class="text-xs text-blue-900 ">Market Value: $15,000</p>
+        <p class="text-xs text-blue-900 ">Market Value: ₦15,000</p>
       </div>
       <div class="bg-white shadow-md rounded-[12px] px-[32px] py-[16px]">
         <p class="text-sm text-gray-500 mb-1">Maintenance Limit</p>
-        <p class="text-2xl font-bold text-blue-900 mb-1">$140.00</p>
+        <p class="text-2xl font-bold text-blue-900 mb-1">₦140.00</p>
         <p class="text-xs text-red-500 bg-red-100 p-1 rounded-lg">1 require attention</p>
       </div>
     </section>
@@ -37,7 +37,7 @@
 
     <section class="flex gap-[5%] mb-6">
       <div class="w-full rounded-lg bg-white shadow-md rounded-[12px] px-[32px] py-[16px] p-[25px]">
-        <LineChart :labels="chartLabels" :datasets="chartDatasets" :title="'LIVE PRICE CHART'" :exposure="'-$21,984'" />
+        <LineChart :labels="chartLabels" :datasets="chartDatasets" :title="'LIVE PRICE CHART'" :exposure="'-₦21,984'" />
       </div>
     </section>
 
@@ -80,7 +80,7 @@
         <!-- Price per share -->
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-2">Price per share</label>
-          <input v-model="orderForm.pricePerShare" type="text" placeholder="$12,000"
+          <input v-model="orderForm.pricePerShare" type="text" placeholder="₦12,000"
             class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
       </div>
@@ -100,11 +100,11 @@
           </div>
           <div class="flex justify-between">
             <span class="text-gray-600">Price:</span>
-            <span class="font-medium">${{ orderForm.pricePerShare || '150.25' }}</span>
+            <span class="font-medium">₦{{ orderForm.pricePerShare || '150.25' }}</span>
           </div>
           <div class="flex justify-between border-t pt-3">
             <span class="text-lg font-semibold">Total Value:</span>
-            <span class="text-lg font-bold">${{ totalValue }}</span>
+            <span class="text-lg font-bold">₦{{ totalValue }}</span>
           </div>
         </div>
 
@@ -185,7 +185,7 @@ const modalData = ref({
 
 const totalValue = computed(() => {
   const quantity = orderForm.value.quantity || 23
-  const price = parseFloat(orderForm.value.pricePerShare?.replace('$', '') || '150.25')
+  const price = parseFloat(orderForm.value.pricePerShare?.replace('₦', '') || '150.25')
   return (quantity * price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 })
 

@@ -61,7 +61,7 @@
           <div class="flex justify-between items-start border border-gray-400 p-4 rounded-lg">
             <div>
               <h4 class="font-semibold text-gray-900">Trade Executed</h4>
-              <p class="text-sm text-gray-600">Bought 100 shares of AAPL at $150.25</p>
+              <p class="text-sm text-gray-600">Bought 100 shares of AAPL at ₦150.25</p>
             </div>
             <span class="text-xs text-gray-400">2 hours ago</span>
           </div>

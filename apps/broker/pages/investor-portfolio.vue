@@ -65,7 +65,7 @@
               <p class="text-lg font-semibold text-gray-900">100 shares</p>
             </div>
             <div>
-              <label class="text-sm text-gray-500 block mb-1">Price $250.00</label>
+              <label class="text-sm text-gray-500 block mb-1">Price ₦250.00</label>
               <p class="text-lg font-semibold text-gray-900">100 shares</p>
             </div>
             <div>
@@ -83,16 +83,16 @@
             <div class="flex justify-between items-center mb-4">
               <div>
                 <label class="text-sm text-gray-500 block mb-1">Order Value</label>
-                <p class="text-2xl font-bold text-gray-900">$25,000.00</p>
+                <p class="text-2xl font-bold text-gray-900">₦25,000.00</p>
               </div>
               <div class="text-right">
                 <label class="text-sm text-gray-500 block mb-1">Fees</label>
-                <p class="text-lg font-semibold text-gray-900">$0.00</p>
+                <p class="text-lg font-semibold text-gray-900">₦0.00</p>
               </div>
             </div>
             <div class="flex justify-between items-center">
               <label class="text-sm text-gray-500">Total</label>
-              <p class="text-2xl font-bold text-gray-900">$25,000.00</p>
+              <p class="text-2xl font-bold text-gray-900">₦25,000.00</p>
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@
             <ul class="space-y-2 text-sm text-gray-600">
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"></span>
-                Trade value $25,000
+                Trade value ₦25,000
               </li>
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"></span>
@@ -195,7 +195,7 @@
           <div class="space-y-4">
             <div>
               <label class="text-sm text-gray-500 block mb-1">Current Price</label>
-              <p class="text-xl font-bold text-gray-900">$250.00</p>
+              <p class="text-xl font-bold text-gray-900">₦250.00</p>
             </div>
             <div>
               <label class="text-sm text-gray-500 block mb-1">Day Change</label>
@@ -207,7 +207,7 @@
             </div>
             <div>
               <label class="text-sm text-gray-500 block mb-1">52W Range</label>
-              <p class="font-semibold text-gray-900">$120.50 - $180.25</p>
+              <p class="font-semibold text-gray-900">₦120.50 - ₦180.25</p>
             </div>
           </div>
 
@@ -289,8 +289,8 @@
         <!-- Trade Summary -->
         <div class="mb-6">
           <h4 class="font-semibold text-gray-900 mb-3">Trade Summary</h4>
-          <p class="text-gray-700 mb-1">Buy 100 shares of AAPL at $2,500</p>
-          <p class="text-gray-700">Total Value: $25,000.00</p>
+          <p class="text-gray-700 mb-1">Buy 100 shares of AAPL at ₦2,500</p>
+          <p class="text-gray-700">Total Value: ₦25,000.00</p>
         </div>
 
         <!-- Reject Reason -->
@@ -349,14 +349,14 @@ const tradeRequest = ref({
     currentPrice: 250.00,
     dayChange: '+2.45 (+1.6%)',
     volume: '2.4M',
-    range52W: '$120.50 - $180.25'
+    range52W: '₦120.50 - ₦180.25'
   },
   risk: {
     level: 'Low Risk',
     marketStatus: 'Open',
     liquidity: 'High',
     factors: [
-      'Trade value $25,000',
+      'Trade value ₦25,000',
       'Market volatility: low',
       'Execution complexity: Medium',
       'Regulatory compliance: Verified'

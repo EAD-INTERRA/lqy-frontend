@@ -68,7 +68,7 @@
               </td>
               <td class=" w-[10%]"> 
                 <p class="text-green-500 font-medium">
-                  ${{ row.interest.toLocaleString() }}
+                  ₦{{ row.interest.toLocaleString() }}
                 </p>
               </td>
             </tr>
