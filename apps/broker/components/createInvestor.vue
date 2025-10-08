@@ -57,6 +57,14 @@
             </select>
           </div>
           <div>
+            <label for="bank_id">Bank</label>
+            <select id="bank_id" v-model="bank_id"
+              class="w-full p-2 border rounded-md bg-black/5">
+              <option value="" disabled selected>Select a bank</option>
+              <option v-for="bank in banks" :key="bank.id" :value="bank.id">{{ bank.name }}</option>
+            </select>
+          </div>
+          <div>
             <label for="password">Password</label>
             <div class="relative">
               <input
@@ -118,17 +126,20 @@ const email = ref("")
 const chn = ref("")
 const country_code = ref('');
 const country_id = ref('');
+const bank_id = ref('');
 const state_id = ref('');
 const user_type = ref("Investor")
 const password = ref("")
 const showPassword = ref(false)
 const errors = ref<{ [key: string]: string }>({})
 const countries = ref<any[]>([])
+const banks = ref<any[]>([])
 const states = ref<any[]>([])
 const { $services } = useNuxtApp();
 
 onMounted(async () => {
   countries.value = (await $services.auth.getCountries()).body || [];
+  banks.value = (await $services.auth.getBanks()).body || [];
 });
 
 const handleCountryChange = (e: Event) => {
@@ -152,6 +163,7 @@ const resetForm = () => {
   email.value = ""
   chn.value = ""
   country_id.value = null
+  bank_id.value = null
   state_id.value = null
   user_type.value = "Investor"
   password.value = ""

@@ -223,7 +223,7 @@ const paginatedRows = computed(() => {
 
 const allRequests = ref([
   {
-    chn: "TNC",
+    chn: "MTNN",
     orderType: "₦10,000",
     quantity: 0,
     price: "₦10,000",
@@ -231,7 +231,7 @@ const allRequests = ref([
     date: "₦10,000"
   },
   {
-    chn: "TNC",
+    chn: "ACCESSCORP",
     orderType: "₦10,000",
     quantity: 0,
     price: "₦10,000",
@@ -239,7 +239,7 @@ const allRequests = ref([
     date: "₦10,000"
   },
   {
-    chn: "TNC",
+    chn: "DANGCEM",
     orderType: "₦10,000",
     quantity: 0,
     price: "₦10,000",
@@ -247,7 +247,7 @@ const allRequests = ref([
     date: "₦10,000"
   },
   {
-    chn: "TNC",
+    chn: "NESTLE",
     orderType: "₦10,000",
     quantity: 0,
     price: "₦10,000",

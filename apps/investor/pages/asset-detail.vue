@@ -9,7 +9,7 @@
           </svg>
           Back
         </NuxtLink>
-        <h1 class="text-xl font-semibold text-center text-[#10356D]">AAPL (BSL to provide api for this view)</h1>
+        <h1 class="text-xl font-semibold text-center text-[#10356D]">MTNN (BSL to provide api for this view)</h1>
       </div>
 
     </div>

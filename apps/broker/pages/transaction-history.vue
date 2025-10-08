@@ -111,7 +111,7 @@ function generateRandomId(length = 12): string {
 // Dummy data generator
 function generateDummyTransactions(count = 50): Transaction[] {
   const statuses = ["accepted", "pending", "rejected"];
-  const transactionTypes = ["Deposit", "Withdrawal", "Transfer", "Payment"];
+  const transactionTypes = ["Deposit", "Withdrawal"];
   const now = Date.now();
 
   return Array.from({ length: count }, () => {
