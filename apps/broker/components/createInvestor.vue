@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto p-4">
+  <div class="mx-auto p-0 md:p-4">
     <!-- Back Button -->
     <button @click="$emit('go-back')" class="text-black text-[18px] hover:underline mb-4 inline-block flex h-fit">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

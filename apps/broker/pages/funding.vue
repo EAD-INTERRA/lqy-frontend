@@ -1,9 +1,9 @@
-
 <template>
-  <div class="px-4 space-y-6 overflow-y-auto">
+  <div class="px-0 md:px-4 space-y-6 overflow-y-auto">
     <div class="flex justify-between" v-if="activeTab === 1">
       <div class="text-xl text-[#FF0000] font-semibold mb-4">Funding Request</div>
-      <button @click="activeTab = 2" class="bg-[#10356D] shadow-lg text-white py-2 px-4 rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center">
+      <button @click="activeTab = 2"
+        class="bg-[#10356D] shadow-lg text-white py-2 px-4 rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center">
         Request Funding
       </button>
     </div>
@@ -13,43 +13,39 @@
         <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
           <div>
             <p class="font-ox text-ox-xs">Total Amount Requested</p>
-            <p class="font-ox font-bold text-left text-ox-lg">{{ formatCurrency(totalAmountRequested) }}</p>
+            <p class="font-ox font-normal md:font-bold text-left text-ox-sm md:text-ox-lg">{{
+              formatCurrency(totalAmountRequested) }}</p>
           </div>
         </div>
         <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
           <div>
             <p class="font-ox text-ox-xs">Total Requests</p>
-            <p class="font-ox font-bold text-left text-ox-lg">{{ totalCount }}</p>
+            <p class="font-ox font-normal md:font-bold text-left text-ox-sm md:text-ox-lg">{{ totalCount }}</p>
           </div>
         </div>
         <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
           <div>
             <p class="font-ox text-ox-xs">Approved Requests</p>
-            <p class="font-ox font-bold text-left text-ox-lg">{{ approvedCount }}</p>
+            <p class="font-ox font-normal md:font-bold text-left text-ox-sm md:text-ox-lg">{{ approvedCount }}</p>
           </div>
         </div>
         <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
           <div>
             <p class="font-ox text-ox-xs">Pending Requests</p>
-            <p class="font-ox font-bold text-left text-ox-lg">{{ pendingCount }}</p>
+            <p class="font-ox font-normal md:font-bold text-left text-ox-sm md:text-ox-lg">{{ pendingCount }}</p>
           </div>
         </div>
         <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
           <div>
             <p class="font-ox text-ox-xs">Rejected Requests</p>
-            <p class="font-ox font-bold text-left text-ox-lg">{{ rejectedCount }}</p>
+            <p class="font-ox font-normal md:font-bold text-left text-ox-sm md:text-ox-lg">{{ rejectedCount }}</p>
           </div>
         </div>
       </section>
 
       <div class="bg-white shadow-lg p-5 rounded-lg mb-2.5">
-        <BaseTable
-          :headers="headers"
-          :rows="paginatedRows"
-          :loading="loading"
-          :showCheckbox="false"
-          class="!font-ox !font-bold"
-        >
+        <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false"
+          class="!font-ox !font-bold">
           <template #cell-0="{ row }">
             <span>{{ row.values[0] }}</span>
           </template>
@@ -63,48 +59,34 @@
             <span>{{ row.values[3] }}</span>
           </template>
           <template #cell-4="{ row }">
-            <span
-              v-if="row.values[4]?.toLowerCase() === 'approved'"
-              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#027A48]/20 text-[#027A48] capitalize"
-            >
+            <span v-if="row.values[4]?.toLowerCase() === 'approved'"
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#027A48]/20 text-[#027A48] capitalize">
               {{ row.values[4] }}
             </span>
-            <span
-              v-else-if="row.values[4]?.toLowerCase() === 'pending'"
-              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-500/20 text-orange-500 capitalize"
-            >
+            <span v-else-if="row.values[4]?.toLowerCase() === 'pending'"
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-500/20 text-orange-500 capitalize">
               {{ row.values[4] }}
             </span>
-            <span
-              v-else-if="row.values[4]?.toLowerCase() === 'rejected'"
-              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#B42318]/20 text-[#B42318] capitalize"
-            >
+            <span v-else-if="row.values[4]?.toLowerCase() === 'rejected'"
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#B42318]/20 text-[#B42318] capitalize">
               {{ row.values[4] }}
             </span>
           </template>
           <template #cell-5="{ row }">
-            <button
-              @click="openDetails(row.raw)"
-              class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105"
-            >
+            <button @click="openDetails(row.raw)"
+              class="border border-[#000000]/10 text-black px-4 py-1 rounded-lg font-ox text-14 transition-transform duration-200 ease-in-out hover:bg-gray-50 hover:scale-105">
               View
             </button>
           </template>
         </BaseTable>
 
-        <BasePagination
-        :currentPage="currentPage"
-        :totalPages="totalPages"
-        :startItem="startItem"
-        :endItem="endItem"
-        :totalCount="totalCount"
-        @update:page="setCurrentPage"
-      />
+        <BasePagination :currentPage="currentPage" :totalPages="totalPages" :startItem="startItem" :endItem="endItem"
+          :totalCount="totalCount" @update:page="setCurrentPage" />
       </div>
     </section>
 
-    <fundingRequestComponent v-if="activeTab === 2"  @go-back="activeTab = 1" />
-    <requestDetailsComponent v-if="activeTab === 3"  @go-back="activeTab = 1"/>
+    <fundingRequestComponent v-if="activeTab === 2" @go-back="activeTab = 1" />
+    <requestDetailsComponent v-if="activeTab === 3" @go-back="activeTab = 1" />
   </div>
 </template>
 <script lang="ts" setup>

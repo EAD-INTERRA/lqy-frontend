@@ -1,6 +1,6 @@
 <template>
   <div class="px-4 space-y-6 overflow-y-auto">
-    <div class="flex justify-between" v-if="activeTab === 1 || activeTab === 2">
+    <div class="flex flex-col md:flex-row justify-between" v-if="activeTab === 1 || activeTab === 2">
       <div class="relative flex justify-between bg-gray-200 rounded-[16px] w-[70%] md:w-[22%] p-[0.9px]">
         <span
           class="absolute top-[0.9px] left-[0.9px] h-[calc(100%-1.8px)] rounded-[16px] bg-white shadow-lg transition-all duration-300 ease-in-out"
@@ -23,7 +23,7 @@
           My Investors
         </button>
       </div>
-      <div class="p-[0.9px]" v-if="activeTab === 2">
+      <div class="p-[0.9px] mt-5 md:mt-0" v-if="activeTab === 2">
         <button @click="activeTab = 4"
           class="bg-[#10356D] font-ox font-bold text-[14px] shadow-lg text-white py-2 px-4 rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
