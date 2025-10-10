@@ -63,7 +63,7 @@
                   <span>Log In</span>
                 </template>
               </button>
-              <div class="flex justify-between">
+              <div class="flex flex-col md:flex-row justify-between">
                 <NuxtLink to="/forgot-password" class="customOrange mt-3">Forgot Password</NuxtLink>
                 <div>
                   <p class="customWhite pb-8 justify-center text-center text-lg font-ubuntu mt-3 flex items-center gap-2">

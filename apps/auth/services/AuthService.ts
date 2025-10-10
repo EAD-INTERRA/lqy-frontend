@@ -99,12 +99,12 @@ export class AuthService implements AuthServiceInterface {
 
     async resetPassword(input: LoginInput): Promise<LoginResponse> {
         try {
-            const response = await this.client.post('password-reset', input) 
+            const response = await this.client.post('reset-password', input) 
             return response.data   
         } catch (error) {
             throw error 
         }
         
     }
-    
+
 }

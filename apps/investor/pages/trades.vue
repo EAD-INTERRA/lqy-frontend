@@ -223,7 +223,7 @@ const paginatedRows = computed(() => {
 
 const allRequests = ref([
   {
-    chn: "AAPL",
+    chn: "MTNN",
     orderType: "Buy",
     quantity: 10,
     price: "₦150.00",
@@ -232,7 +232,7 @@ const allRequests = ref([
     status: "Accepted"
   },
   {
-    chn: "TSLA",
+    chn: "ACCESSCORP",
     orderType: "Sell",
     quantity: 5,
     price: "₦700.00",
@@ -241,7 +241,7 @@ const allRequests = ref([
     status: "Rejected"
   },
   {
-    chn: "GOOG",
+    chn: "DANGCEM",
     orderType: "Buy",
     quantity: 2,
     price: "₦2,800.00",
@@ -250,7 +250,7 @@ const allRequests = ref([
     status: "Pending"
   },
   {
-    chn: "MSFT",
+    chn: "NESTLE",
     orderType: "Sell",
     quantity: 8,
     price: "₦320.00",

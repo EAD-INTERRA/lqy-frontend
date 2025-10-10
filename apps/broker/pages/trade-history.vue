@@ -1,8 +1,8 @@
 <template>
-  <div class="p-4 pt-[50px] space-y-6 overflow-y-auto">
+  <div class="p-0 md:p-4 pt-[5px] md:pt-[50px] space-y-6 overflow-y-auto">
     <section class="mb-4">
       <div
-        class="bg-white shadow-lg p-[20px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]"
+        class="bg-white shadow-lg p-[10px] lg:p-[20px] rounded-[8px] lg:rounded-[16px] mb-[10px]"
       >
         <div class="flex items-center justify-between mb-6">
           <p

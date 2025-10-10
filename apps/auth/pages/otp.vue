@@ -16,11 +16,8 @@
             </label>
             <div class="flex justify-center gap-2 mb-4">
               <template v-for="(otp, index) in otps" :key="index">
-                <input class="border border-gray-300 bg-gray-100 text-gray-900 text-lg font-medium rounded-lg text-center w-[65px] h-[65px]
-                  xs:w-[48px] xs:h-[48px]
-                  sm:w-[55px] sm:h-[55px]
-                  md:w-[60px] md:h-[60px]
-                  lg:w-[65px] lg:h-[65px]
+                <input class="border border-gray-300 bg-gray-100 text-gray-900 text-md md:text-lg font-medium rounded-lg text-center
+                  w-[35px] md:w-[65px] h-[35px] md:h-[65px]
                   focus:outline-none focus:border-theme-primary transition duration-150" type="tel" maxlength="1"
                   v-model="otps[index]" @input="handleInput(index)" @keydown.backspace="handleBackspace(index)"
                   @paste="handlePaste($event)" placeholder="0" required />

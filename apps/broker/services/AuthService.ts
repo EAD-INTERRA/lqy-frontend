@@ -99,6 +99,7 @@ export interface AuthServiceInterface {
   getProfile(): Promise<GetAuthsResponse>;
   updateProfile(editForm: any): Promise<GetAuthResponse>;
   getCountries(): Promise<GetCountriesResponse>;
+  getBanks(): Promise<GetBanksResponse>;
   getStatesByCountry(input: GetStateInput): Promise<GetStateResponse>;
 }
 
@@ -135,6 +136,15 @@ export class AuthService implements AuthServiceInterface {
   async getCountries(): Promise<GetCountriesResponse> {
     try {
       const response = await this.client.get("base/country");
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getBanks(): Promise<GetBanksResponse> {
+    try {
+      const response = await this.client.get("base/bank");
       return response.data;
     } catch (error) {
       throw error;

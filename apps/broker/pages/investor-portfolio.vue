@@ -1,6 +1,6 @@
 <template>
   <!-- Completely replaced dashboard with trade request review page -->
-  <div class="min-h-screen bg-gray-50 p-6">
+  <div class="min-h-screen bg-gray-50 p-6 overflow-y-auto">
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">
       <div class="flex items-center gap-4">
@@ -11,7 +11,7 @@
           Back to Requests
         </NuxtLink>
       </div>
-      <div class="flex gap-3">
+      <div class="flex flex-col md:flex-row gap-3">
         <!-- Added click handlers to show modals -->
         <button @click="showRejectModal = true"
           class="px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 flex items-center gap-2">
@@ -40,7 +40,7 @@
     </div>
 
     <!-- Main Content Grid -->
-    <div class="grid grid-cols-3 gap-6 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <!-- Trade Overview -->
       <div class="col-span-2 gap-6 bg-gray-50">
         <div class="bg-white rounded-lg shadow-sm p-6">
@@ -107,7 +107,7 @@
           </div>
 
           <!-- Risk Indicators -->
-          <div class="grid grid-cols-3 gap-8 mb-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div class="text-center bg-gray-50 p-4 rounded-lg">
               <label class="text-sm text-gray-500 block mb-2">Risk Level</label>
               <span class="inline-flex px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium">Low
