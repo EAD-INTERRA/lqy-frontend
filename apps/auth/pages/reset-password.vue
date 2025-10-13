@@ -134,7 +134,7 @@ const confirmPassword = ref("");
 // Extract query params
 onMounted(() => {
   if (process.client) {
-    email.value = (route.query.email as string) || "";
+    email.value = ((route.query.email as string)?.replace(/ /g, '+')) || "";
     token.value = (route.query.token as string) || "";
   }
 });
@@ -158,7 +158,7 @@ const submitForm = async (event: Event) => {
     const result = await $services.auth.resetPassword(Data);
     if (result.message === "SUCCESSFUL") {
       toast.success(result.body || "Password reset successful!");
-      router.push("/login");
+      router.push("/");
     } else {
       toast.error(result.body || "Password reset failed!");
     }
