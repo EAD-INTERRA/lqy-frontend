@@ -144,7 +144,7 @@ export class AuthService implements AuthServiceInterface {
 
   async getBanks(): Promise<GetBanksResponse> {
     try {
-      const response = await this.client.get("base/bank");
+      const response = await this.client.get("/base/banks");
       return response.data;
     } catch (error) {
       throw error;
