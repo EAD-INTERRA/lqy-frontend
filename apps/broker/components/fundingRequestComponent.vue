@@ -63,7 +63,8 @@
         <div class="mt-6 flex flex-col sm:flex-row justify-end gap-3">
           <button @click="submitForm" type="submit"
             class="bg-[#10356D] shadow-lg text-white py-2 px-[5%] rounded-md hover:bg-[#10356D]/90 transition flex items-center justify-center">
-            Submit Request
+            <template v-if="loading"> Submitting...</template>
+            <template v-else> Submit Request</template>
           </button>
           <button @click="resetForm" type="button"
             class="shadow-lg text-[#10356D] py-2 px-[3%] rounded-md hover:bg-gray-200/90 border border-gray-400 transition flex items-center justify-center">
@@ -113,8 +114,7 @@ onMounted(async () => {
 const form = ref({
   chn: "",
   amount: "",
-  bank_id: "",
-  tenure: "",
+  bank_id: bank_id.value,
   purpose: "",
 });
 
@@ -124,7 +124,8 @@ const resetForm = () => {
   form.value = {
     chn: "",
     amount: "",
-    tenure: "",
+    bank_id: bank_id.value,
+
     purpose: "",
   };
   errors.value = {};
@@ -143,11 +144,11 @@ const validateForm = () => {
   return Object.keys(errors.value).length === 0;
 };
 
+
+
 const submitForm = () => {
-  if (!validateForm()) return;
-
+  // if (!validateForm()) return;
   loading.value = true;
-
   setTimeout(() => {
     loading.value = false;
     showModal.value = true; // Show success modal
