@@ -210,11 +210,12 @@ const submitForm = async () => {
       country_id: country_id.value,
       state_id: state_id.value,
       user_type: "Investor",
+      bank_id: bank_id.value,
       password: password.value
     }
     console.log("Payload:", payload)
     const result = await $services.base.createInvestor(payload);
-    console.log("Result:", result)
+    // console.log("Result:", result)
     if (result.message === "SUCCESSFUL") {
       toast.success("Investor Created Successfully!");
       Loading.value = false
