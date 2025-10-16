@@ -111,10 +111,10 @@
           <div>
             <h4 class="font-semibold text-gray-900 mb-4">Margin Bands</h4>
             <div class="space-y-3">
-              <p class="text-gray-700">14 up to 20</p>
-              <p class="text-gray-700">9 and less than 14</p>
-              <p class="text-gray-700">7 and less than 9</p>
-              <p class="text-gray-700">Less than 7</p>
+              <p class="text-gray-700">18 up to 24</p>
+              <p class="text-gray-700">12 and less than 18</p>
+              <p class="text-gray-700">9 and less than 12</p>
+              <p class="text-gray-700">Less than 9</p>
             </div>
           </div>
 

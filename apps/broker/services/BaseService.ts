@@ -131,7 +131,8 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-      const response = await this.client.post("/create_investor", payload, {
+      const response = await this.client.post("/create_investor", payload, 
+        {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("createInvestor Response:", response);
@@ -267,7 +268,6 @@ export class BaseService implements BaseServiceInterface {
       throw error;
     }
   }
-
   async margin_request(chn: string): Promise<GetProfileResponse> {
     try {
       const tokenObj = localStorage.getItem("authToken");
@@ -294,7 +294,6 @@ export class BaseService implements BaseServiceInterface {
       throw error;
     }
   }
-
   async acceptMarginRequest(id: string): Promise<GetProfileResponse> {
     try {
       const tokenObj = localStorage.getItem("authToken");

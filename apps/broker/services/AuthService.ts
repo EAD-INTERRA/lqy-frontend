@@ -132,7 +132,6 @@ export class AuthService implements AuthServiceInterface {
       throw error;
     }
   }
-
   async getCountries(): Promise<GetCountriesResponse> {
     try {
       const response = await this.client.get("base/country");
