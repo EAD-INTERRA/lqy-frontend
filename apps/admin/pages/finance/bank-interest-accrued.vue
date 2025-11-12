@@ -21,7 +21,7 @@
       class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]"
     >
       <div>
-        <p class="font-ox text-ox-xs">Portion %</p>
+        <p class="font-ox text-ox-xs">Proportion %</p>
         <p class="font-ox font-bold text-left text-ox-lg">{{ totalPortionPercent }}%</p>
       </div>
     </div>
@@ -88,7 +88,7 @@ const headers = [
   "S/N",
   "Bank",
   "Cash Disbursed",
-  "Portion %",
+  "Proportion %",
   "Interest Accrued"
 ];
 

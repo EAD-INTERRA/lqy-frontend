@@ -78,7 +78,7 @@
                             View
                         </NuxtLink> -->
                          <NuxtLink
-                            :to="`/capital-broker`"
+                            :to="`/capital-broker?company_name=${row.values[1] || ''}`"
                             class=" font-semibold text-red-500 px-4 py-1 rounded hover:bg-red-50">
                             View
                         </NuxtLink>
@@ -99,6 +99,7 @@ import { ref, computed, onMounted } from 'vue';
 import BaseTable from '../../../packages/ui/components/BaseTable.vue'
 import BasePagination from '../../../packages/ui/components/BasePagination.vue'
 import { useToast } from "vue-toastification";
+
 
 const toast = useToast();
 const { $services } = useNuxtApp();
@@ -153,7 +154,8 @@ const paginatedRows = computed(() => {
     return allBrokers.value.slice(start, end).map((broker, index) => ({
         values: [
             start + index + 1,
-            `${broker.first_name || ''} ${broker.last_name || ''}`,
+            // `${broker.first_name || ''} ${broker.last_name || ''}`,
+            `${broker.company_name || ''}`,
             broker.code || 'XXXX', // Broker Code (use another field if needed)
             broker.cash_drawn || '3,400,389',
             broker.value_of_assured_security || '14,009,493',

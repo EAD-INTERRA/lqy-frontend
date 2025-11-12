@@ -12,7 +12,7 @@
             class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]"
           >
             <div>
-              <p class="font-ox text-ox-xs">Cash Drawn</p>
+              <p class="font-ox text-ox-xs">Cash disbursed </p>
               <p class="font-ox font-bold text-left text-ox-lg">
                 {{ formatCurrency(totalCashDrawn) }}
               </p>
@@ -22,9 +22,10 @@
             class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]"
           >
             <div>
-              <p class="font-ox text-ox-xs">Value of Ass. Sec</p>
+              <p class="font-ox text-ox-xs">Proportion %</p>
               <p class="font-ox font-bold text-left text-ox-lg">
-                  {{ formatCurrency(totalValueOfAssSec) }}
+                  <!-- {{ formatCurrency(totalValueOfAssSec) }} -->
+                    100%
               </p>
             </div>
           </div>
@@ -90,8 +91,8 @@
   const headers = [
     "S/N",
     "Bank",
-    "Cash Drawn",
-    "Value of Ass. Sec",
+    "Cash disbursed",
+    "Proportion %",
     "Management Fee Earned"
   ];
   
