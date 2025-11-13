@@ -156,9 +156,7 @@
   background-color: rgba(47, 128, 237, 0.1);
 }
 
-.about-bg {
-  background-image: url(../images/about-pattern.svg);
-}
+ 
 
 .text-stroke {
   -webkit-text-stroke: 1px #d82e2e; /* Adjust the width and color of the stroke */
