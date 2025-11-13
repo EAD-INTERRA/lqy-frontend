@@ -47,6 +47,8 @@ export interface BaseServiceInterface {
     getRoles(): Promise<GetRolesResponse>;
     getStatesByCountry(input:  GetStateInput): Promise<GetStateResponse>;
     getProfiles(): Promise<any>;
+      getBrokers(): Promise<GetProfileResponse>;
+
 }
 
 export class BaseService implements BaseServiceInterface {
@@ -55,6 +57,33 @@ export class BaseService implements BaseServiceInterface {
     constructor(base: AxiosInstance) {
         this.client = base;
     }
+
+     async getBrokers(): Promise<GetProfileResponse> {
+    try {
+      const tokenObj = localStorage.getItem("authToken");
+      let authToken = "";
+      if (tokenObj) {
+        try {
+          const parsed = JSON.parse(tokenObj);
+          authToken = parsed.value;
+        } catch {
+          authToken = tokenObj; // fallback if not JSON
+        }
+      }
+      if (!authToken) {
+        throw new Error("Authorization token is missing");
+      }
+      console.log("Authorization token:", authToken);
+      const response = await this.client.get("base/get_stakeholders?type=Broker&page=1&size=5", {
+    //   const response = await this.client.get("base", {
+        headers: { authorization: "Bearer " + authToken },
+      });
+      console.log("getBroker Response:", response);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 
     async getProfiles(): Promise<any> {
         try {
