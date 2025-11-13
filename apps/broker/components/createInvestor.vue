@@ -35,7 +35,7 @@
           <div>
             <label for="chn">CHN Number</label>
             <input id="chn" v-model="chn" type="text" maxlength="12" placeholder="Enter CHN number"
-              class="w-full p-2 border rounded-md bg-black/5" />
+              class="w-full p-2 border rounded-md bg-black/5" @input="onInput" />
             <p v-if="errors.chn" class="text-red-500 text-sm mt-1">{{ errors.chn }}</p>
           </div>
           <div>
@@ -58,8 +58,7 @@
           </div>
           <div>
             <label for="bank_id">Bank</label>
-            <select id="bank_id" v-model="bank_id"
-              class="w-full p-2 border rounded-md bg-black/5">
+            <select id="bank_id" v-model="bank_id" class="w-full p-2 border rounded-md bg-black/5">
               <option value="" disabled selected>Select a bank</option>
               <option v-for="bank in banks" :key="bank.id" :value="bank.id">{{ bank.name }}</option>
             </select>
@@ -67,25 +66,21 @@
           <div>
             <label for="password">Password</label>
             <div class="relative">
-              <input
-                id="password"
-                v-model="password"
-                :type="showPassword ? 'text' : 'password'"
-                placeholder="Enter password"
-                class="w-full p-2 border rounded-md bg-black/5 pr-10"
-              />
-              <button
-                type="button"
-                class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                @click="showPassword = !showPassword"
-                tabindex="-1"
-              >
-                <svg v-if="showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              <input id="password" v-model="password" :type="showPassword ? 'text' : 'password'"
+                placeholder="Enter password" class="w-full p-2 border rounded-md bg-black/5 pr-10" />
+              <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                @click="showPassword = !showPassword" tabindex="-1">
+                <svg v-if="showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
-                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.907-4.568M6.634 6.634A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.956 9.956 0 01-4.818 5.626M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.907-4.568M6.634 6.634A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.956 9.956 0 01-4.818 5.626M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
                 </svg>
               </button>
@@ -155,6 +150,12 @@ const getStateByCode = async () => {
     states.value = (await $services.auth.getStatesByCountry({ country_code: country_code.value })).body;
   }
 };
+
+// Allow only letters and numbers
+function onInput(e) {
+  e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
+  chn.value = e.target.value; // update v-model manually
+}
 
 // Reset form fields + errors
 const resetForm = () => {

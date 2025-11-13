@@ -59,7 +59,7 @@
               <span>{{ row.values[2] }}</span>
             </template>
             <template #cell-3="{ row }">
-              <span>{{ row.values[3] }}</span>
+              <span>{{ row.values[3] }} %</span>
             </template>
             <template #cell-4="{ row }">
               <span>{{ row.values[4] }}</span>
@@ -110,10 +110,16 @@
     "Wema Bank PLC",
     "Unity Bank PLC"
   ];
+
+  function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
   function generateBankData() {
     const banksData = nigerianBanks.map((bank, index) => {
       const cashDrawn = Math.floor(Math.random() * (5_000_000 - 500_000 + 1)) + 500_000; // 0.5M - 5M NGN
-      const valueOfAssSec = Math.floor(cashDrawn * (Math.random() * (1.5 - 1.0) + 1.0)); // 1x to 1.5x of cash drawn
+      // const valueOfAssSec = Math.floor(cashDrawn * (Math.random() * (1.5 - 1.0) + 1.0)); // 1x to 1.5x of cash drawn
+      const valueOfAssSec = randomNumber(10, 100);
       const managementFeeRate = (Math.random() * (5 - 1) + 1) / 100; // 1% to 5%
       const managementFeeEarned = Math.round(cashDrawn * managementFeeRate);
   
@@ -162,7 +168,8 @@
         request.sn,
         request.bank,
         formatCurrency(request.cashDrawn),
-        formatCurrency(request.valueOfAssSec),
+        // formatCurrency(request.valueOfAssSec),
+        (request.valueOfAssSec),
         formatCurrency(request.managementFeeEarned),
       ],
       raw: request,

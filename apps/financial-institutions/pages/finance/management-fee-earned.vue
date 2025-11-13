@@ -16,7 +16,8 @@
             <span>{{ row.values[0] }}</span>
           </template>
           <template #cell-1="{ row }">
-            <span class="font-bold font-ox">{{ row.values[1] }}</span>
+            <NuxtLink
+             :to="`/capital-broker?company_name=${row.values[1]}&cash=${row.values[2]}&asset=${row.values[3]}&ml=${row.values[4]}`" class="font-bold font-ox">{{ row.values[1] }}</NuxtLink>
           </template>
           <template #cell-2="{ row }">
             <span>{{ row.values[2] }}</span>
@@ -60,9 +61,17 @@ const headers = [
 ];
 
 const nigerianBanks = [
-  "John Doe", "Jane Smith", "Alex Hum", "Chris Xi", "Taylor Swift", "Jordan Michael", "Morgan Foxx", "Pat Brad", "Sam Fu", "Lee Xin"
+  "ARM Securities Limited",
+  "Meristem Securities Limited",
+  "Chapel Hill Denham Securities",
+  "Afrinvest Securities Limited",
+  "Cordros Capital Limited",
+  "FSDH Securities Limited",
+  "Stanbic IBTC Stockbrokers",
+  "United Capital Securities Limited",
+  "Vetiva Capital Management",
+  "CSL Stockbrokers Limited"
 ];
-
 function generateBankData() {
   const banksData = nigerianBanks.map((bank, index) => {
     const cashDrawn = Math.floor(Math.random() * (5_000_000 - 500_000 + 1)) + 500_000; // 0.5M - 5M NGN

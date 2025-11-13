@@ -74,8 +74,8 @@ export class BaseService implements BaseServiceInterface {
         throw new Error("Authorization token is missing");
       }
       console.log("Authorization token:", authToken);
-    //   const response = await this.client.get("admin/get_stakeholders?type=Broker&page=1&size=5", {
-      const response = await this.client.get("base", {
+      const response = await this.client.get("base/get_stakeholders?type=Broker&page=1&size=5", {
+    //   const response = await this.client.get("base", {
         headers: { authorization: "Bearer " + authToken },
       });
       console.log("getBroker Response:", response);

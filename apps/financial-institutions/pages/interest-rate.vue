@@ -23,16 +23,20 @@
             <span>{{ row.values[0] }}</span>
           </template>
           <template #cell-1="{ row }">
-            <span>{{ row.values[1] }}</span>
+            <NuxtLink
+             :to="`/capital-broker?company_name=${row.values[1]}&cash=${row.values[2]}&asset=${row.values[3]}&ml=${row.values[4]}`" class="font-bold font-ox">{{ row.values[1] }}</NuxtLink>
           </template>
           <template #cell-2="{ row }">
             <span>{{ row.values[2] }}</span>
           </template>
           <template #cell-3="{ row }">
-            <span>{{ row.values[3] }}</span>
+            <span>{{ row.values[3] }} %</span>
           </template>
           <template #cell-4="{ row }">
             <span>{{ row.values[4] }}</span>
+          </template>
+          <template #cell-5="{ row }">
+            <span>{{ row.values[5] }}</span>
           </template>
         </BaseTable>
 
@@ -56,6 +60,7 @@ import BaseTable from "../../../packages/ui/components/BaseTable.vue";
 import BasePagination from "../../../packages/ui/components/BasePagination.vue";
 // Table headers
 const headers = [
+  "S/N",
   "Brokers",
   "Cash Disbursed (₦)",
   "Proportion of Funds (%)",
@@ -64,7 +69,16 @@ const headers = [
 
 // Random generators
 const banks = [
-  "John Doe", "Jane Smith", "Alex Hum", "Chris Xi", "Taylor Swift", "Jordan Michael", "Morgan Foxx", "Pat Brad", "Sam Fu", "Lee Xin"
+   "ARM Securities Limited",
+  "Meristem Securities Limited",
+  "Chapel Hill Denham Securities",
+  "Afrinvest Securities Limited",
+  "Cordros Capital Limited",
+  "FSDH Securities Limited",
+  "Stanbic IBTC Stockbrokers",
+  "United Capital Securities Limited",
+  "Vetiva Capital Management",
+  "CSL Stockbrokers Limited"
 ];
 
 function randomNumber(min, max) {
@@ -76,6 +90,7 @@ const totalRows = 50;
 const rows = ref(
   Array.from({ length: totalRows }, (_, i) => ({
     values: [
+     banks.length  + 1,
       banks[randomNumber(0, banks.length - 1)],
       randomNumber(1000000, 5000000).toLocaleString(),
       randomNumber(10, 100),
@@ -94,9 +109,18 @@ const totalCount = computed(() => rows.value.length);
 const totalPages = computed(() => Math.ceil(totalCount.value / pageSize));
 const startItem = computed(() => (currentPage.value - 1) * pageSize + 1);
 const endItem = computed(() => Math.min(currentPage.value * pageSize, totalCount.value));
-const paginatedRows = computed(() =>
-  rows.value.slice((currentPage.value - 1) * pageSize, currentPage.value * pageSize)
-);
+const paginatedRows = computed(() => {
+  const startIndex = (currentPage.value - 1) * pageSize;
+  return rows.value
+    .slice(startIndex, startIndex + pageSize)
+    .map((row, i) => ({
+      ...row,
+      values: [
+        startIndex + i + 1, // ✅ Proper serial number
+        ...row.values.slice(1),
+      ],
+    }));
+});
 
 function setCurrentPage(page) {
   currentPage.value = page;

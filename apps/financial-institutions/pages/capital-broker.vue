@@ -48,8 +48,8 @@
                     </button> -->
                 </div>
                 <BaseTable :headers="headers" :rows="paginatedRows" :loading="loading" :showCheckbox="false" class="">
-                    <template #cell-0="{ row, index }">
-                        <span>{{ (currentPage - 1) * pageSize + index + 1 }}</span>
+                    <template #cell-0="{ row }">
+                        <span>{{ row.values[0] }}</span>
                     </template>
                     <template #cell-1="{ row }">
                         <span>{{ row.values[1] }}</span>
