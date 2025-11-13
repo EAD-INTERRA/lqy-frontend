@@ -123,12 +123,7 @@
   }
 }
 
-.wws-banner-bg {
-  background-image: url(../images/wws-pattern.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
+  
 .join-us-bg {
   background-color: #fdf5f5;
 }
