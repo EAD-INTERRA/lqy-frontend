@@ -8,7 +8,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
                 Back
-            </NuxtLink>
+            </button>
 
             <!-- Title and Actions -->
             <div class="flex items-center justify-between">

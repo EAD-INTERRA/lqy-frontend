@@ -78,7 +78,7 @@
                             View
                         </NuxtLink> -->
                          <NuxtLink
-                            :to="`/capital-broker?company_name=${row.values[1] || ''}`"
+                            :to="`/capital-broker?company_name=${row.values[1]}`"
                             class=" font-semibold text-red-500 px-4 py-1 rounded hover:bg-red-50">
                             View
                         </NuxtLink>
