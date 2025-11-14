@@ -49,7 +49,7 @@
           </template>
           <template #cell-1="{ row }">
             <NuxtLink
-              :to="`/capital-broker?company_name=${row.values[1]}&cash=${row.values[2]}&asset=${row.values[3]}&ml=${row.values[4]}`"
+              :to="`/capital-broker?company_name=${row.values[1]}`"
               class="font-bold font-ox">{{ row.values[1] }}</NuxtLink>
           </template>
           <template #cell-2="{ row }">
