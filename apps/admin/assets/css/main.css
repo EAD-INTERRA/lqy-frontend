@@ -128,12 +128,7 @@
   background-color: #fdf5f5;
 }
 
-.guides-bg {
-  background-image: url(../images/Spiral-Dots.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
+   
 
 .tax-guide-amber {
   background-color: #fef4eb;
