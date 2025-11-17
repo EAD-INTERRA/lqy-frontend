@@ -208,9 +208,9 @@ const submitForm = async () => {
       first_name: firstName.value,
       last_name: lastName.value,
       email: email.value,
-      country_id: country_id.value,
+      country_id: Number(country_id.value),
       state_id: state_id.value,
-      user_type: "Investor",
+      // user_type: "Investor",
       bank_id: bank_id.value,
       password: password.value
     }
