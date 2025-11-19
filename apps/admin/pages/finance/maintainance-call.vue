@@ -1,104 +1,90 @@
 <template>
-    <div class="p-4 space-y-6">
-      <div class="flex justify-between" v-if="activeTab === 1">
-        <div class="text-xl text-[#FF0000] font-bold mb-4 font-ox">
-          Maintainance Call
-        </div>
+  <div class="p-4 space-y-6">
+    <div class="flex justify-between" v-if="activeTab === 1">
+      <div class="text-xl text-[#FF0000] font-bold mb-4 font-ox">
+        Maintainance Call
       </div>
-  
-      <section v-if="activeTab === 1" class="mb-4">
-        <section class="grid grid-cols-4 w-full gap-6 mb-4">
-          <div
-            class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]"
-          >
-            <div>
-              <p class="font-ox text-ox-xs">Cash Drawn</p>
-              <p class="font-ox font-bold text-left text-ox-lg">
-                {{ formatCurrency(totalCashDrawn) }}
-              </p>
-            </div>
+    </div>
+
+    <section v-if="activeTab === 1" class="mb-4">
+      <section class="grid grid-cols-4 w-full gap-6 mb-4">
+        <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+          <div>
+            <p class="font-ox text-ox-xs">Cash Drawn</p>
+            <p class="font-ox font-bold text-left text-ox-lg">
+              {{ formatCurrency(totalCashDrawn) }}
+            </p>
           </div>
-          <div
-            class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]"
-          >
-            <div>
-              <p class="font-ox text-ox-xs">Value of Ass. Sec</p>
-              <p class="font-ox font-bold text-left text-ox-lg">
-                {{ formatCurrency(totalValueOfAssSec) }}
-              </p>
-            </div>
+        </div>
+        <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+          <div>
+            <p class="font-ox text-ox-xs">Value of Ass. Sec</p>
+            <p class="font-ox font-bold text-left text-ox-lg">
+              {{ formatCurrency(totalValueOfAssSec) }}
+            </p>
           </div>
-          <div
-            class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]"
-          >
-            <div>
-              <p class="font-ox text-ox-xs">ML Value</p>
-              <p class="font-ox font-bold text-left text-ox-lg">
-                {{ formatCurrency(totalMLValue) }}
-              </p>
-            </div>
+        </div>
+        <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+          <div>
+            <p class="font-ox text-ox-xs">ML Value</p>
+            <p class="font-ox font-bold text-left text-ox-lg">
+              {{ formatCurrency(totalMLValue) }}
+            </p>
           </div>
-           <div
-            class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]"
-          >
-            <div>
-              <p class="font-ox text-ox-xs">SL Value</p>
-              <p class="font-ox font-bold text-left text-ox-lg">
-                {{ formatCurrency(totalSLValue) }}
-              </p>
-            </div>
+        </div>
+        <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+          <div>
+            <p class="font-ox text-ox-xs">SL Value</p>
+            <p class="font-ox font-bold text-left text-ox-lg">
+              {{ formatCurrency(totalSLValue) }}
+            </p>
           </div>
-        </section>
-  
-        <div class="bg-white shadow-lg p-5 rounded-lg mb-2.5">
-          <BaseTable
-            :headers="headers"
-            :rows="paginatedRows"
-            :loading="false"
-            :showCheckbox="false"
-            class="!font-ox !font-bold m-2"
-          >
-            <template #cell-0="{ row }">
-              <span>{{ row.values[0] }}</span>
-            </template>
-            <template #cell-1="{ row }">
-              <span class="font-bold font-ox">{{ row.values[1] }}</span>
-            </template>
-            <template #cell-2="{ row }">
-              <span>{{ row.values[2] }}</span>
-            </template>
-            <template #cell-3="{ row }">
-              <span>{{ row.values[3] }}</span>
-            </template>
-            <template #cell-4="{ row }">
-              <span>{{ row.values[4] }}</span>
-            </template>
-          </BaseTable>
-  
-          <BasePagination
-            :currentPage="currentPage"
-            :totalPages="totalPages"
-            :startItem="startItem"
-            :endItem="endItem"
-            :totalCount="totalCount"
-            @update:page="setCurrentPage"
-          />
         </div>
       </section>
-  
-      <fundingRequestComponent v-if="activeTab === 2" @go-back="activeTab = 1" />
-      <requestDetailsComponent v-if="activeTab === 3" @go-back="activeTab = 1" />
-    </div>
+
+      <div class="bg-white shadow-lg p-5 rounded-lg mb-2.5">
+        <BaseTable :headers="headers" :rows="paginatedRows" :loading="false" :showCheckbox="false"
+          class="!font-ox !font-bold m-2">
+          <template #cell-0="{ row }">
+            <span>{{ row.values[0] }}</span>
+          </template>
+          <template #cell-1="{ row }">
+            <NuxtLink
+              :to="`/capital-broker?company_name=${row.values[1]}`" class="font-bold font-ox">{{ row.values[1] }}</NuxtLink>
+          </template>
+          <template #cell-2="{ row }">
+            <span>{{ row.values[2] }}</span>
+          </template>
+          <template #cell-3="{ row }">
+            <span>{{ row.values[3] }}</span>
+          </template>
+          <template #cell-4="{ row }">
+            <span>{{ row.values[4] }}</span>
+          </template>
+          <template #cell-5="{ row }">
+            <span>{{ row.values[5] }}</span>
+          </template>
+        </BaseTable>
+
+        <BasePagination :currentPage="currentPage" :totalPages="totalPages" :startItem="startItem" :endItem="endItem"
+          :totalCount="totalCount" @update:page="setCurrentPage" />
+      </div>
+    </section>
+
+    <fundingRequestComponent v-if="activeTab === 2" @go-back="activeTab = 1" />
+    <requestDetailsComponent v-if="activeTab === 3" @go-back="activeTab = 1" />
+  </div>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from "vue";
-  import BaseTable from "../../../packages/ui/components/BaseTable.vue";
-  import BasePagination from "../../../packages/ui/components/BasePagination.vue";
-  
-  const activeTab = ref(1);
-  
-  const headers = [
+import { ref, computed } from "vue";
+import BaseTable from "../../../packages/ui/components/BaseTable.vue";
+import BasePagination from "../../../packages/ui/components/BasePagination.vue";
+
+const activeTab = ref(1);
+
+const headers = [
   "S/N",
+  "Broker",
   "Investor Name",
   "CHN",
   "Cash Drawn",
@@ -120,7 +106,18 @@ const investorNames = [
   "Ifeanyi Onwu",
   "Halima Abubakar",
 ];
-
+const nigerianBrokers = [
+  "ARM Securities Limited",
+  "Meristem Securities Limited",
+  "Chapel Hill Denham Securities",
+  "Afrinvest Securities Limited",
+  "Cordros Capital Limited",
+  "FSDH Securities Limited",
+  "Stanbic IBTC Stockbrokers",
+  "United Capital Securities Limited",
+  "Vetiva Capital Management",
+  "CSL Stockbrokers Limited"
+];
 // Generate random CHNs like CHN001, CHN002...
 function generateCHN(index: number) {
   return `CHN${(index + 1).toString().padStart(3, "0")}`;
@@ -128,6 +125,7 @@ function generateCHN(index: number) {
 
 function generateInvestorData() {
   return investorNames.map((name, index) => {
+    const broker = nigerianBrokers[index % nigerianBrokers.length];
     const cashDrawn = Math.floor(Math.random() * (5_000_000 - 500_000 + 1)) + 500_000; // 0.5M to 5M NGN
     const valueOfAssSec = Math.floor(cashDrawn * (Math.random() * (1.5 - 1.0) + 1.0)); // 1x to 1.5x of cash drawn
     const mlValue = Math.floor(cashDrawn * (Math.random() * (0.2 - 0.1) + 0.1)); // 10% to 20% of cash drawn
@@ -136,6 +134,7 @@ function generateInvestorData() {
 
     return {
       sn: index + 1,
+      broker, 
       investorName: name,
       chn: generateCHN(index),
       cashDrawn,
@@ -182,6 +181,7 @@ const paginatedRows = computed(() => {
   return allRequests.value.slice(start, end).map((request) => ({
     values: [
       request.sn,
+      request.broker, 
       request.investorName,
       request.chn,
       formatCurrency(request.cashDrawn),
@@ -197,15 +197,14 @@ const paginatedRows = computed(() => {
 function setCurrentPage(page: number) {
   if (page >= 1 && page <= totalPages.value) currentPage.value = page;
 }
-  
-  const currencyFormatter = new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 2,
-  });
-  
-  function formatCurrency(value: number) {
-    return currencyFormatter.format(value);
-  }
-  </script>
-  
+
+const currencyFormatter = new Intl.NumberFormat("en-NG", {
+  style: "currency",
+  currency: "NGN",
+  maximumFractionDigits: 2,
+});
+
+function formatCurrency(value: number) {
+  return currencyFormatter.format(value);
+}
+</script>

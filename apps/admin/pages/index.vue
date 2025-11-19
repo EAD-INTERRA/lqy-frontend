@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 space-y-6 mx-auto ">
-    <section class="grid grid-cols-2 lg:grid-cols-4 w-full lg:mr-6 gap-3">
+    <section class="grid grid-cols-2 lg:grid-cols-5 w-full lg:mr-6 gap-3">
     <div
       v-for="(item, index) in stats"
       :key="index"
@@ -130,6 +130,12 @@ const stats = ref<StatItem[]>([
   {
     label: "Orders Daily",
     icon: "/assets/images/daily-order.svg",
+    value: 0,
+    change: 0,
+  },
+  {
+    label: "Marginable Accounts",
+    icon: "/assets/images/stakeholders.svg",
     value: 0,
     change: 0,
   },
