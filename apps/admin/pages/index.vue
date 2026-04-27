@@ -93,6 +93,13 @@ onMounted(async () => {
     const pkg = await import("vue-toastification");
     const useToast = pkg.useToast;
     toast = useToast();
+
+    // Extract token from URL and store in localStorage
+    const token = route.query.token;
+    if (token) {
+      localStorage.setItem("authToken", token as string);
+      console.log("Token stored in localStorage:", token);
+    }
   }
 
   refreshData(); // first load

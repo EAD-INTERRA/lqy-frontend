@@ -161,7 +161,14 @@ if (process.client) {
   authStore.checkAuth();
 }
 
-
+onMounted(async () => {
+   // Extract token from URL and store in localStorage
+    const token = route.query.token;
+    if (token) {
+      localStorage.setItem("authToken", token as string);
+      console.log("Token stored in localStorage:", token);
+    }       
+});
 
 const recentTrades = ref([
   { action: "Buy AAPL", email: "investor@mail.com", time: "04:00 PM", status: "accepted" },
