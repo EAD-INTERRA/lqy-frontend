@@ -119,6 +119,12 @@ onMounted(async () => {
         // const response = await $services.base.getProfiles();
         // console.log("Profiles fetched:", response);
         // profiles.value = response.body.results || [];
+         // Extract token from URL and store in localStorage
+    const token = route.query.token;
+    if (token) {
+      localStorage.setItem("authToken", token as string);
+      console.log("Token stored in localStorage:", token);
+    }
         // Fetch pending margin requests
         const pendingRequests = await $services.base.getPendingMarginRequests();
         // console.log("Pending Margin Requests fetched:", pendingRequests);
