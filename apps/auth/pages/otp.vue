@@ -154,7 +154,7 @@ const submitForm = async () => {
   try {
     const result = await $services.auth.verify_login(loginData);
     console.log("login response", result)
-    alert(JSON.stringify(result))  
+    // alert(JSON.stringify(result))  
     if (result.message === "SUCCESSFUL") {
       localStorage.setItem("credentials", JSON.stringify(result));
       const authToken = result.body?.access_token;
