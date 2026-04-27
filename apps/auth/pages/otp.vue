@@ -159,7 +159,6 @@ const submitForm = async () => {
       localStorage.setItem("credentials", JSON.stringify(result));
       const authToken = result.body?.access_token;
       localStorage.setItem("authToken", authToken);
-      // Redirect logic
       const config = useRuntimeConfig();
       const redirectionUrls = {
         LQY_Admin: config.public.admin,
