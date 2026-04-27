@@ -111,6 +111,12 @@ export class ShareholderService implements ShareholderServiceInterface {
 
     async getShareholders(): Promise<GetShareholdersResponse> {
         try {
+            // Ensure token is available before making the API call
+            const token = localStorage.getItem("authToken");
+            console.log("Auth Token in getShareholders:", token);
+            if (!token) {
+                throw new Error("Authentication token is not available.");
+            }
             const response = await this.client.get('stakeholder', { headers: { authorization: "Bearer " + token } }) 
             console.log(response)
             return response.data   
@@ -121,6 +127,10 @@ export class ShareholderService implements ShareholderServiceInterface {
     
     async getShareholderById(shareholderId: number): Promise<GetShareholderResponse> {
         try {
+            const token = localStorage.getItem("authToken");
+            if (!token) {
+                throw new Error("Authentication token is not available.");
+            }
             const response = await this.client.get(`stakeholder/${shareholderId}`, { headers: { authorization: "Bearer " + token } }) 
             return response.data   
         } catch (error) {
@@ -130,9 +140,13 @@ export class ShareholderService implements ShareholderServiceInterface {
 
     async approveShareholder(shareholderId: number, input: ApproveShareholderInput): Promise<ApproveShareholderResponse> {
         try {
+            const token = localStorage.getItem("authToken");
+            if (!token) {
+                throw new Error("Authentication token is not available.");
+            }
             const response = await this.client.put(`stakeholder/${shareholderId}/status`, input, {
-                 headers: { authorization: "Bearer " + token }
-             });
+                headers: { authorization: "Bearer " + token }
+            });
             return response.data   
         } catch (error) {
             throw error 
