@@ -77,7 +77,7 @@
 
 // const pinia = createPinia();
 // pinia.use(useAuthStore);
-// const route = useRoute();
+const route = useRoute();
 // const authStore = useAuthStore(pinia);
 
 // if (process.client) {
