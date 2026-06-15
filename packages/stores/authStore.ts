@@ -50,18 +50,13 @@ export const useAuthStore = defineStore({
         return true;
       }
     },
-    BearerToken(){
-      const getToken = JSON.parse(localStorage.getItem('authToken'));
-      // getToken = getToken.value);
-      let token = ''
-      if (getToken && getToken.value) {
-        token = getToken.value;
+    BearerToken() {
+      const token = getWithExpiry('authToken');
+      if (token) {
         return token;
-        
-    } else {
-        console.log("Token is null or undefined.");
-    }
-      
+      }
+      console.log("Token is null or undefined.");
+      return '';
     }
   },
   mutations: {
@@ -96,13 +91,19 @@ export function getWithExpiry(key: string): string | null {
     return null;
   }
 
-  const item = JSON.parse(itemStr);
-  const now = new Date();
-
-  if (now.getTime() > item.expiry) {
-    localStorage.removeItem(key);
-    return null;
+  try {
+    const item = JSON.parse(itemStr);
+    if (item && typeof item === 'object' && 'expiry' in item && 'value' in item) {
+      const now = new Date();
+      if (now.getTime() > item.expiry) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return item.value;
+    }
+  } catch (e) {
+    // If parsing fails, it's likely a raw string (e.g. raw JWT token)
   }
 
-  return item.value;
+  return itemStr;
 }

@@ -1,50 +1,98 @@
 <template>
-  <section class="hero bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative">
+  <section
+    class="hero bg min-h-screen flex items-center justify-center px-4 py-8 md:px-16 lg:px-32 relative"
+  >
     <!-- Logo at top-left corner on md+ screens -->
-    <div class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10">
+    <div
+      class="hidden md:flex font-ubuntu text-[50px] font-bold absolute top-4 left-6 z-10"
+    >
       <h1 class="l-color">L</h1>
       <h1 class="customWhite">Q</h1>
       <h1 class="y-color">Y</h1>
     </div>
     <div class="w-full max-w-md md:max-w-xl mx-auto">
-      <div class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] p-6 sm:p-10 md:p-12 mt-8">
-        <h3 class="customWhite pb-8 text-center font-ubuntu text-2xl font-bold">OTP</h3>
+      <div
+        class="bg-theme-lb border border-theme-lb shadow-lg rounded-[8px] p-6 sm:p-10 md:p-12 mt-8"
+      >
+        <h3 class="customWhite pb-8 text-center font-ubuntu text-2xl font-bold">
+          OTP
+        </h3>
         <form @submit.prevent="submitForm">
           <div class="flex flex-col w-full">
-            <label class="font-ubuntu customWhite text-sm mb-3 text-center font-normal leading-normal">
+            <label
+              class="font-ubuntu customWhite text-sm mb-3 text-center font-normal leading-normal"
+            >
               Enter the OTP sent to your mail.
             </label>
             <div class="flex justify-center gap-2 mb-4">
               <template v-for="(otp, index) in otps" :key="index">
-                <input class="border border-gray-300 bg-gray-100 text-gray-900 text-md md:text-lg font-medium rounded-lg text-center
-                  w-[35px] md:w-[65px] h-[35px] md:h-[65px]
-                  focus:outline-none focus:border-theme-primary transition duration-150" type="tel" maxlength="1"
-                  v-model="otps[index]" @input="handleInput(index)" @keydown.backspace="handleBackspace(index)"
-                  @paste="handlePaste($event)" placeholder="0" required />
-
+                <input
+                  class="border border-gray-300 bg-gray-100 text-gray-900 text-md md:text-lg font-medium rounded-lg text-center w-[35px] md:w-[65px] h-[35px] md:h-[65px] focus:outline-none focus:border-theme-primary transition duration-150"
+                  type="tel"
+                  maxlength="1"
+                  v-model="otps[index]"
+                  @input="handleInput(index)"
+                  @keydown.backspace="handleBackspace(index)"
+                  @paste="handlePaste($event)"
+                  placeholder="0"
+                  required
+                />
               </template>
             </div>
           </div>
 
-          <div class="flex w-full flex-col items-center justify-center text-center mt-4">
+          <div
+            class="flex w-full flex-col items-center justify-center text-center mt-4"
+          >
             <button
               class="font-ubuntu form-submit w-[60%] h-[40px] md:p-2.5 dark text-sm md:text-lg hover:bg-gray-200 hover:shadow-lg font-normal leading-normal flex items-center justify-center"
-              :disabled="loading" type="submit">
+              :disabled="loading"
+              type="submit"
+            >
               <span v-if="loading" class="animate-spin mr-2">
-                <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v8z"
+                  ></path>
                 </svg>
               </span>
-              <span>{{ loading ? 'Logging in...' : 'Verify OTP' }}</span>
+              <span>{{ loading ? "Logging in..." : "Verify OTP" }}</span>
             </button>
-            <p class="text-center mt-4 flex justify-between items-center w-full">
-              <button @click="resendOtp" class="customWhite font-bold font-ubuntu "
-                :class="timeLeft > 0 ? `cursor-not-allowed opacity-50` : `cursor-pointer`" :disabled="timeLeft > 0">
+            <p
+              class="text-center mt-4 flex justify-between items-center w-full"
+            >
+              <button
+                @click="resendOtp"
+                class="customWhite font-bold font-ubuntu"
+                :class="
+                  timeLeft > 0
+                    ? `cursor-not-allowed opacity-50`
+                    : `cursor-pointer`
+                "
+                :disabled="timeLeft > 0"
+              >
                 Resend Code
               </button>
 
-              <span v-if="timeLeft > 0" class="ml-2 text-white font-ubuntu font-semibold">
+              <span
+                v-if="timeLeft > 0"
+                class="ml-2 text-white font-ubuntu font-semibold"
+              >
                 (Retry in {{ formattedTime }})
               </span>
             </p>
@@ -103,7 +151,8 @@ const handleInput = (index: number) => {
 
   if (/^\d$/.test(value)) {
     if (index < 5) {
-      const nextInput = document.querySelectorAll("input[type='tel']")[index + 1];
+      const nextInput =
+        document.querySelectorAll("input[type='tel']")[index + 1];
       nextInput && (nextInput as HTMLElement).focus();
     } else if (index === 5) {
       const isComplete = otps.value.every((digit) => digit.trim() !== "");
@@ -131,7 +180,8 @@ const handlePaste = (event: ClipboardEvent) => {
       otps.value[index] = digit;
     });
 
-    const nextInput = document.querySelectorAll("input[type='tel']")[digits.length - 1];
+    const nextInput =
+      document.querySelectorAll("input[type='tel']")[digits.length - 1];
     nextInput && (nextInput as HTMLElement).focus();
 
     if (digits.length === 6) {
@@ -153,8 +203,8 @@ const submitForm = async () => {
 
   try {
     const result = await $services.auth.verify_login(loginData);
-    console.log("login response", result)
-    // alert(JSON.stringify(result))  
+    console.log("login response", result);
+    // alert(JSON.stringify(result))
     if (result.message === "SUCCESSFUL") {
       localStorage.setItem("credentials", JSON.stringify(result));
       const authToken = result.body?.access_token;
@@ -170,9 +220,8 @@ const submitForm = async () => {
         Financial_Institutions: config.public.Financial_Institutions,
       };
 
-
       const role = result.body.role;
-      console.log(role)
+      console.log(role);
       if (redirectionUrls[role]) {
         window.location.href = redirectionUrls[role] + "?token=" + authToken;
         localStorage.setItem("Token", authToken);

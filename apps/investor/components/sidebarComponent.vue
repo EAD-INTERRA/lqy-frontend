@@ -31,6 +31,14 @@
             <img src="~/assets/images/trade-icon.svg" alt="" />
             Portfolio
           </NuxtLink>
+          <!-- Wallet -->
+          <NuxtLink to="/wallet"
+            class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"
+            exact-active-class="text-theme-as  rounded-md"
+            :class="{ 'bg-[rgba(255,255,255,0.1)]': $route.path === '/wallet' }">
+            <img src="~/assets/images/finance-icon.svg" alt="" />
+            Wallet
+          </NuxtLink>
           <!-- Settings -->
           <NuxtLink to="/settings"
             class="flex flex-row w-[250px] hover:bg-[rgba(255,255,255,0.1)] rounded-md  text-ox items-center gap-2 px-2 py-2 font-bold text-white text-opacity-50 cursor-pointer"

@@ -51,12 +51,19 @@ function getWithExpiry(key) {
     if (!itemStr) {
         return null;
     }
-    var item = JSON.parse(itemStr);
-    var now = new Date();
-    if (now.getTime() > item.expiry) {
-        localStorage.removeItem(key);
-        return null;
+    try {
+        var item = JSON.parse(itemStr);
+        if (item && typeof item === 'object' && 'expiry' in item && 'value' in item) {
+            var now = new Date();
+            if (now.getTime() > item.expiry) {
+                localStorage.removeItem(key);
+                return null;
+            }
+            return item.value;
+        }
+    } catch (e) {
+        // If parsing fails, it's likely a raw string (e.g. raw JWT token)
     }
-    return item.value;
+    return itemStr;
 }
 exports.getWithExpiry = getWithExpiry;
