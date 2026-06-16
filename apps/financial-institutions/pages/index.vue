@@ -113,7 +113,10 @@
 <script setup lang="ts">
 import BaseTable from "../../../packages/ui/components/BaseTable.vue";
 import BasePagination from "../../../packages/ui/components/BasePagination.vue";
+import { useRoute } from "vue-router";
 
+
+const route = useRoute();
 
 const headers = [
   "S/N",

@@ -20,7 +20,7 @@
       Back
     </button>
       <section class="mb-4">
-        <section class="grid grid-cols-2 w-full gap-6 mb-4">
+        <section class="grid grid-cols-3 w-full gap-6 mb-4">
     <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
       <div>
         <p class="font-ox text-ox-xs">Number of Accounts Funded</p>
@@ -31,6 +31,12 @@
       <div>
         <p class="font-ox text-ox-xs">Total Funded Amount</p>
         <p class="font-ox font-bold text-left text-ox-lg">{{ formatCurrency(totalFundedAmount) }}</p>
+      </div>
+    </div>
+    <div class="bg-white shadow-lg flex gap-6 rounded-[12px] w-full px-[30px] py-[16px]">
+      <div>
+        <p class="font-ox text-ox-xs">Total Loan Paid</p>
+        <p class="font-ox font-bold text-left text-ox-lg text-green-600">{{ formatCurrency(totalLoanPaid) }}</p>
       </div>
     </div>
   </section>
@@ -51,6 +57,42 @@
             </template>
             <template #cell-2="{ row }">
               <span>{{ row.values[2] }}</span>
+            </template>
+            <template #cell-3="{ row }">
+              <span class="font-bold text-green-600">{{ row.values[3] }}</span>
+            </template>
+            <template #cell-4="{ row }">
+              <!-- Loan Paid Progress Bar -->
+              <div class="flex items-center gap-2 min-w-[160px]">
+                <div class="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
+                  <div
+                    class="h-full rounded-full transition-all duration-500"
+                    :class="row.raw.paidPercent >= 100 ? 'bg-green-500' : row.raw.paidPercent >= 50 ? 'bg-blue-500' : 'bg-amber-500'"
+                    :style="{ width: Math.min(row.raw.paidPercent, 100) + '%' }"
+                  ></div>
+                </div>
+                <span class="text-ox-xs font-semibold text-gray-600 whitespace-nowrap">{{ row.raw.paidPercent }}%</span>
+              </div>
+            </template>
+            <template #cell-5="{ row }">
+              <span
+                v-if="row.raw.paidPercent >= 100"
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700"
+              >
+                Fully Paid
+              </span>
+              <span
+                v-else-if="row.raw.paidPercent >= 50"
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700"
+              >
+                In Progress
+              </span>
+              <span
+                v-else
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700"
+              >
+                Outstanding
+              </span>
             </template>
           </BaseTable>
   
@@ -73,11 +115,15 @@
   import BasePagination from "../../../packages/ui/components/BasePagination.vue";
   
   const activeTab = ref(1);
+  const loading = ref(false);
   
   const headers = [
   "S/N",
   "Account",
-  "Amount Funded"
+  "Loan Amount",
+  "Amount Paid",
+  "Repayment Progress",
+  "Status"
 ];
 
 // Helper: random account number generator
@@ -90,12 +136,21 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Generate random accounts
+// Generate random accounts with loan data
 const accounts = ref(
-  Array.from({ length: 15 }, () => ({
-    account: generateAccountNumber(),
-    amountFunded: randomInt(50000, 5000000) // NGN 50k - 5M
-  }))
+  Array.from({ length: 15 }, () => {
+    const loanAmount = randomInt(500000, 5000000);
+    // Some accounts fully paid, some partially, some just starting
+    const paidPercent = randomInt(5, 110); // allow up to 110 to simulate overpay (capped at 100 in display)
+    const cappedPercent = Math.min(paidPercent, 100);
+    const amountPaid = Math.round((loanAmount * cappedPercent) / 100);
+    return {
+      account: generateAccountNumber(),
+      amountFunded: loanAmount,
+      amountPaid: amountPaid,
+      paidPercent: cappedPercent,
+    };
+  })
 );
 
 const currentPage = ref(1);
@@ -105,8 +160,13 @@ const totalCount = computed(() => accounts.value.length);
 const totalFundedAmount = computed(() =>
   accounts.value.reduce((sum, acc) => sum + (acc.amountFunded || 0), 0)
 );
+const totalLoanPaid = computed(() =>
+  accounts.value.reduce((sum, acc) => sum + (acc.amountPaid || 0), 0)
+);
 
 const totalPages = computed(() => Math.ceil(totalCount.value / pageSize.value));
+const startItem = computed(() => (currentPage.value - 1) * pageSize.value + 1);
+const endItem = computed(() => Math.min(currentPage.value * pageSize.value, totalCount.value));
 
 const paginatedRows = computed(() => {
   const start = (currentPage.value - 1) * pageSize.value;
@@ -115,7 +175,10 @@ const paginatedRows = computed(() => {
     values: [
       start + index + 1, // S/N
       acc.account, // Account
-      formatCurrency(acc.amountFunded) // Amount Funded
+      formatCurrency(acc.amountFunded), // Loan Amount
+      formatCurrency(acc.amountPaid), // Amount Paid
+      null, // Progress bar (handled in template)
+      null, // Status (handled in template)
     ],
     raw: acc
   }));
@@ -125,7 +188,7 @@ function setCurrentPage(page) {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page;
   }
-}  
+}
   function openDetails(request) {
     // Here you can assign request to selectedRequest if needed
     activeTab.value = 3;
