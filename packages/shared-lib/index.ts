@@ -53,14 +53,20 @@ export function getWithExpiry(key: string): string | null {
     return null;
   }
 
-  const item = JSON.parse(itemStr);
-  const now = new Date();
-
-  if (now.getTime() > item.expiry) {
-    localStorage.removeItem(key);
-    return null;
+  try {
+    const item = JSON.parse(itemStr);
+    if (item && typeof item === 'object' && 'expiry' in item && 'value' in item) {
+      const now = new Date();
+      if (now.getTime() > item.expiry) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return item.value;
+    }
+  } catch (e) {
+    // If parsing fails, it's likely a raw string (e.g. raw JWT token)
   }
 
-  return item.value;
+  return itemStr;
 }
 
