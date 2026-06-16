@@ -111,6 +111,7 @@ function setCurrentPage(page: number) {
 const formatDate = (dateString: string) => {
   if (!dateString) return '';
   const date = new Date(dateString);
+  if (isNaN(date.getTime())) return '';
   const month = date.toLocaleString('en-US', { month: 'short' });
   const day = date.getDate();
   const year = date.getFullYear();
