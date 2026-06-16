@@ -1,28 +1,5 @@
 <template>
   <div class="p-8 flex flex-col space-y-6 gap-8 font-ox">
-    <!-- Inline Alert Message Banner (replaces toast) -->
-    <Transition name="alert-slide">
-      <div
-        v-if="alertMessage"
-        :class="[
-          'fixed top-6 left-1/2 -translate-x-1/2 z-[100] px-6 py-3.5 rounded-2xl shadow-xl font-semibold text-sm flex items-center gap-3 min-w-[320px] max-w-[500px] border backdrop-blur-md',
-          alertType === 'success' ? 'bg-green-50/95 text-green-800 border-green-200' : '',
-          alertType === 'error' ? 'bg-red-50/95 text-red-800 border-red-200' : '',
-          alertType === 'info' ? 'bg-blue-50/95 text-blue-800 border-blue-200' : '',
-          alertType === 'warning' ? 'bg-amber-50/95 text-amber-800 border-amber-200' : ''
-        ]"
-      >
-        <!-- Icon -->
-        <svg v-if="alertType === 'success'" class="w-5 h-5 flex-shrink-0 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <svg v-else-if="alertType === 'error'" class="w-5 h-5 flex-shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <svg v-else-if="alertType === 'warning'" class="w-5 h-5 flex-shrink-0 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-        <svg v-else class="w-5 h-5 flex-shrink-0 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span class="flex-1">{{ alertMessage }}</span>
-        <button @click="alertMessage = ''" class="ml-2 opacity-60 hover:opacity-100 transition-opacity">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-    </Transition>
     <!-- Header Section -->
     <section class="flex justify-between items-center mb-4">
       <div>
@@ -453,43 +430,31 @@
             <label class="block text-ox-xs font-semibold text-gray-700 mb-1.5"
               >Enter 4-Digit PIN</label
             >
-            <div class="relative">
-              <input
-                v-model="newPin"
-                :type="showNewPin ? 'text' : 'password'"
-                pattern="[0-9]{4}"
-                inputmode="numeric"
-                maxlength="4"
-                required
-                class="w-full text-center tracking-[1em] text-xl font-bold border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
-                placeholder="••••"
-              />
-              <button type="button" @click="showNewPin = !showNewPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                <svg v-if="!showNewPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
-              </button>
-            </div>
+            <input
+              v-model="newPin"
+              type="password"
+              pattern="[0-9]{4}"
+              inputmode="numeric"
+              maxlength="4"
+              required
+              class="w-full text-center tracking-[1em] text-xl font-bold border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="••••"
+            />
           </div>
           <div>
             <label class="block text-ox-xs font-semibold text-gray-700 mb-1.5"
               >Confirm 4-Digit PIN</label
             >
-            <div class="relative">
-              <input
-                v-model="confirmPin"
-                :type="showConfirmPin ? 'text' : 'password'"
-                pattern="[0-9]{4}"
-                inputmode="numeric"
-                maxlength="4"
-                required
-                class="w-full text-center tracking-[1em] text-xl font-bold border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
-                placeholder="••••"
-              />
-              <button type="button" @click="showConfirmPin = !showConfirmPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                <svg v-if="!showConfirmPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
-              </button>
-            </div>
+            <input
+              v-model="confirmPin"
+              type="password"
+              pattern="[0-9]{4}"
+              inputmode="numeric"
+              maxlength="4"
+              required
+              class="w-full text-center tracking-[1em] text-xl font-bold border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="••••"
+            />
           </div>
           <button
             type="submit"
@@ -620,40 +585,21 @@
             />
           </div>
 
-          <!-- Description / Narration -->
-          <div>
-            <label class="block text-ox-xs font-semibold text-gray-700 mb-1.5"
-              >Description / Narration</label
-            >
-            <textarea
-              v-model="withdrawalForm.description"
-              rows="2"
-              class="w-full border border-gray-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 text-ox-sm resize-none"
-              placeholder="e.g. Payment for services, Personal transfer..."
-            ></textarea>
-          </div>
-
           <!-- Transaction PIN -->
           <div>
             <label class="block text-ox-xs font-semibold text-gray-700 mb-1.5"
               >Enter Transaction PIN</label
             >
-            <div class="relative">
-              <input
-                v-model="withdrawalForm.pin"
-                :type="showWithdrawalPin ? 'text' : 'password'"
-                pattern="[0-9]{4}"
-                inputmode="numeric"
-                maxlength="4"
-                required
-                class="w-full text-center tracking-[1em] text-lg font-bold border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
-                placeholder="••••"
-              />
-              <button type="button" @click="showWithdrawalPin = !showWithdrawalPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                <svg v-if="!showWithdrawalPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
-              </button>
-            </div>
+            <input
+              v-model="withdrawalForm.pin"
+              type="password"
+              pattern="[0-9]{4}"
+              inputmode="numeric"
+              maxlength="4"
+              required
+              class="w-full text-center tracking-[1em] text-lg font-bold border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="••••"
+            />
           </div>
 
           <button
@@ -778,22 +724,16 @@
               <label class="block text-ox-xs font-semibold text-gray-700 mb-1.5"
                 >Enter Transaction PIN</label
               >
-              <div class="relative">
-                <input
-                  v-model="repaymentForm.pin"
-                  :type="showRepaymentPin ? 'text' : 'password'"
-                  pattern="[0-9]{4}"
-                  inputmode="numeric"
-                  maxlength="4"
-                  required
-                  class="w-full text-center tracking-[1em] text-lg font-bold border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
-                  placeholder="••••"
-                />
-                <button type="button" @click="showRepaymentPin = !showRepaymentPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                  <svg v-if="!showRepaymentPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                  <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
-                </button>
-              </div>
+              <input
+                v-model="repaymentForm.pin"
+                type="password"
+                pattern="[0-9]{4}"
+                inputmode="numeric"
+                maxlength="4"
+                required
+                class="w-full text-center tracking-[1em] text-lg font-bold border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="••••"
+              />
             </div>
 
             <button
@@ -899,12 +839,6 @@
                 selectedTx.details
               }}</span>
             </div>
-            <div v-if="selectedTx.description" class="flex justify-between">
-              <span class="text-gray-400">Narration</span>
-              <span class="font-bold text-gray-900 text-right max-w-[200px]">{{
-                selectedTx.description
-              }}</span>
-            </div>
             <!-- Dynamic Withdrawal Details -->
             <div
               v-if="selectedTx.recipient"
@@ -990,25 +924,13 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 
-// Inline alert message system (replaces toast)
-const alertMessage = ref("");
-const alertType = ref<"success" | "error" | "info" | "warning">("info");
-let alertTimeout: ReturnType<typeof setTimeout> | null = null;
-
-const showAlert = (message: string, type: "success" | "error" | "info" | "warning" = "info") => {
-  if (alertTimeout) clearTimeout(alertTimeout);
-  alertMessage.value = message;
-  alertType.value = type;
-  alertTimeout = setTimeout(() => {
-    alertMessage.value = "";
-  }, 4500);
-};
-
-// PIN visibility toggles
-const showNewPin = ref(false);
-const showConfirmPin = ref(false);
-const showWithdrawalPin = ref(false);
-const showRepaymentPin = ref(false);
+let toast = null;
+if (process.client) {
+  import("vue-toastification").then((pkg) => {
+    const useToast = pkg.useToast;
+    toast = useToast();
+  });
+}
 
 // Custom animation config
 const activeTab = ref("All");
@@ -1132,7 +1054,6 @@ const withdrawalForm = ref({
   accountName: "",
   amount: null as number | null,
   pin: "",
-  description: "",
 });
 
 const isVerifyingAccount = ref(false);
@@ -1168,7 +1089,7 @@ const handleAccountNumberInput = () => {
       withdrawalForm.value.bankName = banks[randomIndex];
       withdrawalForm.value.accountName = "John Doe";
 
-      showAlert("Account Details Verified Successfully!", "success");
+      if (toast) toast.success("Account Details Verified Successfully!");
     }, 1000);
   }
 };
@@ -1176,7 +1097,7 @@ const handleAccountNumberInput = () => {
 // Wallet operations
 const initiateWithdrawal = () => {
   if (!pinSet.value) {
-    showAlert("Please set a transaction PIN first.", "warning");
+    if (toast) toast.info("Please set a transaction PIN first.");
     showPinSetupModal.value = true;
   } else {
     // Reset form
@@ -1186,16 +1107,14 @@ const initiateWithdrawal = () => {
       accountName: "",
       amount: null,
       pin: "",
-      description: "",
     };
-    showWithdrawalPin.value = false;
     showWithdrawalModal.value = true;
   }
 };
 
 const openLoanModal = () => {
   if (!pinSet.value) {
-    showAlert("Please set a transaction PIN first.", "warning");
+    if (toast) toast.info("Please set a transaction PIN first.");
     showPinSetupModal.value = true;
   } else {
     repaymentForm.value = {
@@ -1208,11 +1127,11 @@ const openLoanModal = () => {
 
 const savePin = () => {
   if (newPin.value !== confirmPin.value) {
-    showAlert("PINs do not match. Please try again.", "error");
+    if (toast) toast.error("PINs do not match. Please try again.");
     return;
   }
   if (newPin.value.length !== 4) {
-    showAlert("PIN must be exactly 4 digits.", "error");
+    if (toast) toast.error("PIN must be exactly 4 digits.");
     return;
   }
 
@@ -1224,7 +1143,7 @@ const savePin = () => {
   localStorage.setItem("wallet_pin_set", "true");
 
   showPinSetupModal.value = false;
-  showAlert("Transaction PIN successfully configured!", "success");
+  if (toast) toast.success("Transaction PIN successfully configured!");
 
   // Directly redirect to open withdrawal
   withdrawalForm.value = {
@@ -1233,11 +1152,7 @@ const savePin = () => {
     accountName: "",
     amount: null,
     pin: "",
-    description: "",
   };
-  showNewPin.value = false;
-  showConfirmPin.value = false;
-  showWithdrawalPin.value = false;
   showWithdrawalModal.value = true;
 
   // Reset fields
@@ -1249,15 +1164,15 @@ const executeWithdrawal = () => {
   const form = withdrawalForm.value;
 
   if (!form.amount || form.amount <= 0) {
-    showAlert("Please enter a valid amount.", "error");
+    if (toast) toast.error("Please enter a valid amount.");
     return;
   }
   if (form.amount > walletBalance.value) {
-    showAlert("Insufficient wallet balance.", "error");
+    if (toast) toast.error("Insufficient wallet balance.");
     return;
   }
   if (form.pin !== transactionPin.value) {
-    showAlert("Incorrect Transaction PIN.", "error");
+    if (toast) toast.error("Incorrect Transaction PIN.");
     return;
   }
 
@@ -1273,7 +1188,6 @@ const executeWithdrawal = () => {
     status: "Successful",
     reference: `WDR-${Math.floor(Math.random() * 900000000) + 100000000}`,
     details: `Withdrawal to ${form.bankName}`,
-    description: form.description || "",
     recipient: {
       name: form.accountName,
       account: form.accountNumber,
@@ -1290,26 +1204,27 @@ const executeWithdrawal = () => {
   selectedTx.value = newTx;
   showReceiptModal.value = true;
 
-  showAlert("Withdrawal completed successfully!", "success");
+  if (toast) toast.success("Withdrawal completed successfully!");
 };
 
 const executeLoanRepayment = () => {
   const form = repaymentForm.value;
 
   if (!form.amount || form.amount <= 0) {
-    showAlert("Please enter a valid amount.", "error");
+    if (toast) toast.error("Please enter a valid amount.");
     return;
   }
   if (form.amount > walletBalance.value) {
-    showAlert("Insufficient wallet balance.", "error");
+    if (toast) toast.error("Insufficient wallet balance.");
     return;
   }
   if (form.amount > loanOutstanding.value) {
-    showAlert("Repayment amount exceeds the outstanding loan balance.", "error");
+    if (toast)
+      toast.error("Repayment amount exceeds the outstanding loan balance.");
     return;
   }
   if (form.pin !== transactionPin.value) {
-    showAlert("Incorrect Transaction PIN.", "error");
+    if (toast) toast.error("Incorrect Transaction PIN.");
     return;
   }
 
@@ -1342,7 +1257,7 @@ const executeLoanRepayment = () => {
   selectedTx.value = newTx;
   showReceiptModal.value = true;
 
-  showAlert("Loan repayment processed successfully!", "success");
+  if (toast) toast.success("Loan repayment processed successfully!");
 };
 
 const viewReceipt = (tx: any) => {
@@ -1369,7 +1284,6 @@ Type:           ${tx.type}
 Amount:         NGN ${formatCurrency(tx.amount)}
 Date & Time:    ${tx.date}
 Description:    ${tx.details}
-Narration:      ${tx.description || 'N/A'}
 Status:         ${tx.status}
     `;
     if (tx.recipient) {
@@ -1392,7 +1306,7 @@ Thank you for investing with LQY.
     link.click();
     URL.revokeObjectURL(url);
 
-    showAlert("Receipt text downloaded successfully.", "success");
+    if (toast) toast.success("Receipt text downloaded successfully.");
   }
 };
 
@@ -1481,22 +1395,6 @@ onMounted(() => {
 }
 .animate-fade-in {
   animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Alert slide transition */
-.alert-slide-enter-active {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.alert-slide-leave-active {
-  transition: all 0.25s ease-in;
-}
-.alert-slide-enter-from {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-20px);
-}
-.alert-slide-leave-to {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-10px);
 }
 
 @media print {
