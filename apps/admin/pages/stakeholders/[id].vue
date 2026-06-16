@@ -15,13 +15,16 @@
           <div class="text-xs">Town/City:</div>
           <div class="text-base">{{ stakeholder.city }}</div>
           <div class="text-xs">Approval Status:</div>
-          <div class="text-base">
+          <div class="text-base" v-if="stakeholder && stakeholder.user">
             <div v-if="stakeholder.user.status" class="rounded-lg bg-green-700 text-white items-start p-2 w-24">
               Approved
             </div>
             <div v-else class="w-24 p-2 text-white items-start rounded-lg bg-orange-700">
               Declined
             </div>
+          </div>
+          <div class="text-base" v-else>
+            Loading...
           </div>
         </div>
         <div class="grid gird-row gap-y-3">
@@ -47,13 +50,13 @@
       <div class="flex gap-5 mt-5">
         <button
           class="w-24 h-10 font-ox text-white rounded-[8px] border border-solid border-black bg-blue-500"
-          @click="approve(stakeholder.user.id, true)"
+          @click="approve(stakeholder.user?.id, true)"
         >
           Approve
         </button>
         <button
           class="w-24 font-ox text-white rounded-[8px] border border-solid border-black bg-red-500"
-          @click="approve(stakeholder.user.id, false)"
+          @click="approve(stakeholder.user?.id, false)"
         >
           Reject
         </button>

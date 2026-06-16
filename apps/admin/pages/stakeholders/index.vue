@@ -362,7 +362,9 @@ const formatDate = (dateString, locale = "en-UK", options = {
   month: "short",
   day: "2-digit",
 }) => {
+  if (!dateString) return 'N/A';
   const date = new Date(dateString);
+  if (isNaN(date.getTime())) return 'N/A';
   const dateFormatter = new Intl.DateTimeFormat(locale, options);
   return dateFormatter.format(date);
 };
