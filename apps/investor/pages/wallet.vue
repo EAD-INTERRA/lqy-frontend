@@ -1104,12 +1104,6 @@
                 selectedTx.details
               }}</span>
             </div>
-            <div v-if="selectedTx.description" class="flex justify-between">
-              <span class="text-gray-400">Narration</span>
-              <span class="font-bold text-gray-900 text-right max-w-[200px]">{{
-                selectedTx.description
-              }}</span>
-            </div>
             <!-- Dynamic Withdrawal Details -->
             <div
               v-if="selectedTx.recipient"
@@ -1340,7 +1334,6 @@ const withdrawalForm = ref({
   accountName: "",
   amount: null as number | null,
   pin: "",
-  description: "",
 });
 
 const isVerifyingAccount = ref(false);
@@ -1376,7 +1369,7 @@ const handleAccountNumberInput = () => {
       withdrawalForm.value.bankName = banks[randomIndex];
       withdrawalForm.value.accountName = "John Doe";
 
-      showAlert("Account Details Verified Successfully!", "success");
+      if (toast) toast.success("Account Details Verified Successfully!");
     }, 1000);
   }
 };
@@ -1384,7 +1377,7 @@ const handleAccountNumberInput = () => {
 // Wallet operations
 const initiateWithdrawal = () => {
   if (!pinSet.value) {
-    showAlert("Please set a transaction PIN first.", "warning");
+    if (toast) toast.info("Please set a transaction PIN first.");
     showPinSetupModal.value = true;
   } else {
     // Reset form
@@ -1394,16 +1387,14 @@ const initiateWithdrawal = () => {
       accountName: "",
       amount: null,
       pin: "",
-      description: "",
     };
-    showWithdrawalPin.value = false;
     showWithdrawalModal.value = true;
   }
 };
 
 const openLoanModal = () => {
   if (!pinSet.value) {
-    showAlert("Please set a transaction PIN first.", "warning");
+    if (toast) toast.info("Please set a transaction PIN first.");
     showPinSetupModal.value = true;
   } else {
     repaymentForm.value = {
@@ -1416,11 +1407,11 @@ const openLoanModal = () => {
 
 const savePin = () => {
   if (newPin.value !== confirmPin.value) {
-    showAlert("PINs do not match. Please try again.", "error");
+    if (toast) toast.error("PINs do not match. Please try again.");
     return;
   }
   if (newPin.value.length !== 4) {
-    showAlert("PIN must be exactly 4 digits.", "error");
+    if (toast) toast.error("PIN must be exactly 4 digits.");
     return;
   }
 
@@ -1432,7 +1423,7 @@ const savePin = () => {
   localStorage.setItem("wallet_pin_set", "true");
 
   showPinSetupModal.value = false;
-  showAlert("Transaction PIN successfully configured!", "success");
+  if (toast) toast.success("Transaction PIN successfully configured!");
 
   // Directly redirect to open withdrawal
   withdrawalForm.value = {
@@ -1441,11 +1432,7 @@ const savePin = () => {
     accountName: "",
     amount: null,
     pin: "",
-    description: "",
   };
-  showNewPin.value = false;
-  showConfirmPin.value = false;
-  showWithdrawalPin.value = false;
   showWithdrawalModal.value = true;
 
   // Reset fields
@@ -1457,15 +1444,15 @@ const executeWithdrawal = () => {
   const form = withdrawalForm.value;
 
   if (!form.amount || form.amount <= 0) {
-    showAlert("Please enter a valid amount.", "error");
+    if (toast) toast.error("Please enter a valid amount.");
     return;
   }
   if (form.amount > walletBalance.value) {
-    showAlert("Insufficient wallet balance.", "error");
+    if (toast) toast.error("Insufficient wallet balance.");
     return;
   }
   if (form.pin !== transactionPin.value) {
-    showAlert("Incorrect Transaction PIN.", "error");
+    if (toast) toast.error("Incorrect Transaction PIN.");
     return;
   }
 
@@ -1481,7 +1468,6 @@ const executeWithdrawal = () => {
     status: "Successful",
     reference: `WDR-${Math.floor(Math.random() * 900000000) + 100000000}`,
     details: `Withdrawal to ${form.bankName}`,
-    description: form.description || "",
     recipient: {
       name: form.accountName,
       account: form.accountNumber,
@@ -1498,18 +1484,18 @@ const executeWithdrawal = () => {
   selectedTx.value = newTx;
   showReceiptModal.value = true;
 
-  showAlert("Withdrawal completed successfully!", "success");
+  if (toast) toast.success("Withdrawal completed successfully!");
 };
 
 const executeLoanRepayment = () => {
   const form = repaymentForm.value;
 
   if (!form.amount || form.amount <= 0) {
-    showAlert("Please enter a valid amount.", "error");
+    if (toast) toast.error("Please enter a valid amount.");
     return;
   }
   if (form.amount > walletBalance.value) {
-    showAlert("Insufficient wallet balance.", "error");
+    if (toast) toast.error("Insufficient wallet balance.");
     return;
   }
   if (form.amount > loanOutstanding.value) {
@@ -1520,7 +1506,7 @@ const executeLoanRepayment = () => {
     return;
   }
   if (form.pin !== transactionPin.value) {
-    showAlert("Incorrect Transaction PIN.", "error");
+    if (toast) toast.error("Incorrect Transaction PIN.");
     return;
   }
 
@@ -1553,7 +1539,7 @@ const executeLoanRepayment = () => {
   selectedTx.value = newTx;
   showReceiptModal.value = true;
 
-  showAlert("Loan repayment processed successfully!", "success");
+  if (toast) toast.success("Loan repayment processed successfully!");
 };
 
 const viewReceipt = (tx: any) => {
@@ -1603,7 +1589,7 @@ Thank you for investing with LQY.
     link.click();
     URL.revokeObjectURL(url);
 
-    showAlert("Receipt text downloaded successfully.", "success");
+    if (toast) toast.success("Receipt text downloaded successfully.");
   }
 };
 
@@ -1692,22 +1678,6 @@ onMounted(() => {
 }
 .animate-fade-in {
   animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Alert slide transition */
-.alert-slide-enter-active {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.alert-slide-leave-active {
-  transition: all 0.25s ease-in;
-}
-.alert-slide-enter-from {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-20px);
-}
-.alert-slide-leave-to {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-10px);
 }
 
 @media print {
