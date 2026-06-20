@@ -6,20 +6,95 @@
         v-if="alertMessage"
         :class="[
           'fixed top-6 left-1/2 -translate-x-1/2 z-[100] px-6 py-3.5 rounded-2xl shadow-xl font-semibold text-sm flex items-center gap-3 min-w-[320px] max-w-[500px] border backdrop-blur-md',
-          alertType === 'success' ? 'bg-green-50/95 text-green-800 border-green-200' : '',
-          alertType === 'error' ? 'bg-red-50/95 text-red-800 border-red-200' : '',
-          alertType === 'info' ? 'bg-blue-50/95 text-blue-800 border-blue-200' : '',
-          alertType === 'warning' ? 'bg-amber-50/95 text-amber-800 border-amber-200' : ''
+          alertType === 'success'
+            ? 'bg-green-50/95 text-green-800 border-green-200'
+            : '',
+          alertType === 'error'
+            ? 'bg-red-50/95 text-red-800 border-red-200'
+            : '',
+          alertType === 'info'
+            ? 'bg-blue-50/95 text-blue-800 border-blue-200'
+            : '',
+          alertType === 'warning'
+            ? 'bg-amber-50/95 text-amber-800 border-amber-200'
+            : '',
         ]"
       >
         <!-- Icon -->
-        <svg v-if="alertType === 'success'" class="w-5 h-5 flex-shrink-0 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <svg v-else-if="alertType === 'error'" class="w-5 h-5 flex-shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <svg v-else-if="alertType === 'warning'" class="w-5 h-5 flex-shrink-0 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-        <svg v-else class="w-5 h-5 flex-shrink-0 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <svg
+          v-if="alertType === 'success'"
+          class="w-5 h-5 flex-shrink-0 text-green-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <svg
+          v-else-if="alertType === 'error'"
+          class="w-5 h-5 flex-shrink-0 text-red-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <svg
+          v-else-if="alertType === 'warning'"
+          class="w-5 h-5 flex-shrink-0 text-amber-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          ></path>
+        </svg>
+        <svg
+          v-else
+          class="w-5 h-5 flex-shrink-0 text-blue-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
         <span class="flex-1">{{ alertMessage }}</span>
-        <button @click="alertMessage = ''" class="ml-2 opacity-60 hover:opacity-100 transition-opacity">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button
+          @click="alertMessage = ''"
+          class="ml-2 opacity-60 hover:opacity-100 transition-opacity"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
         </button>
       </div>
     </Transition>
@@ -112,21 +187,7 @@
             @click="openLoanModal"
             class="flex-1 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold py-3 px-4 rounded-xl transition-all flex justify-center items-center gap-2 text-ox-sm hover:scale-[1.02] transform transition-transform"
           >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
-            </svg>
-            Repay Loan
+            ₦ Repay Loan
           </button>
         </div>
       </div>
@@ -396,7 +457,7 @@
     <!-- PIN Setup Modal -->
     <div
       v-if="showPinSetupModal"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      class="fixed inset-0 z-50 flex items-center justify-center"
     >
       <div
         class="bg-white rounded-[20px] shadow-2xl w-full max-w-md p-6 relative animate-fade-in border border-gray-100"
@@ -464,9 +525,45 @@
                 class="w-full text-center tracking-[1em] text-xl font-bold border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
                 placeholder="••••"
               />
-              <button type="button" @click="showNewPin = !showNewPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                <svg v-if="!showNewPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
+              <button
+                type="button"
+                @click="showNewPin = !showNewPin"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1"
+              >
+                <svg
+                  v-if="!showNewPin"
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+                <svg
+                  v-else
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                  ></path>
+                </svg>
               </button>
             </div>
           </div>
@@ -485,9 +582,45 @@
                 class="w-full text-center tracking-[1em] text-xl font-bold border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
                 placeholder="••••"
               />
-              <button type="button" @click="showConfirmPin = !showConfirmPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                <svg v-if="!showConfirmPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
+              <button
+                type="button"
+                @click="showConfirmPin = !showConfirmPin"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1"
+              >
+                <svg
+                  v-if="!showConfirmPin"
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+                <svg
+                  v-else
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                  ></path>
+                </svg>
               </button>
             </div>
           </div>
@@ -504,7 +637,7 @@
     <!-- Withdrawal Modal -->
     <div
       v-if="showWithdrawalModal"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      class="fixed inset-0 z-50 flex items-center justify-center"
     >
       <div
         class="bg-white rounded-[20px] shadow-2xl w-full max-w-md p-6 relative border border-gray-100"
@@ -620,7 +753,7 @@
             />
           </div>
 
-          <!-- Description / Narration -->
+          <!-- Description / Narration 
           <div>
             <label class="block text-ox-xs font-semibold text-gray-700 mb-1.5"
               >Description / Narration</label
@@ -632,7 +765,7 @@
               placeholder="e.g. Payment for services, Personal transfer..."
             ></textarea>
           </div>
-
+          -->
           <!-- Transaction PIN -->
           <div>
             <label class="block text-ox-xs font-semibold text-gray-700 mb-1.5"
@@ -649,9 +782,45 @@
                 class="w-full text-center tracking-[1em] text-lg font-bold border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
                 placeholder="••••"
               />
-              <button type="button" @click="showWithdrawalPin = !showWithdrawalPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                <svg v-if="!showWithdrawalPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
+              <button
+                type="button"
+                @click="showWithdrawalPin = !showWithdrawalPin"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1"
+              >
+                <svg
+                  v-if="!showWithdrawalPin"
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+                <svg
+                  v-else
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                  ></path>
+                </svg>
               </button>
             </div>
           </div>
@@ -672,7 +841,7 @@
     <!-- Loan Repayment Modal -->
     <div
       v-if="showLoanRepaymentModal"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      class="fixed inset-0 z-50 flex items-center justify-center"
     >
       <div
         class="bg-white rounded-[20px] shadow-2xl w-full max-w-lg p-6 relative border border-gray-100 max-h-[90vh] overflow-y-auto"
@@ -789,9 +958,45 @@
                   class="w-full text-center tracking-[1em] text-lg font-bold border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
                   placeholder="••••"
                 />
-                <button type="button" @click="showRepaymentPin = !showRepaymentPin" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1">
-                  <svg v-if="!showRepaymentPin" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                  <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path></svg>
+                <button
+                  type="button"
+                  @click="showRepaymentPin = !showRepaymentPin"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1"
+                >
+                  <svg
+                    v-if="!showRepaymentPin"
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    ></path>
+                  </svg>
+                  <svg
+                    v-else
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                    ></path>
+                  </svg>
                 </button>
               </div>
             </div>
@@ -810,7 +1015,7 @@
     <!-- Receipt / Transaction Details Modal -->
     <div
       v-if="showReceiptModal"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      class="fixed inset-0 z-50 flex items-center justify-center"
     >
       <div
         class="bg-white rounded-[24px] shadow-2xl w-full max-w-md p-6 relative border border-gray-100 print:p-0 print:border-0"
@@ -897,12 +1102,6 @@
               <span class="text-gray-400">Description</span>
               <span class="font-bold text-gray-900">{{
                 selectedTx.details
-              }}</span>
-            </div>
-            <div v-if="selectedTx.description" class="flex justify-between">
-              <span class="text-gray-400">Narration</span>
-              <span class="font-bold text-gray-900 text-right max-w-[200px]">{{
-                selectedTx.description
               }}</span>
             </div>
             <!-- Dynamic Withdrawal Details -->
@@ -995,7 +1194,10 @@ const alertMessage = ref("");
 const alertType = ref<"success" | "error" | "info" | "warning">("info");
 let alertTimeout: ReturnType<typeof setTimeout> | null = null;
 
-const showAlert = (message: string, type: "success" | "error" | "info" | "warning" = "info") => {
+const showAlert = (
+  message: string,
+  type: "success" | "error" | "info" | "warning" = "info",
+) => {
   if (alertTimeout) clearTimeout(alertTimeout);
   alertMessage.value = message;
   alertType.value = type;
@@ -1132,7 +1334,6 @@ const withdrawalForm = ref({
   accountName: "",
   amount: null as number | null,
   pin: "",
-  description: "",
 });
 
 const isVerifyingAccount = ref(false);
@@ -1176,7 +1377,7 @@ const handleAccountNumberInput = () => {
 // Wallet operations
 const initiateWithdrawal = () => {
   if (!pinSet.value) {
-    showAlert("Please set a transaction PIN first.", "warning");
+    showAlert("Please set a transaction PIN first.", "info");
     showPinSetupModal.value = true;
   } else {
     // Reset form
@@ -1186,16 +1387,14 @@ const initiateWithdrawal = () => {
       accountName: "",
       amount: null,
       pin: "",
-      description: "",
     };
-    showWithdrawalPin.value = false;
     showWithdrawalModal.value = true;
   }
 };
 
 const openLoanModal = () => {
   if (!pinSet.value) {
-    showAlert("Please set a transaction PIN first.", "warning");
+    showAlert("Please set a transaction PIN first.", "info");
     showPinSetupModal.value = true;
   } else {
     repaymentForm.value = {
@@ -1233,11 +1432,7 @@ const savePin = () => {
     accountName: "",
     amount: null,
     pin: "",
-    description: "",
   };
-  showNewPin.value = false;
-  showConfirmPin.value = false;
-  showWithdrawalPin.value = false;
   showWithdrawalModal.value = true;
 
   // Reset fields
@@ -1273,7 +1468,6 @@ const executeWithdrawal = () => {
     status: "Successful",
     reference: `WDR-${Math.floor(Math.random() * 900000000) + 100000000}`,
     details: `Withdrawal to ${form.bankName}`,
-    description: form.description || "",
     recipient: {
       name: form.accountName,
       account: form.accountNumber,
@@ -1305,7 +1499,10 @@ const executeLoanRepayment = () => {
     return;
   }
   if (form.amount > loanOutstanding.value) {
-    showAlert("Repayment amount exceeds the outstanding loan balance.", "error");
+    showAlert(
+      "Repayment amount exceeds the outstanding loan balance.",
+      "error",
+    );
     return;
   }
   if (form.pin !== transactionPin.value) {
@@ -1369,7 +1566,7 @@ Type:           ${tx.type}
 Amount:         NGN ${formatCurrency(tx.amount)}
 Date & Time:    ${tx.date}
 Description:    ${tx.details}
-Narration:      ${tx.description || 'N/A'}
+Narration:      ${tx.description || "N/A"}
 Status:         ${tx.status}
     `;
     if (tx.recipient) {
@@ -1392,7 +1589,7 @@ Thank you for investing with LQY.
     link.click();
     URL.revokeObjectURL(url);
 
-    showAlert("Receipt text downloaded successfully.", "success");
+    if (toast) toast.success("Receipt text downloaded successfully.");
   }
 };
 
@@ -1481,22 +1678,6 @@ onMounted(() => {
 }
 .animate-fade-in {
   animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Alert slide transition */
-.alert-slide-enter-active {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.alert-slide-leave-active {
-  transition: all 0.25s ease-in;
-}
-.alert-slide-enter-from {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-20px);
-}
-.alert-slide-leave-to {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-10px);
 }
 
 @media print {
