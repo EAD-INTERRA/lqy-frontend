@@ -1369,7 +1369,7 @@ const handleAccountNumberInput = () => {
       withdrawalForm.value.bankName = banks[randomIndex];
       withdrawalForm.value.accountName = "John Doe";
 
-      if (toast) toast.success("Account Details Verified Successfully!");
+      showAlert("Account Details Verified Successfully!", "success");
     }, 1000);
   }
 };
@@ -1377,7 +1377,7 @@ const handleAccountNumberInput = () => {
 // Wallet operations
 const initiateWithdrawal = () => {
   if (!pinSet.value) {
-    if (toast) toast.info("Please set a transaction PIN first.");
+    showAlert("Please set a transaction PIN first.", "info");
     showPinSetupModal.value = true;
   } else {
     // Reset form
@@ -1394,7 +1394,7 @@ const initiateWithdrawal = () => {
 
 const openLoanModal = () => {
   if (!pinSet.value) {
-    if (toast) toast.info("Please set a transaction PIN first.");
+    showAlert("Please set a transaction PIN first.", "info");
     showPinSetupModal.value = true;
   } else {
     repaymentForm.value = {
@@ -1407,11 +1407,11 @@ const openLoanModal = () => {
 
 const savePin = () => {
   if (newPin.value !== confirmPin.value) {
-    if (toast) toast.error("PINs do not match. Please try again.");
+    showAlert("PINs do not match. Please try again.", "error");
     return;
   }
   if (newPin.value.length !== 4) {
-    if (toast) toast.error("PIN must be exactly 4 digits.");
+    showAlert("PIN must be exactly 4 digits.", "error");
     return;
   }
 
@@ -1423,7 +1423,7 @@ const savePin = () => {
   localStorage.setItem("wallet_pin_set", "true");
 
   showPinSetupModal.value = false;
-  if (toast) toast.success("Transaction PIN successfully configured!");
+  showAlert("Transaction PIN successfully configured!", "success");
 
   // Directly redirect to open withdrawal
   withdrawalForm.value = {
@@ -1444,15 +1444,15 @@ const executeWithdrawal = () => {
   const form = withdrawalForm.value;
 
   if (!form.amount || form.amount <= 0) {
-    if (toast) toast.error("Please enter a valid amount.");
+    showAlert("Please enter a valid amount.", "error");
     return;
   }
   if (form.amount > walletBalance.value) {
-    if (toast) toast.error("Insufficient wallet balance.");
+    showAlert("Insufficient wallet balance.", "error");
     return;
   }
   if (form.pin !== transactionPin.value) {
-    if (toast) toast.error("Incorrect Transaction PIN.");
+    showAlert("Incorrect Transaction PIN.", "error");
     return;
   }
 
@@ -1484,18 +1484,18 @@ const executeWithdrawal = () => {
   selectedTx.value = newTx;
   showReceiptModal.value = true;
 
-  if (toast) toast.success("Withdrawal completed successfully!");
+  showAlert("Withdrawal completed successfully!", "success");
 };
 
 const executeLoanRepayment = () => {
   const form = repaymentForm.value;
 
   if (!form.amount || form.amount <= 0) {
-    if (toast) toast.error("Please enter a valid amount.");
+    showAlert("Please enter a valid amount.", "error");
     return;
   }
   if (form.amount > walletBalance.value) {
-    if (toast) toast.error("Insufficient wallet balance.");
+    showAlert("Insufficient wallet balance.", "error");
     return;
   }
   if (form.amount > loanOutstanding.value) {
@@ -1506,7 +1506,7 @@ const executeLoanRepayment = () => {
     return;
   }
   if (form.pin !== transactionPin.value) {
-    if (toast) toast.error("Incorrect Transaction PIN.");
+    showAlert("Incorrect Transaction PIN.", "error");
     return;
   }
 
@@ -1539,7 +1539,7 @@ const executeLoanRepayment = () => {
   selectedTx.value = newTx;
   showReceiptModal.value = true;
 
-  if (toast) toast.success("Loan repayment processed successfully!");
+  showAlert("Loan repayment processed successfully!", "success");
 };
 
 const viewReceipt = (tx: any) => {
